@@ -7,7 +7,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
   <header>
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-      <h1 class="font-bold text-7xl">Test</h1>
+      <h1 class="font-bold text-7xl">Test Arquest</h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/gds">Guide de style</RouterLink>
