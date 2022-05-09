@@ -1,4 +1,9 @@
+<script setup>
+import Hdr from "@/components/Hdr.vue";
+</script>
+
 <template>
+  <hdr />
   <div class="about">
     <h1>Guide de style | Arquest</h1>
   </div>
