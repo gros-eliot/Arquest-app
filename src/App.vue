@@ -6,10 +6,15 @@ import HelloWorld from "@/components/HelloWorld.vue";
 <template>
   <header>
     <div class="wrapper">
-      <nav>
+      <nav class="flex gap-2">
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/create_quest"> Créer une quête</RouterLink>
+        <RouterLink to="/history">Historique</RouterLink>
+        <RouterLink to="/agenda">Agenda</RouterLink>
+        <RouterLink to="/avatar">Avatar</RouterLink>
+        <RouterLink to="/gifts">Boutique</RouterLink>
+
         <RouterLink to="/gds">Guide de style</RouterLink>
-        <RouterLink to="/qc"> Création de quête</RouterLink>
       </nav>
     </div>
   </header>
