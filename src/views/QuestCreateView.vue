@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div class="title center">Création de quêtes</div>
+    <hr />
     <div class="row">
       <form @submit.prevent="saisie" class="container">
         <div class="input-group">
@@ -10,7 +12,7 @@
             type="text"
             v-model="titre"
             class="form-control"
-            placeholder="Titre"
+            placeholder="Titre de la Quête"
           />
         </div>
         <br />
@@ -33,9 +35,7 @@
             <span class="input-group-text">Catégorie</span>
           </div>
           <select v-model="categorie">
-            <option value="" disabled selected>
-              Sélectionner une catégorie
-            </option>
+            <option value="" disabled selected>Sélectionner un pays</option>
             <option v-for="categorie in listeCategorie" :key="categorie">
               {{ categorie }}
             </option>
@@ -45,7 +45,7 @@
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">Date</span>
+            <span class="input-group-text">Moment de la quête</span>
           </div>
           <input
             type="text"
@@ -54,32 +54,21 @@
             placeholder="Date"
           />
         </div>
+        <br />
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">Heure de rappel</span>
+            <span class="input-group-text">Difficulté</span>
           </div>
-          <input
-            type="text"
-            v-model="heure"
-            class="form-control"
-            placeholder="Heure"
-          />
-        </div>
-
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Difficulte</span>
-          </div>
-          <select v-model="difficulte">
-            <option value="" disabled selected></option>
+          <select v-model="difficile">
+            <option value="" disabled selected>
+              Sélectionner un niveau de difficulté
+            </option>
             <option v-for="difficulte in listeDifficulte" :key="difficulte">
               {{ difficulte }}
             </option>
           </select>
         </div>
-        <br />
-
         <br />
 
         <input type="submit" value="Valider" />
@@ -89,11 +78,10 @@
 
     <div class="row">
       <ol>
-        <h4>Informations</h4>
-        <li v-for="quete in liste" :key="quete.id">
-          {{ quete.titre }} {{ quete.annee }} {{ quete.note }} - genre :
-          {{ quete.categorie }}{{ quete.date }}{{ quete.heure
-          }}{{ quete.difficulte }}
+        <h4>Liste des quetes saisis :</h4>
+        <li v-for="quest in liste" :key="quest.id">
+          id: {{ quest.id }} - {{ quest.titre }} {{ quest.note }}
+          {{ quest.categorie }} {{ quest.date }}{{ quest.difficulte }}
         </li>
       </ol>
     </div>
@@ -105,37 +93,41 @@
 export default {
   data() {
     return {
+      // Liste à remplir de quetes
       liste: [],
-
+      // Définition d'un quete
       id: 0,
       titre: "",
       note: "",
-      date: "2 juin 22",
-      heure: "13h",
-      listeCategorie: ["Sport", "DiY", "Social"],
-      listeDifficulte: ["Facile", "Moyen", "Difficile"],
+      date: "",
+      // Liste des pays
+      listeCategorie: ["Sport", "DIY", "Social", "Travail"],
+      // liste des genres
+      listeDifficulte: ["Facile", "Medium", "Difficile"],
     };
   },
   methods: {
     saisie: function () {
-      // Initialisation du film à mettre dans le tableau
-      let quest = {
+      // Initialisation du quete à mettre dans le tableau
+      let quete = {
         id: 0,
         titre: "",
-        note: "",
+        note: 0,
+        categorie: "",
         date: "",
-        heure: "",
+        difficulte: "",
       };
       // Calcul du id
       this.id++;
-      // On renseigne le nouveau film
-      quest.id = this.id;
-      quest.titre = this.titre;
-      quest.note = this.note;
-      quest.date = this.date;
-      film.heure = this.heure;
+      // On renseigne le nouveau quete
+      quete.id = this.id;
+      quete.titre = this.titre;
+      quete.note = this.note;
+      quete.categorie = this.categorie;
+      quete.date = this.date;
+      quete.difficulte = this.difficulte;
       // On le charge dans le tableau
-      this.liste.push(quest);
+      this.liste.push(quete);
     },
   },
 };
