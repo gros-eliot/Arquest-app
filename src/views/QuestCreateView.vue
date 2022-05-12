@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <div class="title center">Création de quêtes</div>
+  <div class="bg-black">
+    <div class="title center text-white">Création de quêtes</div>
     <hr />
     <div class="row">
       <form @submit.prevent="saisie" class="container">
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">Titre</span>
+            <span class="input-group-text text-white">Titre</span>
           </div>
           <input
             type="text"
@@ -19,7 +19,7 @@
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">Note</span>
+            <span class="input-group-text text-white">Note</span>
           </div>
           <input
             type="text"
@@ -32,7 +32,7 @@
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">Catégorie</span>
+            <span class="input-group-text text-white">Catégorie</span>
           </div>
           <select v-model="categorie">
             <option value="" disabled selected>Sélectionner un pays</option>
@@ -45,7 +45,7 @@
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">Moment de la quête</span>
+            <span class="input-group-text text-white">Moment de la quête</span>
           </div>
           <input
             type="text"
@@ -58,7 +58,7 @@
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">Difficulté</span>
+            <span class="input-group-text text-white">Difficulté</span>
           </div>
           <select v-model="difficile">
             <option value="" disabled selected>
@@ -71,17 +71,17 @@
         </div>
         <br />
 
-        <input type="submit" value="Valider" />
+        <input type="submit" value="Valider" class="text-white" />
       </form>
     </div>
     <hr />
 
     <div class="row">
       <ol>
-        <h4>Liste des quetes saisis :</h4>
-        <li v-for="quest in liste" :key="quest.id">
+        <h4 class="text-white">Liste des quetes saisis :</h4>
+        <li v-for="quest in liste" :key="quest.id" class="text-white">
           id: {{ quest.id }} - {{ quest.titre }} {{ quest.note }}
-          {{ quest.categorie }} {{ quest.date }}{{ quest.difficulte }}
+          {{ quest.categorie }} {{ quest.date }} {{ quest.difficulte }}
         </li>
       </ol>
     </div>
