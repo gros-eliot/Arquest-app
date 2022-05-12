@@ -62,7 +62,7 @@
           </div>
           <select v-model="difficile">
             <option value="" disabled selected>
-              Sélectionner un niveau de difficulté
+              Sélectionner une difficulté
             </option>
             <option v-for="difficulte in listeDifficulte" :key="difficulte">
               {{ difficulte }}
@@ -103,7 +103,7 @@ export default {
       // Liste des pays
       listeCategorie: ["Sport", "DIY", "Social", "Travail"],
       // liste des genres
-      listeDifficulte: ["Facile", "Medium", "Difficile"],
+      listeDifficulte: ["Facile", "Moyenne", "Difficile"],
     };
   },
   methods: {
