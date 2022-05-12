@@ -5,7 +5,15 @@ module.exports = {
     "src/App.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      "colors": {
+        "gray": {
+          "extended-700": "#3F3F46",
+          "extended-300": "#D4D4D4"
+        },
+
+      },
+    },
   },
   plugins: [],
 }
