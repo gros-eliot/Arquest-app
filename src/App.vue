@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
+import { AcademicCapIcon, AnnotationIcon } from "@heroicons/vue/solid";
 </script>
 
 <template>
@@ -8,13 +8,13 @@ import HelloWorld from "@/components/HelloWorld.vue";
     <div class="wrapper">
       <nav class="flex gap-2">
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/create_quest"> Créer une quête</RouterLink>
+        <RouterLink to="/create_quest"> Créer</RouterLink>
         <RouterLink to="/history">Historique</RouterLink>
         <RouterLink to="/agenda">Agenda</RouterLink>
         <RouterLink to="/avatar">Avatar</RouterLink>
-        <RouterLink to="/gifts">Boutique</RouterLink>
+        <RouterLink to="/gifts">Shop</RouterLink>
 
-        <RouterLink to="/gds">Guide de style</RouterLink>
+        <RouterLink to="/gds">GDS</RouterLink>
       </nav>
     </div>
   </header>
@@ -23,4 +23,11 @@ import HelloWorld from "@/components/HelloWorld.vue";
 </template>
 
 <style>
+div {
+  font-family: "Roboto", sans-serif;
+}
+h1,
+h4 {
+  font-family: "Press Start 2P";
+}
 </style>

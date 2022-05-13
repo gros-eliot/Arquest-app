@@ -11,7 +11,10 @@ module.exports = {
           "extended-700": "#3F3F46",
           "extended-300": "#D4D4D4"
         },
-
+      },
+      "fontFamily": {
+        "press-start-2p": "Press Start 2P",
+        "roboto": "Roboto"
       },
     },
   },
