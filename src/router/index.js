@@ -10,6 +10,8 @@ import ContactView from '../views/ContactView.vue'
 import MentionslegalesView from '../views/MentionslegalesView.vue'
 import GuideStyle from '../views/GuideStyle.vue'
 
+import Socialmedia from '../views/Socialmedia.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -23,6 +25,8 @@ const router = createRouter({
     { path: '/contact', name: 'ContactView', component: ContactView, },
     { path: '/mentionslegales', name: 'MentionslegalesView', component: MentionslegalesView, },
     { path: '/gds', name: 'GuideStyle', component: GuideStyle },
+    { path: '/social', name: 'Socialmedia', component: Socialmedia },
+
   ]
 })
 

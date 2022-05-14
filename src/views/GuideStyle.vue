@@ -5,7 +5,7 @@
   </div>
 
   <!-- Couleurs -->
-  <h1 class="text-center text-2xl p-2 text-white bg-black">Couleurs</h1>
+  <h1 class="text-center text-2xl p-2 text-white bg-gray-900">Couleurs</h1>
   <div class="flex flex-row sm:flex-col justify-center items-center m-2 py-6">
     <div class="flex flex-col justify-center gap-5 p-3 sm:flex-row">
       <span class="bg-red-500 w-20 h-10"></span>
@@ -28,7 +28,7 @@
   </div>
 
   <!-- Typographie -->
-  <h1 class="text-center text-2xl p-2 text-white bg-black">Typographie</h1>
+  <h1 class="text-center text-2xl p-2 text-white bg-gray-900">Typographie</h1>
   <div class="text-center flex flex-col items-center gap-5 m-2 py-6">
     <h1 class="text-2xl font-press-start-2p">Connecting...</h1>
     <h2 class="text-2xl font-roboto font-bold">Connecting to...</h2>
@@ -45,7 +45,7 @@
   </div>
 
   <!-- Icônes -->
-  <h1 class="text-center text-2xl p-2 text-white bg-black">Icônes</h1>
+  <h1 class="text-center text-2xl p-2 text-white bg-gray-900">Icônes</h1>
   <div class="flex gap-10 justify-center">
     <div>
       <div class="flex justify-center p-2 gap-2">
@@ -84,7 +84,7 @@
   </div>
 
   <!-- Composants -->
-  <h1 class="text-center text-2xl p-2 text-white bg-black">Composants</h1>
+  <h1 class="text-center text-2xl p-2 text-white bg-gray-900">Composants</h1>
   <div>
     <h2 class="text-2xl font-roboto font-bold">Les boutons</h2>
     <div>
@@ -93,6 +93,8 @@
       </router-link>
       <BoutonBorder>Deuxième bouton : valider</BoutonBorder>
     </div>
+
+    <HeaderView />
   </div>
 </template>
 
@@ -118,6 +120,8 @@ import MMIIcon from "../components/icons/MMIIcon.vue";
 
 import BoutonBlue from "../components/boutons/BoutonBlue.vue";
 import BoutonBorder from "../components/boutons/BoutonBorder.vue";
+
+import HeaderView from "../components/layouts/HeaderView.vue";
 export default {
   name: "App",
   components: {
@@ -140,11 +144,15 @@ export default {
     FacebookIcon,
     InstagramIcon,
     TwitterIcon,
+
     ArquestPremium,
+
     MMIIcon,
 
     BoutonBlue,
     BoutonBorder,
+
+    HeaderView,
   },
 };
 </script>

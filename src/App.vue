@@ -1,14 +1,18 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import { AcademicCapIcon, AnnotationIcon } from "@heroicons/vue/solid";
+import HeaderView from "./components/layouts/HeaderView.vue";
+import GuideStyle from "./views/GuideStyle.vue";
 </script>
+
+
 
 <template>
   <header>
+    <!--  LA SOLUTION :   <HeaderView class="fixed" />-->
     <div class="wrapper">
       <nav class="flex justify-between">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/create_quest"> Créer</RouterLink>
+        GuideStyle <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/crHeaderVieweate_quest"> Créer</RouterLink>
         <RouterLink to="/history">Historique</RouterLink>
         <RouterLink to="/agenda">Agenda</RouterLink>
         <RouterLink to="/avatar">Avatar</RouterLink>
@@ -17,11 +21,14 @@ import { AcademicCapIcon, AnnotationIcon } from "@heroicons/vue/solid";
         <RouterLink to="/mentionslegales">Mentions légales</RouterLink>
 
         <RouterLink to="/gds">GDS</RouterLink>
+
+        <RouterLink to="/social">SM</RouterLink>
       </nav>
     </div>
   </header>
-
-  <RouterView />
+  <main class="pt-20">
+    <guide-style />
+  </main>
 </template>
 
 <style>
