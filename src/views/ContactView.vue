@@ -1,36 +1,36 @@
 <template>
   <div class="bg-black ...">
-    <h2 class="text-4xl text-left ml-10 text-indigo-500 weight-700">
+    <h2 class="text-4xl text-left ml-28 text-indigo-500 weight-700">
       Nous contacter
     </h2>
     <p class="text-1xl text-right mr-9 h-40 text-white italic">
       Vous avez une question ? Besoin d’un renseignement ? Tout ce passe ici.
     </p>
 
-    <p class="text-2xl text-left ml-10 text-white uppercase">Nom</p>
-    <div>
-      <input name="first_name" id="first_name" type="text" placeholder="Insérez du texte" class="text-2xl italic" required />
+    <p class="text-2xl text-left ml-28 text-white uppercase">Nom</p>
+    <div class="ml-28 mb-11 mt-4">
+      <input name="first_name" id="first_name" type="text" placeholder="Insérez du texte" class="text-1xl italic" required />
     </div>
 
-    <p class="text-2xl text-left ml-10 text-white uppercase">Prénom</p>
-    <div>
-      <input name="first_name" id="first_name" type="text" placeholder="Insérez du texte" class="text-2xl italic" required />
+    <p class="text-2xl text-left ml-28 text-white uppercase">Prénom</p>
+    <div class="ml-28 mb-11 mt-4">
+      <input name="first_name" id="first_name" type="text" placeholder="Insérez du texte" class="text-1xl italic" required />
     </div>
 
-    <p class="text-2xl text-left ml-10 text-white uppercase">Email</p>
-    <div>
-      <input name="first_name" id="first_name" type="text" placeholder="Ex : exemple@exemple.fr" class="text-2xl italic" required />
+    <p class="text-2xl text-left ml-28 text-white uppercase">Email</p>
+    <div class="ml-28 mb-11 mt-4 ">
+      <input name="first_name" id="first_name" type="text" placeholder="Ex : exemple@exemple.fr" class="text-1xl italic" required />
     </div>
 
-    <p class="text-2xl text-left ml-10 text-white uppercase">Téléphone</p>
-    <p class="text-1xl text-left ml-11 text-white italic">* facultatif</p>
-    <div>
-      <input name="first_name" id="first_name" type="text" placeholder="Ex : 06 00 00 00 00" class="text-2xl italic" required />
+    <p class="text-2xl text-left ml-28 text-white uppercase">Téléphone</p>
+    <p class="text-1xl text-left ml-28 text-white italic">* facultatif</p>
+    <div class="ml-28 mb-11 mt-4">
+      <input name="first_name" id="first_name" type="text" placeholder="Ex : 06 00 00 00 00" class="text-1xl italic" required />
     </div>
 
-    <p class="text-2xl text-left ml-10 text-white uppercase">Requête</p>
-    <div>
-      <input name="first_name" id="first_name" type="text" placeholder="Insérez du texte..." class="text-2xl italic" required />
+    <p class="text-2xl text-left ml-28 text-white uppercase">Requête</p>
+    <div class="ml-28 mb-11 mt-4">
+        <textarea name="requête" id="requête" cols="60" rows="10" class="text-1xl italic text-gray-400 bg-black border-2 border-white">Insérez du texte...</textarea>
     </div>
 
     <div class="form-check">
@@ -38,7 +38,7 @@
         class="
           form-check-input
           appearance-none
-          ml-10
+          ml-28
           mt-20
           h-4
           w-4
@@ -52,7 +52,6 @@
           focus:outline-none
           transition
           duration-200
-          mt-1
           align-top
           bg-no-repeat bg-center bg-contain
           float-left
@@ -77,7 +76,7 @@
         class="
           form-check-input
           appearance-none
-          ml-10
+          ml-28
           h-4
           w-4
           border border-gray-300
