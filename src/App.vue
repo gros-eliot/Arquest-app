@@ -6,7 +6,7 @@ import { AcademicCapIcon, AnnotationIcon } from "@heroicons/vue/solid";
 <template>
   <header>
     <div class="wrapper">
-      <nav class="flex gap-2">
+      <nav class="flex justify-between">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/create_quest"> Créer</RouterLink>
         <RouterLink to="/history">Historique</RouterLink>
