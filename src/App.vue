@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import HeaderView from "./components/layouts/HeaderView.vue";
+import NavView from "./components/layouts/NavView.vue";
 import GuideStyle from "./views/GuideStyle.vue";
 </script>
 
@@ -8,10 +9,13 @@ import GuideStyle from "./views/GuideStyle.vue";
 
 <template>
   <header>
-    <!--  LA SOLUTION :   <HeaderView class="fixed" />-->
+    <!--
+    <HeaderView class="fixed" />
+    -->
+
     <div class="wrapper">
       <nav class="flex justify-between">
-        GuideStyle <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/crHeaderVieweate_quest"> Créer</RouterLink>
         <RouterLink to="/history">Historique</RouterLink>
         <RouterLink to="/agenda">Agenda</RouterLink>
@@ -25,9 +29,13 @@ import GuideStyle from "./views/GuideStyle.vue";
         <RouterLink to="/social">SM</RouterLink>
       </nav>
     </div>
+    <!--
+    <NavView class="fixed bottom-0" />
+    -->
   </header>
-  <main class="pt-20">
-    <guide-style />
+
+  <main class="pt-20 pb-20">
+    <router-view></router-view>
   </main>
 </template>
 

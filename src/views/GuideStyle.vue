@@ -86,15 +86,22 @@
   <!-- Composants -->
   <h1 class="text-center text-2xl p-2 text-white bg-gray-900">Composants</h1>
   <div>
-    <h2 class="text-2xl font-roboto font-bold">Les boutons</h2>
+    <h2 class="text-2xl font-roboto font-bold p-2">Les boutons</h2>
     <div>
       <router-link to="/">
         <BoutonBlue>Premier bouton : valider</BoutonBlue>
       </router-link>
-      <BoutonBorder>Deuxième bouton : valider</BoutonBorder>
+      <router-link to="/">
+        <BoutonBorder>Deuxième bouton : valider</BoutonBorder>
+      </router-link>
     </div>
 
-    <HeaderView />
+    <h2 class="text-2xl font-roboto font-bold p-2">
+      Les composants d'interfaces (layouts)
+    </h2>
+
+    <HeaderView class="mt-5" />
+    <NavView class="mt-5" />
   </div>
 </template>
 
@@ -122,6 +129,7 @@ import BoutonBlue from "../components/boutons/BoutonBlue.vue";
 import BoutonBorder from "../components/boutons/BoutonBorder.vue";
 
 import HeaderView from "../components/layouts/HeaderView.vue";
+import NavView from "../components/layouts/NavView.vue";
 export default {
   name: "App",
   components: {
@@ -153,6 +161,7 @@ export default {
     BoutonBorder,
 
     HeaderView,
+    NavView,
   },
 };
 </script>
