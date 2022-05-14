@@ -5,6 +5,7 @@ import HistoryView from '../views/HistoryView.vue'
 import AgendaView from '../views/AgendaView.vue'
 import AvatarView from '../views/AvatarView.vue'
 import GiftsView from '../views/GiftsView.vue'
+import ContactView from '../views/ContactView.vue'
 
 import GuideStyle from '../views/GuideStyle.vue'
 
@@ -47,6 +48,11 @@ const router = createRouter({
       path: '/gds',
       name: 'GuideStyle',
       component: GuideStyle,
+    },
+    {
+      path: '/contact',
+      name: 'ContactView',
+      component: ContactView,
     },
   ]
 })
