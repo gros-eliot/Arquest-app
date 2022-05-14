@@ -5,10 +5,13 @@
             <div class="bg-gray-900 w-100 h-20 mb-14"></div>
         </header>
 
-        <h2 class="text-5xl text-left ml-28 text-indigo-500 weight-700">
-        Nous contacter
+        <h2 class="text-5xl text-left ml-28 text-indigo-300">
+        Nous 
         </h2>
-        <p class="text-1xl text-right mr-9 h-40 text-white italic">
+        <h2 class="text-5xl text-left ml-28 text-indigo-300">
+        Contacter
+        </h2>
+        <p class="text-2xl text-right mr-40 mt-9 mb-28 text-white italic">
         Vous avez une question ? Besoin d’un renseignement ? Tout ce passe ici.
         </p>
 
@@ -45,8 +48,8 @@
             appearance-none
             ml-28
             mt-20
-            h-4
-            w-4
+            h-6
+            w-6
             border border-gray-300
             squared-sm
             bg-white
@@ -82,8 +85,8 @@
             form-check-input
             appearance-none
             ml-28
-            h-4
-            w-4
+            h-6
+            w-6
             border border-gray-300
             squared-sm
             bg-white
@@ -114,6 +117,17 @@
         </label>
         </div>
     </div>
+
+    <footer>
+        <div class="bg-gray-900 w-100 h-60">
+            <p class="text-base font-roboto font-semibold text-white">Contact</p>
+            <p class="text-base font-roboto font-semibold text-white">Mention légales</p>
+            <p class="text-base font-roboto font-semibold text-white">À Propos</p>
+
+            <p class="text-base font-roboto font-light italic text-center text-white">Projet réalisé dans le cadre d’un exercice pédagogique au département MMi de Montbéliard</p>
+        </div>
+    </footer>
+
 </template>
 
 
