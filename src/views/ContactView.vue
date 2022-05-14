@@ -46,9 +46,7 @@
           squared-sm
           bg-white
           checked:bg-indigo-500
-          weight-700
-          checked:bg-indigo-500
-          weight-700
+          weight-700 weight-700
           focus:outline-none
           transition
           duration-200
@@ -82,8 +80,6 @@
           border border-gray-300
           squared-sm
           bg-white
-          checked:bg-indigo-500
-          weight-700
           checked:bg-indigo-500
           weight-700
           focus:outline-none

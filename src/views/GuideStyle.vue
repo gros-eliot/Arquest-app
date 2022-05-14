@@ -75,12 +75,25 @@
         <InstagramIcon class="w-8 h-8" />
         <TwitterIcon class="w-8 h-8" />
       </div>
+      <div class="flex justify-center p-2 gap-2">
+        <MenuAlt1Icon class="w-8 h-8" />
+        <ArquestPremium class="w-8 h-8" />
+        <MMIIcon class="w-8 h-8" />
+      </div>
     </div>
   </div>
 
   <!-- Composants -->
   <h1 class="text-center text-2xl p-2 text-white bg-black">Composants</h1>
-  <div></div>
+  <div>
+    <h2 class="text-2xl font-roboto font-bold">Les boutons</h2>
+    <div>
+      <router-link to="/">
+        <BoutonBlue>Premier bouton : valider</BoutonBlue>
+      </router-link>
+      <BoutonBorder>Deuxième bouton : valider</BoutonBorder>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -95,10 +108,16 @@ import {
   CheckIcon,
   XIcon,
   HeartIcon,
+  MenuAlt1Icon,
 } from "@heroicons/vue/outline";
 import FacebookIcon from "../components/icons/FacebookIcon.vue";
 import InstagramIcon from "../components/icons/InstagramIcon.vue";
 import TwitterIcon from "../components/icons/TwitterIcon.vue";
+import ArquestPremium from "../components/icons/ArquestPremium.vue";
+import MMIIcon from "../components/icons/MMIIcon.vue";
+
+import BoutonBlue from "../components/boutons/BoutonBlue.vue";
+import BoutonBorder from "../components/boutons/BoutonBorder.vue";
 export default {
   name: "App",
   components: {
@@ -116,9 +135,16 @@ export default {
     CalendarIcon,
     GiftIcon,
 
+    MenuAlt1Icon,
+
     FacebookIcon,
     InstagramIcon,
     TwitterIcon,
+    ArquestPremium,
+    MMIIcon,
+
+    BoutonBlue,
+    BoutonBorder,
   },
 };
 </script>
