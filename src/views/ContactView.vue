@@ -9,39 +9,28 @@
 
     <p class="text-2xl text-left ml-10 text-white uppercase">Nom</p>
     <div>
-      <input
-        name="first_name"
-        id="first_name"
-        type="text"
-        placeholder="Insérez du texte"
-        class="text-2xl italic"
-        required
-      />
+      <input name="first_name" id="first_name" type="text" placeholder="Insérez du texte" class="text-2xl italic" required />
     </div>
 
     <p class="text-2xl text-left ml-10 text-white uppercase">Prénom</p>
     <div>
-      <label class="text-2xl italic">Insérez du texte</label>
-      <input name="last_name" id="last_name" type="text" required />
+      <input name="first_name" id="first_name" type="text" placeholder="Insérez du texte" class="text-2xl italic" required />
     </div>
 
     <p class="text-2xl text-left ml-10 text-white uppercase">Email</p>
     <div>
-      <label class="text-2xl italic">Ex : exemple@exemple.fr</label>
-      <input name="email" id="email" type="text" required />
+      <input name="first_name" id="first_name" type="text" placeholder="Ex : exemple@exemple.fr" class="text-2xl italic" required />
     </div>
 
     <p class="text-2xl text-left ml-10 text-white uppercase">Téléphone</p>
     <p class="text-1xl text-left ml-11 text-white italic">* facultatif</p>
     <div>
-      <label class="text-2xl italic">Ex : 06 00 00 00 00</label>
-      <input name="telephone" id="telephone" type="text" required />
+      <input name="first_name" id="first_name" type="text" placeholder="Ex : 06 00 00 00 00" class="text-2xl italic" required />
     </div>
 
     <p class="text-2xl text-left ml-10 text-white uppercase">Requête</p>
     <div>
-      <label class="bg-blue text-2xl italic">Insérez du texte</label>
-      <input name="email" id="email" type="text" required />
+      <input name="first_name" id="first_name" type="text" placeholder="Insérez du texte..." class="text-2xl italic" required />
     </div>
 
     <div class="form-check">
