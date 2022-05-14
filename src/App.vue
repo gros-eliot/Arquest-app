@@ -14,6 +14,7 @@ import { AcademicCapIcon, AnnotationIcon } from "@heroicons/vue/solid";
         <RouterLink to="/avatar">Avatar</RouterLink>
         <RouterLink to="/gifts">Shop</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
+        <RouterLink to="/mentionslegales">Mentions légales</RouterLink>
 
         <RouterLink to="/gds">GDS</RouterLink>
       </nav>

@@ -54,6 +54,11 @@ const router = createRouter({
       name: 'ContactView',
       component: ContactView,
     },
+    {
+      path: '/mentionslegales',
+      name: 'MentionslegalesView',
+      component: MentionslegalesView,
+    },
   ]
 })
 
