@@ -102,6 +102,7 @@
 
     <HeaderView class="mt-5" />
     <NavView class="mt-5" />
+    <FooterView class="mt-5 mb-5" />
   </div>
 </template>
 
@@ -130,6 +131,7 @@ import BoutonBorder from "../components/boutons/BoutonBorder.vue";
 
 import HeaderView from "../components/layouts/HeaderView.vue";
 import NavView from "../components/layouts/NavView.vue";
+import FooterView from "../components/layouts/FooterView.vue";
 export default {
   name: "App",
   components: {
@@ -162,6 +164,7 @@ export default {
 
     HeaderView,
     NavView,
+    FooterView,
   },
 };
 </script>
