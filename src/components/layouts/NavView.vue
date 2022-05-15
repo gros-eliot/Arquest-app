@@ -32,7 +32,8 @@ export default {
     GiftIcon,
   },
 };
-
+</script>
+<!--
 var navig1 = document.getElementById("nav1");
 var navig2 = document.getElementById("nav2");
 var navig3 = document.getElementById("nav3");
@@ -57,7 +58,6 @@ navig3.addEventListener("click", function () {
   navig1.classList.add("fill-white");
   navig2.classList.add("fill-white");
 });
-</script>
-
+-->
 <style>
 </style>

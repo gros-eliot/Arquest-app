@@ -1,12 +1,13 @@
 <template>
   <div class="flex flex-col border-2 border-indigo-500 m-5 bg-transparent">
     <div class="flex justify-between p-3 text-white">
-      <h3 class="text-xl font-roboto font-bold p-2">Quest_named</h3>
+      <div>
+        <h3 class="relative text-xl font-roboto font-bold p-2">Quest name</h3>
+      </div>
       <DotsHorizontalIcon class="w-12 h-12 fill-white" />
     </div>
-    <div class="flex justify-center items-center p-3">
-      <div class="w-[95%] h-5 bg-red-400 rounded-xl"></div>
-    </div>
+    <hr class="mb-4 mt-0 border-t-8 rounded-full m-3 border-indigo-300" />
+
     <div class="flex justify-center items-center">
       <BoutonBlue>VALIDER</BoutonBlue>
     </div>

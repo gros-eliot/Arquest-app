@@ -1,5 +1,5 @@
 <script>
-import QuestView from "../components/layouts/QuestView.vue";
+import CreatedQuestView from "../components/CreatedQuestView.vue";
 
 import HeaderView from "../components/layouts/HeaderView.vue";
 import NavView from "../components/layouts/NavView.vue";
@@ -7,7 +7,7 @@ import FooterView from "../components/layouts/FooterView.vue";
 export default {
   name: "Home",
   components: {
-    QuestView,
+    CreatedQuestView,
     HeaderView,
     NavView,
     FooterView,
