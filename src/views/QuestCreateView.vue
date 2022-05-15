@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black">
+  <div>
     <div class="title center text-white">Création de quêtes</div>
     <hr />
     <div class="row">

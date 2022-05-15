@@ -31,6 +31,12 @@ export default {
     CalendarIcon,
     GiftIcon,
   },
+  props: {
+    activated: {
+      type: Boolean,
+      default: true,
+    },
+  },
 };
 </script>
 <!--

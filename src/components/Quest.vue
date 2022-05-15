@@ -31,10 +31,7 @@ export default {
       type: String,
       required: true,
     },
-    type: {
-      type: String,
-      required: true,
-    },
+
     Category: {
       type: String,
       required: true,

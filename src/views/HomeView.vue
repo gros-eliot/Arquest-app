@@ -12,8 +12,8 @@ export default {
 
 
 <template>
-  <body class="bg-gray-900 p-3">
-    <!-- Bouton créer quête -->
+  <body class="p-3">
+    <!-- Bouton bas droite : créer quête -->
     <RouterLink to="/create_quest">
       <div
         class="
@@ -32,6 +32,7 @@ export default {
         <PlusIcon class="fill-black w-10 h-10" />
       </div>
     </RouterLink>
+
     <!-- AGENDA SEMAINE <div></div>-->
     <div class="text-white">
       <h2>QUÊTES DU JOUR</h2>

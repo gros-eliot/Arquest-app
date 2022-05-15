@@ -1,14 +1,8 @@
 <template></template>
 
-
 <script>
-export default {
-  name: "AgendaView",
-  data() {
-    return {};
-  },
-};
+export default {};
 </script>
 
-<style scoped>
+<style>
 </style>

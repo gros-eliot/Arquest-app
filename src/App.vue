@@ -9,37 +9,33 @@ import GuideStyle from "./views/GuideStyle.vue";
 
 
 <template>
-  <header>
-    <HeaderView class="fixed z-50" />
-
-    <!--
-    <div class="wrapper">
-      <nav class="flex justify-between">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/create_quest"> Créer</RouterLink>
-        <RouterLink to="/history">Historique</RouterLink>
-        <RouterLink to="/agenda">Agenda</RouterLink>
-        <RouterLink to="/avatar">Avatar</RouterLink>
-        <RouterLink to="/contact">Contact</RouterLink>
-        <RouterLink to="/about">A propos</RouterLink>
-        <RouterLink to="/mentionslegales">Mentions légales</RouterLink>
-
-        <RouterLink to="/gds">GDS</RouterLink>
-
-        <RouterLink to="/social">SM</RouterLink>
-      </nav>
-    </div>-->
-
-    <NavView class="fixed bottom-0 z-50" />
-  </header>
-
-  <main class="pt-20">
-    <router-view></router-view>
-  </main>
-
-  <footer class="pb-20">
-    <footer-view class="bottom-0"></footer-view>
-  </footer>
+  <body class="bg-gray-900">
+    <header>
+      <HeaderView class="fixed z-50" />
+      <!--
+      <div class="wrapper">
+        <nav class="flex justify-between">
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/create_quest"> Créer</RouterLink>
+          <RouterLink to="/history">Historique</RouterLink>
+          <RouterLink to="/agenda">Agenda</RouterLink>
+          <RouterLink to="/avatar">Avatar</RouterLink>
+          <RouterLink to="/contact">Contact</RouterLink>
+          <RouterLink to="/about">A propos</RouterLink>
+          <RouterLink to="/mentionslegales">Mentions légales</RouterLink>
+          <RouterLink to="/gds">GDS</RouterLink>
+          <RouterLink to="/social">SM</RouterLink>
+        </nav>
+      </div>-->
+      <NavView class="fixed bottom-0 z-50" />
+    </header>
+    <main class="pt-20">
+      <router-view></router-view>
+    </main>
+    <footer class="pb-20">
+      <footer-view class="bottom-0"></footer-view>
+    </footer>
+  </body>
 </template>
 
 <style>
