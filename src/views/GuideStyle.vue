@@ -110,6 +110,7 @@
       <h3 class="text-xl font-roboto font-bold text-white">Accueil</h3>
 
       <CreatedQuestView />
+      <GiftCategoryView />
     </div>
   </div>
 </template>
@@ -141,6 +142,7 @@ import HeaderView from "../components/layouts/HeaderView.vue";
 import NavView from "../components/layouts/NavView.vue";
 import FooterView from "../components/layouts/FooterView.vue";
 import CreatedQuestView from "../components/CreatedQuestView.vue";
+
 export default {
   name: "App",
   components: {

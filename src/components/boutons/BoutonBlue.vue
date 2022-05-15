@@ -15,10 +15,7 @@
       flex flex-row
       items-start
       justify-center
-      active:bg-indigo-900
-      active:bg-opacity-25
-      active:text-black
-      active:border-black
+      active:bg-indigo-900 active:text-black active:border-black
       hover:bg-indigo-900
     "
   >
