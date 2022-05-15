@@ -95,18 +95,20 @@
         <BoutonBorder>Deuxième bouton : valider</BoutonBorder>
       </router-link>
     </div>
+    <div>
+      <h2 class="text-2xl font-roboto font-bold p-2">
+        Les composants d'interfaces (layouts)
+      </h2>
+      <HeaderView class="mt-5" />
+      <NavView class="mt-5" />
+      <FooterView class="mt-5 mb-5" />
+    </div>
+    <div class="bg-slate-700 p-3">
+      <h2 class="text-2xl font-roboto font-bold p-2 text-white">
+        Les composants des pages
+      </h2>
+      <h3 class="text-xl font-roboto font-bold text-white">Accueil</h3>
 
-    <h2 class="text-2xl font-roboto font-bold p-2">
-      Les composants d'interfaces (layouts)
-    </h2>
-
-    <HeaderView class="mt-5" />
-    <NavView class="mt-5" />
-    <FooterView class="mt-5 mb-5" />
-
-    <h2 class="text-2xl font-roboto font-bold p-2">Les composants des pages</h2>
-    <h3 class="text-xl font-roboto font-bold">Accueil</h3>
-    <div class="bg-gray-900 after:bg-gray-900">
       <CreatedQuestView />
     </div>
   </div>
