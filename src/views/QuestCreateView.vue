@@ -48,7 +48,7 @@
             <span class="input-group-text text-white">Moment de la quête</span>
           </div>
           <input
-            type="date"
+            type="text"
             v-model="date"
             class="form-control"
             placeholder="Date"
