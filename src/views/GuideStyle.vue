@@ -144,7 +144,7 @@ import FooterView from "../components/layouts/FooterView.vue";
 import CreatedQuestView from "../components/CreatedQuestView.vue";
 
 export default {
-  name: "App",
+  name: "GuideStyle",
   components: {
     TrashIcon,
     PencilIcon,

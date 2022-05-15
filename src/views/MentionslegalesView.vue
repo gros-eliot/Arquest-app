@@ -73,7 +73,7 @@
 
 <script>
 export default {
-  name: "ContactView",
+  name: "MentionslegalesView",
   data() {
     return {};
   },

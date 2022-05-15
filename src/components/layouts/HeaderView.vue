@@ -15,7 +15,7 @@ import { MenuAlt1Icon } from "@heroicons/vue/outline";
 import ArquestPremium from "../icons/ArquestPremium.vue";
 
 export default {
-  name: "App",
+  name: "HeaderView",
   components: {
     MenuAlt1Icon,
     ArquestPremium,

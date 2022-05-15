@@ -20,7 +20,7 @@
 import ArquestPremium from "../icons/ArquestPremium.vue";
 import MMIIcon from "../icons/MMIIcon.vue";
 export default {
-  name: "App",
+  name: "FooterView",
   components: {
     ArquestPremium,
     MMIIcon,

@@ -18,6 +18,7 @@ import { DotsHorizontalIcon } from "@heroicons/vue/outline";
 import BoutonBlue from "./boutons/BoutonBlue.vue";
 
 export default {
+  name: "CreatedQuestView",
   components: {
     DotsHorizontalIcon,
     BoutonBlue,
