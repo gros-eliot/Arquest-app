@@ -103,6 +103,12 @@
     <HeaderView class="mt-5" />
     <NavView class="mt-5" />
     <FooterView class="mt-5 mb-5" />
+
+    <h2 class="text-2xl font-roboto font-bold p-2">Les composants des pages</h2>
+    <h3 class="text-xl font-roboto font-bold">Accueil</h3>
+    <div class="bg-gray-900 after:bg-gray-900">
+      <CreatedQuestView />
+    </div>
   </div>
 </template>
 
@@ -132,6 +138,7 @@ import BoutonBorder from "../components/boutons/BoutonBorder.vue";
 import HeaderView from "../components/layouts/HeaderView.vue";
 import NavView from "../components/layouts/NavView.vue";
 import FooterView from "../components/layouts/FooterView.vue";
+import CreatedQuestView from "../components/CreatedQuestView.vue";
 export default {
   name: "App",
   components: {
@@ -165,6 +172,7 @@ export default {
     HeaderView,
     NavView,
     FooterView,
+    CreatedQuestView,
   },
 };
 </script>
