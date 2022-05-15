@@ -9,6 +9,7 @@
   </div>
   <div class="">
     <h2>Badges</h2>
+    <badges-icon />
 
     <h3>Sport</h3>
   </div>
@@ -19,6 +20,7 @@
 
 <script >
 import { PencilAltIcon } from "@heroicons/vue/outline";
+
 export default {
   name: "AvatarView",
   components: { PencilAltIcon },
