@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex justify-between items-center p-3 bg-gray-900">
+  <div class="w-full flex justify-between items-center p-3 bg-gray-800">
     <MenuAlt1Icon class="w-10 h-10 stroke-white" />
     <RouterLink to="/"><ArquestPremium class="w-14 h-14" /></RouterLink>
     <RouterLink to="/social"

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between bg-gray-900 p-5 w-full">
+  <div class="flex justify-between bg-gray-800 p-5 w-full">
     <RouterLink to="/"
       ><HomeIcon id="nav1" class="h-10 w-10 fill-white active:fill-indigo-500"
     /></RouterLink>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-900 text-white flex flex-col gap-10">
+  <div class="bg-gray-800 text-white flex flex-col gap-10">
     <ArquestPremium class="m-5 w-14 h-14" />
     <div class="grid grid-cols-3 text-center">
       <RouterLink to="/contact"><p>Contact</p></RouterLink>

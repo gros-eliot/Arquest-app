@@ -11,19 +11,28 @@
       <span class="bg-red-500 w-20 h-10"></span>
       <span class="bg-indigo-500 w-20 h-10"></span>
       <span class="bg-indigo-300 w-20 h-10"></span>
-      <span class="bg-gray-extended-300 w-20 h-10"></span>
+      <span class="bg-gray-extended-700 w-20 h-10"></span>
+      <span class="bg-gray-800 w-20 h-10"></span>
       <span class="bg-gray-900 w-20 h-10"></span>
     </div>
 
     <div class="flex flex-col justify-center gap-6 p-3 sm:flex-row">
-      <span class="bg-lime-400 w-10 h-5"></span>
-      <span class="bg-cyan-200 w-10 h-5"></span>
-      <span class="bg-red-400 w-10 h-5"></span>
-      <span class="bg-indigo-300 w-10 h-5"></span>
-      <span class="bg-fuchsia-400 w-10 h-5"></span>
+      ><!--Sport-->
+      <span class="bg-red-400 w-10 h-5"></span
+      ><!--Social-->
+      <span class="bg-cyan-200 w-10 h-5"></span
+      ><!--Gestion-->
+      <span class="bg-indigo-300 w-10 h-5"></span
+      ><!--Travail-->
+      <span class="bg-gray-extended-300 w-10 h-5"></span
+      ><!--DIY-->
+      <span class="bg-fuchsia-400 w-10 h-5"></span
+      ><!--Santé-->
+      <span class="bg-lime-400 w-10 h-5"></span
+      ><!--Culture-->
+      <span class="bg-yellow-400 w-10 h-5"></span
+      ><!--Maison-->
       <span class="bg-yellow-200 w-10 h-5"></span>
-      <span class="bg-gray-extended-300 w-10 h-5"></span>
-      <span class="bg-yellow-400 w-10 h-5"></span>
     </div>
   </div>
 
@@ -115,7 +124,12 @@
 </template>
 
 <script>
-import { CalendarIcon, HomeIcon, GiftIcon } from "@heroicons/vue/solid";
+import {
+  CalendarIcon,
+  HomeIcon,
+  GiftIcon,
+  PlusIcon,
+} from "@heroicons/vue/solid";
 import {
   TrashIcon,
   PencilIcon,
@@ -158,6 +172,7 @@ export default {
     HomeIcon,
     CalendarIcon,
     GiftIcon,
+    PlusIcon,
 
     MenuAlt1Icon,
 

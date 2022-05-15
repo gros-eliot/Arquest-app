@@ -101,7 +101,16 @@ export default {
       note: "",
       date: "",
       // Liste des catégories
-      listeCategorie: ["Sport", "DIY", "Social", "Travail"],
+      listeCategorie: [
+        "Sport",
+        "Social",
+        "Gestion",
+        "Travail",
+        "DIY",
+        "Santé",
+        "Culture",
+        "Maison",
+      ],
       // liste des difficultés
       listeDifficulte: ["Facile", "Moyenne", "Difficile"],
     };
