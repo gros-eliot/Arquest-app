@@ -13,8 +13,8 @@ module.exports = {
         },
       },
       "fontFamily": {
-        "press-start-2p": "Press Start 2P",
-        "roboto": "Roboto"
+        "press-start-2p": "Press Start 2P, sans-serif",
+        "roboto": "Roboto, system-ui, sans-serif",
       },
     },
   },

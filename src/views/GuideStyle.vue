@@ -109,8 +109,7 @@
       </h2>
       <h3 class="text-xl font-roboto font-bold text-white">Accueil</h3>
 
-      <CreatedQuestView />
-      <GiftCategoryView />
+      <QuestView />
     </div>
   </div>
 </template>
@@ -141,7 +140,7 @@ import BoutonBorder from "../components/boutons/BoutonBorder.vue";
 import HeaderView from "../components/layouts/HeaderView.vue";
 import NavView from "../components/layouts/NavView.vue";
 import FooterView from "../components/layouts/FooterView.vue";
-import CreatedQuestView from "../components/CreatedQuestView.vue";
+import QuestView from "../components/Quest.vue";
 
 export default {
   name: "GuideStyle",
@@ -176,7 +175,7 @@ export default {
     HeaderView,
     NavView,
     FooterView,
-    CreatedQuestView,
+    QuestView,
   },
 };
 </script>

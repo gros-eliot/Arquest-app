@@ -1,16 +1,9 @@
 <script>
-import CreatedQuestView from "../components/CreatedQuestView.vue";
-
-import HeaderView from "../components/layouts/HeaderView.vue";
-import NavView from "../components/layouts/NavView.vue";
-import FooterView from "../components/layouts/FooterView.vue";
+import Quest from "../components/Quest.vue";
 export default {
   name: "Home",
   components: {
-    CreatedQuestView,
-    HeaderView,
-    NavView,
-    FooterView,
+    Quest,
   },
 };
 </script>
@@ -19,6 +12,8 @@ export default {
 <template>
   <div class="bg-black text-white">
     <h2>QUÊTES DU JOUR</h2>
-    <quest-view titre="Tarpon Bay" />
+    <Quest titre="Helena la com" />
+    <Quest titre="Fringz le design" />
+    <Quest titre="Telio le dev" />
   </div>
 </template>

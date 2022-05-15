@@ -12,7 +12,7 @@
             type="text"
             v-model="titre"
             class="form-control"
-            placeholder="Titre de la Quête"
+            placeholder="Titre de la quête"
           />
         </div>
         <br />
@@ -100,9 +100,9 @@ export default {
       titre: "",
       note: "",
       date: "",
-      // Liste des pays
+      // Liste des catégories
       listeCategorie: ["Sport", "DIY", "Social", "Travail"],
-      // liste des genres
+      // liste des difficultés
       listeDifficulte: ["Facile", "Moyenne", "Difficile"],
     };
   },

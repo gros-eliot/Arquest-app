@@ -4,7 +4,6 @@ import QuestCreateView from '../views/QuestCreateView.vue'
 import HistoryView from '../views/HistoryView.vue'
 import AgendaView from '../views/AgendaView.vue'
 import AvatarView from '../views/AvatarView.vue'
-import GiftsView from '../views/GiftsView.vue'
 
 import ContactView from '../views/ContactView.vue'
 import MentionslegalesView from '../views/MentionslegalesView.vue'
@@ -22,7 +21,6 @@ const router = createRouter({
     { path: '/history', name: 'HistoryView', component: HistoryView, },
     { path: '/agenda', name: 'AgendaView', component: AgendaView, },
     { path: '/avatar', name: 'AvatarView', component: AvatarView, },
-    { path: '/gifts', name: 'GiftsView', component: GiftsView, },
 
     { path: '/contact', name: 'ContactView', component: ContactView, },
     { path: '/mentionslegales', name: 'MentionslegalesView', component: MentionslegalesView, },

@@ -21,7 +21,6 @@ import GuideStyle from "./views/GuideStyle.vue";
         <RouterLink to="/history">Historique</RouterLink>
         <RouterLink to="/agenda">Agenda</RouterLink>
         <RouterLink to="/avatar">Avatar</RouterLink>
-        <RouterLink to="/gifts">Shop</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
         <RouterLink to="/about">A propos</RouterLink>
         <RouterLink to="/mentionslegales">Mentions légales</RouterLink>
