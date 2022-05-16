@@ -1,17 +1,21 @@
 <template>
-  <div
-    class="flex flex-col border-2 border-indigo-500 mt-5 my-5 bg-transparent"
-  >
+  <div class="my-5 mt-5 flex flex-col border-2 border-indigo-500 bg-transparent">
     <div class="flex justify-between p-3 text-white">
-      <h3 class="relative text-xl font-press-start-2p font-bold p-2">
+      <h3 class="relative p-2 font-press-start-2p text-xl font-bold">
         {{ titre }}
       </h3>
-      <DotsHorizontalIcon class="w-12 h-12 fill-white" />
+      <DotsHorizontalIcon class="h-12 w-12 fill-white" />
     </div>
 
-    <hr class="mb-4 mt-0 border-t-8 rounded-full m-3 {{ Category }} " />
+    <hr
+      class="m-3 mb-4 mt-0 rounded-full border-t-8"
+      :class="{
+        ' border-emerald-200 ': Category === 'Social',
+        ' border-red-200 ': Category === 'cat 2',
+      }"
+    />
 
-    <div class="flex justify-center items-center">
+    <div class="flex items-center justify-center">
       <BoutonBlue>VALIDER</BoutonBlue>
     </div>
   </div>
