@@ -8,8 +8,8 @@ import GuideStyle from "./views/GuideStyle.vue";
 
 <template>
   <body class="bg-gray-900">
-    <header>
-      <HeaderView class="fixed z-50" />
+    <header class="font-press-start-2p">
+      <HeaderView class="fixed z-40" />
       <!--
       <div class="wrapper">
         <nav class="flex justify-between">
@@ -25,7 +25,7 @@ import GuideStyle from "./views/GuideStyle.vue";
           <RouterLink to="/social">SM</RouterLink>
         </nav>
       </div>-->
-      <NavView class="fixed bottom-0 z-50" />
+      <NavView class="fixed bottom-0 z-40" />
     </header>
     <main class="pt-20">
       <router-view></router-view>
@@ -36,38 +36,4 @@ import GuideStyle from "./views/GuideStyle.vue";
   </body>
 </template>
 
-<style>
-/*TYPOGRAPHIES*/
-* {
-  font-family: "Roboto", sans-serif;
-}
-h1,
-h4 {
-  font-family: "Press Start 2P";
-}
-/*SIZE OF TEXT*/
-h1,
-h2 {
-  font-size: 1.5rem /* 24px */;
-  line-height: 2rem /* 32px */;
-}
-h3 {
-  font-size: 1.25rem /* 20px */;
-  line-height: 1.75rem /* 28px */;
-}
-h4,
-p {
-  font-size: 1rem /* 16px */;
-  line-height: 1.5rem /* 24px */;
-}
-figcaption {
-  font-size: 0.75rem /* 12px */;
-  line-height: 1rem /* 16px */;
-}
-
-/*WEIGHT OF TEXT*/
-h2,
-h3 {
-  font-weight: bold;
-}
-</style>
+<style></style>

@@ -13,9 +13,9 @@ module.exports = {
         },
       },
       "fontFamily": {
-        "press-start-2p": "Press Start 2P, sans-serif",
-        "roboto": "Roboto, system-ui, sans-serif",
-      },
+        "press-start-2p": ["'Press Start 2P'", "sansserif"],
+        "roboto": ["Roboto", "sansserif"]
+       },
     },
   },
   plugins: [],

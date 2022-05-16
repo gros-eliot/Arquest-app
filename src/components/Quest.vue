@@ -10,8 +10,9 @@
     <hr
       class="m-3 mb-4 mt-0 rounded-full border-t-8"
       :class="{
-        ' border-emerald-200 ': Category === 'Social',
-        ' border-red-200 ': Category === 'cat 2',
+        ' border-emerald-200 ': category === 'Sport',
+        ' border-red-200 ': category === 'Social',
+        ' border-red-200 ': category === 'Social',
       }"
     />
 
@@ -36,17 +37,15 @@ export default {
       required: true,
     },
 
-    Category: {
+    category: {
       type: String,
       required: true,
     },
   },
 };
 </script>
-  <!--
-  data() {
-    return {
-      listeCategorie: [
+<!--
+
         "Sport",
         "Social",
         "Gestion",
@@ -55,40 +54,5 @@ export default {
         "Santé",
         "Culture",
         "Maison",
-      ],
-    };
-  },-->
-<style>
-.Sport {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-.Social {
-  --tw-bg-opacity: 1;
-  background-color: rgb(165 243 252 / var(--tw-bg-opacity));
-}
-.Gestion {
-  --tw-bg-opacity: 1;
-  background-color: rgb(165 180 252 / var(--tw-bg-opacity));
-}
-.Travail {
-  --tw-bg-opacity: 1;
-  background-color: rgb(212 212 212 / var(--tw-bg-opacity));
-}
-.DIY {
-  --tw-bg-opacity: 1;
-  background-color: rgb(232 121 249 / var(--tw-bg-opacity));
-}
-.Santé {
-  --tw-bg-opacity: 1;
-  background-color: rgb(163 230 53 / var(--tw-bg-opacity));
-}
-.Culture {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
-}
-.Maison {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 240 138 / var(--tw-bg-opacity));
-}
-</style>
+-->
+<style></style>
