@@ -114,7 +114,7 @@
     class="
       bg-indigo-500
       text-white
-      font-bold
+      font-medium text-2xl
       w-52
       py-6
       m-28
@@ -122,7 +122,6 @@
       text-center
       no-underline
       rounded-xl
-      text-base
       flex flex-row
       items-start
       justify-center
