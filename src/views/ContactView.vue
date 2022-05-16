@@ -109,6 +109,29 @@
             J’ai lu et j’autorise les conditions générales de vente Arquest. Pour
             plus d’informations : conditions générales de vente
         </label>
+
+          <div
+    class="
+      bg-indigo-500
+      text-white
+      font-bold
+      w-52
+      py-6
+      m-28
+      uppercase
+      text-center
+      no-underline
+      rounded-xl
+      text-base
+      flex flex-row
+      items-start
+      justify-center
+      active:bg-indigo-900 active:text-black active:border-black
+      hover:bg-indigo-900
+    "
+  >Envoyer
+    <slot />
+  </div>
         </div>
     </div>
 

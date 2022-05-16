@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black ...">
+  <div class="bg-black">
     <h2 class="text-white">Mentions légales</h2>
 
     <p class="text-white">
