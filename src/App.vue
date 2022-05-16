@@ -6,8 +6,6 @@ import NavView from "./components/layouts/NavView.vue";
 import GuideStyle from "./views/GuideStyle.vue";
 </script>
 
-
-
 <template>
   <body class="bg-gray-900">
     <header>
