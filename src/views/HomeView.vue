@@ -8,27 +8,6 @@ export default {
     PlusIcon,
   },
 };
-
-import { DotsHorizontalIcon } from "@heroicons/vue/outline";
-import BoutonBlue from "../components/boutons/BoutonBlue.vue";
-
-export default {
-  components: {
-    DotsHorizontalIcon,
-    BoutonBlue,
-  },
-  props: {
-    titre: {
-      type: String,
-      required: true,
-    },
-
-    Category: {
-      type: String,
-      required: true,
-    },
-  },
-};
 </script>
 
 <template>
