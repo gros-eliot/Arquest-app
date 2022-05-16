@@ -10,7 +10,7 @@ export default {
 };
 
 import { DotsHorizontalIcon } from "@heroicons/vue/outline";
-import BoutonBlue from "./boutons/BoutonBlue.vue";
+import BoutonBlue from "../components/boutons/BoutonBlue.vue";
 
 export default {
   components: {
