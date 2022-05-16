@@ -1,10 +1,6 @@
 <template>
     <div class="bg-black ...">
 
-        <header>
-            <div class="bg-gray-900 w-100 h-20 mb-14"></div>
-        </header>
-
         <h2 class="text-5xl text-left ml-10 text-indigo-300">
         Nous 
         </h2>

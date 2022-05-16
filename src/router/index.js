@@ -25,6 +25,7 @@ const router = createRouter({
     { path: '/contact', name: 'ContactView', component: ContactView, },
     { path: '/mentionslegales', name: 'MentionslegalesView', component: MentionslegalesView, },
     { path: '/about', name: 'AboutView', component: AboutView, },
+    { path: '/apropos', name: 'AproposView', component: AproposView, },
 
     { path: '/gds', name: 'GuideStyle', component: GuideStyle },
 
