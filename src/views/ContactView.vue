@@ -53,10 +53,7 @@
             border border-gray-300
             squared-sm
             bg-white
-            checked:bg-indigo-500
-            weight-700
-            checked:bg-indigo-500
-            weight-700
+            checked:bg-indigo-500 weight-700
             focus:outline-none
             transition
             duration-200
@@ -90,10 +87,7 @@
             border border-gray-300
             squared-sm
             bg-white
-            checked:bg-indigo-500
-            weight-700
-            checked:bg-indigo-500
-            weight-700
+            checked:bg-indigo-500 weight-700
             focus:outline-none
             transition
             duration-200
@@ -117,16 +111,6 @@
         </label>
         </div>
     </div>
-
-    <footer>
-        <div class="bg-gray-900 w-100 h-60">
-            <p class="text-base font-roboto font-semibold text-white">Contact</p>
-            <p class="text-base font-roboto font-semibold text-white">Mention légales</p>
-            <p class="text-base font-roboto font-semibold text-white">À Propos</p>
-
-            <p class="text-base font-roboto font-light italic text-center text-white">Projet réalisé dans le cadre d’un exercice pédagogique au département MMi de Montbéliard</p>
-        </div>
-    </footer>
 
 </template>
 

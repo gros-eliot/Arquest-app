@@ -10,10 +10,6 @@
       assidûment.
     </p>
 
-      <header>
-            <div class="bg-gray-900 w-100 h-20 mb-14"></div>
-        </header>
-
         <h2 class="text-5xl text-left ml-16 mb-10 text-white">Mentions légales</h2>
 
         <p class="text-base font-roboto ml-16 mb-16 text-white">Cette page décrit les mentions légales qui vont s’imposer à tous les utilisateurs visitants ce site. En y naviguant, vous vous acquittez à les respecter. A prendre en compte que les mentions légales peuvent être changées à tout instant, c’est pour cela que nous vous convions à examiner assidûment. </p>
@@ -40,17 +36,6 @@
 
         <p class="text-base font-roboto ml-16 mb-16 text-white"> Le site est la propriété de l’IUT de Montbéliard en sa totalité, ainsi que l'ensemble des droits le concernant. Toute reproduction, intégrale ou partielle, est systématiquement soumise a l'autorisation des propriétaires. Toutefois, les liaisons du type hypertextes vers le site sont autorisées sans demandes spécifiques.</p>
         <p class="text-base font-roboto ml-16 mb-28 text-white"> Les utilisateurs reconnaîssent avoir pris connaissance, au moment de la passation au service premium, des conditions particulières de vente énoncées sur cet écran et déclare expressément les accepter sans réserve. Les conditions générales de vente régissent les relations contractuelles entre Arquest et ses utilisateurs, les deux parties les acceptant sans réserve. Ces conditions générales de vente prévaudront sur toutes autres conditions figurant dans tout autre document, sauf dérogation préalable, expresse et écrite. </p>
-
-  
-      <footer>
-          <div class="bg-gray-900 w-100 h-60">
-              <p class="text-base font-roboto font-semibold text-white">Contact</p>
-              <p class="text-base font-roboto font-semibold text-white">Mention légales</p>
-              <p class="text-base font-roboto font-semibold text-white">À Propos</p>
-
-              <p class="text-base font-roboto font-light italic text-center text-white">Projet réalisé dans le cadre d’un exercice pédagogique au département MMi de Montbéliard</p>
-          </div>
-      </footer>
 
     </div>
 </template>
