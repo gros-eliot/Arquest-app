@@ -1,16 +1,29 @@
 <template>
   <div>
-    <div class="bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
-      <RouterLink to="/custom"
-        ><div class="grid justify-items-end"><PencilAltIcon class="w-11" /></div
-      ></RouterLink>
-      <div class="mt-96 text-2xl">Insérer image</div>
+    <div class="flex h-[70vh] w-full flex-col justify-between bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
+      <div class="flex justify-end">
+        <RouterLink to="/custom"><PencilAltIcon class="w-11" /></RouterLink>
+      </div>
+
+      <h3 class="font-roboto text-xl font-bold">Insérer du texte</h3>
     </div>
   </div>
+
   <div class="m-5 text-white">
     <h2>Badges</h2>
-    <img src="../assets/BADGES/culture/1.svg" alt="" />
-    <h3>Sport</h3>
+    <div class="m-4 flex flex-auto flex-shrink justify-center">
+      <div class="grid grid-cols-3 items-center justify-center gap-10 md:grid-cols-4 lg:grid-cols-5">
+        <img src="../assets/BADGES/admin.png" alt="Badge 'culture' ultime dévérouillé" class="w-12" />
+        <img src="../assets/BADGES/sport/ultime.png" alt="Badge 'sport' ultime dévérouillé" class="w-12" />
+        <img src="../assets/BADGES/culture/ultime.png" alt="Badge 'culture' ultime dévérouillé" class="w-12" />
+        <img src="../assets/BADGES/DIY/fer.png" alt="Badge 'DIY' ultime dévérouillé" class="w-12" />
+        <img src="../assets/BADGES/gestion/bronze.png" alt="Badge 'gestion' ultime dévérouillé" class="w-12" />
+        <img src="../assets/BADGES/maison/argent.png" alt="Badge 'maison' ultime dévérouillé" class="w-12" />
+        <img src="../assets/BADGES/sante/gold.png" alt="Badge 'sante' ultime dévérouillé" class="w-12" />
+        <img src="../assets/BADGES/social/gold.png" alt="Badge 'social' ultime dévérouillé" class="w-12" />
+        <img src="../assets/BADGES/travail/diamond.png" alt="Badge 'travail' ultime dévérouillé" class="w-12" />
+      </div>
+    </div>
   </div>
 </template>
 
