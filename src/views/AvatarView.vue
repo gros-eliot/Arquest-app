@@ -7,17 +7,14 @@
       <div class="mt-96 text-2xl">Insérer image</div>
     </div>
   </div>
-  <div class="text-white m-5">
+  <div class="m-5 text-white">
     <h2>Badges</h2>
-    <BadgeTEST class="w-10" />
+    <img src="../assets/BADGES/culture/1.svg" alt="" />
     <h3>Sport</h3>
   </div>
 </template>
 
-
-
-
-<script >
+<script>
 import { PencilAltIcon } from "@heroicons/vue/outline";
 import BadgeTEST from "../components/icons/BadgesIcon.vue";
 
