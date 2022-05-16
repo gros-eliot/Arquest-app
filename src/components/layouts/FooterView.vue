@@ -1,13 +1,13 @@
 <template>
-  <div class="bg-gray-800 text-white flex flex-col gap-10">
-    <ArquestPremium class="m-5 w-14 h-14" />
+  <div class="flex flex-col gap-10 bg-gray-900 text-white">
+    <ArquestPremium class="m-5 h-14 w-14" />
     <div class="grid grid-cols-3 text-center">
       <RouterLink to="/contact"><p>Contact</p></RouterLink>
       <RouterLink to="/mentionslegales"><p>Mentions légales</p></RouterLink>
       <RouterLink to="/apropos"><p>À propos</p></RouterLink>
     </div>
-    <div class="flex justify-start items-center gap-3 p-4">
-      <MMIIcon class="w-16 h-16" />
+    <div class="flex items-center justify-start gap-3 p-4">
+      <MMIIcon class="h-16 w-16" />
       <p>
         Projet réalisé dans le cadre d’un exercice pédagogique au département
         <a href="http://mmimontbeliard.com/">MMi de Montbéliard</a>
@@ -28,5 +28,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

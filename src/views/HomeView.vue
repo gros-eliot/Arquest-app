@@ -24,10 +24,14 @@ export default {
       <h2 class="font-roboto text-2xl font-bold">QUÊTES DU JOUR</h2>
       <div class="p-1">
         <Quest titre="Helena la com" category="Social" />
-        <Quest titre="Fringz le design" />
-        <Quest titre="Telio le dev" />
+        <Quest titre="Fringz le design" category="Sport" />
+        <Quest titre="Telio le dev" category="Santé" />
       </div>
-      <hr />
+      <div class="flex justify-center">
+        <hr class="m-3 mb-4 mt-0 rounded-full border-t-8 border-white" />
+        <h3 class="font-roboto text-xl font-bold">Lundi</h3>
+        <hr />
+      </div>
       <div class="p-1">
         <Quest titre="Test final" />
       </div>

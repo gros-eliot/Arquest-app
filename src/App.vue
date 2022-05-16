@@ -7,9 +7,9 @@ import GuideStyle from "./views/GuideStyle.vue";
 </script>
 
 <template>
-  <body class="bg-gray-900">
+  <body class="bg-black font-roboto">
     <header class="font-press-start-2p">
-      <HeaderView class="fixed z-40" />
+      <HeaderView class="fixed z-20" />
       <!--
       <div class="wrapper">
         <nav class="flex justify-between">
@@ -25,7 +25,7 @@ import GuideStyle from "./views/GuideStyle.vue";
           <RouterLink to="/social">SM</RouterLink>
         </nav>
       </div>-->
-      <NavView class="fixed bottom-0 z-40" />
+      <NavView class="fixed bottom-0 z-20" />
     </header>
     <main class="pt-20">
       <router-view></router-view>

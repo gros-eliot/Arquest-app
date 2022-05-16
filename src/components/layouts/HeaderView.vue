@@ -13,10 +13,10 @@
 
     <div
       id="menu"
-      class="fixed inset-0 translate-x-full bg-red-200 motion-safe:transition-transform motion-safe:duration-1000"
-      :class="{ 'translate-x-0': menuOuvert }"
+      class="fixed inset-0 top-0 z-50 translate-x-full bg-black text-white motion-safe:transition-transform motion-safe:duration-1000"
+      :class="{ 'translate-x-52': menuOuvert }"
     >
-      <ul>
+      <ul class="relative z-50 p-3">
         <li><router-link to="/">Un</router-link></li>
         <li><router-link to="/">Deux</router-link></li>
         <li><router-link to="/">Trois</router-link></li>
@@ -48,5 +48,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
