@@ -10,19 +10,19 @@
     <hr
       class="m-3 mb-4 mt-0 rounded-full border-t-[15px]"
       :class="{
-        ' border-red-400 ': category === 'Sport',
-        ' border-cyan-200 ': category === 'Social',
-        ' border-indigo-300 ': category === 'Gestion',
-        ' border-gray-extended-300 ': category === 'Travail',
-        ' border-fuchsia-400 ': category === 'DIY',
-        ' border-lime-400 ': category === 'Santé',
-        ' border-yellow-400 ': category === 'Culture',
-        ' border-yellow-200 ': category === 'Maison',
+        ' border-red-400 ': qcategory === 'Sport',
+        ' border-cyan-200 ': qcategory === 'Social',
+        ' border-indigo-300 ': qcategory === 'Gestion',
+        ' border-gray-extended-300 ': qcategory === 'Travail',
+        ' border-fuchsia-400 ': qcategory === 'DIY',
+        ' border-lime-400 ': qcategory === 'Santé',
+        ' border-yellow-400 ': qcategory === 'Culture',
+        ' border-yellow-200 ': qcategory === 'Maison',
       }"
     />
 
     <div class="flex items-center justify-center">
-      <BoutonBlue>VALIDER</BoutonBlue>
+      <BoutonBlue class="uppercase">Valider</BoutonBlue>
     </div>
   </div>
 </template>
@@ -42,7 +42,7 @@ export default {
       required: true,
     },
 
-    category: {
+    qcategory: {
       type: String,
       required: true,
     },

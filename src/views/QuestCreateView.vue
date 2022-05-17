@@ -29,7 +29,19 @@
       <button class="m-3 bg-indigo-500 px-10 py-3 text-white" type="button" @click="createQuete()" title="Création">Créer</button>
     </form>
 
-    <div></div>
+    <div>
+      <p>Liste des quêtes actuelles</p>
+      <div class="text-black">
+        <form v-for="quete in listeQueteSynchro" :key="quete.id">
+          <div><span>Nom</span></div>
+          <input v-model="quete.nom" />
+        </form>
+        <form v-for="categorie in listeCategorie" :key="categorie.libelle">
+          <div><span>Catégorie</span></div>
+          <input v-model="categorie.libelle" />
+        </form>
+      </div>
+    </div>
     <!--
     <div class="card-body table-responsive">
       <table>
