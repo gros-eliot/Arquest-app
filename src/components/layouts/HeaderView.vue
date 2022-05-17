@@ -23,7 +23,14 @@
       </ul>
     </div>
 
-    <RouterLink to="/"><ArquestPremium class="h-14 w-14" /></RouterLink>
+    <RouterLink to="/">
+      <div class="block md:hidden">
+        <ArquestPremium class="h-14 w-14" />
+      </div>
+      <div class="hidden md:block">
+        <ArquestPremiumLong />
+      </div>
+    </RouterLink>
     <RouterLink to="/social"><img src="../../assets/social.webp" alt="Réseau social" class="w-8" /></RouterLink>
 
     <!--<RouterLink to="/upgrade"><h1 class="text-indigo-500">UP!</h1></RouterLink>-->
@@ -33,6 +40,7 @@
 <script>
 import { MenuAlt1Icon } from "@heroicons/vue/outline";
 import ArquestPremium from "../icons/ArquestPremium.vue";
+import ArquestPremiumLong from "../icons/ArquestPremiumLong.vue";
 
 export default {
   name: "HeaderView",
@@ -44,6 +52,7 @@ export default {
   components: {
     MenuAlt1Icon,
     ArquestPremium,
+    ArquestPremiumLong,
   },
 };
 </script>
