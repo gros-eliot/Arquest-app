@@ -3,7 +3,7 @@
         <div class="card w-2/2">
             <div class="overlay bg-black rounded-xl border-4 border-indigo-500">
 
-                <h2 class="text-2xl font-roboto font-bold text-center mt-6 ml-4 mr-4 uppercase text-white">ÊTES VOUS SÛR DE VOULOIR SUPPRIMER <div class="text-2xl font-roboto font-bold text-center text-red-400">L'HISTORIQUE</div> CETTE QUÊTE ?</h2>
+                <h2 class="text-2xl font-roboto font-bold text-center mt-6 ml-4 mr-4 uppercase text-white">ÊTES VOUS SÛR DE VOULOIR<div class="text-2xl font-roboto font-bold text-center text-red-400">SUPPRIMER</div>L'HISTORIQUE CETTE QUÊTE ?</h2>
                 
                     <div
                 class="
