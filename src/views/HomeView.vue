@@ -1,10 +1,12 @@
 <script>
 import Quest from "../components/Quest.vue";
+import BravopartageView from "../components/overlay/BravopartageView.vue";
 import { PlusIcon } from "@heroicons/vue/solid";
 export default {
   name: "Home",
   components: {
     Quest,
+    BravopartageView,
     PlusIcon,
   },
 };
@@ -25,7 +27,7 @@ export default {
       <h2 class="font-roboto text-2xl font-bold">QUÊTES DU JOUR</h2>
       <div class="p-1">
         <Quest titre="Helena la com" qcategory="Social" />
-        <bravopartage-view></bravopartage-view>
+        <BravopartageView class="fixed inset-y-2 inset-x-4 z-50" />
         <Quest titre="Fringz le design" qcategory="Sport" />
         <Quest titre="Telio le dev" qcategory="Santé" />
       </div>

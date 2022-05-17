@@ -107,7 +107,12 @@
         <h3 class="font-roboto text-xl font-bold text-white">Accueil</h3>
         <QuestView />
         <h2 class="p-2 font-roboto text-2xl font-bold text-white">Les overlays</h2>
-        <DelQuete class="fixed inset-y-2 inset-x-4 z-50" />
+
+        <!-- POUR QUE LES OVERLAYS FONCTIONNENT VISUELLEMENT : 
+        class="fixed inset-y-2 inset-x-4 z-50"
+        -->
+
+        <DelQuete />
         <SucceedQuete />
         <FuturQuete />
         <BravoView />
