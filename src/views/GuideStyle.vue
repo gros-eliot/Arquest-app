@@ -123,6 +123,8 @@
         Les overlays
       </h2>
       <DelQuete />
+      <SucceedQuete />
+      <FuturQuete /> 
     </div>
   </div>
 </template>
@@ -162,6 +164,7 @@ import FooterView from "../components/layouts/FooterView.vue";
 import QuestView from "../components/Quest.vue";
 import DelQuete from "../components/Overlay/SuppressionqueteView.vue";
 import SucceedQuete from "../components/Overlay/QuetesaccompliespartageView.vue";
+import FuturQuete from "../components/Overlay/AccompliesquetesView.vue";
 
 export default {
   name: "GuideStyle",
@@ -200,7 +203,8 @@ export default {
     QuestView,
 
     DelQuete,
-    SucceedQuete, 
+    SucceedQuete,
+    FuturQuete,  
   },
 };
 </script>

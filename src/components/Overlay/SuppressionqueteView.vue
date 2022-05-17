@@ -8,8 +8,8 @@
             class="
             bg-indigo-500
             text-white
-            font-medium text-1xl
-            w-32
+            font-medium text-1xl 
+            w-2/5
             py-5
             m-16
             mt-12
