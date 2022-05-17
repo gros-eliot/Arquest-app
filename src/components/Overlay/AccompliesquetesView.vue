@@ -11,18 +11,20 @@
                 </div>
             </div>
 
-            <div class="w-1/2"></div>
+            <div class="flex items-center">
+                <div class="py-8 w-1/12 m-2 bg-red-500"></div>
+                <h1 class="text-2xl font-press-start-2p text-center m-2 text-white">SPORT</h1>
+            </div>
 
-           <p class="text-1xl font-roboto text-left m-3 text-white">Appelez l’hotel Suzarin. Ne pas oublié de damander 4 chambres.
-            Demander à Marie de garder le lapin.</p>
+            <div class="flex items-center">
+                <div class="py-8 w-1/12 m-2 bg-indigo-300"></div>
+                <h1 class="text-2xl font-press-start-2p text-center m-2 text-white">GESTION</h1>
+            </div>
 
-           <h2 class="text-2xl font-roboto font-bold text-left mt-5 ml-3 text-white">Mardi 15 janvier</h2>
-           <p class="text-1xl font-roboto font-bold text-left ml-3 text-indigo-500">Rappel à 13h</p>
-           <p class="text-1xl font-roboto font-bold text-left ml-20 mt-5 absolute text-indigo-500">Facile</p>
-           <p class="text-1xl font-roboto font-bold text-left mt-5 ml-3 text-white">Niveau :</p>
-
-           <p class="text-1xl font-press-start-2p text-left ml-32 mt-0 absolute text-indigo-500">+35XP</p>
-           <p class="text-1xl font-roboto text-left ml-3 text-white">Récompenses :</p>
+            <div class="flex items-center">
+                <div class="py-8 w-1/12 m-2 bg-lime-400"></div>
+                <h1 class="text-2xl font-press-start-2p text-center m-2 text-white">SANTE</h1>
+            </div>
 
    
        </div>
