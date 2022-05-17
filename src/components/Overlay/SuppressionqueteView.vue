@@ -1,6 +1,6 @@
 <template>
     <figure class="card">
-    <figcaption class="overlay">
+    <figcaption class="overlay position-absolute ">
             <h2 class="text-2xl font-roboto text-center font-bold uppercase text-white">IL EST TROP TÔT POUR VALIDER !</h2>
             
                 <div
