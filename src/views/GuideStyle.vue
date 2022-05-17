@@ -38,7 +38,7 @@
 
   <!-- Typographie -->
   <h1 class="text-center text-2xl p-2 text-white bg-gray-900">Typographie</h1>
-  <div class="text-center flex flex-col items-center gap-5 m-2 py-6">
+  <div class="text-center flex flex-col items-center gap-5 m-2 py-6 text-white">
     <h1 class="text-2xl font-press-start-2p">Connecting...</h1>
     <h2 class="text-2xl font-roboto font-bold">Connecting to...</h2>
     <h3 class="text-xl font-roboto font-bold">Connecting to Arquest's...</h3>
@@ -119,6 +119,10 @@
       <h3 class="text-xl font-roboto font-bold text-white">Accueil</h3>
 
       <QuestView />
+   <h2 class="text-2xl font-roboto font-bold p-2 text-white">
+        Les overlays
+      </h2>
+      <DelQuete />
     </div>
   </div>
 </template>
@@ -155,6 +159,7 @@ import HeaderView from "../components/layouts/HeaderView.vue";
 import NavView from "../components/layouts/NavView.vue";
 import FooterView from "../components/layouts/FooterView.vue";
 import QuestView from "../components/Quest.vue";
+import DelQuete from "../components/Overlay/SuppressionqueteView.vue";
 
 export default {
   name: "GuideStyle",
@@ -191,6 +196,8 @@ export default {
     NavView,
     FooterView,
     QuestView,
+
+    DelQuete,
   },
 };
 </script>
