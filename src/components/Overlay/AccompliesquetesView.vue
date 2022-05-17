@@ -26,6 +26,29 @@
                 <h1 class="text-2xl font-press-start-2p text-center m-2 text-white">SANTE</h1>
             </div>
 
+        <p class="text-1xl font-press-start-2p text-left ml-32 mt-3 absolute text-indigo-300">+850XP</p>
+        <p class="text-1xl font-roboto text-left ml-3 mt-3 text-white">Récompenses :</p>
+
+              <div
+            class="
+            bg-indigo-500
+            text-white
+            font-medium text-1xl 
+            w-5/6
+            py-3
+            m-6
+            uppercase
+            text-center
+            no-underline
+            rounded-xl
+            justify-center
+            active:bg-indigo-900 active:text-black active:border-black
+            hover:bg-indigo-900
+            "
+        >FERMER
+            <slot />
+        </div>
+
    
        </div>
   </div>
