@@ -203,7 +203,7 @@ export default {
     SucceedQuete,
     FuturQuete,
     BravoView,
-    BravopartageView
+    BravopartageView,
 },
 };
 </script>
