@@ -8,6 +8,7 @@ import AvatarView from '../views/AvatarView.vue'
 import ContactView from '../views/ContactView.vue'
 import MentionslegalesView from '../views/MentionslegalesView.vue'
 import AboutView from '../views/AboutView.vue'
+import AproposView from '../views/AproposView.vue'
 import GuideStyle from '../views/GuideStyle.vue'
 import CustomView from '../views/CustomView.vue'
 
