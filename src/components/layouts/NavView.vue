@@ -1,22 +1,29 @@
 <template>
-  <div class="flex justify-between bg-gray-800 p-5 w-full">
-    <RouterLink to="/"
-      ><HomeIcon id="nav1" class="h-10 w-10 fill-white active:fill-indigo-500"
-    /></RouterLink>
+  <div class="flex w-full justify-between bg-gray-800 p-5 text-white">
+    <RouterLink to="/">
+      <div class="flex items-center justify-center gap-3">
+        <HomeIcon id="nav1" class="h-8 w-8 fill-white active:fill-indigo-500" />
+        <p class="hidden font-press-start-2p active:text-indigo-500 md:block">Accueil</p>
+      </div>
+    </RouterLink>
 
-    <RouterLink to="/agenda"
-      ><CalendarIcon
-        id="nav2"
-        class="h-10 w-10 fill-white active:fill-indigo-500"
-    /></RouterLink>
+    <RouterLink to="/agenda">
+      <div class="flex items-center justify-center gap-3">
+        <CalendarIcon id="nav2" class="h-8 w-8 fill-white active:fill-indigo-500" />
+        <p class="hidden font-press-start-2p active:text-indigo-500 md:block">Agenda</p>
+      </div>
+    </RouterLink>
 
     <RouterLink to="/avatar">
-      <img
-        src="../../assets/agenda.webp"
-        alt="Profil"
-        class="border border-white rounded-full active:border-indigo-500"
-        id="nav3"
-      />
+      <div class="flex items-center justify-center gap-3">
+        <img
+          src="../../assets/agenda.webp"
+          alt="Profil"
+          class="h-8 w-8 rounded-full border border-white active:border-indigo-500"
+          id="nav3"
+        />
+        <p class="hidden font-press-start-2p active:text-indigo-500 md:block">Profil</p>
+      </div>
     </RouterLink>
   </div>
 </template>
@@ -39,31 +46,5 @@ export default {
   },
 };
 </script>
-<!--
-var navig1 = document.getElementById("nav1");
-var navig2 = document.getElementById("nav2");
-var navig3 = document.getElementById("nav3");
 
-navig1.addEventListener("click", function () {
-  navig1.classList.remove("fill-white");
-  navig1.classList.add("fill-indigo-500");
-  navig2.classList.add("fill-white");
-  navig3.classList.add("fill-white");
-});
-
-navig2.addEventListener("click", function () {
-  navig2.classList.remove("fill-white");
-  navig2.classList.add("fill-indigo-500");
-  navig1.classList.add("fill-white");
-  navig3.classList.add("fill-white");
-});
-
-navig3.addEventListener("click", function () {
-  navig3.classList.remove("border-white");
-  navig3.classList.add("border-indigo-500");
-  navig1.classList.add("fill-white");
-  navig2.classList.add("fill-white");
-});
--->
-<style>
-</style>
+<style></style>

@@ -1,5 +1,7 @@
 <template>
   <div class="flex w-full items-center justify-between bg-gray-800 p-3">
+    <!--BOUTON MENU-->
+
     <button
       class="relative z-50 text-xl"
       aria-haspopup="true"
@@ -11,6 +13,7 @@
       <span class="sr-only">Menu</span>
     </button>
 
+    <!--MENU-->
     <div
       id="menu"
       class="fixed inset-0 top-0 z-50 translate-x-full bg-black text-white motion-safe:transition-transform motion-safe:duration-1000"
@@ -22,20 +25,23 @@
         <li><router-link to="/">Trois</router-link></li>
       </ul>
     </div>
+    <!--FIN MENU-->
 
     <RouterLink to="/">
       <div>
+        <!--ESSAIE D'UN LOGO RESPONSIVE : Compliqué car logo long trop gros-->
         <!--class="block md:hidden"-->
         <ArquestPremium class="h-14 w-14" />
       </div>
+
+      <!--ESSAIE D'UN LOGO RESPONSIVE : Compliqué car logo long trop gros-->
+
       <!--
       <div class="hidden md:block">
         <ArquestPremiumLong />
       </div>-->
     </RouterLink>
     <RouterLink to="/social"><img src="../../assets/social.webp" alt="Réseau social" class="w-8" /></RouterLink>
-
-    <!--<RouterLink to="/upgrade"><h1 class="text-indigo-500">UP!</h1></RouterLink>-->
   </div>
 </template>
 

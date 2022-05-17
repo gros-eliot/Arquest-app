@@ -8,7 +8,7 @@ import GuideStyle from "./views/GuideStyle.vue";
 
 <template>
   <body class="bg-black font-roboto">
-    <header class="font-press-start-2p">
+    <header class="text-white">
       <HeaderView class="fixed z-20" />
 
       <!--
@@ -28,10 +28,10 @@ import GuideStyle from "./views/GuideStyle.vue";
       </div>-->
       <NavView class="fixed bottom-0 z-20" />
     </header>
-    <main class="pt-20">
+    <main class="pt-24">
       <router-view></router-view>
     </main>
-    <footer class="pb-20">
+    <footer class="pb-[4.5rem]">
       <footer-view class="bottom-0"></footer-view>
     </footer>
   </body>

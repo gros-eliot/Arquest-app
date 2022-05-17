@@ -15,11 +15,22 @@
           <span>Nom</span>
         </div>
         <input type="text" class="text-black" v-model="nom" required />
+        <div>
+          <span>Catégorie</span>
+        </div>
+        <select v-model="libelle" class="text-black">
+          <option value="" disabled selected>Sélectionner une catégorie</option>
+          <option v-for="categorie in listeCategorie" :key="categorie.libelle">
+            {{ categorie.libelle }}
+          </option>
+        </select>
       </div>
 
       <button class="m-3 bg-indigo-500 px-10 py-3 text-white" type="button" @click="createQuete()" title="Création">Créer</button>
     </form>
 
+    <div></div>
+    <!--
     <div class="card-body table-responsive">
       <table>
         <thead>
@@ -38,31 +49,13 @@
                     <span>Nom</span>
                   </div>
                   <input type="text" class="text-black" v-model="quete.nom" required />
-                  <button class="btn btn-light" type="button" @click.prevent="updateQuete(quete)" title="Modification">
-                    <i class="fa fa-save fa-lg"></i>
-                  </button>
-                  <button class="btn btn-light" type="button" @click.prevent="deleteQuete(quete)" title="Suppression">
-                    <i class="fa fa-trash fa-lg"></i>
-                  </button>
-                </div>
-
-                <div>
-                  <div>
-                    <span>Catégorie</span>
-                  </div>
-                  <select v-model="categorie">
-                    <option value="" disabled selected>Sélectionner un</option>
-                    <option v-for="categorie in listeCategorie" :key="categorie">
-                      {{ categorie }}
-                    </option>
-                  </select>
                 </div>
               </form>
             </td>
           </tr>
         </tbody>
       </table>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -83,14 +76,16 @@ export default {
   name: "QuestCreateView",
   data() {
     return {
-      nom: null, // Pour la création d'un nouvelle quête
-      //  categorie: null, // Pour la création d'un nouvelle quête
+      nom: null, // Pour la création d'un nouvelle quête (nom)
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
+      libelle: [], // Pour la création d'un nouvelle quête (catégorie)
+      listeCategorie: [], // Liste des catégories synchronisée - collection cat de Firebase
     };
   },
   mounted() {
     // Montage de la vue
     this.getQueteSynchro();
+    this.getCategorie();
   },
   methods: {
     async getQueteSynchro() {
@@ -98,7 +93,7 @@ export default {
       const firestore = getFirestore();
       // Base de données (collection)  document pays
       const dbQuete = collection(firestore, "quete");
-      // Liste des pays synchronisée
+      // Liste des quêtes synchronisée
       const query = await onSnapshot(dbQuete, (snapshot) => {
         //  Récupération des résultats dans listePaysSynchro
         // On utilse map pour récupérer l'intégralité des données renvoyées
@@ -110,6 +105,24 @@ export default {
         }));
       });
     },
+    async getCategorie() {
+      // Obtenir Firestore
+      const firestore = getFirestore();
+      // Base de données (collection)  document pays
+      const dbCat = collection(firestore, "categorie");
+      // Liste des catégories synchronisée
+      const query = await onSnapshot(dbCat, (snapshot) => {
+        //  Récupération des résultats dans listePaysSynchro
+        // On utilse map pour récupérer l'intégralité des données renvoyées
+        // on identifie clairement le id du document
+        // les rest parameters permet de préciser la récupération de toute la partie data
+        this.listeCategorie = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+      });
+    },
+
     async createQuete() {
       // Obtenir Firestore
       const firestore = getFirestore();
