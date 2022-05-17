@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center"><div class="card mt-20 w-10/12 ml-9">
+  <div class="flex justify-center items-center"><div class="card mt-20 w-10/12">
        <div class="overlay bg-black rounded-xl border-4 border-indigo-500">
            <h1 class="text-2xl font-press-start-2p text-center mt-2 text-white">QUETE</h1>
             <div class="flex items-center justify-between">

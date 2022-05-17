@@ -7,17 +7,17 @@
             <p class="text-1xl font-roboto text-left mt-1 text-white">Partager</p>
 
         <div class="flex items-center justify-between">
-            <div class="rounded-full w-12 h-12 mt-4 bg-red-400"></div>
-            <div class="rounded-full w-12 h-12 mt-4 bg-indigo-300"></div>
-            <div class="rounded-full w-12 h-12 mt-4 bg-yellow-200"></div>
-            <div class="rounded-full w-12 h-12 mt-4 bg-red-400"></div>
+            <div class="rounded-full w-12 h-12 mt-6 bg-red-400"></div>
+            <div class="rounded-full w-12 h-12 mt-6 bg-indigo-300"></div>
+            <div class="rounded-full w-12 h-12 mt-6 bg-yellow-200"></div>
+            <div class="rounded-full w-12 h-12 mt-6 bg-red-400"></div>
         </div>
 
         <div class="flex items-center justify-between">
-            <h1 class="text-1xl font-roboto text-left mt-3 m-2 text-white">Tom</h1>
-            <h1 class="text-1xl font-roboto text-left mt-3 m-2 text-white">Sarah</h1>
-            <h1 class="text-1xl font-roboto text-left mt-3 m-2 text-white">Mattéo</h1>
-            <h1 class="text-1xl font-roboto text-left mt-3 m-2 text-white">Autre</h1>
+            <h1 class="text-1xl font-roboto text-left mt-4 m-2 mb-6 text-white">Tom</h1>
+            <h1 class="text-1xl font-roboto text-left mt-4 m-2 mb-6 text-white">Sarah</h1>
+            <h1 class="text-1xl font-roboto text-left mt-4 m-2 mb-6 text-white">Mattéo</h1>
+            <h1 class="text-1xl font-roboto text-left mt-4 m-2 mb-6 text-white">Autre</h1>
         </div>
 
 
