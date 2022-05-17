@@ -145,6 +145,7 @@ import {
   XIcon,
   HeartIcon,
   MenuAlt1Icon,
+
 } from "@heroicons/vue/outline";
 import FacebookIcon from "../components/icons/FacebookIcon.vue";
 import InstagramIcon from "../components/icons/InstagramIcon.vue";
@@ -160,6 +161,7 @@ import NavView from "../components/layouts/NavView.vue";
 import FooterView from "../components/layouts/FooterView.vue";
 import QuestView from "../components/Quest.vue";
 import DelQuete from "../components/Overlay/SuppressionqueteView.vue";
+import SucceedQuete from "../components/Overlay/QuetesaccompliespartageView.vue";
 
 export default {
   name: "GuideStyle",
@@ -198,6 +200,7 @@ export default {
     QuestView,
 
     DelQuete,
+    SucceedQuete, 
   },
 };
 </script>
