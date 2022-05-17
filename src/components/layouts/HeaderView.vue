@@ -24,12 +24,14 @@
     </div>
 
     <RouterLink to="/">
-      <div class="block md:hidden">
+      <div>
+        <!--class="block md:hidden"-->
         <ArquestPremium class="h-14 w-14" />
       </div>
+      <!--
       <div class="hidden md:block">
         <ArquestPremiumLong />
-      </div>
+      </div>-->
     </RouterLink>
     <RouterLink to="/social"><img src="../../assets/social.webp" alt="Réseau social" class="w-8" /></RouterLink>
 
