@@ -125,6 +125,7 @@
       <DelQuete />
       <SucceedQuete />
       <FuturQuete /> 
+      <BravoView />
     </div>
   </div>
 </template>
@@ -165,6 +166,8 @@ import QuestView from "../components/Quest.vue";
 import DelQuete from "../components/Overlay/SuppressionqueteView.vue";
 import SucceedQuete from "../components/Overlay/QuetesaccompliespartageView.vue";
 import FuturQuete from "../components/Overlay/AccompliesquetesView.vue";
+import BravoView from "../components/Overlay/BravoView.vue";
+
 
 export default {
   name: "GuideStyle",
@@ -178,34 +181,27 @@ export default {
     CheckIcon,
     XIcon,
     HeartIcon,
-
     HomeIcon,
     CalendarIcon,
     GiftIcon,
     PlusIcon,
-
     MenuAlt1Icon,
-
     FacebookIcon,
     InstagramIcon,
     TwitterIcon,
-
     ArquestPremium,
-
     MMIIcon,
-
     BoutonBlue,
     BoutonBorder,
-
     HeaderView,
     NavView,
     FooterView,
     QuestView,
-
     DelQuete,
     SucceedQuete,
-    FuturQuete,  
-  },
+    FuturQuete,
+    BravoView
+},
 };
 </script>
 
