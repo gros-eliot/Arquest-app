@@ -13,11 +13,12 @@
             <div class="rounded-full w-12 h-12 mt-4 bg-red-400"></div>
         </div>
 
+        <div class="flex items-center justify-between">
             <h1 class="text-1xl font-roboto text-left mt-3 m-2 text-white">Tom</h1>
             <h1 class="text-1xl font-roboto text-left mt-3 m-2 text-white">Sarah</h1>
             <h1 class="text-1xl font-roboto text-left mt-3 m-2 text-white">Mattéo</h1>
             <h1 class="text-1xl font-roboto text-left mt-3 m-2 text-white">Autre</h1>
-        
+        </div>
 
 
             </div>
