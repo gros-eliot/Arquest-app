@@ -34,7 +34,7 @@
       text-center
       no-underline
       rounded-xl
-      text-base
+      text-2xl
       flex flex-row
       items-start
       justify-center

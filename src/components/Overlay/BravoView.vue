@@ -13,7 +13,7 @@
             class="
             bg-indigo-500
             text-white
-            font-medium text-1xl 
+            font-medium text-2xl 
             w-5/6
             py-3
             m-6

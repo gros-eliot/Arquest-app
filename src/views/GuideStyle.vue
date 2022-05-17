@@ -127,6 +127,7 @@
       <FuturQuete /> 
       <BravoView />
       <BravopartageView />
+      <FinaldeletView />
     </div>
   </div>
 </template>
@@ -169,6 +170,7 @@ import SucceedQuete from "../components/Overlay/QuetesaccompliespartageView.vue"
 import FuturQuete from "../components/Overlay/AccompliesquetesView.vue";
 import BravoView from "../components/Overlay/BravoView.vue";
 import BravopartageView from "../components/Overlay/BravopartageView.vue";
+import FinaldeletView from "../components/Overlay/FinaldeletView.vue";
 
 
 export default {
@@ -204,6 +206,7 @@ export default {
     FuturQuete,
     BravoView,
     BravopartageView,
+    FinaldeletView
 },
 };
 </script>
