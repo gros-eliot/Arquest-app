@@ -10,6 +10,7 @@ import GuideStyle from "./views/GuideStyle.vue";
   <body class="bg-black font-roboto">
     <header class="font-press-start-2p">
       <HeaderView class="fixed z-20" />
+
       <!--
       <div class="wrapper">
         <nav class="flex justify-between">

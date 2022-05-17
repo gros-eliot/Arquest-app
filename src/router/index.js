@@ -11,6 +11,7 @@ import AboutView from '../views/AboutView.vue'
 import AproposView from '../views/AproposView.vue'
 import GuideStyle from '../views/GuideStyle.vue'
 import CustomView from '../views/CustomView.vue'
+import InscriptionView from '../views/InscriptionView.vue'
 
 import Socialmedia from '../views/Socialmedia.vue'
 
@@ -32,6 +33,7 @@ const router = createRouter({
 
     { path: '/social', name: 'Socialmedia', component: Socialmedia },
     { path: '/custom', name: 'CustomView', component: CustomView },
+    { path: '/inscription', name: 'InscriptionView', component: InscriptionView },
 
   ]
 })
