@@ -26,14 +26,8 @@ export default {
     <div class="text-white">
       <h2 class="font-roboto text-2xl font-bold">QUÊTES DU JOUR</h2>
       <div class="p-1">
-        <Quest titre="Test final" qcategory="Social" />
+        <Quest titre="Test final" />
         <!--<BravopartageView class="fixed inset-y-2 inset-x-4 z-50" />-->
-        <Quest titre="Test final" qcategory="Sport" />
-        <Quest titre="Test final" qcategory="Santé" />
-      </div>
-
-      <div class="p-1">
-        <Quest titre="Test final" qcategory="Santé" />
       </div>
     </div>
   </body>
