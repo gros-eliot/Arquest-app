@@ -1,23 +1,6 @@
 <template>
   <div
-    class="
-      bg-indigo-500
-      text-white
-      font-bold
-      w-5/6
-      py-3
-      m-4
-      uppercase
-      text-center
-      no-underline
-      rounded-xl
-      text-base
-      flex flex-row
-      items-start
-      justify-center
-      active:bg-indigo-900 active:text-black active:border-black
-      hover:bg-indigo-900
-    "
+    class="m-4 flex w-5/6 flex-row items-start justify-center rounded-xl bg-indigo-500 py-3 text-center text-base font-bold uppercase text-white no-underline hover:bg-indigo-900 active:border-black active:bg-indigo-900 active:text-black"
   >
     <slot />
   </div>

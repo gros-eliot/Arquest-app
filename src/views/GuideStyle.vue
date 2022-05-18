@@ -49,7 +49,7 @@
     <!-- Icônes -->
     <h1 class="bg-gray-900 p-2 text-center text-2xl text-white">Icônes</h1>
     <div class="flex justify-center gap-10 fill-white">
-      <div>  
+      <div>
         <div class="flex justify-center gap-2 p-2">
           <TrashIcon class="h-8 w-8" />
           <PaperAirplaneIcon class="h-8 w-8" />
@@ -115,7 +115,7 @@
         class="fixed inset-y-2 inset-x-4 z-50"
         -->
 
-        <DelQuete />
+        <TooEarlyView />
         <SucceedQuete />
         <FuturQuete />
         <BravoView />
@@ -149,13 +149,13 @@ import MMIIcon from "../components/icons/MMIIcon.vue";
 
 import BoutonBlue from "../components/boutons/BoutonBlue.vue";
 import BoutonBorder from "../components/boutons/BoutonBorder.vue";
-import BoutonClose from "../components/boutons/BoutonClose.vue"; 
+import BoutonClose from "../components/boutons/BoutonClose.vue";
 
-import HeaderView from "../components/layouts/HeaderView.vue";
+import HeaderView from "../components/overlay/TooEarlyView.vue";
 import NavView from "../components/layouts/NavView.vue";
 import FooterView from "../components/layouts/FooterView.vue";
 import QuestView from "../components/Quest.vue";
-import DelQuete from "../components/overlay/SuppressionqueteView.vue";
+import TooEarlyView from "../components/overlay/TooEarlyView.vue";
 import SucceedQuete from "../components/overlay/QuetesaccompliespartageView.vue";
 import FuturQuete from "../components/overlay/AccompliesquetesView.vue";
 import BravoView from "../components/overlay/BravoView.vue";
@@ -187,12 +187,12 @@ export default {
     MMIIcon,
     BoutonBlue,
     BoutonBorder,
-    BoutonClose, 
+    BoutonClose,
     HeaderView,
     NavView,
     FooterView,
     QuestView,
-    DelQuete,
+    TooEarlyView,
     SucceedQuete,
     FuturQuete,
     BravoView,
