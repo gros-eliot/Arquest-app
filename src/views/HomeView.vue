@@ -23,12 +23,9 @@ export default {
 
     <!-- AGENDA SEMAINE <div></div>-->
 
-    <div class="text-white">
-      <h2 class="font-roboto text-2xl font-bold">QUÊTES DU JOUR</h2>
-      <div class="p-1">
-        <Quest titre="Test final" />
-        <!--<BravopartageView class="fixed inset-y-2 inset-x-4 z-50" />-->
-      </div>
+    <div>
+      <Quest />
+      <!--<BravopartageView class="fixed inset-y-2 inset-x-4 z-50" />-->
     </div>
   </body>
 </template>

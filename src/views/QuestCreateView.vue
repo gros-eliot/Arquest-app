@@ -36,7 +36,7 @@
         </div>
       </div>
       <RouterLink to="/">
-        <button class="m-3 bg-indigo-500 px-10 py-3 text-white" type="submit" @click="createQuete()" title="Création">Créer</button>
+        <button class="m-3 bg-indigo-500 px-10 py-3 text-white" type="button" @click="createQuete()" title="Création">Créer</button>
       </RouterLink>
     </form>
   </div>
