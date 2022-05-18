@@ -95,6 +95,9 @@
         <router-link to="/">
           <BoutonBorder>Deuxième bouton : valider</BoutonBorder>
         </router-link>
+        <router-link to="/">
+          <BoutonClose></BoutonClose>
+        </router-link>
       </div>
       <div>
         <h2 class="p-2 font-roboto text-2xl font-bold">Les composants d'interfaces (layouts)</h2>
@@ -146,6 +149,7 @@ import MMIIcon from "../components/icons/MMIIcon.vue";
 
 import BoutonBlue from "../components/boutons/BoutonBlue.vue";
 import BoutonBorder from "../components/boutons/BoutonBorder.vue";
+import BoutonClose from "../components/boutons/BoutonClose.vue"; 
 
 import HeaderView from "../components/layouts/HeaderView.vue";
 import NavView from "../components/layouts/NavView.vue";
@@ -183,6 +187,7 @@ export default {
     MMIIcon,
     BoutonBlue,
     BoutonBorder,
+    BoutonClose, 
     HeaderView,
     NavView,
     FooterView,
