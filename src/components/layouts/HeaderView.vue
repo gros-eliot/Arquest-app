@@ -9,7 +9,7 @@
       :aria-expanded="menuOuvert"
       @click="menuOuvert = !menuOuvert"
     >
-      <MenuAlt1Icon class="h-10 w-10 stroke-white" />
+      <HeaderMenu class="h-8 w-8 stroke-white" />
       <span class="sr-only">Menu</span>
     </button>
 
@@ -49,6 +49,7 @@
 import { MenuAlt1Icon } from "@heroicons/vue/outline";
 import ArquestPremium from "../icons/ArquestPremium.vue";
 import ArquestPremiumLong from "../icons/ArquestPremiumLong.vue";
+import HeaderMenu from "../icons/HeaderMenu.vue";
 
 export default {
   name: "HeaderView",
@@ -61,6 +62,7 @@ export default {
     MenuAlt1Icon,
     ArquestPremium,
     ArquestPremiumLong,
+    HeaderMenu,
   },
 };
 </script>

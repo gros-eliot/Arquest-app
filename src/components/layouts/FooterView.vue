@@ -4,13 +4,13 @@
 
     <!--LISTE PAGES-->
     <div class="flex justify-around text-center">
-      <div class="w-full border-r-2">
+      <div class="w-full border-r-2 px-2 py-1">
         <RouterLink to="/contact"><p>Contact</p></RouterLink>
       </div>
-      <div class="w-full border-r-2">
+      <div class="w-full border-r-2 px-2 py-1">
         <RouterLink to="/mentionslegales"><p>Mentions légales</p></RouterLink>
       </div>
-      <div class="w-full">
+      <div class="w-full px-2 py-1">
         <RouterLink to="/apropos"><p>À propos</p></RouterLink>
       </div>
     </div>

@@ -28,7 +28,7 @@ import GuideStyle from "./views/GuideStyle.vue";
       </div>-->
       <NavView class="fixed bottom-0 z-20" />
     </header>
-    <main class="pt-24">
+    <main class="pt-20">
       <router-view></router-view>
     </main>
     <footer class="pb-[4.5rem]">

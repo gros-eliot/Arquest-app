@@ -161,7 +161,7 @@ import FuturQuete from "../components/overlay/AccompliesquetesView.vue";
 import BravoView from "../components/overlay/BravoView.vue";
 import BravopartageView from "../components/overlay/BravopartageView.vue";
 import FinaldeletView from "../components/overlay/FinaldeletView.vue";
-import HistoriqueView from "../components/Overlay/HistoriqueView.vue"; 
+import HistoriqueView from "../components/overlay/HistoriqueView.vue";
 
 export default {
   name: "GuideStyle",
