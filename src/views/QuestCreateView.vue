@@ -24,6 +24,14 @@
             {{ categorie.libelle }}
           </option>
         </select>
+
+        <div class="input-group">
+          <div>
+            <span>Date</span>
+          </div>
+
+          <input type="date" v-model="date" class="text-black" placeholder="Date" />
+        </div>
       </div>
 
       <button class="m-3 bg-indigo-500 px-10 py-3 text-white" type="button" @click="createQuete()" title="Création">Créer</button>
@@ -33,41 +41,25 @@
       <p>Liste des quêtes actuelles</p>
       <div class="text-black">
         <form v-for="quete in listeQueteSynchro" :key="quete.id">
-          <div><span>Nom</span></div>
-          <input v-model="quete.nom" />
+          <div class="m-1">
+            <div class="flex items-center justify-center gap-3 text-black">
+              <div class="flex flex-col items-center gap-4">
+                <input v-model="quete.nom" class="h-10 w-full rounded-md pl-3" />
+                <input v-model="quete.date" class="h-10 w-full rounded-md pl-3" />
+                <input v-model="quete.cat" class="h-10 w-full rounded-md pl-3" />
+              </div>
+              <bouton-close type="button" @click.prevent="deleteQuete(quete)" title="Suppression"> </bouton-close>
+            </div>
+          </div>
         </form>
         <form v-for="categorie in listeCategorie" :key="categorie.libelle">
-          <div><span>Catégorie</span></div>
-          <input v-model="categorie.libelle" />
+          <div class="text-white"><span>Catégorie</span></div>
+          <div class="flex content-center items-center gap-5">
+            <input v-model="categorie.libelle" class="h-10 w-11/12 rounded-md pl-3" />
+          </div>
         </form>
       </div>
     </div>
-    <!--
-    <div class="card-body table-responsive">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">
-              <div>Liste des quêtes actuels</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="quete in listeQueteSynchro" :key="quete.id">
-            <td>
-              <form>
-                <div>
-                  <div>
-                    <span>Nom</span>
-                  </div>
-                  <input type="text" class="text-black" v-model="quete.nom" required />
-                </div>
-              </form>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>-->
   </div>
 </template>
 
@@ -83,12 +75,14 @@ import {
   deleteDoc,
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
-
+import BoutonBlue from "../components/boutons/BoutonBlue.vue";
+import BoutonClose from "../components/boutons/BoutonClose.vue";
 export default {
   name: "QuestCreateView",
   data() {
     return {
       nom: null, // Pour la création d'un nouvelle quête (nom)
+      date: "",
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
       libelle: [], // Pour la création d'un nouvelle quête (catégorie)
       listeCategorie: [], // Liste des catégories synchronisée - collection cat de Firebase
@@ -145,9 +139,21 @@ export default {
       // Sauf le id qui est créé automatiquement
       const docRef = await addDoc(dbQuete, {
         nom: this.nom,
+        date: this.date,
+        cat: this.libelle,
       });
       console.log("document créé avec le id : ", docRef.id);
     },
+
+    async deleteQuete(quete) {
+      const firestore = getFirestore();
+      const docRef = doc(firestore, "quete", quete.id);
+      await deleteDoc(docRef);
+    },
+  },
+  components: {
+    BoutonBlue,
+    BoutonClose,
   },
 };
 </script>

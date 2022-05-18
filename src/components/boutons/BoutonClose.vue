@@ -1,18 +1,12 @@
 <template>
-    <div class="flex justify-center items-center">
-        <div class="
-            rounded-full 
-            w-4/2
-            mt-3 
-            bg-indigo-500">
-            <XIcon class="h-8 w-8 mt-1 mb-1 ml-1 mr-1" />
-        </div>
-    </div>
+  <button class="w-4/2 m-1 flex items-center justify-center rounded-full bg-indigo-500">
+    <XIcon class="m-1 h-8 w-8 stroke-white" />
+  </button>
 </template>
 
 <script>
-import { XIcon } from '@heroicons/vue/outline'
+import { XIcon } from "@heroicons/vue/outline";
 export default {
-    components:{XIcon}
-}
+  components: { XIcon },
+};
 </script>
