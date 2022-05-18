@@ -3,13 +3,7 @@
     <h1 class="font-press-start-2p text-2xl text-white">Créer une quête</h1>
   </div>
   <div class="container fill-white p-5 text-white">
-    <div>
-      <h5>Créer une quête</h5>
-    </div>
-    <hr />
-
     <form>
-      <h6>Nouvelle quête</h6>
       <div class="flex flex-col">
         <div>
           <span>Nom</span>
@@ -18,7 +12,7 @@
         <div>
           <span>Catégorie</span>
         </div>
-        <select v-model="libelle" class="text-black">
+        <select v-model="libelle" class="text-black" required>
           <option value="" disabled selected>Sélectionner une catégorie</option>
           <option v-for="categorie in listeCategorie" :key="categorie.libelle">
             {{ categorie.libelle }}
@@ -27,7 +21,7 @@
         <div>
           <span>Difficulté</span>
         </div>
-        <select v-model="niveau" class="text-black">
+        <select v-model="niveau" class="text-black" required>
           <option value="" disabled selected>Sélectionner une difficulté</option>
           <option v-for="difficulte in listeDifficulte" :key="difficulte.niveau">
             {{ difficulte.niveau }}
@@ -38,11 +32,12 @@
           <div>
             <span>Date</span>
           </div>
-          <input type="date" v-model="date" class="text-black" placeholder="Date" />
+          <input type="date" v-model="date" class="text-black" placeholder="Date" required />
         </div>
       </div>
-
-      <button class="m-3 bg-indigo-500 px-10 py-3 text-white" type="button" @click="createQuete()" title="Création">Créer</button>
+      <RouterLink to="/">
+        <button class="m-3 bg-indigo-500 px-10 py-3 text-white" type="submit" @click="createQuete()" title="Création">Créer</button>
+      </RouterLink>
     </form>
   </div>
 </template>
