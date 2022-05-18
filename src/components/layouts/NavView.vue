@@ -2,14 +2,14 @@
   <div class="flex w-full justify-between bg-gray-800 p-5 text-white">
     <RouterLink to="/">
       <div class="flex items-center justify-center gap-3">
-        <NavHome id="nav1" class="h-6 w-6 fill-white active:fill-indigo-500" />
+        <HomeIcon id="nav1" class="h-8 w-8 fill-white active:fill-indigo-500" />
         <p class="hidden font-press-start-2p active:text-indigo-500 md:block">Accueil</p>
       </div>
     </RouterLink>
 
     <RouterLink to="/agenda">
       <div class="flex items-center justify-center gap-3">
-        <NavCalendar id="nav2" class="h-6 w-6 fill-white active:fill-indigo-500" />
+        <CalendarIcon id="nav2" class="h-8 w-8 fill-white active:fill-indigo-500" />
         <p class="hidden font-press-start-2p active:text-indigo-500 md:block">Agenda</p>
       </div>
     </RouterLink>
@@ -30,8 +30,6 @@
 
 <script>
 import { CalendarIcon, HomeIcon, GiftIcon } from "@heroicons/vue/solid";
-import NavHome from "../icons/NavHome.vue";
-import NavCalendar from "../icons/NavCalendar.vue";
 
 export default {
   name: "NavView",
@@ -39,8 +37,6 @@ export default {
     HomeIcon,
     CalendarIcon,
     GiftIcon,
-    NavHome,
-    NavCalendar,
   },
   props: {
     activated: {
