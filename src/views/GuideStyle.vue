@@ -49,7 +49,7 @@
     <!-- Icônes -->
     <h1 class="bg-gray-900 p-2 text-center text-2xl text-white">Icônes</h1>
     <div class="flex justify-center gap-10 fill-white">
-      <div>
+      <div>  
         <div class="flex justify-center gap-2 p-2">
           <TrashIcon class="h-8 w-8" />
           <PaperAirplaneIcon class="h-8 w-8" />
@@ -96,7 +96,7 @@
           <BoutonBorder>Deuxième bouton : valider</BoutonBorder>
         </router-link>
         <router-link to="/">
-          <BoutonClose></BoutonClose>
+          <BoutonClose> XIcon </BoutonClose>
         </router-link>
       </div>
       <div>
