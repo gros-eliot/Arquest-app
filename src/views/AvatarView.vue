@@ -13,15 +13,15 @@
     <h2>Badges</h2>
 
     <div class="my-5 flex flex-wrap items-center justify-center gap-10">
-      <img src="../assets/BADGES/sport/ultime.png" alt="Badge 'sport' ultime dévérouillé" class="w-12" />
-      <img src="../assets/BADGES/maison/argent.png" alt="Badge 'maison' ultime dévérouillé" class="w-12" />
-      <img src="../assets/BADGES/social/gold.png" alt="Badge 'social' ultime dévérouillé" class="w-12" />
-      <img src="../assets/BADGES/gestion/bronze.png" alt="Badge 'gestion' ultime dévérouillé" class="w-12" />
-      <img src="../assets/BADGES/sante/gold.png" alt="Badge 'sante' ultime dévérouillé" class="w-12" />
-      <img src="../assets/BADGES/DIY/fer.png" alt="Badge 'DIY' ultime dévérouillé" class="w-12" />
-      <img src="../assets/BADGES/travail/diamond.png" alt="Badge 'travail' ultime dévérouillé" class="w-12" />
-      <img src="../assets/BADGES/culture/ultime.png" alt="Badge 'culture' ultime dévérouillé" class="w-12" />
-      <img src="../assets/BADGES/admin.png" alt="Badge 'culture' ultime dévérouillé" class="w-12" />
+      <img :src="'../assets/BADGES/sport/' + badgeLevel + '.png'" alt="Badge sport" class="w-12" />
+      <img :src="'../assets/BADGES/maison/' + badgeLevel + '.png'" alt="Badge maison" class="w-12" />
+      <img :src="'../assets/BADGES/social/' + badgeLevel + '.png'" alt="Badge social" class="w-12" />
+      <img :src="'../assets/BADGES/gestion/' + badgeLevel + '.png'" alt="Badge gestion" class="w-12" />
+      <img :src="'../assets/BADGES/sante/' + badgeLevel + '.png'" alt="Badge santé" class="w-12" />
+      <img :src="'../assets/BADGES/DIY/' + badgeLevel + '.png'" alt="Badge DIY" class="w-12" />
+      <img :src="'../assets/BADGES/travail/' + badgeLevel + '.png'" alt="Badge travail" class="w-12" />
+      <img :src="'../assets/BADGES/culture/' + badgeLevel + '.png'" alt="Badge culture" class="w-12" />
+      <img :src="'../assets/BADGES/' + badgeLevel + '.png'" alt="Badge administrateur" class="w-12" />
     </div>
   </div>
 </template>
@@ -33,5 +33,10 @@ import BadgeTEST from "../components/icons/BadgesIcon.vue";
 export default {
   name: "AvatarView",
   components: { PencilAltIcon, BadgeTEST },
+  data() {
+    return {
+      badgeLevel: "bronze",
+    };
+  },
 };
 </script>

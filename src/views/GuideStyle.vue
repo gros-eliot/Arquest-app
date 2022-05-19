@@ -38,6 +38,8 @@
     <h1 class="bg-gray-900 p-2 text-center text-2xl text-white">Typographie</h1>
     <div class="m-2 flex flex-col items-center gap-5 py-6 text-center text-white">
       <h1 class="font-press-start-2p text-2xl">Connecting...</h1>
+      <!-- H1 version 2-->
+      <h1 class="font-press-roboto text-4xl font-bold">Connecting...</h1>
       <h2 class="font-roboto text-2xl font-bold">Connecting to...</h2>
       <h3 class="font-roboto text-xl font-bold">Connecting to Arquest's...</h3>
       <h4 class="font-press-start-2p text-base">Connecting to Arquest's style...</h4>

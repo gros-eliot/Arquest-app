@@ -1,43 +1,73 @@
 <template>
   <div class="p-3">
-    <h1 class="font-press-start-2p text-2xl text-white">Créer une quête</h1>
+    <div class="flex justify-end">
+      <RouterLink to="/"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
+    </div>
+    <h1 class="text-center font-roboto text-4xl font-bold uppercase text-white">Créer une <span class="text-indigo-500">quête</span></h1>
   </div>
-  <div class="container fill-white p-5 text-white">
-    <form>
-      <div class="flex flex-col">
-        <div>
-          <span>Nom</span>
+  <div class="fill-white p-5 text-white">
+    <form class="flex flex-col justify-center">
+      <div class="flex w-full flex-col gap-5">
+        <input
+          type="text"
+          class="h-16 w-full rounded-3xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-indigo-500"
+          v-model="nom"
+          placeholder="TITRE"
+          required
+        />
+        <div class="w-full">
+          <div>
+            <span class="flex items-center font-bold"
+              >Catégorie <RouterLink to="/"><QuestionMarkCircleIcon class="m-3 h-6 w-6 stroke-indigo-500" /></RouterLink> :</span
+            >
+          </div>
+          <select
+            v-model="libelle"
+            class="h-16 w-full rounded-3xl border border-indigo-500 bg-transparent text-lg font-bold uppercase text-indigo-500"
+            required
+          >
+            <option class="border-0 bg-gray-900 font-roboto font-normal" value="" disabled selected>Sélectionner une catégorie</option>
+            <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="categorie in listeCategorie" :key="categorie.libelle">
+              {{ categorie.libelle }}
+            </option>
+          </select>
         </div>
-        <input type="text" class="text-black" v-model="nom" required />
-        <div>
-          <span>Catégorie</span>
+        <div class="w-full">
+          <div>
+            <span class="font-bold">Difficulté :</span>
+          </div>
+          <select
+            class="h-16 w-full rounded-3xl border border-indigo-500 bg-transparent text-lg font-bold uppercase text-indigo-500"
+            v-model="niveau"
+            required
+          >
+            <option class="border-0 bg-gray-900 font-roboto font-normal" value="" disabled selected>Sélectionner une difficulté</option>
+            <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.niveau">
+              {{ difficulte.niveau }}
+            </option>
+          </select>
         </div>
-        <select v-model="libelle" class="text-black" required>
-          <option value="" disabled selected>Sélectionner une catégorie</option>
-          <option v-for="categorie in listeCategorie" :key="categorie.libelle">
-            {{ categorie.libelle }}
-          </option>
-        </select>
-        <div>
-          <span>Difficulté</span>
-        </div>
-        <select v-model="niveau" class="text-black" required>
-          <option value="" disabled selected>Sélectionner une difficulté</option>
-          <option v-for="difficulte in listeDifficulte" :key="difficulte.niveau">
-            {{ difficulte.niveau }}
-          </option>
-        </select>
-
         <div class="input-group">
           <div>
-            <span>Date</span>
+            <span class="font-bold">Date :</span>
           </div>
-          <input type="date" v-model="date" class="text-black" placeholder="Date" required />
+          <input
+            type="date"
+            v-model="date"
+            class="h-16 w-full rounded-3xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-indigo-500"
+            placeholder="Date"
+            required
+          />
+        </div>
+
+        <div class="flex justify-center">
+          <RouterLink class="w-full" to="/">
+            <div class="flex w-full justify-center">
+              <BoutonBlue class="w-full" type="button" @click="createQuete()" title="Création">Créer</BoutonBlue>
+            </div>
+          </RouterLink>
         </div>
       </div>
-      <RouterLink to="/">
-        <button class="m-3 bg-indigo-500 px-10 py-3 text-white" type="button" @click="createQuete()" title="Création">Créer</button>
-      </RouterLink>
     </form>
   </div>
 </template>
@@ -56,6 +86,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 import BoutonBlue from "../components/boutons/BoutonBlue.vue";
 import BoutonClose from "../components/boutons/BoutonClose.vue";
+import { XIcon, QuestionMarkCircleIcon } from "@heroicons/vue/outline";
 export default {
   name: "QuestCreateView",
   data() {
@@ -156,6 +187,8 @@ export default {
   components: {
     BoutonBlue,
     BoutonClose,
+    XIcon,
+    QuestionMarkCircleIcon,
   },
 };
 </script>

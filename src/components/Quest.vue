@@ -1,6 +1,6 @@
 <template>
-  <div class="m-5 flex flex-col gap-8 text-white">
-    <h2 class="font-roboto text-2xl font-bold">QUÊTES DU JOUR ({{ count }})</h2>
+  <h2 class="font-roboto text-2xl font-bold text-white">QUÊTES DU JOUR ({{ count }})</h2>
+  <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]">
     <!--IMPORT DES QUÊTES DE FIREBASE-->
     <form v-for="quete in listeQueteSynchro" :key="quete.id">
       <div class="flex flex-col gap-1 border-2 border-indigo-500">
@@ -38,14 +38,14 @@
           </div>
 
           <!-- DATE LIMITE DE LA QUÊTE-->
-          <div class="flex flex-col items-center justify-center text-center lg:flex-row">
+          <div class="flex flex-col items-center justify-center text-center">
             <p class="p-2 text-base font-bold">Date limite</p>
             <h4 class="font-press-start-2p text-base font-bold">{{ quete.date }}</h4>
           </div>
 
           <!-- DIFFICULTE DE LA QUÊTE-->
           <div class="flex justify-center">
-            <div class="flex w-fit flex-col items-center justify-center px-10 py-3 text-center lg:flex-row">
+            <div class="flex w-fit flex-col items-center justify-center px-10 py-3 text-center">
               <span class="p-2 text-base font-bold lg:pr-3">Difficulté</span>
               <p class="font-press-start-2p text-base">{{ quete.difficult }}</p>
             </div>

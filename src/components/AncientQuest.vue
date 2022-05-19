@@ -1,3 +1,9 @@
+<!---->
+<!---->
+<!--ANCIENNE PAGE "Quest.vue" : ne pas l'utiliser dans le router-->
+<!---->
+<!---->
+
 <template>
   <div class="my-5 mt-5 flex flex-col border-2 border-indigo-500 bg-transparent">
     <div class="flex justify-between p-3 text-white">
