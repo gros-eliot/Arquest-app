@@ -7,7 +7,7 @@
         <!--TOP DE LA CARD-->
         <div class="m-2 flex items-end justify-between">
           <!--QUETE NOM VERSION TAB/ORDINATEUR-->
-          <h3 class="block text-left font-roboto text-2xl font-bold">{{ quete.nom }}</h3>
+          <h3 class="block p-3 text-left font-roboto text-2xl font-bold">{{ quete.nom }}</h3>
           <!--POUR LINSTANT UN BOUTON POUR SUPPR LA QUÊTE-->
           <bouton-close type="button" @click.prevent="deleteQuete(quete)" title="Suppression"> </bouton-close>
         </div>

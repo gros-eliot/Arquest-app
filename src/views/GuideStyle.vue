@@ -12,7 +12,7 @@
         <span class="h-10 w-20 bg-indigo-500"></span>
         <span class="h-10 w-20 bg-indigo-300"></span>
         <span class="h-10 w-20 bg-gray-extended-700"></span>
-        <span class="h-10 w-20 bg-gray-800"></span>
+        <span class="h-10 w-20 bg-gray-extended-300"></span>
         <span class="h-10 w-20 bg-gray-900"></span>
       </div>
       <div class="flex flex-col justify-center gap-6 p-3 sm:flex-row">
@@ -107,7 +107,7 @@
         <NavView class="mt-5" />
         <FooterView class="mt-5 mb-5" />
       </div>
-      <div class="bg-slate-700 p-3">
+      <div class="p-3">
         <h2 class="p-2 font-roboto text-2xl font-bold text-white">Les composants des pages</h2>
         <h3 class="font-roboto text-xl font-bold text-white">Accueil</h3>
         <QuestView />

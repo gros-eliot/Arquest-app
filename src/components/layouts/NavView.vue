@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full justify-between bg-gray-800 p-5 text-white">
+  <div class="flex w-full justify-between bg-gray-900 p-5 text-white">
     <RouterLink to="/">
       <div class="flex items-center justify-center gap-3">
         <HomeIcon id="nav1" class="h-8 w-8 fill-white active:fill-indigo-500" />

@@ -9,7 +9,7 @@ import GuideStyle from "./views/GuideStyle.vue";
 <template>
   <body class="bg-black font-roboto">
     <header class="text-white">
-      <HeaderView class="fixed z-20" />
+      <HeaderView class="fixed z-[9]" />
 
       <!--
       <div class="wrapper">
@@ -26,7 +26,7 @@ import GuideStyle from "./views/GuideStyle.vue";
           <RouterLink to="/social">SM</RouterLink>
         </nav>
       </div>-->
-      <NavView class="fixed bottom-0 z-20" />
+      <NavView class="fixed bottom-0 z-[8]" />
     </header>
     <main class="pt-20">
       <router-view></router-view>
