@@ -53,6 +53,7 @@
           </div>
           <input
             type="date"
+            format="dd/mm/yyyy"
             v-model="date"
             class="h-16 w-full rounded-3xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-indigo-500"
             placeholder="Date"

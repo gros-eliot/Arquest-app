@@ -29,13 +29,19 @@
         <p class="text-1xl absolute ml-32 mt-3 text-left font-press-start-2p text-indigo-300">+850XP</p>
         <p class="text-1xl ml-3 mt-3 text-left font-roboto text-white">Récompenses :</p>
 
-        <div
-          class="m-6 w-5/6 justify-center rounded-xl bg-indigo-500 py-3 text-center text-2xl font-medium uppercase text-white no-underline hover:bg-indigo-900 active:border-black active:bg-indigo-900 active:text-black"
-        >
-          FERMER
-          <slot />
+        <div class="flex justify-center">
+          <BoutonBlue>Fermer</BoutonBlue>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import BoutonBlue from "../boutons/BoutonBlue.vue";
+export default {
+  components: {
+    BoutonBlue,
+  },
+};
+</script>

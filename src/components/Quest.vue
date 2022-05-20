@@ -5,12 +5,31 @@
     <form v-for="quete in listeQueteSynchro" :key="quete.id">
       <div class="flex flex-col gap-1 border-2 border-indigo-500">
         <!--TOP DE LA CARD-->
-        <div class="m-2 flex items-end justify-between">
+        <div class="m-2 flex items-center justify-between text-white">
           <!--QUETE NOM VERSION TAB/ORDINATEUR-->
           <h3 class="block p-3 text-left font-roboto text-2xl font-bold">{{ quete.nom }}</h3>
-          <!--POUR LINSTANT UN BOUTON POUR SUPPR LA QUÊTE-->
-          <bouton-close type="button" @click.prevent="deleteQuete(quete)" title="Suppression"> </bouton-close>
+
+          <div class="text-white">
+            <button
+              class="z-50 text-xl"
+              type="button"
+              aria-controls="detailsOfQuest"
+              :aria-expanded="detailsQuetes"
+              @click="detailsQuetes = !detailsQuetes"
+              title="Détails"
+            >
+              <DotsHorizontalIcon class="h-10 w-10 stroke-white" />
+              <span class="sr-only">Afficher les détails de la quête</span>
+            </button>
+          </div>
         </div>
+
+        <!--DETAILS DE LA CARD -->
+
+        <div id="detailsOfQuest" class="flex text-white" :class="{ hidden: detailsQuetes }">
+          <DetailsQuestView class="fixed inset-y-2 inset-x-4 z-50"></DetailsQuestView>
+        </div>
+
         <!--FIN TOP DE LA CARD-->
 
         <!--CONTENU DE LA CARD (nom, catégorie, date, difficulté) -->
@@ -74,11 +93,13 @@ import {
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 import BoutonBlue from "../components/boutons/BoutonBlue.vue";
-import BoutonClose from "../components/boutons/BoutonClose.vue";
+import DetailsQuestView from "../components/overlay/DetailsQuestView.vue";
+import { DotsHorizontalIcon } from "@heroicons/vue/outline";
 export default {
   name: "QuestCreateView",
   data() {
     return {
+      detailsQuetes: true,
       nom: null, // Pour la création d'un nouvelle quête (nom)
       date: "",
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
@@ -88,6 +109,12 @@ export default {
       listeDifficulte: [], // Liste des catégories synchronisée - collection cat de Firebase
     };
   },
+  components: {
+    BoutonBlue,
+    DetailsQuestView,
+    DotsHorizontalIcon,
+  },
+
   mounted() {
     // Montage de la vue
     this.getQueteSynchro();
@@ -154,10 +181,6 @@ export default {
       const docRef = doc(firestore, "quete", quete.id);
       await deleteDoc(docRef);
     },
-  },
-  components: {
-    BoutonBlue,
-    BoutonClose,
   },
 };
 </script>

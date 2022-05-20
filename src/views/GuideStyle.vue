@@ -110,16 +110,14 @@
       <div class="p-3">
         <h2 class="p-2 font-roboto text-2xl font-bold text-white">Les composants des pages</h2>
         <h3 class="font-roboto text-xl font-bold text-white">Accueil</h3>
-        <QuestView />
         <h2 class="p-2 font-roboto text-2xl font-bold text-white">Les overlays</h2>
 
         <!-- POUR QUE LES OVERLAYS FONCTIONNENT VISUELLEMENT : 
         class="fixed inset-y-2 inset-x-4 z-50"
         -->
 
-        <TooEarlyView />
         <SucceedQuete />
-        <FuturQuete />
+        <DetailsQuestView />
         <BravoView />
         <BravopartageView />
         <FinaldeletView />
@@ -159,7 +157,7 @@ import FooterView from "../components/layouts/FooterView.vue";
 import QuestView from "../components/Quest.vue";
 import TooEarlyView from "../components/overlay/TooEarlyView.vue";
 import SucceedQuete from "../components/overlay/QuetesaccompliespartageView.vue";
-import FuturQuete from "../components/overlay/AccompliesquetesView.vue";
+import DetailsQuestView from "../components/overlay/DetailsQuestView.vue";
 import BravoView from "../components/overlay/BravoView.vue";
 import BravopartageView from "../components/overlay/BravopartageView.vue";
 import FinaldeletView from "../components/overlay/FinaldeletView.vue";
@@ -196,7 +194,7 @@ export default {
     QuestView,
     TooEarlyView,
     SucceedQuete,
-    FuturQuete,
+    DetailsQuestView,
     BravoView,
     BravopartageView,
     FinaldeletView,
