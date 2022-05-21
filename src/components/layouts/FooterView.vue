@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-10 bg-gray-800 text-white">
+  <div class="flex flex-col gap-10 bg-gray-extended-900 text-white">
     <ArquestPremium class="m-5 h-14 w-14" />
 
     <!--LISTE PAGES-->
@@ -18,7 +18,7 @@
     <!-- MENTIONS LEGALES : MMI-->
     <div class="flex items-center justify-center gap-3 p-4">
       <MMIIcon class="h-16 w-16" />
-      <p class="w-96">
+      <p class="w-96 text-xs">
         Projet réalisé dans le cadre d’un exercice pédagogique au département
         <a href="http://mmimontbeliard.com/">MMi de Montbéliard</a>
       </p>

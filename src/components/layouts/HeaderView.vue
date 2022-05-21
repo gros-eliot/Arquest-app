@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full items-center justify-between bg-gray-900 p-3">
+  <div class="flex w-full items-center justify-between bg-gray-extended-900 p-3">
     <!--BOUTON MENU-->
 
     <div>
@@ -16,14 +16,16 @@
       <!--MENU-->
       <div
         id="menu"
-        class="fixed inset-0 top-0 z-50 -translate-x-full bg-black text-white motion-safe:transition-transform motion-safe:duration-1000"
-        :class="{ '-translate-x-[50rem]': menuOuvert }"
+        class="fixed inset-0 top-0 z-30 -translate-x-full bg-black text-white motion-safe:transition-transform motion-safe:duration-1000"
+        :class="{ '-translate-x-[10rem]': menuOuvert }"
       >
-        <div class="flex justify-center">
+        <div class="flex justify-end">
           <ul class="relative z-50 p-3">
-            <li><router-link to="/">Un</router-link></li>
-            <li><router-link to="/">Deux</router-link></li>
-            <li><router-link to="/">Trois</router-link></li>
+            <li><router-link to="/">Profil</router-link></li>
+            <li><router-link to="/">Historique</router-link></li>
+            <li><router-link to="/">Type de quête</router-link></li>
+            <li><router-link to="/">À Propos</router-link></li>
+            <li><router-link to="/">Contact</router-link></li>
           </ul>
         </div>
       </div>
