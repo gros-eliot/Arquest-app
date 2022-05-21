@@ -7,7 +7,7 @@
         <!--TOP DE LA CARD-->
         <div class="m-2 flex items-center justify-between text-white">
           <!--QUETE NOM VERSION TAB/ORDINATEUR-->
-          <h3 class="block p-3 text-left font-roboto text-2xl font-bold">{{ quete.nom }}</h3>
+          <h3 class="block p-3 text-left font-roboto text-2xl font-bold uppercase">{{ quete.nom }}</h3>
 
           <div class="text-white">
             <button
@@ -16,7 +16,7 @@
               aria-controls="detailsOfQuest"
               :aria-expanded="detailsQuetes"
               @click="detailsQuetes = !detailsQuetes"
-              title="Détails"
+              title="Détails de la quête"
             >
               <DotsHorizontalIcon class="h-10 w-10 stroke-white" />
               <span class="sr-only">Afficher les détails de la quête</span>
@@ -26,9 +26,75 @@
 
         <!--DETAILS DE LA CARD -->
 
-        <div id="detailsOfQuest" class="flex text-white" :class="{ hidden: detailsQuetes }">
-          <DetailsQuestView class="fixed inset-y-2 inset-x-4 z-50"></DetailsQuestView>
+        <div id="detailsOfQuest" class="flex flex-col text-white" :class="{ hidden: detailsQuetes }">
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
+          <div class="flex flex-col gap-5 p-2">
+            <!-- DATE LIMITE DE LA QUÊTE-->
+            <div class="flex justify-between">
+              <div>
+                <h4 class="font-roboto text-2xl font-bold text-white">Date limite</h4>
+                <p class="font-roboto text-2xl font-bold text-indigo-500">{{ quete.date }}</p>
+              </div>
+              <div class="m-2 flex gap-5">
+                <PencilIcon class="h-10 w-10 stroke-white" />
+                <TrashIcon class="h-10 w-10 stroke-red-500" @click.prevent="deleteQuete(quete)" />
+              </div>
+            </div>
+
+            <!-- DESCRIPTION DE LA QUÊTE-->
+            <div class="flex w-full flex-col justify-center">
+              <h4 class="font-roboto text-2xl font-bold text-white">Note</h4>
+              <p class="font-roboto text-base">{{ quete.desc }}</p>
+            </div>
+
+            <!-- DIFFICULTE DE LA QUÊTE-->
+            <div class="flex w-full flex-col justify-center">
+              <h4 class="font-roboto text-2xl font-bold text-white">Difficulté</h4>
+
+              <p
+                class="font-press-start-2p text-base"
+                :class="{
+                  'text-lime-400': quete.difficult === 'Facile',
+                  'text-yellow-400': quete.difficult === 'Intermédiaire',
+                  'text-red-300': quete.difficult === 'Difficile',
+                }"
+              >
+                {{ quete.difficult }}
+              </p>
+            </div>
+            <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
+          </div>
+
+          <!--CATEGORIE DE LA QUÊTE-->
+          <div class="w-full p-4">
+            <h4
+              class="text-center font-press-start-2p text-2xl"
+              :class="{
+                ' text-red-400 ': quete.cat === 'Sport',
+                ' text-cyan-200 ': quete.cat === 'Social',
+                ' text-indigo-300 ': quete.cat === 'Gestion',
+                ' text-gray-extended-300 ': quete.cat === 'Travail',
+                ' text-fuchsia-400 ': quete.cat === 'DIY',
+                ' text-lime-400 ': quete.cat === 'Santé',
+                ' text-yellow-400 ': quete.cat === 'Culture',
+                ' text-yellow-200 ': quete.cat === 'Maison',
+                ' text-red-500 ': quete.cat === 'Jeux-vidéos',
+              }"
+            >
+              {{ quete.cat }}
+            </h4>
+          </div>
         </div>
+        <!---->
+        <!---->
+        <!---->
+        <!---->
+
+        <!-- FIN DETAILS DE LA CARD-->
 
         <!--FIN TOP DE LA CARD-->
 
@@ -39,7 +105,7 @@
           <div class="flex flex-col justify-center">
             <div class="flex justify-center">
               <div
-                class="w-11/12 rounded-full bg-transparent py-1"
+                class="w-11/12 rounded-full bg-transparent py-5"
                 :class="{
                   ' bg-red-400 ': quete.cat === 'Sport',
                   ' bg-cyan-200 ': quete.cat === 'Social',
@@ -49,29 +115,14 @@
                   ' bg-lime-400 ': quete.cat === 'Santé',
                   ' bg-yellow-400 ': quete.cat === 'Culture',
                   ' bg-yellow-200 ': quete.cat === 'Maison',
+                  ' bg-red-500 ': quete.cat === 'Jeux-vidéos',
                 }"
-              >
-                <p class="text-center font-roboto text-lg font-bold text-black">{{ quete.cat }}</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- DATE LIMITE DE LA QUÊTE-->
-          <div class="flex flex-col items-center justify-center text-center">
-            <p class="p-2 text-base font-bold">Date limite</p>
-            <h4 class="font-press-start-2p text-base font-bold">{{ quete.date }}</h4>
-          </div>
-
-          <!-- DIFFICULTE DE LA QUÊTE-->
-          <div class="flex justify-center">
-            <div class="flex w-fit flex-col items-center justify-center px-10 py-3 text-center">
-              <span class="p-2 text-base font-bold lg:pr-3">Difficulté</span>
-              <p class="font-press-start-2p text-base">{{ quete.difficult }}</p>
+              ></div>
             </div>
           </div>
 
           <div class="flex justify-center">
-            <bouton-blue type="button" @click.prevent="deleteQuete(quete)" title="Suppression">VALIDER</bouton-blue>
+            <bouton-blue type="button" @click.prevent="deleteQuete(quete)" title="Valider la quête">VALIDER</bouton-blue>
           </div>
         </div>
         <!--FIN CONTENU DE LA CARD-->
@@ -93,14 +144,14 @@ import {
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 import BoutonBlue from "../components/boutons/BoutonBlue.vue";
-import DetailsQuestView from "../components/overlay/DetailsQuestView.vue";
-import { DotsHorizontalIcon } from "@heroicons/vue/outline";
+import { DotsHorizontalIcon, TrashIcon, PencilIcon } from "@heroicons/vue/outline";
 export default {
   name: "QuestCreateView",
   data() {
     return {
       detailsQuetes: true,
       nom: null, // Pour la création d'un nouvelle quête (nom)
+      descriptionQuete: null,
       date: "",
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
       libelle: [], // Pour la création d'un nouvelle quête (catégorie)
@@ -111,8 +162,9 @@ export default {
   },
   components: {
     BoutonBlue,
-    DetailsQuestView,
     DotsHorizontalIcon,
+    TrashIcon,
+    PencilIcon,
   },
 
   mounted() {
@@ -120,6 +172,7 @@ export default {
     this.getQueteSynchro();
     this.getCategorie();
     this.getDifficulte();
+    this.getDescription();
   },
   methods: {
     async getQueteSynchro() {
@@ -170,6 +223,24 @@ export default {
         // on identifie clairement le id du document
         // les rest parameters permet de préciser la récupération de toute la partie data
         this.listeDifficulte = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+      });
+    },
+
+    async getDescription() {
+      // Obtenir Firestore
+      const firestore = getFirestore();
+      // Base de données (collection)  document pays
+      const dbDesc = collection(firestore, "description");
+      // Liste des catégories synchronisée
+      const query = await onSnapshot(dbDesc, (snapshot) => {
+        //  Récupération des résultats dans listePaysSynchro
+        // On utilse map pour récupérer l'intégralité des données renvoyées
+        // on identifie clairement le id du document
+        // les rest parameters permet de préciser la récupération de toute la partie data
+        this.descriptionQuete = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));

@@ -5,7 +5,7 @@
       <ArquestPremium />
     </div>
     <!-- Couleurs -->
-    <h1 class="bg-gray-extended-900 p-2 text-center text-2xl text-white">Couleurs</h1>
+    <h1 class="bg-gray-900 p-2 text-center text-2xl text-white">Couleurs</h1>
     <div class="m-2 flex flex-row items-center justify-center py-6 sm:flex-col">
       <div class="flex flex-col justify-center gap-5 p-3 sm:flex-row">
         <span class="h-10 w-20 bg-red-500"></span>
@@ -35,7 +35,7 @@
       </div>
     </div>
     <!-- Typographie -->
-    <h1 class="bg-gray-extended-900 p-2 text-center text-2xl text-white">Typographie</h1>
+    <h1 class="bg-gray-900 p-2 text-center text-2xl text-white">Typographie</h1>
     <div class="m-2 flex flex-col items-center gap-5 py-6 text-center text-white">
       <h1 class="font-press-start-2p text-2xl">Connecting...</h1>
       <!-- H1 version 2-->
@@ -49,7 +49,7 @@
       </figure>
     </div>
     <!-- Icônes -->
-    <h1 class="bg-gray-extended-900 p-2 text-center text-2xl text-white">Icônes</h1>
+    <h1 class="bg-gray-900 p-2 text-center text-2xl text-white">Icônes</h1>
     <div class="flex justify-center gap-10 fill-white">
       <div>
         <div class="flex justify-center gap-2 p-2">
@@ -87,7 +87,7 @@
       </div>
     </div>
     <!-- Composants -->
-    <h1 class="bg-gray-extended-900 p-2 text-center text-2xl text-white">Composants</h1>
+    <h1 class="bg-gray-900 p-2 text-center text-2xl text-white">Composants</h1>
     <div>
       <h2 class="p-2 font-roboto text-2xl font-bold">Les boutons</h2>
       <div>

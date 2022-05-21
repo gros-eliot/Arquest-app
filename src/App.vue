@@ -7,11 +7,10 @@ import GuideStyle from "./views/GuideStyle.vue";
 </script>
 
 <template>
-  <body class="bg-black font-roboto">
-    <header class="text-white">
-      <HeaderView class="fixed z-[9]" />
+  <header class="text-white">
+    <HeaderView class="fixed z-[9]" />
 
-      <!--
+    <!--
       <div class="wrapper">
         <nav class="flex justify-between">
           <RouterLink to="/">Home</RouterLink>
@@ -26,15 +25,14 @@ import GuideStyle from "./views/GuideStyle.vue";
           <RouterLink to="/social">SM</RouterLink>
         </nav>
       </div>-->
-      <NavView class="fixed bottom-0 z-[8]" />
-    </header>
-    <main class="pt-20">
-      <router-view></router-view>
-    </main>
-    <footer class="pb-[4.5rem]">
-      <footer-view class="bottom-0"></footer-view>
-    </footer>
-  </body>
+    <NavView class="fixed bottom-0 z-[8]" />
+  </header>
+  <main class="pt-20">
+    <router-view></router-view>
+  </main>
+  <footer class="pb-[4.5rem]">
+    <footer-view class="bottom-0"></footer-view>
+  </footer>
 </template>
 
 <style></style>
