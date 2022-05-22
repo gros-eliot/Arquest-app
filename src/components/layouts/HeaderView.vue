@@ -4,7 +4,7 @@
 
     <div>
       <button
-        class="relative z-50 text-xl"
+        class="relative z-20 text-xl"
         aria-haspopup="true"
         aria-controls="menu"
         :aria-expanded="menuOuvert"
@@ -14,19 +14,50 @@
         <span class="sr-only">Menu</span>
       </button>
       <!--MENU-->
+      <!--CONTAINER MENU : attention, vu que le translate x est à 10rem, 
+      on a "ml-40" dans les div pour que les éléments du menu soient affichés 
+      (décalés aussi de 10rem)-->
+
       <div
         id="menu"
         class="fixed inset-0 top-0 z-30 -translate-x-full bg-black text-white motion-safe:transition-transform motion-safe:duration-1000"
         :class="{ '-translate-x-[10rem]': menuOuvert }"
       >
-        <div class="flex justify-end">
-          <ul class="relative z-50 p-3">
-            <li><router-link to="/">Profil</router-link></li>
-            <li><router-link to="/">Historique</router-link></li>
-            <li><router-link to="/">Type de quête</router-link></li>
-            <li><router-link to="/">À Propos</router-link></li>
-            <li><router-link to="/">Contact</router-link></li>
-          </ul>
+        <!--CONTAINER CROIX + LOGO DE L'APP-->
+
+        <div class="ml-40 flex flex-col">
+          <div class="flex items-center justify-between p-3">
+            <button
+              class="relative z-40 text-xl"
+              aria-haspopup="true"
+              aria-controls="menu"
+              :aria-expanded="menuOuvert"
+              @click="menuOuvert = !menuOuvert"
+            >
+              <XIcon class="h-10 w-10 stroke-white" />
+              <span class="sr-only">Menu</span>
+            </button>
+
+            <ArquestPremium class="h-12 w-12" />
+          </div>
+
+          <!--CONTAINER LISTE DES PAGES-->
+
+          <div class="flex justify-center">
+            <ul class="relative z-40 flex flex-col gap-16 p-10 font-roboto text-2xl font-bold">
+              <li><router-link to="/avatar">Profil</router-link></li>
+              <li><router-link to="/">Historique</router-link></li>
+              <li><router-link to="/">Type de quête</router-link></li>
+            </ul>
+          </div>
+          <hr />
+          <div class="flex justify-center">
+            <ul class="flex flex-col gap-10 p-10">
+              <li><router-link to="/mentionslegales">Mentions légales</router-link></li>
+              <li><router-link to="/apropos">À Propos</router-link></li>
+              <li><router-link to="/contact">Contact</router-link></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -52,7 +83,7 @@
 </template>
 
 <script>
-import { MenuAlt1Icon } from "@heroicons/vue/outline";
+import { MenuAlt1Icon, XIcon } from "@heroicons/vue/outline";
 import ArquestPremium from "../icons/ArquestPremium.vue";
 import ArquestPremiumLong from "../icons/ArquestPremiumLong.vue";
 
@@ -67,6 +98,7 @@ export default {
     MenuAlt1Icon,
     ArquestPremium,
     ArquestPremiumLong,
+    XIcon,
   },
 };
 </script>

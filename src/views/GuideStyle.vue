@@ -117,7 +117,7 @@
         -->
 
         <SucceedQuete />
-        <DetailsQuestView />
+
         <BravoView />
         <BravopartageView />
         <FinaldeletView />
@@ -157,7 +157,6 @@ import FooterView from "../components/layouts/FooterView.vue";
 import QuestView from "../components/Quest.vue";
 import TooEarlyView from "../components/overlay/TooEarlyView.vue";
 import SucceedQuete from "../components/overlay/QuetesaccompliespartageView.vue";
-import DetailsQuestView from "../components/overlay/DetailsQuestView.vue";
 import BravoView from "../components/overlay/BravoView.vue";
 import BravopartageView from "../components/overlay/BravopartageView.vue";
 import FinaldeletView from "../components/overlay/FinaldeletView.vue";
@@ -194,7 +193,6 @@ export default {
     QuestView,
     TooEarlyView,
     SucceedQuete,
-    DetailsQuestView,
     BravoView,
     BravopartageView,
     FinaldeletView,

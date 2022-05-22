@@ -7,7 +7,7 @@
         <!--TOP DE LA CARD-->
         <div class="m-2 flex items-center justify-between text-white">
           <!--QUETE NOM VERSION TAB/ORDINATEUR-->
-          <h3 class="block p-3 text-left font-roboto text-2xl font-bold uppercase">{{ quete.nom }}</h3>
+          <h3 class="block p-2 text-left font-roboto text-2xl font-bold uppercase">{{ quete.nom }}</h3>
 
           <div class="text-white">
             <button
@@ -32,17 +32,16 @@
           <!---->
           <!---->
           <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
-          <div class="flex flex-col gap-5 p-2">
+          <div class="flex flex-col gap-5 px-2">
             <!-- DATE LIMITE DE LA QUÊTE-->
-            <div class="flex justify-between">
-              <div>
-                <h4 class="font-roboto text-2xl font-bold text-white">Date limite</h4>
-                <p class="font-roboto text-2xl font-bold text-indigo-500">{{ quete.date }}</p>
-              </div>
-              <div class="m-2 flex gap-5">
-                <PencilIcon class="h-10 w-10 stroke-white" />
-                <TrashIcon class="h-10 w-10 stroke-red-500" @click.prevent="deleteQuete(quete)" />
-              </div>
+
+            <div class="ml-auto flex gap-5">
+              <PencilIcon class="h-8 w-8 stroke-white" />
+              <TrashIcon class="h-8 w-8 stroke-red-500" @click.prevent="deleteQuete(quete)" />
+            </div>
+            <div>
+              <h4 class="font-roboto text-2xl font-bold text-white">Date limite</h4>
+              <p class="font-roboto text-2xl font-bold text-indigo-500">{{ quete.date }}</p>
             </div>
 
             <!-- DESCRIPTION DE LA QUÊTE-->
@@ -70,7 +69,7 @@
           </div>
 
           <!--CATEGORIE DE LA QUÊTE-->
-          <div class="w-full p-4">
+          <div class="w-full p-2">
             <h4
               class="text-center font-press-start-2p text-2xl"
               :class="{
@@ -105,7 +104,7 @@
           <div class="flex flex-col justify-center">
             <div class="flex justify-center">
               <div
-                class="w-11/12 rounded-full bg-transparent py-5"
+                class="w-11/12 rounded-full bg-transparent py-5 lg:py-2"
                 :class="{
                   ' bg-red-400 ': quete.cat === 'Sport',
                   ' bg-cyan-200 ': quete.cat === 'Social',
