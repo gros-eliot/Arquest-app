@@ -104,7 +104,7 @@
           <div class="flex flex-col justify-center">
             <div class="flex justify-center">
               <div
-                class="w-11/12 rounded-full bg-transparent py-5 lg:py-2"
+                class="w-11/12 rounded-full bg-transparent py-3"
                 :class="{
                   ' bg-red-400 ': quete.cat === 'Sport',
                   ' bg-cyan-200 ': quete.cat === 'Social',
