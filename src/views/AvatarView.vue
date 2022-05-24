@@ -28,11 +28,10 @@
 
 <script>
 import { PencilAltIcon } from "@heroicons/vue/outline";
-import BadgeTEST from "../components/icons/BadgesIcon.vue";
 
 export default {
   name: "AvatarView",
-  components: { PencilAltIcon, BadgeTEST },
+  components: { PencilAltIcon },
   data() {
     return {
       badgeLevel: "bronze",

@@ -30,7 +30,7 @@ import GuideStyle from "./views/GuideStyle.vue";
   <main class="pt-20">
     <router-view></router-view>
   </main>
-  <footer class="pb-[4.5rem]">
+  <footer class="bottom-0 pb-[4.5rem]">
     <footer-view class="bottom-0"></footer-view>
   </footer>
 </template>
