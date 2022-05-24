@@ -12,6 +12,7 @@ import AproposView from '../views/AproposView.vue'
 import GuideStyle from '../views/GuideStyle.vue'
 import CustomView from '../views/CustomView.vue'
 import InscriptionView from '../views/InscriptionView.vue'
+import ListecatView from '../views/ListecatView.vue'
 
 import Socialmedia from '../views/Socialmedia.vue'
 
@@ -23,6 +24,7 @@ const router = createRouter({
     { path: '/history', name: 'HistoryView', component: HistoryView, },
     { path: '/agenda', name: 'AgendaView', component: AgendaView, },
     { path: '/avatar', name: 'AvatarView', component: AvatarView, },
+    { path: '/listecat', name: 'ListeCat', component: ListecatView, },
 
     { path: '/contact', name: 'ContactView', component: ContactView, },
     { path: '/mentionslegales', name: 'MentionslegalesView', component: MentionslegalesView, },
