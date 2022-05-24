@@ -35,4 +35,11 @@ import GuideStyle from "./views/GuideStyle.vue";
   </footer>
 </template>
 
-<style></style>
+<style>
+input::placeholder {
+  color: white;
+}
+textarea::placeholder {
+  color: white;
+}
+</style>

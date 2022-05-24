@@ -2,9 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-input::placeholder {
-    color: white;
-  }
-textarea::placeholder {
-    color: white;
-  }
