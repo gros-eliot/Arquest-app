@@ -41,7 +41,7 @@
             </div>
             <div>
               <h4 class="font-roboto text-2xl font-bold text-white">Date limite</h4>
-              <p class="font-roboto text-2xl font-bold text-indigo-500">{{ quete.date }}</p>
+              <p class="font-roboto text-base">{{ quete.date }}</p>
             </div>
 
             <!-- DESCRIPTION DE LA QUÊTE-->

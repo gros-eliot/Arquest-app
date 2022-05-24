@@ -1,6 +1,6 @@
 <template>
   <div class="p-3">
-    <div class="flex justify-end">
+    <div class="flex justify-end p-1">
       <RouterLink to="/"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
     </div>
     <h1 class="text-center font-roboto text-4xl font-bold uppercase text-white">Créer une <span class="text-indigo-500">quête</span></h1>
