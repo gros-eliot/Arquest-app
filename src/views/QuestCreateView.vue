@@ -16,7 +16,7 @@
       />
       <textarea
         type="text"
-        class="h-[150px] w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent p-4 text-lg text-white"
+        class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent p-4 text-lg text-white"
         v-model="descriptionQuete"
         placeholder="Description"
       />

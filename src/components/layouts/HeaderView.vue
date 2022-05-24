@@ -3,29 +3,24 @@
     <!--BOUTON MENU-->
 
     <div>
-      <button
-        class="relative z-20 text-xl"
-        aria-haspopup="true"
-        aria-controls="menu"
-        :aria-expanded="menuOuvert"
-        @click="menuOuvert = !menuOuvert"
-      >
+      <button class="relative z-20 text-xl" aria-controls="menu" :aria-expanded="menuOuvert" id="btnMenu" @click="menuOuvert = !menuOuvert">
         <MenuAlt1Icon class="h-8 w-8 stroke-white" />
         <span class="sr-only">Menu</span>
       </button>
       <!--MENU-->
       <!--CONTAINER MENU : attention, vu que le translate x est à 10rem, 
-      on a "ml-40" dans les div pour que les éléments du menu soient affichés 
+      on a "ml-56" dans les div pour que les éléments du menu soient affichés 
       (décalés aussi de 10rem)-->
 
       <div
         id="menu"
+        aria-labelledby="btnMenu"
         class="fixed inset-0 top-0 z-30 -translate-x-full bg-black text-white motion-safe:transition-transform motion-safe:duration-1000"
-        :class="{ '-translate-x-[10rem]': menuOuvert }"
+        :class="{ '-translate-x-[14rem]': menuOuvert }"
       >
         <!--CONTAINER CROIX + LOGO DE L'APP-->
 
-        <div class="ml-40 flex flex-col">
+        <div class="ml-56 flex flex-col">
           <div class="flex items-center justify-between p-3">
             <button
               class="relative z-40 text-xl"
