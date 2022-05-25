@@ -36,8 +36,12 @@
             <!-- DATE LIMITE DE LA QUÊTE-->
 
             <div class="ml-auto flex gap-5">
-              <PencilIcon class="h-8 w-8 stroke-white" />
-              <TrashIcon class="h-8 w-8 stroke-red-500" @click.prevent="deleteQuete(quete)" />
+              <RouterLink to="/custom_quest">
+                <PencilIcon class="h-8 w-8 stroke-white" />
+              </RouterLink>
+              <RouterLink to="/">
+                <TrashIcon class="h-8 w-8 stroke-red-500" @click.prevent="deleteQuete(quete)" />
+              </RouterLink>
             </div>
             <div>
               <h4 class="font-roboto text-2xl font-bold text-white">Date limite</h4>

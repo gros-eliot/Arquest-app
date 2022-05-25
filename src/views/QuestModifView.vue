@@ -3,16 +3,14 @@
     <div class="flex justify-end p-1">
       <RouterLink to="/"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
     </div>
-    <h1 class="text-center font-roboto text-4xl font-bold uppercase text-white">Créer une <span class="text-indigo-500">quête</span></h1>
+    <h1 class="text-center font-roboto text-4xl font-bold uppercase text-white">Modifier une <span class="text-indigo-500">quête</span></h1>
   </div>
-  <div class="flex flex-col fill-white p-5 text-white lg:w-full lg:justify-center">
-    <form class="ml-auto mr-auto flex w-full flex-col gap-5">
+  <div class="fill-white p-5 text-white lg:flex lg:w-full lg:justify-center">
+    <form class="ml-auto mr-auto flex w-full flex-col gap-5" v-for="quete in listeQueteSynchro" :key="quete.id">
       <input
         type="text"
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-indigo-500"
         v-model="nom"
-        placeholder="TITRE"
-        required
       />
       <textarea
         type="text"
@@ -66,14 +64,15 @@
           required
         />
       </div>
+
+      <div class="flex justify-center">
+        <RouterLink class="w-full" to="/">
+          <div class="flex w-full justify-center">
+            <BoutonBlue class="w-full" type="button" @click="createQuete()" title="Création">Modifier</BoutonBlue>
+          </div>
+        </RouterLink>
+      </div>
     </form>
-    <div class="flex justify-center">
-      <RouterLink class="w-full" to="/">
-        <div class="flex w-full justify-center">
-          <BoutonBlue class="w-full" type="button" @click="createQuete()" title="Création">Créer</BoutonBlue>
-        </div>
-      </RouterLink>
-    </div>
   </div>
 </template>
 

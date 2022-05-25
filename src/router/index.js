@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import QuestCreateView from '../views/QuestCreateView.vue'
+import QuestModifView from '../views/QuestModifView.vue'
 import HistoryView from '../views/HistoryView.vue'
 import AgendaView from '../views/AgendaView.vue'
 import AvatarView from '../views/AvatarView.vue'
@@ -21,6 +22,7 @@ const router = createRouter({
   routes: [
     { path: '/', name: 'home', component: HomeView },
     { path: '/create_quest', name: 'QuestCreateView', component: QuestCreateView, },
+    { path: '/custom_quest', name: 'QuestModifView', component: QuestModifView, },
     { path: '/history', name: 'HistoryView', component: HistoryView, },
     { path: '/agenda', name: 'AgendaView', component: AgendaView, },
     { path: '/avatar', name: 'AvatarView', component: AvatarView, },

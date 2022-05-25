@@ -16,11 +16,11 @@
         id="menu"
         aria-labelledby="btnMenu"
         class="fixed inset-0 top-0 z-30 -translate-x-full bg-black text-white motion-safe:transition-transform motion-safe:duration-1000"
-        :class="{ '-translate-x-[14rem]': menuOuvert }"
+        :class="{ '-translate-x-[12rem]': menuOuvert }"
       >
         <!--CONTAINER CROIX + LOGO DE L'APP-->
 
-        <div class="ml-56 flex flex-col">
+        <div class="ml-48 flex flex-col justify-around">
           <div class="flex items-center justify-between p-3">
             <button
               class="relative z-40 text-xl"
@@ -39,7 +39,11 @@
           <!--CONTAINER LISTE DES PAGES-->
 
           <div class="flex justify-center">
-            <ul class="relative z-40 flex flex-col gap-16 p-10 font-roboto text-2xl font-bold">
+            <ul
+              class="relative z-40 flex flex-col gap-10 p-10 font-roboto text-2xl font-bold lg:flex-row lg:gap-8"
+              @click="menuOuvert = !menuOuvert"
+            >
+              <li><router-link to="/">Accueil</router-link></li>
               <li><router-link to="/avatar">Profil</router-link></li>
               <li><router-link to="/">Historique</router-link></li>
               <li><router-link to="/">Type de quête</router-link></li>
@@ -47,10 +51,11 @@
           </div>
           <hr />
           <div class="flex justify-center">
-            <ul class="flex flex-col gap-10 p-10">
+            <ul class="flex flex-col gap-6 p-10 lg:flex-row lg:gap-8" @click="menuOuvert = !menuOuvert">
               <li><router-link to="/mentionslegales">Mentions légales</router-link></li>
               <li><router-link to="/apropos">À Propos</router-link></li>
               <li><router-link to="/contact">Contact</router-link></li>
+              <li class="font-bold text-red-500"><router-link to="/">Déconnexion</router-link></li>
             </ul>
           </div>
         </div>
