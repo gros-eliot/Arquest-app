@@ -152,15 +152,16 @@ export default {
   name: "QuestCreateView",
   data() {
     return {
-      detailsQuetes: true,
-      nom: null, // Pour la création d'un nouvelle quête (nom)
-      descriptionQuete: null,
-      date: "",
+      detailsQuetes: false,
+      nom: null, // Pour la création d'un nouvelle quête (nom de la quête)
+      libelle: [], // Pour la création d'un nouvelle quête (libelle de la catégorie de la quête)
+      niveau: [], // DIFFICULTE DE LA QUÊTE
+      descriptionQuete: null, // Pour la description de la quête
+      date: "", // date de la quête
+
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
-      libelle: [], // Pour la création d'un nouvelle quête (catégorie)
-      listeCategorie: [], // Liste des catégories synchronisée - collection cat de Firebase
-      niveau: [],
-      listeDifficulte: [], // Liste des catégories synchronisée - collection cat de Firebase
+      listeCategorie: [], // Liste des CATEGORIES DE QUÊTES synchronisée - collection cat de Firebase
+      listeDifficulte: [], // Liste des DIFFICULTES synchronisée - collection cat de Firebase
     };
   },
   components: {
@@ -179,16 +180,9 @@ export default {
   },
   methods: {
     async getQueteSynchro() {
-      // Obtenir Firestore
       const firestore = getFirestore();
-      // Base de données (collection)  document pays
       const dbQuete = collection(firestore, "quete");
-      // Liste des quêtes synchronisée
       const query = await onSnapshot(dbQuete, (snapshot) => {
-        //  Récupération des résultats dans listePaysSynchro
-        // On utilse map pour récupérer l'intégralité des données renvoyées
-        // on identifie clairement le id du document
-        // les rest parameters permet de préciser la récupération de toute la partie data
         this.listeQueteSynchro = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -197,16 +191,9 @@ export default {
     },
 
     async getCategorie() {
-      // Obtenir Firestore
       const firestore = getFirestore();
-      // Base de données (collection)  document pays
       const dbCat = collection(firestore, "categorie");
-      // Liste des catégories synchronisée
       const query = await onSnapshot(dbCat, (snapshot) => {
-        //  Récupération des résultats dans listePaysSynchro
-        // On utilse map pour récupérer l'intégralité des données renvoyées
-        // on identifie clairement le id du document
-        // les rest parameters permet de préciser la récupération de toute la partie data
         this.listeCategorie = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -215,16 +202,9 @@ export default {
     },
 
     async getDifficulte() {
-      // Obtenir Firestore
       const firestore = getFirestore();
-      // Base de données (collection)  document pays
       const dbDiff = collection(firestore, "difficulte");
-      // Liste des catégories synchronisée
       const query = await onSnapshot(dbDiff, (snapshot) => {
-        //  Récupération des résultats dans listePaysSynchro
-        // On utilse map pour récupérer l'intégralité des données renvoyées
-        // on identifie clairement le id du document
-        // les rest parameters permet de préciser la récupération de toute la partie data
         this.listeDifficulte = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -232,17 +212,11 @@ export default {
       });
     },
 
+    /**/
     async getDescription() {
-      // Obtenir Firestore
       const firestore = getFirestore();
-      // Base de données (collection)  document pays
       const dbDesc = collection(firestore, "description");
-      // Liste des catégories synchronisée
       const query = await onSnapshot(dbDesc, (snapshot) => {
-        //  Récupération des résultats dans listePaysSynchro
-        // On utilse map pour récupérer l'intégralité des données renvoyées
-        // on identifie clairement le id du document
-        // les rest parameters permet de préciser la récupération de toute la partie data
         this.descriptionQuete = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),

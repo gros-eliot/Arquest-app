@@ -38,21 +38,13 @@ export default {
     };
   },
   mounted() {
-    // Montage de la vue
     this.getAvatarFull();
   },
   methods: {
     async getAvatarFull() {
-      // Obtenir Firestore
       const firestore = getFirestore();
-      // Base de données (collection)  document pays
       const dbAvatarfull = collection(firestore, "avatarfull");
-      // Liste des quêtes synchronisée
       const query = await onSnapshot(dbAvatarfull, (snapshot) => {
-        //  Récupération des résultats dans listePaysSynchro
-        // On utilse map pour récupérer l'intégralité des données renvoyées
-        // on identifie clairement le id du document
-        // les rest parameters permet de préciser la récupération de toute la partie data
         this.listeAvatarFull = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
