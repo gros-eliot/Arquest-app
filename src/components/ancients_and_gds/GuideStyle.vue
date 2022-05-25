@@ -141,26 +141,26 @@ import {
   HeartIcon,
   MenuAlt1Icon,
 } from "@heroicons/vue/outline";
-import FacebookIcon from "../components/icons/FacebookIcon.vue";
-import InstagramIcon from "../components/icons/InstagramIcon.vue";
-import TwitterIcon from "../components/icons/TwitterIcon.vue";
-import ArquestPremium from "../components/icons/ArquestPremium.vue";
-import MMIIcon from "../components/icons/MMIIcon.vue";
+import FacebookIcon from "../icons/FacebookIcon.vue";
+import InstagramIcon from "../icons/InstagramIcon.vue";
+import TwitterIcon from "../icons/TwitterIcon.vue";
+import ArquestPremium from "../icons/ArquestPremium.vue";
+import MMIIcon from "../icons/MMIIcon.vue";
 
-import BoutonBlue from "../components/boutons/BoutonBlue.vue";
-import BoutonBorder from "../components/boutons/BoutonBorder.vue";
-import BoutonClose from "../components/boutons/BoutonClose.vue";
+import BoutonBlue from "../boutons/BoutonBlue.vue";
+import BoutonBorder from "../boutons/BoutonBorder.vue";
+import BoutonClose from "../boutons/BoutonClose.vue";
 
-import HeaderView from "../components/overlay/TooEarlyView.vue";
-import NavView from "../components/layouts/NavView.vue";
-import FooterView from "../components/layouts/FooterView.vue";
-import QuestView from "../components/Quest.vue";
-import TooEarlyView from "../components/overlay/TooEarlyView.vue";
-import SucceedQuete from "../components/overlay/QuetesaccompliespartageView.vue";
-import BravoView from "../components/overlay/BravoView.vue";
-import BravopartageView from "../components/overlay/BravopartageView.vue";
-import FinaldeletView from "../components/overlay/FinaldeletView.vue";
-import HistoriqueView from "../components/overlay/HistoriqueView.vue";
+import HeaderView from "../overlay/TooEarlyView.vue";
+import NavView from "../layouts/NavView.vue";
+import FooterView from "../layouts/FooterView.vue";
+import QuestView from "../Quest.vue";
+import TooEarlyView from "../overlay/TooEarlyView.vue";
+import SucceedQuete from "../overlay/QuetesaccompliespartageView.vue";
+import BravoView from "../overlay/BravoView.vue";
+import BravopartageView from "../overlay/BravopartageView.vue";
+import FinaldeletView from "../overlay/FinaldeletView.vue";
+import HistoriqueView from "../overlay/HistoriqueView.vue";
 
 export default {
   name: "GuideStyle",
