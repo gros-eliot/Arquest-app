@@ -27,7 +27,7 @@
         ><!--DIY-->
         <span class="h-5 w-10 bg-fuchsia-400"></span
         ><!--Santé-->
-        <span class="h-5 w-10 bg-lime-400"></span
+        <span class="h-5 w-10 bg-green-400"></span
         ><!--Culture-->
         <span class="h-5 w-10 bg-yellow-400"></span
         ><!--Maison-->
