@@ -11,7 +11,7 @@ import MentionslegalesView from '../views/MentionslegalesView.vue'
 import AboutView from '../views/AboutView.vue'
 import AproposView from '../views/AproposView.vue'
 import GuideStyle from '../views/GuideStyle.vue'
-import CustomView from '../views/CustomView.vue'
+import CustomAvatarView from '../views/CustomAvatarView.vue'
 import InscriptionView from '../views/InscriptionView.vue'
 import ListecatView from '../views/ListecatView.vue'
 
@@ -36,7 +36,7 @@ const router = createRouter({
     { path: '/gds', name: 'GuideStyle', component: GuideStyle },
 
     { path: '/social', name: 'Socialmedia', component: Socialmedia },
-    { path: '/custom', name: 'CustomView', component: CustomView },
+    { path: '/custom_avatar', name: 'CustomAvatarView', component: CustomAvatarView },
     { path: '/inscription', name: 'InscriptionView', component: InscriptionView },
 
   ]

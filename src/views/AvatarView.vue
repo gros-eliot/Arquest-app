@@ -2,7 +2,7 @@
   <div>
     <div class="flex h-[70vh] w-full flex-col justify-between bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
       <div class="flex justify-end">
-        <RouterLink to="/custom"><PencilAltIcon class="w-11" /></RouterLink>
+        <RouterLink to="/custom_avatar"><PencilAltIcon class="w-11" /></RouterLink>
       </div>
 
       <h3 class="font-roboto text-xl font-bold">Insérer du texte</h3>

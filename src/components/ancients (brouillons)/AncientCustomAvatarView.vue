@@ -36,8 +36,6 @@
   </div>
 </template>
 
-
-
 <script>
 // Bibliothèque Firestore : import des fonctions
 import {
