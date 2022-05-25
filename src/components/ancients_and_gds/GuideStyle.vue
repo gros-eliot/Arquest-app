@@ -151,16 +151,18 @@ import BoutonBlue from "../boutons/BoutonBlue.vue";
 import BoutonBorder from "../boutons/BoutonBorder.vue";
 import BoutonClose from "../boutons/BoutonClose.vue";
 
-import HeaderView from "../overlay/TooEarlyView.vue";
-import NavView from "../layouts/NavView.vue";
-import FooterView from "../layouts/FooterView.vue";
-import QuestView from "../Quest.vue";
-import TooEarlyView from "../overlay/TooEarlyView.vue";
-import SucceedQuete from "../overlay/QuetesaccompliespartageView.vue";
-import BravoView from "../overlay/BravoView.vue";
-import BravopartageView from "../overlay/BravopartageView.vue";
-import FinaldeletView from "../overlay/FinaldeletView.vue";
-import HistoriqueView from "../overlay/HistoriqueView.vue";
+import HeaderView from "../components/overlay/TooEarlyView.vue";
+import NavView from "../components/layouts/NavView.vue";
+import FooterView from "../components/layouts/FooterView.vue";
+import QuestView from "../components/Quest.vue";
+import TooEarlyView from "../components/overlay/TooEarlyView.vue";
+import SucceedQuete from "../components/overlay/QuetesaccompliespartageView.vue";
+import FuturQuete from "../components/overlay/AccompliesquetesView.vue";
+import BravoView from "../components/overlay/BravoView.vue";
+import BravopartageView from "../components/overlay/BravopartageView.vue";
+import FinaldeletView from "../components/overlay/FinaldeletView.vue";
+import HistoriqueView from "../components/overlay/HistoriqueView.vue";
+import CardMatthieu from "../components/Cards/CardMatthieu.vue";
 
 export default {
   name: "GuideStyle",
@@ -197,7 +199,8 @@ export default {
     BravopartageView,
     FinaldeletView,
     HistoriqueView,
-  },
+    CardMatthieu
+},
 };
 </script>
 
