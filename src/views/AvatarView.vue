@@ -24,12 +24,10 @@
       <img :src="'../assets/BADGES/' + badgeLevel + '.png'" alt="Badge administrateur" class="w-12" />
     </div>
   </div>
-  <img :src="avatarURL" alt="" />
 </template>
 
 <script>
 import { PencilAltIcon } from "@heroicons/vue/outline";
-import avatars from "../avatars.js";
 
 export default {
   name: "AvatarView",
@@ -37,14 +35,7 @@ export default {
   data() {
     return {
       badgeLevel: "bronze",
-      avatarID: "boy1",
-      avatars,
     };
-  },
-  computed: {
-    avatarURL: function () {
-      return this.avatars[this.avatarID];
-    },
   },
 };
 </script>
