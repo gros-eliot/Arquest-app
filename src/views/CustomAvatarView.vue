@@ -5,6 +5,7 @@
   <div class="bg-black">
     <div class="text-center">
       <div class="rounded-xl bg-indigo-300 py-2">Choisir un avatar</div>
+      <refAvatars />
     </div>
 
     <div class="flex justify-end">
@@ -13,32 +14,6 @@
   </div>
 </template>
 
-<script>
-// Bibliothèque Firestore : import des fonctions
-import {
-  getFirestore,
-  collection,
-  doc,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  onSnapshot,
-} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
-import { getStorage, ref, getDownloadURL, uploadString } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-storage.js";
-
-export default {
-  name: "CustomAvatarView",
-  data() {
-    return {
-      ImageData: "",
-      userInfos: {
-        nickname: "",
-        image: "",
-      },
-    };
-  },
-};
-</script>
+<script></script>
 
 <style></style>
