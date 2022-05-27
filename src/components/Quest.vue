@@ -152,7 +152,7 @@ export default {
   name: "QuestCreateView",
   data() {
     return {
-      detailsQuetes: false,
+      detailsQuetes: true,
       nom: null, // Pour la création d'un nouvelle quête (nom de la quête)
       libelle: [], // Pour la création d'un nouvelle quête (libelle de la catégorie de la quête)
       niveau: [], // DIFFICULTE DE LA QUÊTE
