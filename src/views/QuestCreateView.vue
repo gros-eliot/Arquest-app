@@ -1,12 +1,18 @@
 <template>
+  <!-- haut du template-->
   <div class="p-3">
     <div class="flex justify-end p-1">
       <RouterLink to="/"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
     </div>
     <h1 class="text-center font-roboto text-4xl font-bold uppercase text-white">Créer une <span class="text-indigo-500">quête</span></h1>
   </div>
-  <div class="flex flex-col fill-white p-5 text-white lg:w-full lg:justify-center">
-    <form class="ml-auto mr-auto flex w-full flex-col gap-5">
+  <!--fin hero template-->
+
+  <!--Div contenant le formulaire + le bouton de validation-->
+  <div class="flex flex-col p-5 text-white">
+    <!--Div contenant le formulaire-->
+
+    <form class="flex flex-col items-center gap-5">
       <input
         type="text"
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-indigo-500"
@@ -17,63 +23,53 @@
       <textarea
         type="text"
         class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent p-4 text-lg text-white"
-        v-model="descriptionQuete"
+        v-model="desc"
         placeholder="Description"
       />
-
-      <div class="w-full">
-        <div>
-          <span class="flex items-center font-bold"
-            >Catégorie <RouterLink to="/"><QuestionMarkCircleIcon class="m-3 h-6 w-6 stroke-indigo-500" /></RouterLink> :</span
-          >
-        </div>
-        <select
-          v-model="libelle"
-          class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
-          required
+      <div class="w-full md:w-[70%] lg:w-[50%]">
+        <span class="flex items-center font-bold"
+          >Catégorie <RouterLink to="/"><QuestionMarkCircleIcon class="m-3 h-6 w-6 stroke-indigo-500" /></RouterLink> :</span
         >
-          <option class="border-0 bg-gray-900 font-roboto font-normal" value="" disabled selected>Sélectionner une catégorie</option>
-          <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="categorie in listeCategorie" :key="categorie.libelle">
-            {{ categorie.libelle }}
-          </option>
-        </select>
       </div>
-      <div class="w-full">
-        <div>
-          <span class="font-bold">Difficulté :</span>
-        </div>
-        <select
-          class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
-          v-model="niveau"
-          required
-        >
-          <option class="border-0 bg-gray-900 font-roboto font-normal" value="" disabled selected>Sélectionner une difficulté</option>
-          <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.niveau">
-            {{ difficulte.niveau }}
-          </option>
-        </select>
-      </div>
-      <div class="input-group">
-        <div>
-          <span class="font-bold">Date :</span>
-        </div>
-        <input
-          type="date"
-          format="dd/mm/yyyy"
-          v-model="date"
-          class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black"
-          placeholder="Date"
-          required
-        />
-      </div>
+      <select
+        v-model="cat"
+        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
+        required
+      >
+        <option class="border-0 bg-gray-900 font-roboto font-normal" value="" disabled selected>Sélectionner une catégorie</option>
+        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="categorie in listeCategorie" :key="categorie.cat">
+          {{ categorie.libelle }}
+        </option>
+      </select>
+      <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Difficulté :</span></div>
+      <select
+        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
+        v-model="difficult"
+        required
+      >
+        <option class="border-0 bg-gray-900 font-roboto font-normal" value="" disabled selected>Sélectionner une difficulté</option>
+        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.difficult">
+          {{ difficulte.niveau }}
+        </option>
+      </select>
+      <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Date :</span></div>
+      <input
+        type="date"
+        format="dd/mm/yyyy"
+        v-model="date"
+        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black"
+        placeholder="Date"
+        required
+      />
     </form>
-    <div class="flex justify-center">
-      <RouterLink class="w-full" to="/">
-        <div class="flex w-full justify-center">
-          <BoutonBlue class="w-full" type="button" @click="createQuete()" title="Création">Créer</BoutonBlue>
-        </div>
-      </RouterLink>
-    </div>
+  </div>
+
+  <div class="flex justify-center">
+    <RouterLink class="w-full" to="/">
+      <div class="flex w-full justify-center">
+        <BoutonBlue class="w-full lg:max-w-xl" type="button" @click="createQuete()" title="Création">Créer</BoutonBlue>
+      </div>
+    </RouterLink>
   </div>
 </template>
 
@@ -97,10 +93,10 @@ export default {
   data() {
     return {
       nom: null, // Pour la création d'un nouvelle quête (nom de la quête)
-      libelle: [], // Pour la création d'un nouvelle quête (libelle de la catégorie de la quête)
-      niveau: [], // DIFFICULTE DE LA QUÊTE
-      descriptionQuete: null, // Pour la description de la quête
-      date: "", // date de la quête
+      cat: null, // Pour la création d'un nouvelle quête (cat de la catégorie de la quête)
+      difficult: null, // DIFFICULTE DE LA QUÊTE
+      desc: null, // Pour la description de la quête
+      date: null, // date de la quête
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
       listeCategorie: [], // Liste des CATEGORIES DE QUÊTES synchronisée - collection cat de Firebase
@@ -112,7 +108,6 @@ export default {
     this.getQueteSynchro();
     this.getCategorie();
     this.getDifficulte();
-    this.getDescription();
   },
   methods: {
     async getQueteSynchro() {
@@ -148,26 +143,15 @@ export default {
       });
     },
 
-    async getDescription() {
-      const firestore = getFirestore();
-      const dbDesc = collection(firestore, "description");
-      const query = await onSnapshot(dbDesc, (snapshot) => {
-        this.descriptionQuete = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-      });
-    },
-
     async createQuete() {
       const firestore = getFirestore();
       const dbQuete = collection(firestore, "quete");
       const docRef = await addDoc(dbQuete, {
         nom: this.nom,
         date: this.date,
-        cat: this.libelle,
-        difficult: this.niveau,
-        desc: this.descriptionQuete,
+        cat: this.cat,
+        difficult: this.difficult,
+        desc: this.desc,
       });
       console.log("document créé avec le id : ", docRef.id);
     },

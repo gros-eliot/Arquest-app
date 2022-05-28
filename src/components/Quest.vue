@@ -36,9 +36,12 @@
             <!-- DATE LIMITE DE LA QUÊTE-->
 
             <div class="ml-auto flex gap-5">
-              <RouterLink to="/custom_quest">
+              <!--MODIFIER LA QUETE : BOUTON CRAYON-->
+              <!--params quete.id ==> se diriger sur la quête à modifier-->
+              <RouterLink :to="{ name: 'QuestModifView', params: { id: quete.id } }">
                 <PencilIcon class="h-8 w-8 stroke-white" />
               </RouterLink>
+              <!--SUPPRIMER LA QUETE : BOUTON POUBELLE-->
               <RouterLink to="/">
                 <TrashIcon class="h-8 w-8 stroke-red-500" @click.prevent="deleteQuete(quete)" />
               </RouterLink>
