@@ -9,22 +9,20 @@
   <!--fin hero template-->
 
   <!--Div contenant le formulaire + le bouton de validation-->
-  <div class="flex flex-col p-5 text-white">
+  <div class="flex flex-col px-5 py-10 text-white">
     <!--Div contenant le formulaire-->
 
-    <form class="flex flex-col items-center gap-5" @submit.prevent="updateParticipant">
+    <form class="flex flex-col items-center gap-5" @submit.prevent="updateQuete">
       <input
         type="text"
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-indigo-500"
         v-model="nom"
-        placeholder="TITRE"
-        required
       />
+
       <textarea
         type="text"
         class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent p-4 text-lg text-white"
         v-model="desc"
-        placeholder="Description"
       />
       <div class="w-full md:w-[70%] lg:w-[50%]">
         <span class="flex items-center font-bold"
@@ -34,42 +32,55 @@
       <select
         v-model="cat"
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
-        required
       >
-        <option class="border-0 bg-gray-900 font-roboto font-normal" value="" disabled selected>Sélectionner une catégorie</option>
-        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="categorie in listeCategorie" :key="categorie.libelle">
+        <option
+          class="border-0 bg-gray-900 font-roboto font-normal text-red-500"
+          v-for="quete in listeQueteSynchro"
+          :key="quete.cat"
+          selected
+        >
+          {{ quete.cat }}
+        </option>
+        <option
+          class="border-0 bg-gray-900 font-roboto font-normal text-indigo-500"
+          v-for="categorie in listeCategorie"
+          :key="categorie.id"
+        >
           {{ categorie.libelle }}
         </option>
       </select>
+
       <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Difficulté :</span></div>
+
       <select
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
-        v-model="difficulte"
-        required
+        v-model="difficulty"
       >
-        <option class="border-0 bg-gray-900 font-roboto font-normal" value="" disabled selected>Sélectionner une difficulté</option>
+        <option
+          class="border-0 bg-gray-900 font-roboto font-normal text-red-500"
+          v-for="quete in listeQueteSynchro"
+          :key="quete.difficulty"
+          selected
+        >
+          {{ quete.difficulty }}
+        </option>
+
         <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.niveau">
           {{ difficulte.niveau }}
         </option>
       </select>
+
       <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Date :</span></div>
       <input
+        v-model="date"
         type="date"
         format="dd/mm/yyyy"
-        v-model="date"
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black"
         placeholder="Date"
-        required
       />
-    </form>
-  </div>
 
-  <div class="flex justify-center">
-    <RouterLink class="w-full" to="/">
-      <div class="flex w-full justify-center">
-        <BoutonBlue class="w-full lg:max-w-xl" type="button" @click="updateQuete()" title="Création">Modifier</BoutonBlue>
-      </div>
-    </RouterLink>
+      <BoutonBlue class="w-full lg:max-w-xl" type="submit" title="Modification" to="/">Modifier</BoutonBlue>
+    </form>
   </div>
 </template>
 
@@ -92,11 +103,11 @@ export default {
   name: "QuestModifView",
   data() {
     return {
-      nom: null, // Pour la création d'un nouvelle quête (nom de la quête)
-      cat: null, // Pour la création d'un nouvelle quête (cat de la catégorie de la quête)
-      difficult: null, // DIFFICULTE DE LA QUÊTE
-      desc: null, // Pour la description de la quête
-      date: null, // date de la quête
+      nom: "", // Pour la création d'un nouvelle quête (nom de la quête)
+      cat: "", // Pour la création d'un nouvelle quête (cat de la catégorie de la quête)
+      difficulty: "", // DIFFICULTE DE LA QUÊTE
+      desc: "", // Pour la description de la quête
+      date: "", // date de la quête
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
       listeCategorie: [], // Liste des CATEGORIES DE QUÊTES synchronisée - collection cat de Firebase
@@ -108,7 +119,6 @@ export default {
     this.getQueteSynchro();
     this.getCategorie();
     this.getDifficulte();
-    this.getDescription();
   },
   methods: {
     async getQueteSynchro() {
@@ -144,40 +154,12 @@ export default {
       });
     },
 
-    async getDescription() {
-      const firestore = getFirestore();
-      const dbDesc = collection(firestore, "description");
-      const query = await onSnapshot(dbDesc, (snapshot) => {
-        this.desc = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-      });
-    },
-
-    async createQuete() {
-      const firestore = getFirestore();
-      const dbQuete = collection(firestore, "quete");
-      const docRef = await addDoc(dbQuete, {
-        nom: this.nom,
-        date: this.date,
-        cat: this.cat,
-        difficult: this.difficult,
-        desc: this.desc,
-      });
-      console.log("document créé avec le id : ", docRef.id);
-    },
-
     async updateQuete(quete) {
-      // Obtenir Firestore
       const firestore = getFirestore();
-      // Base de données (collection)  document quete
-      // Reference du quete à modifier
+
       const docRef = doc(firestore, "quete", quete.id);
-      // On passe en paramètre format json
-      // Les champs à mettre à jour
       await updateDoc(docRef, {
-        ...doc.data(),
+        nom: quete.nom,
       });
     },
   },

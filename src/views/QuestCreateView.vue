@@ -9,7 +9,7 @@
   <!--fin hero template-->
 
   <!--Div contenant le formulaire + le bouton de validation-->
-  <div class="flex flex-col p-5 text-white">
+  <div class="flex flex-col px-5 py-10 text-white">
     <!--Div contenant le formulaire-->
 
     <form class="flex flex-col items-center gap-5">
@@ -36,7 +36,7 @@
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
         required
       >
-        <option class="border-0 bg-gray-900 font-roboto font-normal" value="" disabled selected>Sélectionner une catégorie</option>
+        <option class="border-0 bg-gray-900 font-roboto font-normal" value="0" disabled selected>Sélectionner une catégorie</option>
         <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="categorie in listeCategorie" :key="categorie.cat">
           {{ categorie.libelle }}
         </option>
@@ -44,11 +44,11 @@
       <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Difficulté :</span></div>
       <select
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
-        v-model="difficult"
+        v-model="difficulty"
         required
       >
-        <option class="border-0 bg-gray-900 font-roboto font-normal" value="" disabled selected>Sélectionner une difficulté</option>
-        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.difficult">
+        <option class="border-0 bg-gray-900 font-roboto font-normal" value="0" disabled selected>Sélectionner une difficulté</option>
+        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.niveau">
           {{ difficulte.niveau }}
         </option>
       </select>
@@ -92,11 +92,11 @@ export default {
   name: "QuestCreateView",
   data() {
     return {
-      nom: null, // Pour la création d'un nouvelle quête (nom de la quête)
-      cat: null, // Pour la création d'un nouvelle quête (cat de la catégorie de la quête)
-      difficult: null, // DIFFICULTE DE LA QUÊTE
-      desc: null, // Pour la description de la quête
-      date: null, // date de la quête
+      nom: "", // Pour la création d'un nouvelle quête (nom de la quête)
+      cat: "", // Pour la création d'un nouvelle quête (cat de la catégorie de la quête)
+      difficulty: "", // DIFFICULTE DE LA QUÊTE
+      desc: "", // Pour la description de la quête
+      date: "", // date de la quête
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
       listeCategorie: [], // Liste des CATEGORIES DE QUÊTES synchronisée - collection cat de Firebase
@@ -150,7 +150,7 @@ export default {
         nom: this.nom,
         date: this.date,
         cat: this.cat,
-        difficult: this.difficult,
+        difficulty: this.difficulty,
         desc: this.desc,
       });
       console.log("document créé avec le id : ", docRef.id);

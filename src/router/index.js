@@ -31,6 +31,10 @@ const router = createRouter({
   //  { path: '/', name: 'ConnexionView', component: ConnexionView },
   //  { path: '/home', name: 'homeView', component: HomeView },
   //
+  // MODIFIER LE PATH dans chaque vue où l'on a une redirection à la page d'accueil ! => navView, HeaderView, menu...
+  //
+
+
     { path: '/create_quest', name: 'QuestCreateView', component: QuestCreateView, },
     { path: '/custom_quest', name: 'QuestModifView', component: QuestModifView, },
     { path: '/history', name: 'HistoryView', component: HistoryView, },

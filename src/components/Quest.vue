@@ -1,5 +1,5 @@
 <template>
-  <h2 class="font-roboto text-2xl font-bold text-white">QUÊTES DU JOUR ({{ count }})</h2>
+  <h2 class="font-roboto text-2xl font-bold text-white">QUÊTES DU JOUR ()</h2>
   <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]">
     <!--IMPORT DES QUÊTES DE FIREBASE-->
     <form v-for="quete in listeQueteSynchro" :key="quete.id">
@@ -48,7 +48,7 @@
             </div>
             <div>
               <h4 class="font-roboto text-2xl font-bold text-white">Date limite</h4>
-              <p class="font-roboto text-base">{{ quete.date }}</p>
+              <p class="font-roboto text-base">{{ dateFr(quete.date) }}</p>
             </div>
 
             <!-- DESCRIPTION DE LA QUÊTE-->
@@ -64,12 +64,12 @@
               <p
                 class="font-press-start-2p text-base"
                 :class="{
-                  'text-lime-400': quete.difficult === 'Facile',
-                  'text-yellow-400': quete.difficult === 'Intermédiaire',
-                  'text-red-300': quete.difficult === 'Difficile',
+                  'text-lime-400': quete.difficulty === 'Facile',
+                  'text-yellow-400': quete.difficulty === 'Intermédiaire',
+                  'text-red-300': quete.difficulty === 'Difficile',
                 }"
               >
-                {{ quete.difficult }}
+                {{ quete.difficulty }}
               </p>
             </div>
             <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
@@ -156,10 +156,10 @@ export default {
   data() {
     return {
       detailsQuetes: true,
-      nom: null, // Pour la création d'un nouvelle quête (nom de la quête)
-      libelle: [], // Pour la création d'un nouvelle quête (libelle de la catégorie de la quête)
-      niveau: [], // DIFFICULTE DE LA QUÊTE
-      descriptionQuete: null, // Pour la description de la quête
+      nom: "", // Pour la création d'un nouvelle quête (nom de la quête)
+      cat: "", // Pour la création d'un nouvelle quête (cat de la catégorie de la quête)
+      difficulty: "", // DIFFICULTE DE LA QUÊTE
+      desc: "", // Pour la description de la quête
       date: "", // date de la quête
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
@@ -179,7 +179,6 @@ export default {
     this.getQueteSynchro();
     this.getCategorie();
     this.getDifficulte();
-    this.getDescription();
   },
   methods: {
     async getQueteSynchro() {
@@ -215,22 +214,16 @@ export default {
       });
     },
 
-    /**/
-    async getDescription() {
-      const firestore = getFirestore();
-      const dbDesc = collection(firestore, "description");
-      const query = await onSnapshot(dbDesc, (snapshot) => {
-        this.descriptionQuete = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-      });
-    },
-
     async deleteQuete(quete) {
       const firestore = getFirestore();
       const docRef = doc(firestore, "quete", quete.id);
       await deleteDoc(docRef);
+    },
+
+    // Format date en français
+    dateFr(d) {
+      let date = d.split("-");
+      return date[2] + "/" + date[1] + "/" + date[0];
     },
   },
 };
