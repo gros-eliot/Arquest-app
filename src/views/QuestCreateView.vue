@@ -28,7 +28,7 @@
       />
       <div class="w-full md:w-[70%] lg:w-[50%]">
         <span class="flex items-center font-bold"
-          >Catégorie <RouterLink to="/"><QuestionMarkCircleIcon class="m-3 h-6 w-6 stroke-indigo-500" /></RouterLink> :</span
+          >Catégorie <RouterLink to="/listecat"><QuestionMarkCircleIcon class="m-3 h-6 w-6 stroke-indigo-500" /></RouterLink> :</span
         >
       </div>
       <select

@@ -88,7 +88,7 @@
     </div>
   </div>
   <div class="fixed bottom-24 m-auto w-full">
-    <BoutonBlue class="mr-auto ml-auto">J'AI COMPRIS</BoutonBlue>
+    <a href="javascript:history.go(-1)"><BoutonBlue class="mr-auto ml-auto">J'AI COMPRIS</BoutonBlue></a>
   </div>
 </template>
 

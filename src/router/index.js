@@ -40,7 +40,7 @@ const router = createRouter({
     { path: '/history', name: 'HistoryView', component: HistoryView, },
     { path: '/agenda', name: 'AgendaView', component: AgendaView, },
     { path: '/avatar', name: 'AvatarView', component: AvatarView, },
-    { path: '/listecat', name: 'ListeCat', component: ListecatView, },
+    { path: '/listecat', name: 'ListecatView', component: ListecatView, },
 
     { path: '/contact', name: 'ContactView', component: ContactView, },
     { path: '/mentionslegales', name: 'MentionslegalesView', component: MentionslegalesView, },

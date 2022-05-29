@@ -47,7 +47,7 @@
                 <li><router-link to="/">Accueil</router-link></li>
                 <li><router-link to="/avatar">Profil</router-link></li>
                 <li><router-link to="/">Historique</router-link></li>
-                <li><router-link to="/">Type de quête</router-link></li>
+                <li><router-link to="/listecat">Types de quête</router-link></li>
               </ul>
             </div>
             <hr />
