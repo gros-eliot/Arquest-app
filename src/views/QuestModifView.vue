@@ -91,9 +91,9 @@ export default {
   data() {
     return {
       quete: {
-        nom: "", // Pour la création d'un nouvelle quête (nom de la quête)
-        cat: "", // Pour la création d'un nouvelle quête (cat de la catégorie de la quête)
-        difficulty: "", // DIFFICULTE DE LA QUÊTE
+        nom: "", // Pour la modification de la quête (nom de la quête)
+        cat: "", // Pour la modification de la quête (catégorie de la quête)
+        difficulty: "", // Pour la difficulté de la quête
         desc: "", // Pour la description de la quête
         date: "", // date de la quête
       },
@@ -101,12 +101,12 @@ export default {
       refQuete: null, // Référence de la quête à modifier
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
-      listeCategorie: [], // Liste des CATEGORIES DE QUÊTES synchronisée - collection cat de Firebase
-      listeDifficulte: [], // Liste des DIFFICULTES synchronisée - collection cat de Firebase
+      listeCategorie: [], // Liste des CATEGORIES DE QUÊTES synchronisée - collection categorie de Firebase
+      listeDifficulte: [], // Liste des DIFFICULTES synchronisée - collection difficulte de Firebase
     };
   },
   mounted() {
-    console.log("id quête", this.$route.params.id);
+    console.log("id quête en cours de modification : ", this.$route.params.id);
     // Recherche participant concerné
     this.getQueteSynchro(this.$route.params.id);
     // Montage de la vue

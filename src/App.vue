@@ -15,7 +15,7 @@ import GuideStyle from "./components/ancients_and_gds/GuideStyle.vue";
   <main class="pt-20">
     <router-view></router-view>
   </main>
-  <footer class="bottom-0 pb-[4.5rem]">
+  <footer class="bottom-0 mt-40 pb-[4.5rem]">
     <footer-view class="bottom-0 w-full"></footer-view>
   </footer>
 </template>

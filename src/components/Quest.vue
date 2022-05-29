@@ -8,10 +8,9 @@
         <div class="m-2 flex items-center justify-between text-white">
           <!--QUETE NOM VERSION TAB/ORDINATEUR-->
           <h3 class="block p-2 text-left font-roboto text-2xl font-bold uppercase">{{ quete.nom }}</h3>
-
           <div class="text-white">
             <button
-              class="z-50 text-xl"
+              class="z-1 text-xl"
               type="button"
               aria-controls="detailsOfQuest"
               :aria-expanded="detailsQuetes"
@@ -26,7 +25,7 @@
 
         <!--DETAILS DE LA CARD -->
 
-        <div id="detailsOfQuest" class="flex flex-col text-white" :class="{ hidden: detailsQuetes }">
+        <div v-on="quete" id="detailsOfQuest" class="flex flex-col text-white" :class="{ hidden: detailsQuetes }">
           <!---->
           <!---->
           <!---->
@@ -41,11 +40,54 @@
               <RouterLink :to="{ name: 'QuestModifView', params: { id: quete.id } }">
                 <PencilIcon class="h-8 w-8 stroke-white" />
               </RouterLink>
+
               <!--SUPPRIMER LA QUETE : BOUTON POUBELLE-->
-              <RouterLink to="/">
-                <TrashIcon class="h-8 w-8 stroke-red-500" @click.prevent="deleteQuete(quete)" />
-              </RouterLink>
+
+              <!-- OLD VERSION : 
+<TrashIcon class="h-8 w-8 stroke-red-500" @click.prevent="deleteQuete(quete)" />
+
+-->
+              <button
+                class="z-1 text-xl"
+                type="button"
+                aria-controls="deleteQuest"
+                :aria-expanded="supprimerQuete"
+                @click="supprimerQuete = !supprimerQuete"
+                title="Supprimer la quête"
+              >
+                <TrashIcon class="h-8 w-8 stroke-red-500" />
+                <span class="sr-only">Supprimer la quête</span>
+              </button>
             </div>
+            <!-- OVERLAY : ETES VOUS SUR DE VOULOIR SUPPRIMER LA QUÊTE ???-->
+            <div v-on="quete" id="deleteQuest" class="block" :class="{ hidden: supprimerQuete }">
+              <div class="fixed inset-y-2 inset-x-4 z-50 mt-9 flex items-center justify-center">
+                <div class="overlay rounded-xl border-4 border-indigo-500 bg-black">
+                  <div class="flex w-full justify-end p-3">
+                    <button
+                      class="z-[51]"
+                      type="button"
+                      aria-controls="deleteQuest"
+                      :aria-expanded="supprimerQuete"
+                      @click="supprimerQuete = !supprimerQuete"
+                      title="Supprimer la quête"
+                    >
+                      <XIcon class="h-8 w-8" />
+                      <span class="sr-only">Annuler la suppression de la quête</span>
+                    </button>
+                  </div>
+
+                  <h2 class="m-4 text-center font-roboto text-2xl font-bold uppercase text-white">
+                    ÊTES VOUS SÛR DE VOULOIR
+                    <span class="text-center font-roboto text-2xl font-bold text-red-400">SUPPRIMER</span> CETTE QUÊTE ?
+                  </h2>
+                  <BoutonBlue @click.prevent="deleteQuete(quete)" @click="supprimerQuete = !supprimerQuete" class="my-6 ml-auto mr-auto">
+                    SUPPRIMER
+                  </BoutonBlue>
+                </div>
+              </div>
+            </div>
+
             <div>
               <h4 class="font-roboto text-2xl font-bold text-white">Date limite</h4>
               <p class="font-roboto text-base">{{ dateFr(quete.date) }}</p>
@@ -150,11 +192,13 @@ import {
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 import BoutonBlue from "../components/boutons/BoutonBlue.vue";
-import { DotsHorizontalIcon, TrashIcon, PencilIcon } from "@heroicons/vue/outline";
+import FinaldeletView from "../components/overlay/FinaldeletView.vue";
+import { DotsHorizontalIcon, TrashIcon, PencilIcon, XIcon } from "@heroicons/vue/outline";
 export default {
   name: "QuestCreateView",
   data() {
     return {
+      supprimerQuete: true,
       detailsQuetes: true,
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
@@ -162,9 +206,11 @@ export default {
   },
   components: {
     BoutonBlue,
+    FinaldeletView,
     DotsHorizontalIcon,
     TrashIcon,
     PencilIcon,
+    XIcon,
   },
 
   mounted() {
@@ -187,6 +233,7 @@ export default {
       const firestore = getFirestore();
       const docRef = doc(firestore, "quete", quete.id);
       await deleteDoc(docRef);
+      console.log("Quête " + quete.id + " supprimée");
     },
 
     // Format date en français
