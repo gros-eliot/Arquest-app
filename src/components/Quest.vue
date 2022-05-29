@@ -156,15 +156,8 @@ export default {
   data() {
     return {
       detailsQuetes: true,
-      nom: "", // Pour la création d'un nouvelle quête (nom de la quête)
-      cat: "", // Pour la création d'un nouvelle quête (cat de la catégorie de la quête)
-      difficulty: "", // DIFFICULTE DE LA QUÊTE
-      desc: "", // Pour la description de la quête
-      date: "", // date de la quête
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
-      listeCategorie: [], // Liste des CATEGORIES DE QUÊTES synchronisée - collection cat de Firebase
-      listeDifficulte: [], // Liste des DIFFICULTES synchronisée - collection cat de Firebase
     };
   },
   components: {
@@ -177,8 +170,6 @@ export default {
   mounted() {
     // Montage de la vue
     this.getQueteSynchro();
-    this.getCategorie();
-    this.getDifficulte();
   },
   methods: {
     async getQueteSynchro() {
@@ -186,28 +177,6 @@ export default {
       const dbQuete = collection(firestore, "quete");
       const query = await onSnapshot(dbQuete, (snapshot) => {
         this.listeQueteSynchro = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-      });
-    },
-
-    async getCategorie() {
-      const firestore = getFirestore();
-      const dbCat = collection(firestore, "categorie");
-      const query = await onSnapshot(dbCat, (snapshot) => {
-        this.listeCategorie = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-      });
-    },
-
-    async getDifficulte() {
-      const firestore = getFirestore();
-      const dbDiff = collection(firestore, "difficulte");
-      const query = await onSnapshot(dbDiff, (snapshot) => {
-        this.listeDifficulte = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));

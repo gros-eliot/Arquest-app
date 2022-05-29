@@ -153,7 +153,7 @@ export default {
         difficulty: this.difficulty,
         desc: this.desc,
       });
-      console.log("document créé avec le id : ", docRef.id);
+      console.log("document créé avec le id suivant : ", docRef.id);
     },
 
     async deleteQuete(quete) {

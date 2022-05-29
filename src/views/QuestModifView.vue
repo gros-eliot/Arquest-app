@@ -12,17 +12,17 @@
   <div class="flex flex-col px-5 py-10 text-white">
     <!--Div contenant le formulaire-->
 
-    <form class="flex flex-col items-center gap-5" @submit.prevent="updateQuete">
+    <form class="flex flex-col items-center gap-5" enctype="multipart/form-data" @submit.prevent="updateQuete">
       <input
         type="text"
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-indigo-500"
-        v-model="nom"
+        v-model="quete.nom"
       />
 
       <textarea
         type="text"
         class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent p-4 text-lg text-white"
-        v-model="desc"
+        v-model="quete.desc"
       />
       <div class="w-full md:w-[70%] lg:w-[50%]">
         <span class="flex items-center font-bold"
@@ -30,17 +30,10 @@
         >
       </div>
       <select
-        v-model="cat"
+        v-model="quete.cat"
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
       >
-        <option
-          class="border-0 bg-gray-900 font-roboto font-normal text-red-500"
-          v-for="quete in listeQueteSynchro"
-          :key="quete.cat"
-          selected
-        >
-          {{ quete.cat }}
-        </option>
+        <option class="border-0 bg-gray-900 font-roboto font-bold" value="0" disabled selected>Sélectionner une catégorie</option>
         <option
           class="border-0 bg-gray-900 font-roboto font-normal text-indigo-500"
           v-for="categorie in listeCategorie"
@@ -54,16 +47,9 @@
 
       <select
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
-        v-model="difficulty"
+        v-model="quete.difficulty"
       >
-        <option
-          class="border-0 bg-gray-900 font-roboto font-normal text-red-500"
-          v-for="quete in listeQueteSynchro"
-          :key="quete.difficulty"
-          selected
-        >
-          {{ quete.difficulty }}
-        </option>
+        <option class="border-0 bg-gray-900 font-roboto font-bold" value="0" disabled selected>Sélectionner une difficulté</option>
 
         <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.niveau">
           {{ difficulte.niveau }}
@@ -72,14 +58,14 @@
 
       <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Date :</span></div>
       <input
-        v-model="date"
+        v-model="quete.date"
         type="date"
         format="dd/mm/yyyy"
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black"
         placeholder="Date"
       />
 
-      <BoutonBlue class="w-full lg:max-w-xl" type="submit" title="Modification" to="/">Modifier</BoutonBlue>
+      <BoutonBlue class="w-full lg:max-w-xl" type="submit" title="Modification">Modifier</BoutonBlue>
     </form>
   </div>
 </template>
@@ -90,12 +76,13 @@ import {
   getFirestore,
   collection,
   doc,
-  getDocs,
-  addDoc,
+  getDoc,
   updateDoc,
-  deleteDoc,
   onSnapshot,
+  query,
+  orderBy,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+
 import BoutonBlue from "../components/boutons/BoutonBlue.vue";
 import BoutonClose from "../components/boutons/BoutonClose.vue";
 import { XIcon, QuestionMarkCircleIcon } from "@heroicons/vue/outline";
@@ -103,11 +90,15 @@ export default {
   name: "QuestModifView",
   data() {
     return {
-      nom: "", // Pour la création d'un nouvelle quête (nom de la quête)
-      cat: "", // Pour la création d'un nouvelle quête (cat de la catégorie de la quête)
-      difficulty: "", // DIFFICULTE DE LA QUÊTE
-      desc: "", // Pour la description de la quête
-      date: "", // date de la quête
+      quete: {
+        nom: "", // Pour la création d'un nouvelle quête (nom de la quête)
+        cat: "", // Pour la création d'un nouvelle quête (cat de la catégorie de la quête)
+        difficulty: "", // DIFFICULTE DE LA QUÊTE
+        desc: "", // Pour la description de la quête
+        date: "", // date de la quête
+      },
+
+      refQuete: null, // Référence de la quête à modifier
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
       listeCategorie: [], // Liste des CATEGORIES DE QUÊTES synchronisée - collection cat de Firebase
@@ -115,21 +106,28 @@ export default {
     };
   },
   mounted() {
+    console.log("id quête", this.$route.params.id);
+    // Recherche participant concerné
+    this.getQueteSynchro(this.$route.params.id);
     // Montage de la vue
-    this.getQueteSynchro();
     this.getCategorie();
     this.getDifficulte();
   },
   methods: {
-    async getQueteSynchro() {
+    async getQueteSynchro(id) {
       const firestore = getFirestore();
-      const dbQuete = collection(firestore, "quete");
-      const query = await onSnapshot(dbQuete, (snapshot) => {
-        this.listeQueteSynchro = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-      });
+
+      const docRef = doc(firestore, "quete", id);
+
+      this.refQuete = await getDoc(docRef);
+      // Test si le participant demandé existe
+      if (this.refQuete.exists()) {
+        // Si oui on récupère ses données
+        this.quete = this.refQuete.data();
+      } else {
+        // Sinon simple message d'erreur
+        this.console.log("Quête inexistant");
+      }
     },
 
     async getCategorie() {
@@ -154,15 +152,18 @@ export default {
       });
     },
 
-    async updateQuete(quete) {
+    async updateQuete() {
+      // Dans tous les cas on met à jour la quête dans Firestore
       const firestore = getFirestore();
+      // Modification de la quête à partir de son id
+      await updateDoc(doc(firestore, "quete", this.$route.params.id), this.quete);
+      // redirection sur la liste des quêtes
+      this.$router.push("/");
 
-      const docRef = doc(firestore, "quete", quete.id);
-      await updateDoc(docRef, {
-        nom: quete.nom,
-      });
+      console.log("Quête " + this.$route.params.id + " modifiée !");
     },
   },
+
   components: {
     BoutonBlue,
     BoutonClose,
