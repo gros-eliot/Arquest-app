@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <body class="p-3">
+  <div class="p-3">
     <!-- Bouton bas droite : créer quête -->
     <RouterLink to="/create_quest">
       <div class="fixed right-4 bottom-24 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-300">
@@ -27,5 +27,5 @@ export default {
       <Quest />
       <!--<BravopartageView class="fixed inset-y-2 inset-x-4 z-50" />-->
     </div>
-  </body>
+  </div>
 </template>
