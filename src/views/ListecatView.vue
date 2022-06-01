@@ -32,6 +32,16 @@
       </div>
     </div>
   </div>
+  <div class="mx-6 my-3 flex flex-col">
+    <div class="flex flex-row gap-1">
+      <span class="my-2 ml-3 bg-red-500 px-2" />
+      <div class="flex flex-col px-3 pb-3">
+        <h1 class="py-2 font-press-start-2p text-2xl text-white">JEUX-VIDEOS</h1>
+        <p class="text-white">Activité concernant les jeux-vidéos</p>
+        <p class="text-sm italic text-white">Ex : Terminer quête or Dofus, passer diamant sur League of Legends...</p>
+      </div>
+    </div>
+  </div>
 
   <div class="mx-6 my-3 flex flex-col">
     <div class="flex flex-row gap-1">
