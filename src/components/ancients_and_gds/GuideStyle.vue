@@ -155,7 +155,7 @@ import HeaderView from "../components/overlay/TooEarlyView.vue";
 import NavView from "../components/layouts/NavView.vue";
 import FooterView from "../components/layouts/FooterView.vue";
 import QuestView from "../components/Quest.vue";
-import TooEarlyView from "../components/overlay/TooEarlyView.vue";
+import TooEarlyView from "../Overlay/TooEarlyView.vue";
 import SucceedQuete from "../components/overlay/QuetesaccompliespartageView.vue";
 import FuturQuete from "../components/overlay/AccompliesquetesView.vue";
 import BravoView from "../components/overlay/BravoView.vue";
