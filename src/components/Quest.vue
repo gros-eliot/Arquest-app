@@ -165,7 +165,7 @@ import BoutonBlue from "./boutons/BoutonBlue.vue";
 import FinaldeletView from "./overlay/FinaldeletView.vue";
 import { DotsHorizontalIcon, TrashIcon, PencilIcon, XIcon } from "@heroicons/vue/outline";
 export default {
-  name: "QuestCreateView",
+  name: "QuestComponent",
   data() {
     return {
       detailsQuetes: false,

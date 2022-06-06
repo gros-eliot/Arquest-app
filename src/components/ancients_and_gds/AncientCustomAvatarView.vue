@@ -60,7 +60,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-storage.js";
 
 export default {
-  name: "CustomView",
+  name: "CustomAvatarView",
   data() {
     return {
       listePhoto: [], // Liste des participants

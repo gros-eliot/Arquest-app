@@ -3,11 +3,11 @@
     <ArquestPremium class="m-5 h-14 w-14" />
 
     <!--LISTE PAGES-->
-    <div class="flex justify-around text-center">
-      <div class="w-full border-r-2 px-2 py-1">
+    <div class="flex items-center justify-around text-center">
+      <div class="w-full px-2 py-1">
         <RouterLink to="/contact"><p>Contact</p></RouterLink>
       </div>
-      <div class="w-full border-r-2 px-2 py-1">
+      <div class="w-full border-x-2 px-2 py-1">
         <RouterLink to="/mentionslegales"><p>Mentions légales</p></RouterLink>
       </div>
       <div class="w-full px-2 py-1">
