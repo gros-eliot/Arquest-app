@@ -154,7 +154,7 @@ import BoutonClose from "../boutons/BoutonClose.vue";
 import HeaderView from "../layouts/HeaderView.vue";
 import NavView from "../layouts/NavView.vue";
 import FooterView from "../layouts/FooterView.vue";
-import QuestView from "../Overlay/Quest.vue";
+import QuestView from "../Quest.vue";
 import TooEarlyView from "../Overlay/TooEarlyView.vue";
 import SucceedQuete from "../Overlay/QuetesaccompliespartageView.vue";
 import BravoView from "../Overlay/BravoView.vue";
@@ -198,8 +198,8 @@ export default {
     BravopartageView,
     FinaldeletView,
     HistoriqueView,
-    CardMatthieu
-},
+    CardMatthieu,
+  },
 };
 </script>
 

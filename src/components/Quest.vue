@@ -131,7 +131,7 @@
           </div>
 
           <div class="flex justify-center">
-            <bouton-blue type="button" @click.prevent="deleteQuete(quete)" title="Valider la quête">VALIDER</bouton-blue>
+            <bouton-blue type="button" @click.prevent="accomplishQuete(quete)" title="Valider la quête">VALIDER</bouton-blue>
           </div>
         </div>
         <!--FIN CONTENU DE LA CARD-->
@@ -188,6 +188,19 @@ export default {
           ...doc.data(),
         }));
       });
+    },
+
+    async accomplishQuete(quete) {
+      const firestore = getFirestore();
+      const dbHistory = collection(firestore, "history");
+      const docRef1 = doc(firestore, "quete", quete.id);
+      const docRef2 = await addDoc(dbHistory, {
+        nom: quete.nom,
+        date: quete.date,
+      });
+      console.log("quête validée avec le id suivant : ", docRef2.id);
+
+      await deleteDoc(docRef1);
     },
 
     // Format date en français
