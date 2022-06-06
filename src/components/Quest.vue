@@ -43,49 +43,7 @@
 
               <!--SUPPRIMER LA QUETE : BOUTON POUBELLE-->
 
-              <!-- OLD VERSION : 
-<TrashIcon class="h-8 w-8 stroke-red-500" @click.prevent="deleteQuete(quete)" />
-
--->
-              <button
-                class="z-1 text-xl"
-                type="button"
-                aria-controls="deleteQuest"
-                :aria-expanded="supprimerQuete"
-                @click="supprimerQuete = !supprimerQuete"
-                title="Supprimer la quête"
-              >
-                <TrashIcon class="h-8 w-8 stroke-red-500" />
-                <span class="sr-only">Supprimer la quête</span>
-              </button>
-            </div>
-            <!-- OVERLAY : ETES VOUS SUR DE VOULOIR SUPPRIMER LA QUÊTE ???-->
-            <div v-on="quete" id="deleteQuest" class="block" :class="{ hidden: supprimerQuete }">
-              <div class="fixed inset-y-2 inset-x-4 z-50 mt-9 flex items-center justify-center">
-                <div class="overlay rounded-xl border-4 border-indigo-500 bg-black">
-                  <div class="flex w-full justify-end p-3">
-                    <button
-                      class="z-[51]"
-                      type="button"
-                      aria-controls="deleteQuest"
-                      :aria-expanded="supprimerQuete"
-                      @click="supprimerQuete = !supprimerQuete"
-                      title="Supprimer la quête"
-                    >
-                      <XIcon class="h-8 w-8" />
-                      <span class="sr-only">Annuler la suppression de la quête</span>
-                    </button>
-                  </div>
-
-                  <h2 class="m-4 text-center font-roboto text-2xl font-bold uppercase text-white">
-                    ÊTES VOUS SÛR DE VOULOIR
-                    <span class="text-center font-roboto text-2xl font-bold text-red-400">SUPPRIMER</span> CETTE QUÊTE ?
-                  </h2>
-                  <BoutonBlue @click.prevent="deleteQuete(quete)" @click="supprimerQuete = !supprimerQuete" class="my-6 ml-auto mr-auto">
-                    SUPPRIMER
-                  </BoutonBlue>
-                </div>
-              </div>
+              <TrashIcon class="h-8 w-8 stroke-red-500" />
             </div>
 
             <div>
