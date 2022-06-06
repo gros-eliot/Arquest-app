@@ -2,7 +2,7 @@
   <!-- haut du template-->
   <div class="p-3">
     <div class="flex justify-end p-1">
-      <RouterLink to="/"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
+      <RouterLink to="/" class="fixed"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
     </div>
     <h1 class="text-center font-roboto text-4xl font-bold uppercase text-white">Créer une <span class="text-indigo-500">quête</span></h1>
   </div>
@@ -85,8 +85,8 @@ import {
   deleteDoc,
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
-import BoutonBlue from "../components/boutons/BoutonBlue.vue";
-import BoutonClose from "../components/boutons/BoutonClose.vue";
+import BoutonBlue from "../../components/boutons/BoutonBlue.vue";
+import BoutonClose from "../../components/boutons/BoutonClose.vue";
 import { XIcon, QuestionMarkCircleIcon } from "@heroicons/vue/outline";
 export default {
   name: "QuestCreateView",

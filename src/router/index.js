@@ -3,18 +3,22 @@ import HomeView from '../views/HomeView.vue'
 
 // à ajouter avec les users !!
 // import ConnexionView from '../views/ConnexionView.vue'
-import QuestCreateView from '../views/QuestCreateView.vue'
-import QuestModifView from '../views/QuestModifView.vue'
+
+import QuestCreateView from '../views/quest/QuestCreateView.vue'
+import QuestModifView from '../views/quest/QuestModifView.vue'
+import QuestDeleteView from '../views/quest/QuestDeleteView.vue'
+
 import HistoryView from '../views/HistoryView.vue'
 import AgendaView from '../views/AgendaView.vue'
-import AvatarView from '../views/AvatarView.vue'
+
+import AvatarView from '../views/avatar/AvatarView.vue'
+import CustomAvatarView from '../views/avatar/CustomAvatarView.vue'
 
 import ContactView from '../views/ContactView.vue'
 import MentionslegalesView from '../views/MentionslegalesView.vue'
 import AboutView from '../views/AboutView.vue'
 import AproposView from '../views/AproposView.vue'
 import GuideStyle from '../components/ancients_and_gds/GuideStyle.vue'
-import CustomAvatarView from '../views/CustomAvatarView.vue'
 import InscriptionView from '../views/InscriptionView.vue'
 import ListecatView from '../views/ListecatView.vue'
 
@@ -37,9 +41,14 @@ const router = createRouter({
 
     { path: '/create_quest', name: 'QuestCreateView', component: QuestCreateView, },
     { path: '/custom_quest', name: 'QuestModifView', component: QuestModifView, },
+    { path: '/delete_quest', name: 'QuestDeleteView', component: QuestDeleteView, },
+
+
     { path: '/history', name: 'HistoryView', component: HistoryView, },
     { path: '/agenda', name: 'AgendaView', component: AgendaView, },
     { path: '/avatar', name: 'AvatarView', component: AvatarView, },
+    { path: '/custom_avatar', name: 'CustomAvatarView', component: CustomAvatarView },
+
     { path: '/listecat', name: 'ListecatView', component: ListecatView, },
 
     { path: '/contact', name: 'ContactView', component: ContactView, },
@@ -50,7 +59,6 @@ const router = createRouter({
     { path: '/gds', name: 'GuideStyle', component: GuideStyle },
 
     { path: '/social', name: 'Socialmedia', component: Socialmedia },
-    { path: '/custom_avatar', name: 'CustomAvatarView', component: CustomAvatarView },
     { path: '/inscription', name: 'InscriptionView', component: InscriptionView },
 
   ]
