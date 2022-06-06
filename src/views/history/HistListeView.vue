@@ -1,12 +1,21 @@
 <template>
   <div class="p-3">
     <h1 class="text-2xl font-bold text-white">Quêtes accomplies</h1>
+
+    <div class="flex items-center justify-between border-b-2 border-white p-3 font-bold text-white">
+      <p>Nom</p>
+      <div class="flex items-center gap-4 text-right">
+        <p>Date fixée</p>
+        <TrashIcon class="h-6 w-6 stroke-black" />
+      </div>
+    </div>
+
     <div class="my-5 flex flex-col gap-2 text-white" v-for="history in listeHistory" :key="history.id">
       <div class="flex items-center justify-between border-b border-white p-3">
         <p>{{ history.nom }}</p>
         <div class="flex items-center gap-4">
           <p>{{ history.date }}</p>
-          <TrashIcon class="h-8 w-8" @click.prevent="deleteHistoryElement(history)" />
+          <TrashIcon class="h-6 w-6 stroke-red-500 md:h-10 md:w-10" @click.prevent="deleteHistoryElement(history)" />
         </div>
       </div>
     </div>
