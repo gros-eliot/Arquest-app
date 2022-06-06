@@ -8,7 +8,8 @@ import QuestCreateView from '../views/quest/QuestCreateView.vue'
 import QuestModifView from '../views/quest/QuestModifView.vue'
 import QuestDeleteView from '../views/quest/QuestDeleteView.vue'
 
-import HistoryView from '../views/HistoryView.vue'
+import HistListeView from '../views/history/HistListeView.vue'
+
 import AgendaView from '../views/AgendaView.vue'
 
 import AvatarView from '../views/avatar/AvatarView.vue'
@@ -44,7 +45,8 @@ const router = createRouter({
     { path: '/delete_quest/:id', name: 'QuestDeleteView', component: QuestDeleteView, },
 
 
-    { path: '/history', name: 'HistoryView', component: HistoryView, },
+    { path: '/history', name: 'HistListeView', component: HistListeView, },
+
     { path: '/agenda', name: 'AgendaView', component: AgendaView, },
     { path: '/avatar', name: 'AvatarView', component: AvatarView, },
     { path: '/custom_avatar', name: 'CustomAvatarView', component: CustomAvatarView },

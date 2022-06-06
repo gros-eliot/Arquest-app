@@ -11,15 +11,15 @@
     <h2 class="font-roboto text-2xl font-bold">Badges</h2>
 
     <div class="my-5 flex flex-wrap items-center justify-center gap-10">
-      <img src="../assets/BADGES/sport/ultime.png" alt="Badge sport" class="w-12" />
-      <img src="../assets/BADGES/maison/ultime.png" alt="Badge maison" class="w-12" />
-      <img src="../assets/BADGES/social/ultime.png" alt="Badge social" class="w-12" />
-      <img src="../assets/BADGES/gestion/diamond.png" alt="Badge gestion" class="w-12" />
-      <img src="../assets/BADGES/sante/gold.png" alt="Badge santé" class="w-12" />
-      <img src="../assets/BADGES/DIY/argent.png" alt="Badge DIY" class="w-12" />
-      <img src="../assets/BADGES/travail/bronze.png" alt="Badge travail" class="w-12" />
-      <img src="../assets/BADGES/culture/fer.png" alt="Badge culture" class="w-12" />
-      <img src="../assets/BADGES/admin.png" alt="Badge administrateur" class="w-12" />
+      <img src="src/assets/BADGES/sport/ultime.png" alt="Badge sport" class="w-12" />
+      <img src="src/assets/BADGES/maison/ultime.png" alt="Badge maison" class="w-12" />
+      <img src="src/assets/BADGES/social/ultime.png" alt="Badge social" class="w-12" />
+      <img src="src/assets/BADGES/gestion/diamond.png" alt="Badge gestion" class="w-12" />
+      <img src="src/assets/BADGES/sante/gold.png" alt="Badge santé" class="w-12" />
+      <img src="src/assets/BADGES/DIY/argent.png" alt="Badge DIY" class="w-12" />
+      <img src="src/assets/BADGES/travail/bronze.png" alt="Badge travail" class="w-12" />
+      <img src="src/assets/BADGES/culture/fer.png" alt="Badge culture" class="w-12" />
+      <img src="src/assets/BADGES/admin.png" alt="Badge admin" class="w-12" />
     </div>
   </div>
 </template>
