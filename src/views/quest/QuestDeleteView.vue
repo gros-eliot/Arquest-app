@@ -64,6 +64,9 @@
       </div>
     </div>
 
+    <h3 role="alert" class="text-center">
+      <strong>Attention : vous allez supprimer cette quête, cette action est irréversible !</strong>
+    </h3>
     <BoutonBlue class="w-full bg-red-500 lg:max-w-xl" type="submit" title="Suppression">Supprimer</BoutonBlue>
   </form>
 </template>
@@ -75,6 +78,7 @@ import {
   collection,
   doc,
   getDoc,
+  deleteDoc,
   updateDoc,
   onSnapshot,
   query,
@@ -120,11 +124,13 @@ export default {
       }
     },
 
-    async deleteQuete(quete) {
+    async deleteQuete() {
       const firestore = getFirestore();
-      const docRef = doc(firestore, "quete", quete.id);
-      await deleteDoc(docRef);
-      console.log("Quête " + quete.id + " supprimée");
+      // Suppresion du artiste
+      await deleteDoc(doc(firestore, "quete", this.$route.params.id));
+
+      // redirection sur la liste des artistes
+      this.$router.push("/");
     },
   },
 
