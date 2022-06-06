@@ -16,44 +16,61 @@
 
     <h2 class="m-10 text-center text-5xl font-bold text-indigo-300">PROJET ÉTUDIANT</h2>
 
-    <div class="flex w-full snap-x bg-scroll  overflow-x-auto pb-10">
+    <div class="flex w-full snap-x overflow-x-auto pb-10">
         <div class="w-full shrink-0 rounded-lg shadow-xl">
               <div class="w-5/6 justify-center rounded-3xl border-4 border-indigo-500 bg-transparent py-24 ml-8">
-                <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">DESIGNER</h1>
-                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Matthieu Hoareau</h2>
-                <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">19 ans</h2>
-                <p class="text-1xl m-4 justify-start text-left font-roboto text-white">
+                <div class="flex flex-col gap-1">
+                    <img class="w-3/12 m-5 -mt-10" src="../assets/matthieu_avatar.webp" alt="Avatar Matthieu">
+                      <div class="-mt-40">
+                        <h1 class="m-3 text-right font-roboto text-3xl font-bold text-white">DESIGNER</h1>
+                        <h2 class="m-3 text-right font-press-start-2p text-2xl text-indigo-500">Matthieu Hoareau</h2>
+                        <h2 class="text-1xl m-3 text-right font-press-start-2p text-white">19 ans</h2>
+                      </div>
+                </div>
+                <p class="text-1xl m-6 justify-start text-left font-roboto text-white">
                   Étudiant en première année de MMI à Montbéliard, c’est le pilier de l’univers visuel d’Arquest. Créatif, il s’est occupé
-                  d’établir la direction artistique de notre web app. Il est très fréquement en contact avec ces deux autres collègues : le
-                  développeur pour s’assurer que ses idées soient réalisable, et la chargé de com’ afin de mettre ses idées sur le papier !
-                </p>
+                  d’établir la direction artistique de notre web app.</p>
+                <p class="text-1xl m-6 justify-start text-left font-roboto text-white -mb-12">Il est très fréquement en contact avec ces deux autres collègues : le
+                  développeur pour s’assurer que ses idées soient réalisable, et la chargé de com’ afin de mettre ses idées sur le papier !</p>
               </div>
             </div>
 
             <div class="w-full shrink-0 rounded-xl shadow-xl">
               <div class="w-5/6 justify-center rounded-3xl border-4 border-indigo-500 bg-transparent py-24 ml-8">
-                <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">DEVELOPPEUR</h1>
-                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Eliot</h2>
-                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Gros</h2>
-                <h2 class="text-1xl m-2 mb-8 text-right font-press-start-2p text-white">19 ans</h2>
-                <p class="text-1xl m-4 justify-start text-left font-roboto text-white">
+                <div class="flex flex-col gap-1">
+                  <img class="w-3/12 m-5 -mt-10" src="../assets/eliot_avatar.webp" alt="Avatar Eliot">
+                    <div class="-mt-40">
+                      <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">DEVELOPPEUR</h1>
+                      <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Eliot</h2>
+                      <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Gros</h2>
+                      <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">19 ans</h2>
+                    </div>
+                <p class="text-1xl m-6 justify-start text-left font-roboto text-white">
                   Étudiant en première année au département MMI de Montbéliard. C’est à lui que l’on doit l’ensemble des lignes de code du
-                  site web et de l’application. En étroite collaboration avec le designer, il s’est occupé de la mise en ligne d’Arquest tout
+                  site web et de l’application.</p>
+                  <p class="text-1xl m-6 justify-start text-left font-roboto text-white -mb-10">En étroite collaboration avec le designer, il s’est occupé de la mise en ligne d’Arquest tout
                   en s’assurant que le design pensé soit correctement appliqué.</p>
+                </div>
               </div>
             </div>
 
             <div class="w-full shrink-0 rounded-xl shadow-xl">
               <div class="w-5/6 justify-center rounded-3xl border-4 border-indigo-500 bg-transparent py-24 ml-8">
-                <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">COMMUNICATION</h1>
-                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Héléna</h2>
-                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Jaegle</h2>
-                <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">20 ans</h2>
-                <p class="text-1xl m-4 justify-start text-left font-roboto text-white">
+                <div class="flex flex-col gap-1">
+                  <img class="w-3/12 m-5 -mt-10" src="../assets/helena_avatar.webp" alt="Avatar Héléna">
+                    <div class="-mt-40">
+                      <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">COM</h1>
+                      <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Héléna</h2>
+                      <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Jaegle</h2>
+                      <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">20 ans</h2>
+                    </div>
+                <p class="text-1xl m-6 justify-start text-left font-roboto text-white">
                    Étudiante en première année au département MMI de Montbéliard, c’est grâce à elle qu’Arquest peut exister. Créative et
-                  curieuse, elle se tient au courant des tendances afin qu’Arquest puisse avoir de la visibilité ! Elle travail notamment avec
+                  curieuse, elle se tient au courant des tendances afin qu’Arquest puisse avoir de la visibilité !</p>
+                  <p class="text-1xl m-6 justify-start text-left font-roboto text-white -mb-14">Elle travail notamment avec
                   le designer afin que ses idées soient matérialisées et que ses actions puissent devenir plus concrètes.
                 </p>
+                </div>
               </div>
             </div>
         </div>
