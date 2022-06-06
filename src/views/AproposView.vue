@@ -16,7 +16,7 @@
 
     <h2 class="m-10 text-center text-5xl font-bold text-indigo-300">PROJET ÉTUDIANT</h2>
 
-    <div class="flex w-full snap-x snap-start overflow-x-auto pb-10">
+    <div class="flex w-full snap-x bg-scroll  overflow-x-auto pb-10">
         <div class="w-full shrink-0 rounded-lg shadow-xl">
               <div class="w-5/6 justify-center rounded-3xl border-4 border-indigo-500 bg-transparent py-24 ml-8">
                 <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">DESIGNER</h1>
