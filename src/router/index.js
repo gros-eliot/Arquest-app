@@ -40,8 +40,8 @@ const router = createRouter({
 
 
     { path: '/create_quest', name: 'QuestCreateView', component: QuestCreateView, },
-    { path: '/custom_quest', name: 'QuestModifView', component: QuestModifView, },
-    { path: '/delete_quest', name: 'QuestDeleteView', component: QuestDeleteView, },
+    { path: '/custom_quest/:id', name: 'QuestModifView', component: QuestModifView, },
+    { path: '/delete_quest/:id', name: 'QuestDeleteView', component: QuestDeleteView, },
 
 
     { path: '/history', name: 'HistoryView', component: HistoryView, },

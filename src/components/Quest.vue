@@ -31,20 +31,23 @@
           <!---->
           <!---->
           <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
-          <div class="flex flex-col gap-5 px-2">
-            <!-- DATE LIMITE DE LA QUÊTE-->
 
-            <div class="ml-auto flex gap-5">
-              <!--MODIFIER LA QUETE : BOUTON CRAYON-->
-              <!--params quete.id ==> se diriger sur la quête à modifier-->
-              <RouterLink :to="{ name: 'QuestModifView', params: { id: quete.id } }">
-                <PencilIcon class="h-8 w-8 stroke-white" />
-              </RouterLink>
+          <div class="m-3 ml-auto flex gap-5">
+            <!--MODIFIER LA QUETE : BOUTON CRAYON-->
+            <!--params quete.id ==> se diriger sur la quête à modifier-->
+            <RouterLink :to="{ name: 'QuestModifView', params: { id: quete.id } }">
+              <PencilIcon class="h-8 w-8 stroke-white" />
+            </RouterLink>
 
-              <!--SUPPRIMER LA QUETE : BOUTON POUBELLE-->
+            <!--SUPPRIMER LA QUETE : BOUTON POUBELLE-->
 
+            <RouterLink :to="{ name: 'QuestDeleteView', params: { id: quete.id } }">
               <TrashIcon class="h-8 w-8 stroke-red-500" />
-            </div>
+            </RouterLink>
+          </div>
+
+          <div class="grid grid-cols-1 grid-rows-3 gap-5 px-2 md:my-5 md:grid-cols-3 md:grid-rows-1">
+            <!-- DATE LIMITE DE LA QUÊTE-->
 
             <div>
               <h4 class="font-roboto text-2xl font-bold text-white">Date limite</h4>
@@ -72,8 +75,8 @@
                 {{ quete.difficulty }}
               </p>
             </div>
-            <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
           </div>
+          <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
 
           <!--CATEGORIE DE LA QUÊTE-->
           <div class="w-full p-2">
@@ -185,13 +188,6 @@ export default {
           ...doc.data(),
         }));
       });
-    },
-
-    async deleteQuete(quete) {
-      const firestore = getFirestore();
-      const docRef = doc(firestore, "quete", quete.id);
-      await deleteDoc(docRef);
-      console.log("Quête " + quete.id + " supprimée");
     },
 
     // Format date en français

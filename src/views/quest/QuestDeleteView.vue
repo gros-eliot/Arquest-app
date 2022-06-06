@@ -1,0 +1,139 @@
+<template>
+  <!-- haut du template-->
+  <div class="p-3">
+    <div class="flex justify-end p-1">
+      <RouterLink to="/" class="fixed"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
+    </div>
+    <h1 class="text-center font-roboto text-4xl font-bold uppercase text-white">Supprimer la <span class="text-white">quête</span></h1>
+  </div>
+  <!--fin hero template-->
+
+  <form class="flex flex-col items-center gap-5 text-white" enctype="multipart/form-data" @submit.prevent="deleteQuete">
+    <div class="flex flex-col items-center gap-0 md:flex-row md:gap-40">
+      <div>
+        <div class="flex flex-col gap-1">
+          <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Description :</span></div>
+          <input
+            type="text"
+            class="h-16 w-full max-w-2xl rounded-3xl bg-blue-500 text-center text-xl font-bold uppercase text-white md:mb-5"
+            v-model="quete.nom"
+            disabled
+          />
+        </div>
+        <div class="flex flex-col gap-1">
+          <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Description :</span></div>
+          <textarea
+            type="text"
+            class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl bg-blue-500 p-4 text-lg text-white md:mb-5"
+            v-model="quete.desc"
+            disabled
+          />
+        </div>
+      </div>
+      <div>
+        <div class="flex flex-col gap-0">
+          <div class="w-full md:w-[70%] lg:w-[50%]">
+            <span class="flex items-center font-bold"
+              >Catégorie <RouterLink to="/listecat"><QuestionMarkCircleIcon class="m-3 h-6 w-6 stroke-indigo-500" /></RouterLink> :</span
+            >
+          </div>
+          <input
+            v-model="quete.cat"
+            disabled
+            class="h-16 w-full rounded-3xl bg-blue-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
+          />
+        </div>
+        <div class="flex flex-col gap-1">
+          <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Difficulté :</span></div>
+          <input
+            class="h-16 w-full rounded-3xl bg-blue-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
+            v-model="quete.difficulty"
+            disabled
+          />
+        </div>
+        <div class="flex flex-col gap-1">
+          <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Date :</span></div>
+          <input
+            v-model="quete.date"
+            disabled
+            type="date"
+            format="dd/mm/yyyy"
+            class="h-16 w-full rounded-3xl bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black md:mb-5"
+          />
+        </div>
+      </div>
+    </div>
+
+    <BoutonBlue class="w-full bg-red-500 lg:max-w-xl" type="submit" title="Suppression">Supprimer</BoutonBlue>
+  </form>
+</template>
+
+<script>
+// Bibliothèque Firestore : import des fonctions
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDoc,
+  updateDoc,
+  onSnapshot,
+  query,
+  orderBy,
+} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+
+import BoutonBlue from "../../components/boutons/BoutonBlue.vue";
+import BoutonClose from "../../components/boutons/BoutonClose.vue";
+import { XIcon, QuestionMarkCircleIcon } from "@heroicons/vue/outline";
+export default {
+  name: "QuestDeleteView",
+  data() {
+    return {
+      refQuete: null, // Référence de la quête à modifier
+      quete: {
+        nom: "",
+        date: "",
+        desc: "",
+        date: "",
+        difficulty: "",
+      },
+    };
+  },
+  mounted() {
+    console.log("id quête en cours de suppression : ", this.$route.params.id);
+    // Recherche participant concerné
+    this.getQueteSynchro(this.$route.params.id);
+  },
+  methods: {
+    async getQueteSynchro(id) {
+      const firestore = getFirestore();
+
+      const docRef = doc(firestore, "quete", id);
+
+      this.refQuete = await getDoc(docRef);
+      // Test si le participant demandé existe
+      if (this.refQuete.exists()) {
+        // Si oui on récupère ses données
+        this.quete = this.refQuete.data();
+      } else {
+        // Sinon simple message d'erreur
+        this.console.log("Quête inexistant");
+      }
+    },
+
+    async deleteQuete(quete) {
+      const firestore = getFirestore();
+      const docRef = doc(firestore, "quete", quete.id);
+      await deleteDoc(docRef);
+      console.log("Quête " + quete.id + " supprimée");
+    },
+  },
+
+  components: {
+    BoutonBlue,
+    BoutonClose,
+    XIcon,
+    QuestionMarkCircleIcon,
+  },
+};
+</script>
+<style></style>
