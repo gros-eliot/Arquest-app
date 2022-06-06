@@ -6,7 +6,7 @@
         <p>{{ history.nom }}</p>
         <div class="flex items-center gap-4">
           <p>{{ history.date }}</p>
-          <TrashIcon class="h-8 w-8" />
+          <TrashIcon class="h-8 w-8" @click.prevent="deleteHistoryElement(history)" />
         </div>
       </div>
     </div>
@@ -60,6 +60,19 @@ export default {
       await onSnapshot(q, (snapshot) => {
         this.listeHistory = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       });
+    },
+    async deleteQuete(quete) {
+      const firestore = getFirestore();
+      const docRef = doc(firestore, "quete", quete.id);
+      await deleteDoc(docRef);
+      console.log("Quête " + quete.id + " supprimée");
+    },
+
+    async deleteHistoryElement(history) {
+      const firestore = getFirestore();
+      const docRef = doc(firestore, "history", history.id);
+      await deleteDoc(docRef);
+      console.log("Element de l'historique " + history.id + " supprimé");
     },
   },
 };
