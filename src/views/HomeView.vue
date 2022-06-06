@@ -1,5 +1,5 @@
 <script>
-import Quest from "../components/Quest.vue";
+import Quest from "../components/Overlay/Quest.vue";
 import BravopartageView from "../components/overlay/BravopartageView.vue";
 import { PlusIcon } from "@heroicons/vue/solid";
 export default {

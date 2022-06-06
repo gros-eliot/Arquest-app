@@ -191,8 +191,8 @@ import {
   deleteDoc,
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
-import BoutonBlue from "../components/boutons/BoutonBlue.vue";
-import FinaldeletView from "../components/overlay/FinaldeletView.vue";
+import BoutonBlue from "../boutons/BoutonBlue.vue";
+import FinaldeletView from "../Overlay/FinaldeletView.vue";
 import { DotsHorizontalIcon, TrashIcon, PencilIcon, XIcon } from "@heroicons/vue/outline";
 export default {
   name: "QuestCreateView",
