@@ -16,12 +16,12 @@
 
     <h2 class="m-10 text-center text-5xl font-bold text-indigo-300">PROJET ÉTUDIANT</h2>
 
-    <div class="relative flex w-full snap-x overflow-x-auto pb-14">
+    <div class="flex w-full snap-x snap-start overflow-x-auto pb-10">
         <div class="w-full shrink-0 rounded-lg shadow-xl">
-              <div class="w-5/6 justify-center rounded-xl border-4 border-indigo-500 bg-transparent py-24">
+              <div class="w-5/6 justify-center rounded-3xl border-4 border-indigo-500 bg-transparent py-24 ml-8">
                 <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">DESIGNER</h1>
                 <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Matthieu Hoareau</h2>
-                <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">18 ans</h2>
+                <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">19 ans</h2>
                 <p class="text-1xl m-4 justify-start text-left font-roboto text-white">
                   Étudiant en première année de MMI à Montbéliard, c’est le pilier de l’univers visuel d’Arquest. Créatif, il s’est occupé
                   d’établir la direction artistique de notre web app. Il est très fréquement en contact avec ces deux autres collègues : le
@@ -30,26 +30,27 @@
               </div>
             </div>
 
-            <div class="w-full shrink-0 rounded-lg shadow-xl">
-              <div class="w-5/6 justify-center rounded-xl border-4 border-indigo-500 bg-transparent py-24">
+            <div class="w-full shrink-0 rounded-xl shadow-xl">
+              <div class="w-5/6 justify-center rounded-3xl border-4 border-indigo-500 bg-transparent py-24 ml-8">
                 <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">DEVELOPPEUR</h1>
-                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Eliot Gros</h2>
-                <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">19 ans</h2>
+                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Eliot</h2>
+                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Gros</h2>
+                <h2 class="text-1xl m-2 mb-8 text-right font-press-start-2p text-white">19 ans</h2>
                 <p class="text-1xl m-4 justify-start text-left font-roboto text-white">
                   Étudiant en première année au département MMI de Montbéliard. C’est à lui que l’on doit l’ensemble des lignes de code du
                   site web et de l’application. En étroite collaboration avec le designer, il s’est occupé de la mise en ligne d’Arquest tout
-                  en s’assurant que le design pensé soit correctement appliqué.
-                </p>
+                  en s’assurant que le design pensé soit correctement appliqué.</p>
               </div>
             </div>
 
-            <div class="w-full shrink-0 rounded-lg shadow-xl">
-              <div class="w-5/6 justify-center rounded-xl border-4 border-indigo-500 bg-transparent py-24">
+            <div class="w-full shrink-0 rounded-xl shadow-xl">
+              <div class="w-5/6 justify-center rounded-3xl border-4 border-indigo-500 bg-transparent py-24 ml-8">
                 <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">COMMUNICATION</h1>
-                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Héléna Jaegle</h2>
-                <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">19 ans</h2>
+                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Héléna</h2>
+                <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Jaegle</h2>
+                <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">20 ans</h2>
                 <p class="text-1xl m-4 justify-start text-left font-roboto text-white">
-                  Étudiante en première année au département MMI de Montbéliard, c’est grâce à elle qu’Arquest peut exister. Créative et
+                   Étudiante en première année au département MMI de Montbéliard, c’est grâce à elle qu’Arquest peut exister. Créative et
                   curieuse, elle se tient au courant des tendances afin qu’Arquest puisse avoir de la visibilité ! Elle travail notamment avec
                   le designer afin que ses idées soient matérialisées et que ses actions puissent devenir plus concrètes.
                 </p>
