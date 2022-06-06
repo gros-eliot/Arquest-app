@@ -15,7 +15,7 @@
           <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Description :</span></div>
           <input
             type="text"
-            class="h-16 w-full max-w-2xl rounded-3xl bg-blue-500 text-center text-xl font-bold uppercase text-white md:mb-5"
+            class="h-16 w-full max-w-2xl rounded-3xl bg-indigo-500 text-center text-xl font-bold uppercase text-white md:mb-5"
             v-model="quete.nom"
             disabled
           />
@@ -24,7 +24,7 @@
           <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Description :</span></div>
           <textarea
             type="text"
-            class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl bg-blue-500 p-4 text-lg text-white md:mb-5"
+            class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl bg-indigo-500 p-4 text-lg text-white md:mb-5"
             v-model="quete.desc"
             disabled
           />
@@ -40,13 +40,13 @@
           <input
             v-model="quete.cat"
             disabled
-            class="h-16 w-full rounded-3xl bg-blue-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
+            class="h-16 w-full rounded-3xl bg-indigo-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
           />
         </div>
         <div class="flex flex-col gap-1">
           <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Difficulté :</span></div>
           <input
-            class="h-16 w-full rounded-3xl bg-blue-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
+            class="h-16 w-full rounded-3xl bg-indigo-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
             v-model="quete.difficulty"
             disabled
           />
@@ -67,7 +67,7 @@
     <h3 role="alert" class="text-center">
       <strong>Attention : vous allez supprimer cette quête, cette action est irréversible !</strong>
     </h3>
-    <BoutonBlue class="w-full bg-red-500 lg:max-w-xl" type="submit" title="Suppression">Supprimer</BoutonBlue>
+    <BoutonRed class="w-full bg-red-500 lg:max-w-xl" type="submit" title="Suppression">Supprimer</BoutonRed>
   </form>
 </template>
 
@@ -85,7 +85,7 @@ import {
   orderBy,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 
-import BoutonBlue from "../../components/boutons/BoutonBlue.vue";
+import BoutonRed from "../../components/boutons/BoutonRed.vue";
 import BoutonClose from "../../components/boutons/BoutonClose.vue";
 import { XIcon, QuestionMarkCircleIcon } from "@heroicons/vue/outline";
 export default {
@@ -135,7 +135,7 @@ export default {
   },
 
   components: {
-    BoutonBlue,
+    BoutonRed,
     BoutonClose,
     XIcon,
     QuestionMarkCircleIcon,

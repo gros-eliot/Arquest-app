@@ -1,5 +1,10 @@
 <template>
-  <h2 class="font-roboto text-2xl font-bold text-white">QUÊTES DU JOUR ()</h2>
+  <h2 class="font-roboto text-2xl font-bold text-white">
+    QUÊTES DU JOUR (
+    <span class="text-white" v-for="(quete, index) in listeQueteSynchro" :key="quete">{{ index }}</span>
+    )
+  </h2>
+
   <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]">
     <!--IMPORT DES QUÊTES DE FIREBASE-->
     <form v-for="quete in listeQueteSynchro" :key="quete.id">
@@ -14,7 +19,7 @@
               type="button"
               aria-controls="detailsOfQuest"
               :aria-expanded="detailsQuetes"
-              @click="detailsQuetes = !detailsQuetes"
+              @click.prevent="quete.detailsQuetes = !quete.detailsQuetes"
               title="Détails de la quête"
             >
               <DotsHorizontalIcon class="h-10 w-10 stroke-white" />
@@ -25,7 +30,12 @@
 
         <!--DETAILS DE LA CARD -->
 
-        <div v-on="quete" id="detailsOfQuest" class="flex flex-col text-white" :class="{ hidden: detailsQuetes }">
+        <div
+          v-on="quete"
+          id="detailsOfQuest"
+          class="flex-col text-white"
+          :class="{ flex: quete.detailsQuetes, hidden: !quete.detailsQuetes }"
+        >
           <!---->
           <!---->
           <!---->
@@ -46,7 +56,12 @@
             </RouterLink>
           </div>
 
-          <div class="grid grid-cols-1 grid-rows-3 gap-5 px-2 md:my-5 md:grid-cols-3 md:grid-rows-1">
+          <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] justify-items-start gap-5 px-2 md:my-5">
+            <!-- DESCRIPTION DE LA QUÊTE-->
+            <div>
+              <h4 class="font-roboto text-2xl font-bold text-white">Note</h4>
+              <p class="font-roboto text-base">{{ quete.desc }}</p>
+            </div>
             <!-- DATE LIMITE DE LA QUÊTE-->
 
             <div>
@@ -54,14 +69,8 @@
               <p class="font-roboto text-base">{{ dateFr(quete.date) }}</p>
             </div>
 
-            <!-- DESCRIPTION DE LA QUÊTE-->
-            <div class="flex w-full flex-col justify-center">
-              <h4 class="font-roboto text-2xl font-bold text-white">Note</h4>
-              <p class="font-roboto text-base">{{ quete.desc }}</p>
-            </div>
-
             <!-- DIFFICULTE DE LA QUÊTE-->
-            <div class="flex w-full flex-col justify-center">
+            <div>
               <h4 class="font-roboto text-2xl font-bold text-white">Difficulté</h4>
 
               <p
@@ -153,14 +162,13 @@ import {
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 import BoutonBlue from "./boutons/BoutonBlue.vue";
-import FinaldeletView from "./Overlay/FinaldeletView.vue";
+import FinaldeletView from "./overlay/FinaldeletView.vue";
 import { DotsHorizontalIcon, TrashIcon, PencilIcon, XIcon } from "@heroicons/vue/outline";
 export default {
   name: "QuestCreateView",
   data() {
     return {
-      supprimerQuete: true,
-      detailsQuetes: true,
+      detailsQuetes: false,
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
     };
