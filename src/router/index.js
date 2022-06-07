@@ -22,6 +22,7 @@ import AboutView from '../views/AboutView.vue'
 import AproposView from '../views/AproposView.vue'
 import GuideStyle from '../components/ancients_and_gds/GuideStyle.vue'
 import ListecatView from '../views/ListecatView.vue'
+import View404 from '../views/View404.vue'
 
 import Socialmedia from '../views/Socialmedia.vue'
 import ConnexionView from '../views/ConnexionView.vue'
@@ -33,12 +34,12 @@ const router = createRouter({
     // A SUPPRIMER UNE FOIS LES USERS FAITS !
     { path: '/', name: 'home', component: HomeView },
     //
-// A FAIRE AVEC LES USERS !
-  //  { path: '/', name: 'ConnexionView', component: ConnexionView },
-  //  { path: '/home', name: 'homeView', component: HomeView },
-  //
-  // MODIFIER LE PATH dans chaque vue où l'on a une redirection à la page d'accueil ! => navView, HeaderView, menu...
-  //
+    // A FAIRE AVEC LES USERS !
+    //  { path: '/', name: 'ConnexionView', component: ConnexionView },
+    //  { path: '/home', name: 'homeView', component: HomeView },
+    //
+    // MODIFIER LE PATH dans chaque vue où l'on a une redirection à la page d'accueil ! => navView, HeaderView, menu...
+    //
 
 
     { path: '/create_quest', name: 'QuestCreateView', component: QuestCreateView, },
@@ -58,6 +59,7 @@ const router = createRouter({
     { path: '/mentionslegales', name: 'MentionslegalesView', component: MentionslegalesView, },
     { path: '/about', name: 'AboutView', component: AboutView, },
     { path: '/apropos', name: 'AproposView', component: AproposView, },
+    { path: '/:pathMatch(.*)', name: 'View404', component: View404 },
 
     { path: '/gds', name: 'GuideStyle', component: GuideStyle },
 
