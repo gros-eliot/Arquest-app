@@ -1,8 +1,11 @@
 <template>
   <div class="p-3">
-    <h1 class="text-2xl font-bold text-white">Quêtes accomplies</h1>
+    <div class="flex items-center gap-2">
+      <h1 class="text-2xl font-bold text-white">Quêtes accomplies</h1>
+      <ArquestWhite class="h-8 w-8" />
+    </div>
 
-    <div class="grid grid-cols-[1fr_1fr_20px] justify-items-start border-white p-3 font-bold text-white">
+    <div class="grid grid-cols-[1fr_1fr_20px] items-center justify-start border-white p-3 font-bold text-white md:grid-cols-[1fr_1fr_50px]">
       <p>Nom</p>
 
       <p>Date fixée</p>
@@ -10,7 +13,7 @@
     </div>
 
     <div class="my-5 flex flex-col gap-2 text-white" v-for="history in listeHistory" :key="history.id">
-      <div class="grid grid-cols-[1fr_1fr_20px] justify-items-start border-b border-white p-3">
+      <div class="grid grid-cols-[1fr_1fr_20px] items-center justify-start border-b border-white p-3 md:grid-cols-[1fr_1fr_50px]">
         <p>{{ history.nom }}</p>
 
         <p>{{ dateFr(history.date) }}</p>
@@ -42,9 +45,11 @@ import {
 //
 //
 import { TrashIcon } from "@heroicons/vue/outline";
+import ArquestWhite from "../../components/icons/ArquestWhite.vue";
 export default {
   components: {
     TrashIcon,
+    ArquestWhite,
   },
 
   //
