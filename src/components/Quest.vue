@@ -144,7 +144,7 @@
 
   <div v-if="listeQueteSynchro.length >= 1" class="my-5 flex h-1/2 flex-col items-center justify-center gap-3">
     <img src="src/assets/createmorequest.png" alt="Trophé" class="w-20" />
-    <p class="text-center font-press-start-2p text-xl text-zinc-600">Créez de nouvelles quêtes !</p>
+    <p class="text-center font-press-start-2p text-xl text-zinc-600">Créez de nouvelles quêtes&nbsp;!</p>
   </div>
 </template>
 

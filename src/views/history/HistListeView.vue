@@ -7,7 +7,7 @@
     <!--Si il n'y a aucun élément dans historique, afficher cette image-->
     <div v-if="listeHistory.length == 0" class="my-5 flex h-1/2 flex-col items-center justify-center gap-3">
       <HistoryClock class="w-40 max-w-xl md:w-72" />
-      <p class="text-center font-press-start-2p text-xl text-zinc-600">Aucun élément dans l'historique. Accomplissez vos quêtes !</p>
+      <p class="text-center font-press-start-2p text-xl text-zinc-600">Aucun élément dans l'historique. Accomplissez vos quêtes&nbsp;!</p>
     </div>
 
     <!--Si il n'y a 1 ou + élément dans historique, afficher historique-->

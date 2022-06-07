@@ -1,6 +1,5 @@
 <template>
   <h1 class="px-4 pt-4 font-press-start-2p text-2xl text-white">Connexion</h1>
-
   <form @submit.prevent="onCnx" class="flex flex-col px-4">
     <input
       class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
