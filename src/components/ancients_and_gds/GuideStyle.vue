@@ -115,13 +115,6 @@
         <!-- POUR QUE LES OVERLAYS FONCTIONNENT VISUELLEMENT : 
         class="fixed inset-y-2 inset-x-4 z-50"
         -->
-
-        <SucceedQuete />
-
-        <BravoView />
-        <BravopartageView />
-        <FinaldeletView />
-        <HistoriqueView />
       </div>
     </div>
   </div>
@@ -155,12 +148,6 @@ import HeaderView from "../layouts/HeaderView.vue";
 import NavView from "../layouts/NavView.vue";
 import FooterView from "../layouts/FooterView.vue";
 import QuestView from "../Quest.vue";
-import TooEarlyView from "../Overlay/TooEarlyView.vue";
-import SucceedQuete from "../Overlay/QuetesaccompliespartageView.vue";
-import BravoView from "../Overlay/BravoView.vue";
-import BravopartageView from "../Overlay/BravopartageView.vue";
-import FinaldeletView from "../Overlay/FinaldeletView.vue";
-import HistoriqueView from "../Overlay/HistoriqueView.vue";
 import CardMatthieu from "../Cards/CardMatthieu.vue";
 
 export default {
@@ -192,12 +179,7 @@ export default {
     NavView,
     FooterView,
     QuestView,
-    TooEarlyView,
-    SucceedQuete,
-    BravoView,
-    BravopartageView,
-    FinaldeletView,
-    HistoriqueView,
+
     CardMatthieu,
   },
 };
