@@ -1,8 +1,7 @@
 <template>
   <h2 class="font-roboto text-2xl font-bold text-white">
-    QUÊTES DU JOUR (
-    <span class="text-white" v-for="(quete, index) in listeQueteSynchro" :key="quete.id">{{ index.length }}</span>
-    )
+    QUÊTES EN COURS (<span class="font-bold text-blue-300">{{ listeQueteSynchro.length }}</span
+    >)
   </h2>
 
   <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]">
