@@ -37,7 +37,7 @@
         required
       >
         <option class="border-0 bg-gray-900 font-roboto font-normal" value="0" disabled selected>Sélectionner une catégorie</option>
-        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="categorie in listeCategorie" :key="categorie.cat">
+        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="categorie in listeCategorie" :key="categorie.id">
           {{ categorie.libelle }}
         </option>
       </select>
@@ -48,7 +48,7 @@
         required
       >
         <option class="border-0 bg-gray-900 font-roboto font-normal" value="0" disabled selected>Sélectionner une difficulté</option>
-        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.niveau">
+        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.id">
           {{ difficulte.niveau }}
         </option>
       </select>

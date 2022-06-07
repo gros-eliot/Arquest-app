@@ -1,7 +1,7 @@
 <template>
   <h2 class="font-roboto text-2xl font-bold text-white">
     QUÊTES DU JOUR (
-    <span class="text-white" v-for="(quete, index) in listeQueteSynchro" :key="quete">{{ index }}</span>
+    <span class="text-white" v-for="(quete, index) in listeQueteSynchro" :key="quete.id">{{ index.length }}</span>
     )
   </h2>
 
@@ -162,7 +162,6 @@ import {
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 import BoutonBlue from "./boutons/BoutonBlue.vue";
-import FinaldeletView from "./overlay/FinaldeletView.vue";
 import { DotsHorizontalIcon, TrashIcon, PencilIcon, XIcon } from "@heroicons/vue/outline";
 export default {
   name: "QuestComponent",
@@ -175,7 +174,6 @@ export default {
   },
   components: {
     BoutonBlue,
-    FinaldeletView,
     DotsHorizontalIcon,
     TrashIcon,
     PencilIcon,

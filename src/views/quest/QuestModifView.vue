@@ -51,7 +51,7 @@
       >
         <option class="border-0 bg-gray-900 font-roboto font-bold" value="0" disabled selected>Sélectionner une difficulté</option>
 
-        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.niveau">
+        <option class="border-0 bg-gray-900 font-roboto font-normal" v-for="difficulte in listeDifficulte" :key="difficulte.id">
           {{ difficulte.niveau }}
         </option>
       </select>
