@@ -24,7 +24,7 @@
 
       <div class="my-5 flex flex-col gap-2 text-white" v-for="history in listeHistory" :key="history.id">
         <div class="grid grid-cols-[1fr_1fr_20px] items-center justify-start border-b border-white p-3 md:grid-cols-[1fr_1fr_50px]">
-          <p>{{ history.nom }}</p>
+          <p class="uppercase">{{ history.nom }}</p>
 
           <p>{{ dateFr(history.date) }}</p>
           <button @click.prevent="deleteHistoryElement(history)">

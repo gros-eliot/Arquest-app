@@ -12,7 +12,7 @@
   <div class="flex flex-col px-5 py-10 text-white">
     <!--Div contenant le formulaire-->
 
-    <form class="flex flex-col items-center gap-5">
+    <form class="flex flex-col items-center gap-5" enctype="multipart/form-data" @submit.prevent="createQuete">
       <input
         type="text"
         class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-indigo-500"
@@ -61,15 +61,9 @@
         placeholder="Date"
         required
       />
-    </form>
-  </div>
 
-  <div class="flex justify-center">
-    <RouterLink class="w-full" to="/">
-      <div class="flex w-full justify-center">
-        <BoutonBlue class="w-full lg:max-w-xl" type="button" @click="createQuete()" title="Création">Créer</BoutonBlue>
-      </div>
-    </RouterLink>
+      <BoutonBlue class="w-full lg:max-w-xl" type="submit" title="Création">Créer</BoutonBlue>
+    </form>
   </div>
 </template>
 
@@ -154,6 +148,7 @@ export default {
         desc: this.desc,
       });
       console.log("document créé avec le id suivant : ", docRef.id);
+      this.$router.push("/");
     },
 
     async deleteQuete(quete) {
