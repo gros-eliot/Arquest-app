@@ -2,21 +2,21 @@
   <div class="p-3">
     <h1 class="text-2xl font-bold text-white">Quêtes accomplies</h1>
 
-    <div class="flex items-center justify-between border-b-2 border-white p-3 font-bold text-white">
+    <div class="grid grid-cols-[1fr_1fr_20px] justify-items-start border-white p-3 font-bold text-white">
       <p>Nom</p>
-      <div class="flex items-center gap-4 text-right">
-        <p>Date fixée</p>
-        <TrashIcon class="h-6 w-6 stroke-black" />
-      </div>
+
+      <p>Date fixée</p>
+      <TrashIcon class="h-6 w-6 stroke-black" />
     </div>
 
     <div class="my-5 flex flex-col gap-2 text-white" v-for="history in listeHistory" :key="history.id">
-      <div class="flex items-center justify-between border-b border-white p-3">
+      <div class="grid grid-cols-[1fr_1fr_20px] justify-items-start border-b border-white p-3">
         <p>{{ history.nom }}</p>
-        <div class="flex items-center gap-4">
-          <p>{{ history.date }}</p>
-          <TrashIcon class="h-6 w-6 stroke-red-500 md:h-10 md:w-10" @click.prevent="deleteHistoryElement(history)" />
-        </div>
+
+        <p>{{ dateFr(history.date) }}</p>
+        <button @click.prevent="deleteHistoryElement(history)">
+          <TrashIcon class="h-6 w-6 stroke-red-500 md:h-10 md:w-10" />
+        </button>
       </div>
     </div>
   </div>
@@ -82,6 +82,12 @@ export default {
       const docRef = doc(firestore, "history", history.id);
       await deleteDoc(docRef);
       console.log("Element de l'historique " + history.id + " supprimé");
+    },
+
+    // Format date en français
+    dateFr(d) {
+      let date = d.split("-");
+      return date[2] + "/" + date[1] + "/" + date[0];
     },
   },
 };
