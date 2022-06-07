@@ -4,6 +4,13 @@
     >)
   </h2>
 
+  <!--Image page fixe si aucune quête en cours-->
+
+  <div v-if="listeQueteSynchro.length == 0" class="my-5 flex h-1/2 flex-col items-center justify-center">
+    <NoQuestAvailable class="w-full max-w-xl" />
+    <p class="text-center font-press-start-2p text-xl text-zinc-500">Aucune quête en cours.</p>
+  </div>
+
   <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]">
     <!--IMPORT DES QUÊTES DE FIREBASE-->
     <form v-for="quete in listeQueteSynchro" :key="quete.id">
@@ -26,9 +33,7 @@
             </button>
           </div>
         </div>
-
         <!--DETAILS DE LA CARD -->
-
         <div
           v-on="quete"
           id="detailsOfQuest"
@@ -40,21 +45,17 @@
           <!---->
           <!---->
           <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
-
           <div class="m-3 ml-auto flex gap-5">
             <!--MODIFIER LA QUETE : BOUTON CRAYON-->
             <!--params quete.id ==> se diriger sur la quête à modifier-->
             <RouterLink :to="{ name: 'QuestModifView', params: { id: quete.id } }">
               <PencilIcon class="h-8 w-8 stroke-white" />
             </RouterLink>
-
             <!--SUPPRIMER LA QUETE : BOUTON POUBELLE-->
-
             <RouterLink :to="{ name: 'QuestDeleteView', params: { id: quete.id } }">
               <TrashIcon class="h-8 w-8 stroke-red-500" />
             </RouterLink>
           </div>
-
           <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] justify-items-start gap-5 px-2 md:my-5">
             <!-- DESCRIPTION DE LA QUÊTE-->
             <div>
@@ -62,16 +63,13 @@
               <p class="font-roboto text-base">{{ quete.desc }}</p>
             </div>
             <!-- DATE LIMITE DE LA QUÊTE-->
-
             <div>
               <h4 class="font-roboto text-2xl font-bold text-white">Date limite</h4>
               <p class="font-roboto text-base">{{ dateFr(quete.date) }}</p>
             </div>
-
             <!-- DIFFICULTE DE LA QUÊTE-->
             <div>
               <h4 class="font-roboto text-2xl font-bold text-white">Difficulté</h4>
-
               <p
                 class="font-press-start-2p text-base"
                 :class="{
@@ -85,7 +83,6 @@
             </div>
           </div>
           <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
-
           <!--CATEGORIE DE LA QUÊTE-->
           <div class="w-full p-2">
             <h4
@@ -110,11 +107,8 @@
         <!---->
         <!---->
         <!---->
-
         <!-- FIN DETAILS DE LA CARD-->
-
         <!--FIN TOP DE LA CARD-->
-
         <!--CONTENU DE LA CARD (nom, catégorie, date, difficulté) -->
         <div class="flex w-full flex-col gap-4 p-2">
           <!---->
@@ -137,7 +131,6 @@
               ></div>
             </div>
           </div>
-
           <div class="flex justify-center">
             <bouton-blue type="button" @click.prevent="accomplishQuete(quete)" title="Valider la quête">VALIDER</bouton-blue>
           </div>
@@ -145,6 +138,11 @@
         <!--FIN CONTENU DE LA CARD-->
       </div>
     </form>
+  </div>
+
+  <div v-if="listeQueteSynchro.length >= 1">
+    <img src="src/assets/trophy.webp" alt="2" />
+    <p class="text-2xl text-zinc-500">Créez plus de quêtes pour améliorer vos badges!</p>
   </div>
 </template>
 
@@ -161,6 +159,7 @@ import {
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 import BoutonBlue from "./boutons/BoutonBlue.vue";
+import NoQuestAvailable from "./images/NoQuestAvailable.vue";
 import { DotsHorizontalIcon, TrashIcon, PencilIcon, XIcon } from "@heroicons/vue/outline";
 export default {
   name: "QuestComponent",
@@ -173,6 +172,7 @@ export default {
   },
   components: {
     BoutonBlue,
+    NoQuestAvailable,
     DotsHorizontalIcon,
     TrashIcon,
     PencilIcon,
