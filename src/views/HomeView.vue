@@ -1,12 +1,10 @@
 <script>
 import Quest from "../components/Quest.vue";
-import BravopartageView from "../components/overlay/BravopartageView.vue";
 import { PlusIcon } from "@heroicons/vue/solid";
 export default {
   name: "Home",
   components: {
     Quest,
-    BravopartageView,
     PlusIcon,
   },
 };

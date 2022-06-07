@@ -3,22 +3,24 @@
 
   <form @submit.prevent="onCnx" class="flex flex-col px-4">
     <input
-      class="text-indigo-30 rounded-md border-2 border-indigo-500 bg-transparent p-2"
+      class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
       placeholder="Adresse mail"
       type="email"
       v-model="user.email"
       required
     />
-    <div class="flex flex-row gap-2">
+    <div class="my-3 flex flex-row items-center gap-2">
       <input
-        class="text-indigo-30 mt-4 rounded-md border-2 border-indigo-500 bg-transparent p-2"
+        class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
         placeholder="Mot de passe"
         :type="type"
         v-model="user.password"
         required
       />
 
-      <button class="my-1 justify-center rounded-lg bg-zinc-300 px-5 text-black" @click.prevent="affiche()">Afficher</button>
+      <button class="h-fit w-fit rounded-lg bg-zinc-300 px-5 py-2" @click.prevent="affiche()">
+        <EyeIcon class="h-5 w-5" />
+      </button>
     </div>
 
     <div class="alert alert-warning" role="alert">
@@ -26,7 +28,7 @@
     </div>
 
     <div class="flex flex-row justify-center gap-6">
-      <BoutonBlue type="submit" class="btn btn-dark float-left text-white">Connexion</BoutonBlue>
+      <BoutonBlue type="submit" class="btn btn-dark text-white">Connexion</BoutonBlue>
       <BoutonBorder type="button" class="btn btn-dark float-right text-white" @click="onDcnx()">Deconnexion</BoutonBorder>
     </div>
   </form>
@@ -36,7 +38,7 @@
   <h1 class="p-4 font-press-start-2p text-2xl text-white">S'inscrire</h1>
 
   <form class="flex flex-col gap-3 px-4">
-    <input class="text-indigo-30 rounded-md border-2 border-indigo-500 bg-transparent p-2" placeholder="Login" required />
+    <input class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300" placeholder="Pseudo" required />
 
     <div v-if="imageData">
       <img class="preview img-fluid" :src="imageData" />
@@ -44,22 +46,22 @@
 
     <input
       type="file"
-      class="text-indigo-30 rounded-md border-2 border-indigo-500 bg-transparent p-2"
+      class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
       ref="file"
       id="file"
       @change="previewImage"
     />
 
     <input
-      class="text-indigo-30 rounded-md border-2 border-indigo-500 bg-transparent p-2"
+      class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
       placeholder="Adresse mail"
       type="email"
       required
     />
 
-    <input class="text-indigo-30 rounded-md border-2 border-indigo-500 bg-transparent p-2" placeholder="Mot de passe" required />
+    <input class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300" placeholder="Mot de passe" required />
 
-    <BoutonBlue type="submit" class="btn btn-dark text-white">Créer Compte</BoutonBlue>
+    <BoutonBlue type="submit" class="btn btn-dark text-white">Créer mon compte</BoutonBlue>
   </form>
 </template>
 
@@ -78,11 +80,14 @@ import {
 //Import de l'emetteur depuis main.js
 import { emitter } from "../main.js";
 
+import { EyeIcon } from "@heroicons/vue/solid";
+
 export default {
   name: "MonCompte",
   components: {
     BoutonBlue,
     BoutonBorder,
+    EyeIcon,
   },
 
   data() {
@@ -142,7 +147,7 @@ export default {
         });
     },
 
-    // Affiche/masque le champs password
+    // Affiche/masquer le champs password
     affiche() {
       this.view = !this.view;
       if (this.view) {
@@ -178,9 +183,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
-
-
-
-
+<style scoped></style>
