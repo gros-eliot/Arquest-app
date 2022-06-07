@@ -4,11 +4,11 @@
     >)
   </h2>
 
-  <!--Image page fixe si aucune quête en cours-->
+  <!--Si il n'y a aucun élément dans quêtes, afficher cette image-->
 
-  <div v-if="listeQueteSynchro.length == 0" class="my-5 flex h-1/2 flex-col items-center justify-center">
-    <NoQuestAvailable class="w-full max-w-xl" />
-    <p class="text-center font-press-start-2p text-xl text-zinc-500">Aucune quête en cours.</p>
+  <div v-if="listeQueteSynchro.length == 0" class="my-5 flex h-1/2 flex-col items-center justify-center gap-3">
+    <NoQuestAvailable class="ml-8 w-11/12 max-w-xl" />
+    <p class="text-center font-press-start-2p text-xl text-zinc-600">Aucune quête en cours...</p>
   </div>
 
   <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]">
@@ -140,9 +140,11 @@
     </form>
   </div>
 
-  <div v-if="listeQueteSynchro.length >= 1">
-    <img src="src/assets/trophy.webp" alt="2" />
-    <p class="text-2xl text-zinc-500">Créez plus de quêtes pour améliorer vos badges!</p>
+  <!--Si il y a 1 ou + élément dans quêtes, afficher quêtes en cours-->
+
+  <div v-if="listeQueteSynchro.length >= 1" class="my-5 flex h-1/2 flex-col items-center justify-center gap-3">
+    <img src="src/assets/createmorequest.png" alt="Trophé" class="w-20" />
+    <p class="text-center font-press-start-2p text-xl text-zinc-600">Créez de nouvelles quêtes !</p>
   </div>
 </template>
 

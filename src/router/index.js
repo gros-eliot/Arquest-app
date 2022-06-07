@@ -20,7 +20,6 @@ import MentionslegalesView from '../views/MentionslegalesView.vue'
 import AboutView from '../views/AboutView.vue'
 import AproposView from '../views/AproposView.vue'
 import GuideStyle from '../components/ancients_and_gds/GuideStyle.vue'
-import InscriptionView from '../views/InscriptionView.vue'
 import ListecatView from '../views/ListecatView.vue'
 
 import Socialmedia from '../views/Socialmedia.vue'
@@ -62,7 +61,6 @@ const router = createRouter({
     { path: '/gds', name: 'GuideStyle', component: GuideStyle },
 
     { path: '/social', name: 'Socialmedia', component: Socialmedia },
-    { path: '/inscription', name: 'InscriptionView', component: InscriptionView },
     { path: '/connexion', name: 'ConnexionView', component: ConnexionView },
 
   ]

@@ -4,22 +4,38 @@
       <h1 class="text-2xl font-bold text-white">Quêtes accomplies</h1>
       <ArquestWhite class="h-8 w-8" />
     </div>
-
-    <div class="grid grid-cols-[1fr_1fr_20px] items-center justify-start border-white p-3 font-bold text-white md:grid-cols-[1fr_1fr_50px]">
-      <p>Nom</p>
-
-      <p>Date fixée</p>
-      <TrashIcon class="h-6 w-6 stroke-black" />
+    <!--Si il n'y a aucun élément dans historique, afficher cette image-->
+    <div v-if="listeHistory.length == 0" class="my-5 flex h-1/2 flex-col items-center justify-center gap-3">
+      <HistoryClock class="w-40 max-w-xl md:w-72" />
+      <p class="text-center font-press-start-2p text-xl text-zinc-600">Aucun élément dans l'historique. Accomplissez vos quêtes !</p>
     </div>
 
-    <div class="my-5 flex flex-col gap-2 text-white" v-for="history in listeHistory" :key="history.id">
-      <div class="grid grid-cols-[1fr_1fr_20px] items-center justify-start border-b border-white p-3 md:grid-cols-[1fr_1fr_50px]">
-        <p>{{ history.nom }}</p>
+    <!--Si il n'y a 1 ou + élément dans historique, afficher historique-->
 
-        <p>{{ dateFr(history.date) }}</p>
-        <button @click.prevent="deleteHistoryElement(history)">
-          <TrashIcon class="h-6 w-6 stroke-red-500 md:h-10 md:w-10" />
-        </button>
+    <div v-if="listeHistory.length >= 1">
+      <div
+        class="grid grid-cols-[1fr_1fr_20px] items-center justify-start border-white p-3 font-bold text-white md:grid-cols-[1fr_1fr_50px]"
+      >
+        <p>Nom</p>
+
+        <p>Date fixée</p>
+        <TrashIcon class="h-6 w-6 stroke-black" />
+      </div>
+
+      <div class="my-5 flex flex-col gap-2 text-white" v-for="history in listeHistory" :key="history.id">
+        <div class="grid grid-cols-[1fr_1fr_20px] items-center justify-start border-b border-white p-3 md:grid-cols-[1fr_1fr_50px]">
+          <p>{{ history.nom }}</p>
+
+          <p>{{ dateFr(history.date) }}</p>
+          <button @click.prevent="deleteHistoryElement(history)">
+            <TrashIcon class="h-6 w-6 stroke-red-500 md:h-10 md:w-10" />
+          </button>
+        </div>
+      </div>
+
+      <div class="my-5 flex h-1/2 flex-col items-center justify-center gap-3">
+        <HistoryClock class="w-40 max-w-xl md:w-72" />
+        <p class="text-center font-press-start-2p text-xl text-zinc-600">Retrouvez ici vos anciennes quêtes réalisées.</p>
       </div>
     </div>
   </div>
@@ -46,10 +62,12 @@ import {
 //
 import { TrashIcon } from "@heroicons/vue/outline";
 import ArquestWhite from "../../components/icons/ArquestWhite.vue";
+import HistoryClock from "../../components/images/HistoryClock.vue";
 export default {
   components: {
     TrashIcon,
     ArquestWhite,
+    HistoryClock,
   },
 
   //
