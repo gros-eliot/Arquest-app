@@ -5,7 +5,8 @@ import './index.css'
 
 
 // Import de mitt
-//import mitt from 'mitt';
+import mitt from 'mitt';
+
 
 
 // Import fonction d'initialisation du SDK Firebase
@@ -28,10 +29,11 @@ const appFirebase = initializeApp(firebaseConfig);
 const app = createApp(App)
 
 // Création d'un emetteur mitt exportable
-//export const emitter = mitt();
+export const emitter = mitt();
+
 // créer l'émetteur comme propriété globale
 // de l'application
-//app.config.globalProperties.emitter = emitter;
+app.config.globalProperties.emitter = emitter;
 
 
 app.use(router)

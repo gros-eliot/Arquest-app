@@ -24,6 +24,7 @@ import InscriptionView from '../views/InscriptionView.vue'
 import ListecatView from '../views/ListecatView.vue'
 
 import Socialmedia from '../views/Socialmedia.vue'
+import ConnexionView from '../views/ConnexionView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +63,7 @@ const router = createRouter({
 
     { path: '/social', name: 'Socialmedia', component: Socialmedia },
     { path: '/inscription', name: 'InscriptionView', component: InscriptionView },
+    { path: '/connexion', name: 'ConnexionView', component: ConnexionView },
 
   ]
 })
