@@ -9,62 +9,77 @@
   <!--fin hero template-->
 
   <form class="flex flex-col items-center gap-5 text-white" enctype="multipart/form-data" @submit.prevent="deleteQuete">
-    <div class="flex flex-col items-center gap-0 md:flex-row md:gap-40">
-      <div>
-        <div class="flex flex-col gap-1">
-          <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Description :</span></div>
-          <input
-            type="text"
-            class="h-16 w-full max-w-2xl rounded-3xl bg-indigo-500 text-center text-xl font-bold uppercase text-white md:mb-5"
-            v-model="quete.nom"
-            disabled
-          />
-        </div>
-        <div class="flex flex-col gap-1">
-          <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Description :</span></div>
-          <textarea
-            type="text"
-            class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl bg-indigo-500 p-4 text-lg text-white md:mb-5"
-            v-model="quete.desc"
-            disabled
-          />
-        </div>
-      </div>
-      <div>
-        <div class="flex flex-col gap-0">
-          <div class="w-full md:w-[70%] lg:w-[50%]">
-            <span class="flex items-center font-bold"
-              >Catégorie <RouterLink to="/listecat"><QuestionMarkCircleIcon class="m-3 h-6 w-6 stroke-indigo-500" /></RouterLink> :</span
-            >
+    <div class="flex flex-col items-center gap-5 md:flex-row md:gap-40">
+      <section>
+        <!--Première partie : -->
+        <div class="flex flex-col gap-5 md:gap-0">
+          <!--Nom : -->
+          <div class="flex flex-col gap-1">
+            <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Nom :</span></div>
+            <input
+              type="text"
+              class="h-16 w-full max-w-2xl rounded-3xl bg-indigo-500 text-center text-xl font-bold uppercase text-white md:mb-5"
+              v-model="quete.nom"
+              disabled
+            />
           </div>
-          <input
-            v-model="quete.cat"
-            disabled
-            class="h-16 w-full rounded-3xl bg-indigo-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
-          />
+
+          <!--Description : -->
+          <div class="flex flex-col gap-1">
+            <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Description :</span></div>
+            <textarea
+              type="text"
+              class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl bg-indigo-500 p-4 text-lg text-white md:mb-5"
+              v-model="quete.desc"
+              disabled
+            />
+          </div>
         </div>
-        <div class="flex flex-col gap-1">
-          <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Difficulté :</span></div>
-          <input
-            class="h-16 w-full rounded-3xl bg-indigo-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
-            v-model="quete.difficulty"
-            disabled
-          />
+      </section>
+      <section>
+        <!--Deuxieme partie : -->
+
+        <div class="flex flex-col gap-5 md:gap-0">
+          <!--Categorie : -->
+          <div class="flex flex-col gap-0">
+            <div class="w-full md:w-[70%] lg:w-[50%]">
+              <span class="flex items-center font-bold"
+                >Catégorie <RouterLink to="/listecat"><QuestionMarkCircleIcon class="m-3 h-6 w-6 stroke-indigo-500" /></RouterLink> :</span
+              >
+            </div>
+            <input
+              v-model="quete.cat"
+              disabled
+              class="h-16 w-full rounded-3xl bg-indigo-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
+            />
+          </div>
+
+          <!--Difficulté : -->
+          <div class="flex flex-col gap-1">
+            <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Difficulté :</span></div>
+            <input
+              class="h-16 w-full rounded-3xl bg-indigo-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
+              v-model="quete.difficulty"
+              disabled
+            />
+          </div>
+
+          <!--Date : -->
+          <div class="flex flex-col gap-1">
+            <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Date :</span></div>
+            <input
+              v-model="quete.date"
+              disabled
+              type="date"
+              format="dd/mm/yyyy"
+              class="h-16 w-full rounded-3xl bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black md:mb-5"
+            />
+          </div>
         </div>
-        <div class="flex flex-col gap-1">
-          <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Date :</span></div>
-          <input
-            v-model="quete.date"
-            disabled
-            type="date"
-            format="dd/mm/yyyy"
-            class="h-16 w-full rounded-3xl bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black md:mb-5"
-          />
-        </div>
-      </div>
+      </section>
     </div>
 
-    <h3 role="alert" class="text-center">
+    <h3 role="alert" class="p-3 text-center">
       <strong>Attention : vous allez supprimer cette quête, cette action est irréversible !</strong>
     </h3>
     <BoutonRed class="w-full bg-red-500 lg:max-w-xl" type="submit" title="Suppression">Supprimer</BoutonRed>
