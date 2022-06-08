@@ -238,12 +238,15 @@ export default {
           console.log("erreur downloadUrl", error);
         });
 
+      //
+      //
+      //
       const firestore = getFirestore();
-      const docRef = doc(firestore, "users");
+      console.log("userInfo", this.userInfo);
+      const docRef = doc(firestore, "users", this.userInfo[0].id);
       // Modification du participant à partir de son id
       await updateDoc(docRef, {
-        id: users.id,
-        avatar: users.avatar,
+        avatar: this.userInfo[0].avatar,
       });
       // redirection sur la liste des participants
       console.log("Ca a marché ! User avatar mis à jour");
