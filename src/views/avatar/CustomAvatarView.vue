@@ -19,26 +19,38 @@
   </div>
 
   <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Avatars</div>
-  <p class="text-white">{{ user.avatar }}</p>
+  <p class="text-white">{{ userInfo }}</p>
+
+  <form enctype="multipart/form-data" @submit.prevent="updateAvatar()" v-for="users in userInfo" :key="users.id" class="m-4">
+    <input type="text" v-model="users.avatar" class="border bg-transparent text-white" required />
+    <BontonBlue class="ml-auto mr-auto" type="submit">Modifier</BontonBlue>
+  </form>
+  <!--
   <div
     class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] justify-items-center gap-5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
-  >
+  >-->
+  <!--BOUTON N°1 DE LA LISTE : boy1-->
+  <!--
     <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy1.png')">
       <img src="" alt="" />
-    </button>
+    </button>-->
+
+  <!--BOUTON N°2 DE LA LISTE : boy2-->
+  <!--
     <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy2.png')">
       <img src="" alt="" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
+
+    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy3.png')">
       <img src="" alt="" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
+    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy4.png')">
       <img src="" alt="" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
+    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy5.png')">
       <img src="" alt="" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
+    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy6.png')">
       <img src="" alt="" />
     </button>
     <button class="h-20 w-20 border border-white md:h-32 md:w-32">
@@ -61,8 +73,9 @@
     </button>
   </div>
   <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Fonds</div>
-
+  
   <BontonBlue class="ml-auto mr-auto" @click.prevent="updateAvatar()">Modifier</BontonBlue>
+  -->
 </template>
 
 <script>
@@ -103,7 +116,7 @@ export default {
         email: null,
         password: null,
       },
-      userInfo: null, // Informations complémentaires user connecté
+      userInfo: null, // Informations complémentaires user connecté (sorte de listeCatégorie, listePays)
       name: "", // Titre de l'application ou nom du user
       avatar: null, // Avatar / image du user connecté
       isAdmin: false, // Si l'utilisateur est ou non administrateur
@@ -181,11 +194,14 @@ export default {
           });
       });
     },
-
+    /*
     changeAvatar(a) {
       const newAvatar = a;
       this.userInfo[0].avatar = null;
       this.userInfo[0].avatar = newAvatar;
+
+      //
+      //
       const storage = getStorage();
       // Référence du fichier avec son nom
       const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
@@ -196,30 +212,43 @@ export default {
         .catch((error) => {
           console.log("erreur downloadUrl", error);
         });
+      //
+      //
     },
+    
+    async updateAvatar() {
+      // Dans tous les cas on met à jour le participant dans Firestore
+      const firestore = getFirestore();
+      // Modification du participant à partir de son id
+      await updateDoc(doc(firestore, "users"), users.avatar);
+      // redirection sur la liste des participants
+      this.$router.push("/avatar");
+    },*/
 
     async updateAvatar() {
-      // Dans tous les cas on met à jour la quête dans Firestore
-      const firestore = getFirestore();
-      // Modification de la quête à partir de son id
-      await updateDoc(doc(firestore, "users"), this.avatar);
-      // redirection sur la liste des quêtes
-      this.$router.push("/avatar");
+      // Dans tous les cas on met à jour le participant dans Firestore
+      const storage = getStorage();
+      // Référence du fichier avec son nom
+      const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
+      getDownloadURL(spaceRef)
+        .then((url) => {
+          this.avatar = url;
+        })
+        .catch((error) => {
+          console.log("erreur downloadUrl", error);
+        });
 
-      console.log("Avatar " + this.$route.params.id + " modifiée !");
-    },
-
-    async updateAvatar(users) {
-      // Obtenir Firestore
       const firestore = getFirestore();
-      // Base de données (collection)  document pays
-      // Reference du pays à modifier
-      const docRef = doc(firestore, "users", users.id);
-      // On passe en paramètre format json
-      // Les champs à mettre à jour
+      const docRef = doc(firestore, "users");
+      // Modification du participant à partir de son id
       await updateDoc(docRef, {
+        id: users.id,
         avatar: users.avatar,
       });
+      // redirection sur la liste des participants
+      console.log("Ca a marché ! User avatar mis à jour");
+      //
+      //this.$router.push("/avatar");
     },
   },
 };
