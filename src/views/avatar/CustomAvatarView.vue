@@ -7,7 +7,7 @@
         <RouterLink to="/avatar"><ArrowLeftIcon class="w-11 stroke-white" /></RouterLink>
       </div>
 
-      <div class="my-10 ml-auto mr-auto">
+      <div class="my-5 ml-auto mr-auto">
         <div v-if="avatar != null">
           <img :src="avatar" :alt="'Avatar de ' + name" class="w-48" />
           <p class="m-3 text-center font-press-start-2p">{{ this.userInfo[0].avatar }}</p>
@@ -17,9 +17,13 @@
       </div>
     </div>
   </div>
-  <BontonBlue class="fixed bottom-0 ml-auto mr-auto" @click.prevent="updateAvatar()">Modifier</BontonBlue>
 
-  <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Avatars</div>
+  <button class="fixed bottom-20 right-4 m-4 flex flex-row items-center gap-3 rounded-full bg-red-500 p-5" @click.prevent="updateAvatar()">
+    <p class="hidden font-press-start-2p text-lg text-white md:block">Modifier</p>
+    <PencilAltIcon class="w-11 stroke-white" />
+  </button>
+
+  <div class="my-3 ml-auto mr-auto w-fit bg-indigo-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Avatars</div>
 
   <div
     class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] justify-items-center gap-5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
@@ -99,8 +103,7 @@
       <img src="src/assets/AVATARS/girl6.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
   </div>
-
-  <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Fonds</div>
+  <div class="my-3 ml-auto mr-auto w-fit bg-indigo-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Fonds</div>
 </template>
 
 <script>
@@ -267,7 +270,7 @@ export default {
       // redirection sur la liste des participants
       console.log("Ca a marché ! User avatar mis à jour");
       //
-      //this.$router.push("/avatar");
+      this.$router.push("/avatar");
     },
   },
 };
