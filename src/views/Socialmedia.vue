@@ -61,7 +61,7 @@
                 <p class="text-white">{{ msg.contenu }}</p>
 
                 <div class="text-white" v-if="msg.by == userSelected.uid">
-                  <p>{{ msg.contenu }}</p>
+                  <p class="text-white">{{ msg.contenu }}</p>
 
                   <img class="text-white" :src="userSelected.avatar" />
                   {{ userSelected.login }} - {{ dateFr(msg.date) }}
