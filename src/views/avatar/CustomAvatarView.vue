@@ -19,24 +19,18 @@
   </div>
 
   <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Avatars</div>
-  <p class="text-white">{{ userInfo }}</p>
 
-  <form enctype="multipart/form-data" @submit.prevent="updateAvatar()" v-for="users in userInfo" :key="users.id" class="m-4">
-    <input type="text" v-model="users.avatar" class="border bg-transparent text-white" required />
-    <BontonBlue class="ml-auto mr-auto" type="submit">Modifier</BontonBlue>
-  </form>
-  <!--
   <div
     class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] justify-items-center gap-5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
-  >-->
-  <!--BOUTON N°1 DE LA LISTE : boy1-->
-  <!--
+  >
+    <!--BOUTON N°1 DE LA LISTE : boy1-->
+
     <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy1.png')">
       <img src="" alt="" />
-    </button>-->
+    </button>
 
-  <!--BOUTON N°2 DE LA LISTE : boy2-->
-  <!--
+    <!--BOUTON N°2 DE LA LISTE : boy2-->
+
     <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy2.png')">
       <img src="" alt="" />
     </button>
@@ -73,9 +67,8 @@
     </button>
   </div>
   <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Fonds</div>
-  
+
   <BontonBlue class="ml-auto mr-auto" @click.prevent="updateAvatar()">Modifier</BontonBlue>
-  -->
 </template>
 
 <script>
@@ -194,7 +187,7 @@ export default {
           });
       });
     },
-    /*
+
     changeAvatar(a) {
       const newAvatar = a;
       this.userInfo[0].avatar = null;
@@ -215,15 +208,6 @@ export default {
       //
       //
     },
-    
-    async updateAvatar() {
-      // Dans tous les cas on met à jour le participant dans Firestore
-      const firestore = getFirestore();
-      // Modification du participant à partir de son id
-      await updateDoc(doc(firestore, "users"), users.avatar);
-      // redirection sur la liste des participants
-      this.$router.push("/avatar");
-    },*/
 
     async updateAvatar() {
       // Dans tous les cas on met à jour le participant dans Firestore
