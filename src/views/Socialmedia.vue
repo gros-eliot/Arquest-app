@@ -32,7 +32,7 @@
                 le {{ dateFr(disc.creation) }}
               </td>
               <td>
-                <button class="text-white" type="button" @click="viewFil(disc)" title="Voir ce fil">envoyé</button>
+                <button class="text-white" type="button" @click="viewFil(disc)" title="Voir ce fil">Voire</button>
                 <button class="text-white" type="button" @click="deleteFil(disc)" title="Supprimer ce fil">Supprimer</button>
               </td>
             </tr>
@@ -49,7 +49,7 @@
 
         <textarea class="text-white" rows="3" placeholder="Message" v-model="message"></textarea>
 
-        <button class="text-black" @click="sendMsg()">envoyé</button>
+        <button class="text-white" @click="sendMsg()">envoyé</button>
 
         <div v-for="disc in chat" :key="disc.id">
           <div v-if="disc.id == discussion.id">
