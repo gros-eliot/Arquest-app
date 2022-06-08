@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="flex w-full flex-col justify-between bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
-      <div class="m-4 flex justify-end">
+      <div class="mt-2 mr-2 flex justify-end">
         <RouterLink to="/custom_avatar"><PencilAltIcon class="w-11" /></RouterLink>
       </div>
 
-      <div class="my-10 ml-auto mr-auto">
-        <div v-if="avatar != null"><img :src="avatar" :alt="'Avatar de ' + name" class="w-48" /></div>
+      <div class="mb-5 ml-auto mr-auto">
+        <div v-if="avatar != null"><img :src="avatar" :alt="'Avatar de ' + name" class="w-40 md:w-48 lg:w-52" /></div>
         <div v-else><img src="src/assets/default_avatar.webp" alt="Default avatar" /></div>
       </div>
     </div>

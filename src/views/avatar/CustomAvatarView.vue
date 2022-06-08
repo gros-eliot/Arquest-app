@@ -1,15 +1,13 @@
 <template>
   <div>
     <div class="flex w-full flex-col justify-between bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
-      <div class="m-4 flex justify-between">
-        <h1 class="text-2xl font-bold">Personnalisation</h1>
-
+      <div class="m-2 flex items-center justify-end">
         <RouterLink to="/avatar"><ArrowLeftIcon class="w-11 stroke-white" /></RouterLink>
       </div>
 
-      <div class="my-5 ml-auto mr-auto">
+      <div class="my-3 ml-auto mr-auto">
         <div v-if="avatar != null">
-          <img :src="avatar" :alt="'Avatar de ' + name" class="w-48" />
+          <img :src="avatar" :alt="'Avatar de ' + name" class="w-40 md:w-48 lg:w-52" />
           <p class="m-3 text-center font-press-start-2p">{{ this.userInfo[0].avatar }}</p>
         </div>
 
@@ -18,9 +16,12 @@
     </div>
   </div>
 
-  <button class="fixed bottom-20 right-4 m-4 flex flex-row items-center gap-3 rounded-full bg-red-500 p-5" @click.prevent="updateAvatar()">
+  <button
+    class="fixed bottom-20 right-4 flex flex-row items-center gap-3 rounded-full bg-red-500 p-3 md:p-5"
+    @click.prevent="updateAvatar()"
+  >
     <p class="hidden font-press-start-2p text-lg text-white md:block">Modifier</p>
-    <PencilAltIcon class="w-11 stroke-white" />
+    <PencilAltIcon class="w-11 stroke-white md:w-6" />
   </button>
 
   <div class="my-3 ml-auto mr-auto w-fit bg-indigo-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Avatars</div>
@@ -261,7 +262,6 @@ export default {
       //
       //
       const firestore = getFirestore();
-      console.log("userInfo", this.userInfo);
       const docRef = doc(firestore, "users", this.userInfo[0].id);
       // Modification du participant à partir de son id
       await updateDoc(docRef, {
