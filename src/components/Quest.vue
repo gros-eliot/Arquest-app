@@ -132,7 +132,15 @@
             </div>
           </div>
           <div class="flex justify-center">
-            <bouton-blue type="button" @click.prevent="accomplishQuete(quete)" title="Valider la quête">VALIDER</bouton-blue>
+            <bouton-blue
+              type="button"
+              @click="
+                accomplishQuete(quete);
+                addCategoryLevel(quete);
+              "
+              title="Valider la quête"
+              >VALIDER</bouton-blue
+            >
           </div>
         </div>
         <!--FIN CONTENU DE LA CARD-->
@@ -146,13 +154,25 @@
     <img src="src/assets/createmorequest.png" alt="Trophé" class="w-20 brightness-50" />
     <p class="text-center font-press-start-2p text-xl text-zinc-600">Créez de nouvelles quêtes&nbsp;!</p>
   </div>
+
+  <div class="text-white">{{ categoryLevel }}</div>
+  <!--
+  <div class="text-white" v-for="users in userInfo" :key="users.id">{{ users.category_level.sport }}</div>
+  -->
 </template>
 
 <script>
+// Fonction authentification
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
+
+import { emitter } from "../main.js";
+
 // Bibliothèque Firestore : import des fonctions
 import {
   getFirestore,
   collection,
+  query,
+  where,
   doc,
   getDocs,
   addDoc,
@@ -160,6 +180,9 @@ import {
   deleteDoc,
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+
+import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-storage.js";
+
 import BoutonBlue from "./boutons/BoutonBlue.vue";
 import NoQuestAvailable from "./images/NoQuestAvailable.vue";
 import { DotsHorizontalIcon, TrashIcon, PencilIcon, XIcon } from "@heroicons/vue/outline";
@@ -170,6 +193,17 @@ export default {
       detailsQuetes: false,
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
+
+      user: {
+        // User connecté
+        email: null,
+        password: null,
+      },
+      userInfo: null, // Informations complémentaires user connecté
+      name: null,
+      avatar: null,
+      isAdmin: false,
+      categoryLevel: [],
     };
   },
   components: {
@@ -182,6 +216,33 @@ export default {
   },
 
   mounted() {
+    // Vérifier si un user connecté existe déjà
+    // Au lancement de l'application
+    this.getUserConnect();
+
+    // Ecoute de l'évènement de connexion
+    emitter.on("connectUser", (e) => {
+      // Récupération du user
+      this.user = e.user;
+
+      // Recherche infos complémentaires du user
+      this.getUserInfo(this.user);
+    });
+
+    // Ecoute de l'évènement de deconnexion
+    emitter.on("deConnectUser", (e) => {
+      // Récupération user
+      this.user = e.user;
+
+      // Réinitialisation infos complémentaires user
+
+      this.userInfo = null;
+      this.name = "";
+      this.avatar = null;
+      this.isAdmin = false;
+      this.categoryLevel = "";
+    });
+
     // Montage de la vue
     this.getQueteSynchro();
   },
@@ -197,23 +258,129 @@ export default {
       });
     },
 
+    async addCategoryLevel(quete) {
+      const firestore = getFirestore();
+      const docRefQuete = doc(firestore, "quete", quete.id);
+      const docRefUsers = doc(firestore, "users", this.userInfo[0].id);
+      // PHASE RECHERCHE ||| const docRefUsers = doc(firestore, "users", this.userInfo[0].category_level);
+
+      if (quete.cat === "Sport") {
+        this.categoryLevel.sport = this.categoryLevel.sport + 1;
+      }
+      if (quete.cat === "Gestion") {
+        this.categoryLevel.gestion = this.categoryLevel.gestion + 1;
+      }
+      if (quete.cat === "Social") {
+        this.categoryLevel.social = this.categoryLevel.social + 1;
+      }
+      if (quete.cat === "Maison") {
+        this.categoryLevel.maison = this.categoryLevel.maison + 1;
+      }
+
+      if (quete.cat === "Culture") {
+        this.categoryLevel.culture = this.categoryLevel.culture + 1;
+      }
+      if (quete.cat === "DIY") {
+        this.categoryLevel.diy = this.categoryLevel.diy + 1;
+      }
+      if (quete.cat === "Santé") {
+        this.categoryLevel.sante = this.categoryLevel.sante + 1;
+      }
+      if (quete.cat === "Travail") {
+        this.categoryLevel.travail = this.categoryLevel.travail + 1;
+      }
+
+      /*
+
+      EN PHASE DE RECHERCHES :*/
+
+      await updateDoc(docRefUsers, {
+        "category_level.sport": this.categoryLevel.sport,
+        "category_level.gestion": this.categoryLevel.gestion,
+        "category_level.social": this.categoryLevel.social,
+        "category_level.maison": this.categoryLevel.maison,
+
+        "category_level.culture": this.categoryLevel.culture,
+        "category_level.diy": this.categoryLevel.diy,
+        "category_level.sante": this.categoryLevel.sante,
+        "category_level.travail": this.categoryLevel.travail,
+      });
+
+      /*
+       const firestore = getFirestore();
+      const docRef = doc(firestore, "users", this.userInfo[0].id);
+      // Modification du participant à partir de son id
+      await updateDoc(docRef, {
+        avatar: this.userInfo[0].avatar,
+      });
+      // redirection sur la liste des participants
+      console.log("Ca a marché ! User avatar mis à jour");
+      //
+      this.$router.push("/avatar");
+      */
+    },
+
     async accomplishQuete(quete) {
       const firestore = getFirestore();
       const dbHistory = collection(firestore, "history");
-      const docRef1 = doc(firestore, "quete", quete.id);
-      const docRef2 = await addDoc(dbHistory, {
+      const docRefQuete = doc(firestore, "quete", quete.id);
+      const docRefHistory = await addDoc(dbHistory, {
         nom: quete.nom,
         date: quete.date,
       });
-      console.log("quête validée avec le id suivant : ", docRef2.id);
+      console.log("quête validée avec le id suivant : ", docRefHistory.id);
 
-      await deleteDoc(docRef1);
+      await deleteDoc(docRefQuete);
     },
 
     // Format date en français
     dateFr(d) {
       let date = d.split("-");
       return date[2] + "/" + date[1] + "/" + date[0];
+    },
+
+    // Obtenir les informations du user connecté
+    async getUserConnect() {
+      await getAuth().onAuthStateChanged(
+        function (user) {
+          if (user) {
+            // Récupération du user connecté
+            this.user = user;
+            // Recherche de ses infos complémentaires
+            this.getUserInfo(this.user);
+          }
+        }.bind(this)
+      );
+    },
+
+    async getUserInfo(user) {
+      // Rechercher les informations complémentaires de l'utilisateur
+      // Obtenir Firestore
+      const firestore = getFirestore();
+      // Base de données (collection)  document participant
+      const dbUsers = collection(firestore, "users");
+      // Recherche du user par son uid
+      const q = query(dbUsers, where("uid", "==", user.uid));
+      await onSnapshot(q, (snapshot) => {
+        this.userInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log("userInfo", this.userInfo);
+        // userInfo étant un tableau, onn récupère
+        // ses informations dans la 1° cellule du tableau : 0
+        this.name = this.userInfo[0].login;
+        this.isAdmin = this.userInfo[0].admin;
+        this.categoryLevel = this.userInfo[0].category_level;
+        // Recherche de l'image du user sur le Storage
+        const storage = getStorage();
+        // Référence du fichier avec son nom
+        const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
+        getDownloadURL(spaceRef)
+          .then((url) => {
+            this.avatar = url;
+          })
+          .catch((error) => {
+            console.log("erreur downloadUrl", error);
+          });
+      });
     },
   },
 };

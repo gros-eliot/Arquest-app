@@ -24,8 +24,9 @@
   <!---->
   <!---->
 
-  <div class="m-5 text-white">
+  <div class="m-5 text-white" v-for="users in userInfo" :key="users.id">
     <h2 class="font-roboto text-2xl font-bold">Badges</h2>
+    {{ userInfo[0].category_level }}
 
     <div class="my-5 flex flex-wrap items-center justify-center gap-10">
       <img src="src/assets/BADGES/sport/ultime.png" alt="Badge sport" class="w-12" />
@@ -36,7 +37,7 @@
       <img src="src/assets/BADGES/DIY/argent.png" alt="Badge DIY" class="w-12" />
       <img src="src/assets/BADGES/travail/bronze.png" alt="Badge travail" class="w-12" />
       <img src="src/assets/BADGES/culture/fer.png" alt="Badge culture" class="w-12" />
-      <img src="src/assets/BADGES/admin.png" alt="Badge admin" class="w-12" />
+      <div v-if="isAdmin === true"><img src="src/assets/BADGES/admin.png" alt="Badge admin" class="w-12" /></div>
     </div>
   </div>
 </template>
@@ -70,6 +71,7 @@ export default {
       name: "", // Titre de l'application ou nom du user
       avatar: null, // Avatar / image du user connecté
       isAdmin: false, // Si l'utilisateur est ou non administrateur
+      categoryLevel: [],
     };
   },
   mounted() {
@@ -97,6 +99,7 @@ export default {
       this.name = "";
       this.avatar = null;
       this.isAdmin = false;
+      this.categoryLevel = null;
     });
   },
 
@@ -130,6 +133,7 @@ export default {
         // ses informations dans la 1° cellule du tableau : 0
         this.name = this.userInfo[0].login;
         this.isAdmin = this.userInfo[0].admin;
+        this.categoryLevel = this.userInfo[0].category_level;
         // Recherche de l'image du user sur le Storage
         const storage = getStorage();
         // Référence du fichier avec son nom
