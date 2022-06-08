@@ -1,16 +1,46 @@
 <template>
-  <div class="flex h-[65vh] w-full flex-col justify-between bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
-    <div class="flex items-center justify-between p-3">
-      <h1 class="text-2xl font-bold">Personnalisation</h1>
-      <RouterLink to="/avatar"><ArrowLeftIcon class="w-11 stroke-white" /></RouterLink>
+  <div>
+    <div class="flex w-full flex-col justify-between bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
+      <div class="m-4 flex justify-between">
+        <h1 class="text-2xl font-bold">Personnalisation</h1>
+
+        <RouterLink to="/avatar"><ArrowLeftIcon class="w-11 stroke-white" /></RouterLink>
+      </div>
+
+      <div class="my-10 ml-auto mr-auto">
+        <div v-if="avatar != null">
+          <img :src="avatar" :alt="'Avatar de ' + name" class="w-48" />
+          <p class="m-3 text-center font-press-start-2p">{{ this.userInfo[0].avatar }}</p>
+        </div>
+
+        <div v-else><img src="src/assets/default_avatar.webp" alt="Default avatar" /></div>
+      </div>
     </div>
   </div>
 
   <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Avatars</div>
-
+  <p class="text-white">{{ user.avatar }}</p>
   <div
-    class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] justify-items-center gap-3 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
+    class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] justify-items-center gap-5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
   >
+    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy1.png')">
+      <img src="" alt="" />
+    </button>
+    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy2.png')">
+      <img src="" alt="" />
+    </button>
+    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
+      <img src="" alt="" />
+    </button>
+    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
+      <img src="" alt="" />
+    </button>
+    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
+      <img src="" alt="" />
+    </button>
+    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
+      <img src="" alt="" />
+    </button>
     <button class="h-20 w-20 border border-white md:h-32 md:w-32">
       <img src="" alt="" />
     </button>
@@ -31,75 +61,168 @@
     </button>
   </div>
   <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Fonds</div>
+
+  <BontonBlue class="ml-auto mr-auto" @click.prevent="updateAvatar()">Modifier</BontonBlue>
 </template>
 
 <script>
 import { PencilAltIcon, ArrowLeftIcon } from "@heroicons/vue/outline";
+
+import BontonBlue from "../../components/boutons/BoutonBlue.vue";
+
+// Fonctions Firestore
+import {
+  getFirestore,
+  collection,
+  onSnapshot,
+  query,
+  where,
+  doc,
+  updateDoc,
+} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+
+// Fonctions Storage
+import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-storage.js";
+
+// Fonction authentification
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
+
+import { emitter } from "../../main.js";
+
 export default {
   components: {
     PencilAltIcon,
     ArrowLeftIcon,
+    BontonBlue,
   },
-};
-</script>
-<!--
-<script>
-// Bibliothèque Firestore : import des fonctions
-import {
-  getFirestore,
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  addDoc,
-  updateDoc,
-  setDoc,
-  deleteDoc,
-  onSnapshot,
-  query,
-  orderBy,
-} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 
-// Storage
-import {
-  getStorage,
-  ref,
-  getDownloadURL,
-  uploadBytes,
-  uploadString,
-  deleteObject,
-  listAll,
-} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-storage.js";
-
-export default {
   data() {
     return {
       user: {
-        id: null, // son nom
-        avatar_id: null, // son nom
-        photo: "", // sa photo (nom du fichier)
-        date: null, // sa date de date
-        international: "", // nationalité
-        site: "", // site
-        description: "", // desc
+        // User connecté
+        email: null,
+        password: null,
       },
-
-      refArtiste: null, // Référence du artiste à modifier
-      photoActuelle: null, // Photo actuelle du artiste
+      userInfo: null, // Informations complémentaires user connecté
+      name: "", // Titre de l'application ou nom du user
+      avatar: null, // Avatar / image du user connecté
+      isAdmin: false, // Si l'utilisateur est ou non administrateur
     };
   },
-
   mounted() {
-    // Montage de la vue
-    // Récupération du id passé en paramètre
-    // On utilise le id passé par la route
-    // via la variable système $route de la vue
-    console.log("id artiste", this.$route.params.id);
-    // Recherche artiste concerné
-    this.getArtiste(this.$route.params.id);
+    // Vérifier si un user connecté existe déjà
+    // Au lancement de l'application
+    this.getUserConnect();
+
+    // Ecoute de l'évènement de connexion
+    emitter.on("connectUser", (e) => {
+      // Récupération du user
+      this.user = e.user;
+
+      // Recherche infos complémentaires du user
+      this.getUserInfo(this.user);
+    });
+
+    // Ecoute de l'évènement de deconnexion
+    emitter.on("deConnectUser", (e) => {
+      // Récupération user
+      this.user = e.user;
+
+      // Réinitialisation infos complémentaires user
+
+      this.userInfo = null;
+      this.name = "";
+      this.avatar = null;
+      this.isAdmin = false;
+    });
+  },
+
+  methods: {
+    // Obtenir les informations du user connecté
+    async getUserConnect() {
+      await getAuth().onAuthStateChanged(
+        function (user) {
+          if (user) {
+            // Récupération du user connecté
+            this.user = user;
+            // Recherche de ses infos complémentaires
+            this.getUserInfo(this.user);
+          }
+        }.bind(this)
+      );
+    },
+
+    async getUserInfo(user) {
+      // Rechercher les informations complémentaires de l'utilisateur
+      // Obtenir Firestore
+      const firestore = getFirestore();
+      // Base de données (collection)  document participant
+      const dbUsers = collection(firestore, "users");
+      // Recherche du user par son uid
+      const q = query(dbUsers, where("uid", "==", user.uid));
+      await onSnapshot(q, (snapshot) => {
+        this.userInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log("userInfo", this.userInfo);
+        // userInfo étant un tableau, onn récupère
+        // ses informations dans la 1° cellule du tableau : 0
+        this.name = this.userInfo[0].login;
+        this.isAdmin = this.userInfo[0].admin;
+        // Recherche de l'image du user sur le Storage
+
+        const storage = getStorage();
+        // Référence du fichier avec son nom
+        const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
+        getDownloadURL(spaceRef)
+          .then((url) => {
+            this.avatar = url;
+          })
+          .catch((error) => {
+            console.log("erreur downloadUrl", error);
+          });
+      });
+    },
+
+    changeAvatar(a) {
+      const newAvatar = a;
+      this.userInfo[0].avatar = null;
+      this.userInfo[0].avatar = newAvatar;
+      const storage = getStorage();
+      // Référence du fichier avec son nom
+      const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
+      getDownloadURL(spaceRef)
+        .then((url) => {
+          this.avatar = url;
+        })
+        .catch((error) => {
+          console.log("erreur downloadUrl", error);
+        });
+    },
+
+    async updateAvatar() {
+      // Dans tous les cas on met à jour la quête dans Firestore
+      const firestore = getFirestore();
+      // Modification de la quête à partir de son id
+      await updateDoc(doc(firestore, "users"), this.avatar);
+      // redirection sur la liste des quêtes
+      this.$router.push("/avatar");
+
+      console.log("Avatar " + this.$route.params.id + " modifiée !");
+    },
+
+    async updateAvatar(users) {
+      // Obtenir Firestore
+      const firestore = getFirestore();
+      // Base de données (collection)  document pays
+      // Reference du pays à modifier
+      const docRef = doc(firestore, "users", users.id);
+      // On passe en paramètre format json
+      // Les champs à mettre à jour
+      await updateDoc(docRef, {
+        avatar: users.avatar,
+      });
+    },
   },
 };
 </script>
 
 <style></style>
--->

@@ -1,11 +1,28 @@
 <template>
   <div>
-    <div class="flex h-[65vh] w-full flex-col justify-between bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
-      <div class="flex justify-end">
+    <div class="flex w-full flex-col justify-between bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
+      <div class="m-4 flex justify-end">
         <RouterLink to="/custom_avatar"><PencilAltIcon class="w-11" /></RouterLink>
+      </div>
+
+      <div class="my-10 ml-auto mr-auto">
+        <div v-if="avatar != null"><img :src="avatar" :alt="'Avatar de ' + name" class="w-48" /></div>
+        <div v-else><img src="src/assets/default_avatar.webp" alt="Default avatar" /></div>
       </div>
     </div>
   </div>
+
+  <!---->
+  <!---->
+  <!--AVATARS ^^^^-->
+  <!---->
+  <!---->
+
+  <!---->
+  <!---->
+  <!--BADGES vvvv-->
+  <!---->
+  <!---->
 
   <div class="m-5 text-white">
     <h2 class="font-roboto text-2xl font-bold">Badges</h2>
@@ -27,13 +44,105 @@
 <script>
 import { PencilAltIcon } from "@heroicons/vue/outline";
 
+// Fonctions Firestore
+import { getFirestore, collection, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+
+// Fonctions Storage
+import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-storage.js";
+
+// Fonction authentification
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
+
+import { emitter } from "../../main.js";
+
 export default {
   name: "AvatarView",
   components: { PencilAltIcon },
+
   data() {
     return {
-      badgeLevel: "bronze",
+      user: {
+        // User connecté
+        email: null,
+        password: null,
+      },
+      userInfo: null, // Informations complémentaires user connecté
+      name: "", // Titre de l'application ou nom du user
+      avatar: null, // Avatar / image du user connecté
+      isAdmin: false, // Si l'utilisateur est ou non administrateur
     };
+  },
+  mounted() {
+    // Vérifier si un user connecté existe déjà
+    // Au lancement de l'application
+    this.getUserConnect();
+
+    // Ecoute de l'évènement de connexion
+    emitter.on("connectUser", (e) => {
+      // Récupération du user
+      this.user = e.user;
+
+      // Recherche infos complémentaires du user
+      this.getUserInfo(this.user);
+    });
+
+    // Ecoute de l'évènement de deconnexion
+    emitter.on("deConnectUser", (e) => {
+      // Récupération user
+      this.user = e.user;
+
+      // Réinitialisation infos complémentaires user
+
+      this.userInfo = null;
+      this.name = "";
+      this.avatar = null;
+      this.isAdmin = false;
+    });
+  },
+
+  methods: {
+    // Obtenir les informations du user connecté
+    async getUserConnect() {
+      await getAuth().onAuthStateChanged(
+        function (user) {
+          if (user) {
+            // Récupération du user connecté
+            this.user = user;
+            // Recherche de ses infos complémentaires
+            this.getUserInfo(this.user);
+          }
+        }.bind(this)
+      );
+    },
+
+    async getUserInfo(user) {
+      // Rechercher les informations complémentaires de l'utilisateur
+      // Obtenir Firestore
+      const firestore = getFirestore();
+      // Base de données (collection)  document participant
+      const dbUsers = collection(firestore, "users");
+      // Recherche du user par son uid
+      const q = query(dbUsers, where("uid", "==", user.uid));
+      await onSnapshot(q, (snapshot) => {
+        this.userInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log("userInfo", this.userInfo);
+        // userInfo étant un tableau, onn récupère
+        // ses informations dans la 1° cellule du tableau : 0
+        this.name = this.userInfo[0].login;
+        this.isAdmin = this.userInfo[0].admin;
+        // Recherche de l'image du user sur le Storage
+        const storage = getStorage();
+        // Référence du fichier avec son nom
+        const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
+        getDownloadURL(spaceRef)
+          .then((url) => {
+            this.avatar = url;
+          })
+          .catch((error) => {
+            console.log("erreur downloadUrl", error);
+          });
+      });
+    },
   },
 };
 </script>

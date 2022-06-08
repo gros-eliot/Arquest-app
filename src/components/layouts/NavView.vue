@@ -21,7 +21,9 @@
           alt="Profil"
           class="h-8 w-8 rounded-full border border-white object-cover object-top active:border-indigo-500"
           id="nav3"
+          v-if="avatar != null"
         />
+        <img v-else src="src/assets/social.webp" class="h-8 w-8 rounded-full border border-white object-cover active:border-indigo-500" />
         <p class="hidden font-press-start-2p active:text-indigo-500 md:block">Profil</p>
       </div>
     </RouterLink>
@@ -58,7 +60,7 @@ export default {
         password: null,
       },
       userInfo: null, // Informations complémentaires user connecté
-      name: "Vidéo", // Titre de l'application ou nom du user
+      name: "", // Titre de l'application ou nom du user
       avatar: null, // Avatar / image du user connecté
       isAdmin: false, // Si l'utilisateur est ou non administrateur
     };
@@ -72,7 +74,6 @@ export default {
     emitter.on("connectUser", (e) => {
       // Récupération du user
       this.user = e.user;
-      console.log("App => Reception user connecté", this.user);
 
       // Recherche infos complémentaires du user
       this.getUserInfo(this.user);
@@ -82,7 +83,6 @@ export default {
     emitter.on("deConnectUser", (e) => {
       // Récupération user
       this.user = e.user;
-      console.log("App => Reception user deconnecté", this.user);
 
       // Réinitialisation infos complémentaires user
 
