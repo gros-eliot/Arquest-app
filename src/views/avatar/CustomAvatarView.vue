@@ -17,58 +17,90 @@
       </div>
     </div>
   </div>
+  <BontonBlue class="fixed bottom-0 ml-auto mr-auto" @click.prevent="updateAvatar()">Modifier</BontonBlue>
 
   <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Avatars</div>
 
   <div
     class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] justify-items-center gap-5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
   >
+    <!--Boys-->
+
     <!--BOUTON N°1 DE LA LISTE : boy1-->
 
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy1.png')">
-      <img src="" alt="" />
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy1.png')">
+      <img src="src/assets/AVATARS/boy1.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
 
     <!--BOUTON N°2 DE LA LISTE : boy2-->
 
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy2.png')">
-      <img src="" alt="" />
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy2.png')">
+      <img src="src/assets/AVATARS/boy2.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
 
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy3.png')">
-      <img src="" alt="" />
+    <!--BOUTON N°3 DE LA LISTE : boy3-->
+
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy3.png')">
+      <img src="src/assets/AVATARS/boy3.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy4.png')">
-      <img src="" alt="" />
+
+    <!--BOUTON N°4 DE LA LISTE : boy4-->
+
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy4.png')">
+      <img src="src/assets/AVATARS/boy4.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy5.png')">
-      <img src="" alt="" />
+
+    <!--BOUTON N°5 DE LA LISTE : boy5-->
+
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy5.png')">
+      <img src="src/assets/AVATARS/boy5.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy6.png')">
-      <img src="" alt="" />
+
+    <!--BOUTON N°6 DE LA LISTE : boy6-->
+
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('boy6.png')">
+      <img src="src/assets/AVATARS/boy6.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
-      <img src="" alt="" />
+
+    <!--Girls-->
+    <!--BOUTON N°1 DE LA LISTE : girl1-->
+
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('girl1.png')">
+      <img src="src/assets/AVATARS/girl1.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
-      <img src="" alt="" />
+
+    <!--BOUTON N°2 DE LA LISTE : girl2-->
+
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('girl2.png')">
+      <img src="src/assets/AVATARS/girl2.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
-      <img src="" alt="" />
+
+    <!--BOUTON N°3 DE LA LISTE : girl3-->
+
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('girl3.png')">
+      <img src="src/assets/AVATARS/girl3.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
-      <img src="" alt="" />
+
+    <!--BOUTON N°4 DE LA LISTE : girl4-->
+
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('girl4.png')">
+      <img src="src/assets/AVATARS/girl4.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
-      <img src="" alt="" />
+
+    <!--BOUTON N°5 DE LA LISTE : girl5-->
+
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('girl5.png')">
+      <img src="src/assets/AVATARS/girl5.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
-    <button class="h-20 w-20 border border-white md:h-32 md:w-32">
-      <img src="" alt="" />
+
+    <!--BOUTON N°6 DE LA LISTE : girl6-->
+
+    <button class="h-20 w-20 border-2 border-white md:h-32 md:w-32" @click.prevent="changeAvatar('girl6.png')">
+      <img src="src/assets/AVATARS/girl6.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
   </div>
-  <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Fonds</div>
 
-  <BontonBlue class="ml-auto mr-auto" @click.prevent="updateAvatar()">Modifier</BontonBlue>
+  <div class="my-3 ml-auto mr-auto w-11/12 bg-red-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Fonds</div>
 </template>
 
 <script>
