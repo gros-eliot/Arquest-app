@@ -1,5 +1,5 @@
 <template>
-  <header class="text-white">
+  <header class="text-white"> 
     <HeaderView class="fixed z-[9]" />
 
     <NavView class="fixed bottom-0 z-[8]" />
