@@ -57,7 +57,7 @@
         v-model="quete.date"
         type="date"
         format="dd/mm/yyyy"
-        class="h-16 w-full max-w-2xl border border-indigo-500 bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black"
+        class="h-16 w-full max-w-2xl border border-indigo-500 bg-transparent fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-white"
         placeholder="Date"
       />
 
