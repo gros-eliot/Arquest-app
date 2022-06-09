@@ -1,20 +1,21 @@
 <template>
-  <div class="bg-black">
-    <h2 class="m-10 text-left text-5xl font-bold text-indigo-300">QUI SOMMES NOUS ?</h2>
-    <p class="m-9 font-roboto text-base text-white">
-      Arquest est un projet mené par trois étudiants en première année au département des Métiers du Multimédia et de l’Internet à l’IUT de
-      Montbéliard.
-    </p>
-    <p class="m-9 font-roboto text-base text-white">
-      Le projet a vu le jour dans un cadre pédagogique, l’objectif était de réaliser une WebApp fonctionnant sur un concept préalablement
-      réfléchis.
-    </p>
-    <p class="m-9 font-roboto text-base text-white">
-      A partir de cela, notre équipe a décidé de créer Arquest : une WebApp mélangeant le moderne et le retro, afin de motiver ses
-      utilisateurs à remplir leurs objectifs de manière organisés.
-    </p>
-
-    <h2 class="m-10 text-center text-5xl font-bold text-indigo-300">PROJET ÉTUDIANT</h2>
+  <div class="p-6">
+    <div class="flex flex-col gap-7">
+      <h1 class="font-press-roboto text-4xl font-bold text-white">QUI SOMMES NOUS ?</h1>
+      <p class="font-roboto text-base text-white">
+        Arquest est un projet mené par trois étudiants en première année au département des Métiers du Multimédia et de l’Internet à l’IUT
+        de Montbéliard.
+      </p>
+      <p class="font-roboto text-base text-white">
+        Le projet a vu le jour dans un cadre pédagogique, l’objectif était de réaliser une WebApp fonctionnant sur un concept préalablement
+        réfléchis.
+      </p>
+      <p class="font-roboto text-base text-white">
+        A partir de cela, notre équipe a décidé de créer Arquest : une WebApp mélangeant le moderne et le retro, afin de motiver ses
+        utilisateurs à remplir leurs objectifs de manière organisés.
+      </p>
+      <h2 class="mb-7 text-center text-5xl font-bold text-indigo-300">PROJET ÉTUDIANT</h2>
+    </div>
 
     <div class="flex w-full snap-x overflow-x-auto pb-10">
       <div class="w-full shrink-0 rounded-lg shadow-xl">
