@@ -60,7 +60,7 @@
               placeholder="Message"
               v-model="message"
             ></textarea>
-            <PaperAirplaneIcon class="w-7 w-full rounded-lg bg-black bg-opacity-90 text-indigo-300" @click="sendMsg()" />
+            <PaperAirplaneIcon class="w-7 rounded-lg bg-black bg-opacity-90 text-indigo-300" @click="sendMsg()" />
           </div>
           <div v-for="disc in chat" :key="disc.id">
             <div v-if="disc.id == discussion.id">
