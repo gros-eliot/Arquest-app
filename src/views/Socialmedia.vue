@@ -33,19 +33,17 @@
 
         <div v-if="chat.length > 0">
           <table class="w-full">
-            <tbody>
-              <div class="m-3 rounded-md border-2 border-indigo-300 bg-indigo-500 p-3 text-white">
-                <tr v-for="disc in chat" :key="disc.uid">
-                  <div class="flex flex-row justify-between gap-5">
-                    <h1 class="font-press-start-2p font-bold uppercase">{{ disc.libelle }}</h1>
-                    {{ dateFr(disc.creation) }}
+            <div class="m-3 rounded-md border-2 border-indigo-300 bg-indigo-500 p-3 text-white">
+              <tr v-for="disc in chat" :key="disc.uid">
+                <div class="flex flex-row justify-between gap-5">
+                  <h1 class="font-press-start-2p font-bold uppercase">{{ disc.libelle }}</h1>
+                  {{ dateFr(disc.creation) }}
 
-                    <EyeIcon class="text-white" type="button" @click="viewFil(disc)" title="Voir ce fil"> </EyeIcon>
-                    <TrashIcon class="text-white" type="button" @click="deleteFil(disc)" title="Supprimer ce fil"></TrashIcon>
-                  </div>
-                </tr>
-              </div>
-            </tbody>
+                  <EyeIcon class="text-white" type="button" @click="viewFil(disc)" title="Voir ce fil"> </EyeIcon>
+                  <TrashIcon class="text-white" type="button" @click="deleteFil(disc)" title="Supprimer ce fil"></TrashIcon>
+                </div>
+              </tr>
+            </div>
           </table>
         </div>
         <div v-else class="mt-4 font-roboto text-xl font-bold text-white">Aucun fil de discussion</div>
@@ -71,11 +69,10 @@
 
                     <p class="w-full rounded-xl border-2 border-indigo-500 bg-transparent p-3 text-lg text-indigo-300">{{ msg.contenu }}</p>
                   </div>
-                  <div class="mt-2 text-xs italic text-zinc-400">{{ userInfo[0].login }} - {{ dateFr(msg.date) }}</div>
+
                   <div class="text-white" v-if="msg.by == userSelected.uid">
                     <p class="rounded-lg bg-indigo-300 p-3 text-lg text-white">{{ msg.contenu }}</p>
                     <img class="text-white" :src="userSelected.avatar" />
-                    {{ userSelected.login }} - {{ dateFr(msg.date) }}
                   </div>
                 </div>
               </div>
