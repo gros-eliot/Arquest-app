@@ -114,7 +114,7 @@ export default {
     };
   },
   mounted() {
-    console.log("id quête en cours de suppression : ", this.$route.params.id);
+    // console.log("id quête en cours de suppression : ", this.$route.params.id);
     // Recherche participant concerné
     this.getQueteSynchro(this.$route.params.id);
   },

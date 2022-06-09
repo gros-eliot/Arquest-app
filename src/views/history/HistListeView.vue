@@ -98,14 +98,14 @@ export default {
       const firestore = getFirestore();
       const docRef = doc(firestore, "quete", quete.id);
       await deleteDoc(docRef);
-      console.log("Quête " + quete.id + " supprimée");
+      // console.log("Quête " + quete.id + " supprimée");
     },
 
     async deleteHistoryElement(history) {
       const firestore = getFirestore();
       const docRef = doc(firestore, "history", history.id);
       await deleteDoc(docRef);
-      console.log("Element de l'historique " + history.id + " supprimé");
+      // console.log("Element de l'historique " + history.id + " supprimé");
     },
 
     // Format date en français

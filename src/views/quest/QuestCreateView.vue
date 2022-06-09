@@ -59,19 +59,7 @@
         type="date"
         format="dd/mm/yyyy"
         v-model="date"
-        class="
-          h-16
-          w-full
-          max-w-2xl
-          border border-indigo-500
-          bg-transparent
-          fill-indigo-500
-          px-2
-          text-center text-xl
-          font-bold
-          uppercase
-          text-white
-        "
+        class="h-16 w-full max-w-2xl border border-indigo-500 bg-transparent fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-white"
         placeholder="Date"
         required
       />
@@ -203,7 +191,7 @@ export default {
       const q = query(dbUsers, where("uid", "==", user.uid));
       await onSnapshot(q, (snapshot) => {
         this.userInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        console.log("userInfo", this.userInfo);
+        // console.log("userInfo", this.userInfo);
         // userInfo étant un tableau, onn récupère
         // ses informations dans la 1° cellule du tableau : 0
         this.name = this.userInfo[0].login;
@@ -267,7 +255,7 @@ export default {
         difficulty: this.difficulty,
         desc: this.desc,
       });
-      console.log("document créé avec le id suivant : ", docRef.id);
+      // console.log("document créé avec le id suivant : ", docRef.id);
       this.$router.push("/");
     },
 

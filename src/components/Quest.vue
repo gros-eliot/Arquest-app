@@ -323,7 +323,7 @@ export default {
         nom: quete.nom,
         date: quete.date,
       });
-      console.log("quête validée avec le id suivant : ", docRefHistory.id);
+      // console.log("quête validée avec le id suivant : ", docRefHistory.id);
 
       await deleteDoc(docRefQuete);
     },
@@ -358,7 +358,7 @@ export default {
       const q = query(dbUsers, where("uid", "==", user.uid));
       await onSnapshot(q, (snapshot) => {
         this.userInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        console.log("userInfo", this.userInfo);
+        // console.log("userInfo", this.userInfo);
         // userInfo étant un tableau, onn récupère
         // ses informations dans la 1° cellule du tableau : 0
         this.name = this.userInfo[0].login;
@@ -373,7 +373,7 @@ export default {
             this.avatar = url;
           })
           .catch((error) => {
-            console.log("erreur downloadUrl", error);
+            // console.log("erreur downloadUrl", error);
           });
       });
     },

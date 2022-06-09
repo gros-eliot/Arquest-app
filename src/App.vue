@@ -45,9 +45,10 @@ export default {
         password: null,
       },
       userInfo: null, // Informations complémentaires user connecté
-      name: "Vidéo", // Titre de l'application ou nom du user
+      name: null, // Titre de l'application ou nom du user
       avatar: null, // Avatar / image du user connecté
       isAdmin: false, // Si l'utilisateur est ou non administrateur
+      categoryLevel: null,
     };
   },
   mounted() {
@@ -59,7 +60,7 @@ export default {
     emitter.on("connectUser", (e) => {
       // Récupération du user
       this.user = e.user;
-      console.log("App => Reception user connecté", this.user);
+      // console.log("App => Reception user connecté", this.user);
 
       // Recherche infos complémentaires du user
       this.getUserInfo(this.user);
@@ -69,14 +70,15 @@ export default {
     emitter.on("deConnectUser", (e) => {
       // Récupération user
       this.user = e.user;
-      console.log("App => Reception user deconnecté", this.user);
+      // console.log("App => Reception user deconnecté", this.user);
 
       // Réinitialisation infos complémentaires user
 
       this.userInfo = null;
-      this.name = "Vidéo";
+      this.name = null;
       this.avatar = null;
       this.isAdmin = false;
+      this.categoryLevel = null;
     });
   },
 
@@ -109,6 +111,7 @@ export default {
         // ses informations dans la 1° cellule du tableau : 0
         this.name = this.userInfo[0].login;
         this.isAdmin = this.userInfo[0].admin;
+        this.categoryLevel = this.userInfo[0].category_level;
         // Recherche de l'image du user sur le Storage
         const storage = getStorage();
         // Référence du fichier avec son nom

@@ -211,7 +211,7 @@ export default {
 
         // Récupérer les infos complémentaires du user connecté
         this.userInfo = this.listeUsers.filter((user) => user.uid == this.user.uid);
-        //console.log("userInfo", this.userInfo);
+        // console.log("userInfo", this.userInfo);
         // Suppression du user connecté de la liste
         this.listeUsers = this.listeUsers.filter((user) => user.uid != this.user.uid);
         //console.log("ListeUsers", this.listeUsers);
@@ -243,7 +243,7 @@ export default {
 
           // Fusion des 2 chats from et to dans le chat
           this.chat = this.chatFrom.concat(this.chatTo);
-          console.log("chat", this.chat);
+          // console.log("chat", this.chat);
         });
       });
     },

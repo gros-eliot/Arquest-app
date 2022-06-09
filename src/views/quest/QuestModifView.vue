@@ -57,19 +57,7 @@
         v-model="quete.date"
         type="date"
         format="dd/mm/yyyy"
-        class="
-          h-16
-          w-full
-          max-w-2xl
-          border border-indigo-500
-          bg-gray-extended-300
-          fill-indigo-500
-          px-2
-          text-center text-xl
-          font-bold
-          uppercase
-          text-black
-        "
+        class="h-16 w-full max-w-2xl border border-indigo-500 bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black"
         placeholder="Date"
       />
 
@@ -114,7 +102,7 @@ export default {
     };
   },
   mounted() {
-    console.log("id quête en cours de modification : ", this.$route.params.id);
+    // console.log("id quête en cours de modification : ", this.$route.params.id);
     // Recherche participant concerné
     this.getQueteSynchro(this.$route.params.id);
     // Montage de la vue
@@ -168,7 +156,7 @@ export default {
       // redirection sur la liste des quêtes
       this.$router.push("/");
 
-      console.log("Quête " + this.$route.params.id + " modifiée !");
+      // console.log("Quête " + this.$route.params.id + " modifiée !");
     },
   },
 
