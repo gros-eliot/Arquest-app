@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex w-full flex-col justify-between bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
+    <div class="avatarBackground flex w-full flex-col justify-between text-white">
       <div class="m-2 flex items-center justify-end">
         <RouterLink to="/avatar"><ArrowLeftIcon class="w-11 stroke-white" /></RouterLink>
       </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex w-full flex-col justify-between bg-gradient-to-r from-indigo-300 to-indigo-900 text-white">
+    <div class="avatarBackground flex w-full flex-col justify-between text-white">
       <div class="mt-2 mr-2 flex justify-end">
         <RouterLink to="/custom_avatar"><PencilAltIcon class="w-11" /></RouterLink>
       </div>
@@ -459,3 +459,19 @@ export default {
   },
 };
 </script>
+
+<style>
+.avatarBackground {
+  animation: 2s ease-out infinite alternate fond_anime;
+}
+
+@keyframes fond_anime {
+  from {
+    background-color: rgb(99 102 241);
+  }
+
+  to {
+    background-color: rgb(30 58 138);
+  }
+}
+</style>
