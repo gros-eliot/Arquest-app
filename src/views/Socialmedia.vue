@@ -65,7 +65,7 @@
           <!--Champ de texte pour écrire un message dans la discussion-->
           <div class="fixed bottom-11 mb-10 flex w-full flex-row gap-2">
             <textarea
-              class="w-5/6 border-2 border-indigo-300 bg-black bg-opacity-90 p-3 text-white"
+              class="w-5/6 rounded-sm border-2 border-indigo-300 bg-black bg-opacity-90 p-3 text-white"
               rows="3"
               placeholder="Message"
               v-model="message"

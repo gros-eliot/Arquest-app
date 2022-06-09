@@ -6,6 +6,7 @@
       w-5/6
       justify-center
       rounded-sm
+      border border-indigo-600
       bg-indigo-500
       py-3
       text-center text-base
