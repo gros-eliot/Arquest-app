@@ -74,24 +74,41 @@
               placeholder="Message"
               v-model="message"
             ></textarea>
-            <PaperAirplaneIcon class="w-7 rounded-lg bg-black bg-opacity-90 text-indigo-300" @click="sendMsg()" />
+            <button @click="sendMsg()" class="rounded-lg bg-black bg-opacity-90 text-indigo-300">
+              <PaperAirplaneIcon class="w-7" />
+            </button>
           </div>
 
           <!---->
           <!--Messages apparaissants-->
           <div v-for="disc in chat" :key="disc.id">
             <div v-if="disc.id == discussion.id">
-              <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date">
-                <div class="text-white" v-if="msg.by == user.uid">
-                  <div class="mt-2 flex gap-2">
-                    <img class="h-fit w-1/12 sm:w-10" :src="userInfo[0].avatar" />
-
-                    <p class="w-full rounded-xl border-2 border-indigo-500 bg-transparent p-3 text-lg text-indigo-300">{{ msg.contenu }}</p>
+              <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date" class="text-white">
+                <div class="row mb-3" v-if="msg.by == user.uid">
+                  <div class="col-4">
+                    <div class="ml-3 text-left">
+                      <img class="avatar w-8" :src="userInfo[0].avatar" />
+                      {{ userInfo[0].login }} - {{ dateFr(msg.date) }}
+                    </div>
                   </div>
+                  <div class="col-8 mb-1 text-center">
+                    <div class="recep">
+                      <p>{{ msg.contenu }}</p>
+                    </div>
+                  </div>
+                </div>
 
-                  <div class="text-white" v-if="msg.by == userSelected.uid">
-                    <p class="rounded-lg bg-indigo-300 p-3 text-lg text-white">{{ msg.contenu }}</p>
-                    <img class="text-white" :src="userSelected.avatar" />
+                <div class="row mb-3" v-if="msg.by == userSelected.uid">
+                  <div class="col-8 text-center">
+                    <div class="w-70 emet">
+                      <p>{{ msg.contenu }}</p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="ml-3 text-left">
+                      <img class="avatar w-8" :src="userSelected.avatar" />
+                      {{ userSelected.login }} - {{ dateFr(msg.date) }}
+                    </div>
                   </div>
                 </div>
               </div>
