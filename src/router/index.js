@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+
+
 import HomeView from '../views/HomeView.vue'
 
-// à ajouter avec les users !!
-// import ConnexionView from '../views/ConnexionView.vue'
 
 import QuestCreateView from '../views/quest/QuestCreateView.vue'
 import QuestModifView from '../views/quest/QuestModifView.vue'
@@ -31,15 +31,10 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
 
-    // A SUPPRIMER UNE FOIS LES USERS FAITS !
-    { path: '/', name: 'home', component: HomeView },
-    //
-    // A FAIRE AVEC LES USERS !
-    //  { path: '/', name: 'ConnexionView', component: ConnexionView },
-    //  { path: '/home', name: 'homeView', component: HomeView },
-    //
-    // MODIFIER LE PATH dans chaque vue où l'on a une redirection à la page d'accueil ! => navView, HeaderView, menu...
-    //
+
+      { path: '/', name: 'ConnexionView', component: ConnexionView },
+      { path: '/home', name: 'homeView', component: HomeView },
+
 
 
     { path: '/create_quest', name: 'QuestCreateView', component: QuestCreateView, },
@@ -64,7 +59,6 @@ const router = createRouter({
     { path: '/gds', name: 'GuideStyle', component: GuideStyle },
 
     { path: '/social', name: 'Socialmedia', component: Socialmedia },
-    { path: '/connexion', name: 'ConnexionView', component: ConnexionView },
 
   ]
 })

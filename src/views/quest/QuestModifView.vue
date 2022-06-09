@@ -2,7 +2,7 @@
   <!-- haut du template-->
   <div class="p-3">
     <div class="flex justify-end p-1">
-      <RouterLink to="/" class="fixed"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
+      <RouterLink to="/home" class="fixed"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
     </div>
     <h1 class="text-center font-roboto text-4xl font-bold uppercase text-white">Modifier la <span class="text-indigo-500">quête</span></h1>
   </div>
@@ -154,7 +154,7 @@ export default {
       // Modification de la quête à partir de son id
       await updateDoc(doc(firestore, "quete", this.$route.params.id), this.quete);
       // redirection sur la liste des quêtes
-      this.$router.push("/");
+      this.$router.push("/home");
 
       // console.log("Quête " + this.$route.params.id + " modifiée !");
     },

@@ -42,7 +42,7 @@
               class="relative z-40 flex flex-col gap-10 p-10 font-roboto text-2xl font-bold lg:flex-row lg:gap-8"
               @click="menuOuvert = !menuOuvert"
             >
-              <li><router-link to="/">Accueil</router-link></li>
+              <li><router-link to="/home">Accueil</router-link></li>
               <li><router-link to="/avatar">Profil</router-link></li>
               <li><router-link to="/history">Historique</router-link></li>
               <li><router-link to="/listecat">Types de quête</router-link></li>
@@ -64,7 +64,7 @@
     <!--FIN MENU-->
 
     <div>
-      <RouterLink to="/">
+      <RouterLink to="/home">
         <div>
           <!--ESSAIE D'UN LOGO RESPONSIVE : Compliqué car logo long trop gros-->
           <!--class="block md:hidden"-->

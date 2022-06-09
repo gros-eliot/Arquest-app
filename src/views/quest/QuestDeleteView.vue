@@ -2,7 +2,7 @@
   <!-- haut du template-->
   <div class="p-3">
     <div class="flex justify-end p-1">
-      <RouterLink to="/" class="fixed"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
+      <RouterLink to="/home" class="fixed"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
     </div>
     <h1 class="text-center font-roboto text-4xl font-bold uppercase text-white">Supprimer la <span class="text-white">quête</span></h1>
   </div>
@@ -141,7 +141,7 @@ export default {
       await deleteDoc(doc(firestore, "quete", this.$route.params.id));
 
       // redirection sur la liste des artistes
-      this.$router.push("/");
+      this.$router.push("/home");
     },
   },
 

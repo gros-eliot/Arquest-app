@@ -1,67 +1,58 @@
 <template>
-  <h1 class="px-4 pt-4 font-press-start-2p text-2xl text-white">Connexion</h1>
-  <form @submit.prevent="onCnx" class="flex flex-col px-4">
-    <input
-      class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
-      placeholder="Adresse mail"
-      type="email"
-      v-model="user.email"
-      required
-    />
-    <div class="my-3 flex flex-row items-center gap-2">
+  <div class="h-full w-full">
+    <h1 class="px-4 pt-4 font-press-start-2p text-2xl text-white">Connexion</h1>
+    <form @submit.prevent="onCnx" class="flex flex-col px-4">
       <input
         class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
-        placeholder="Mot de passe"
-        :type="type"
-        v-model="user.password"
+        placeholder="Adresse mail"
+        type="email"
+        v-model="user.email"
         required
       />
-
-      <button class="h-fit w-fit rounded-lg bg-zinc-300 px-5 py-2" @click.prevent="affiche()">
-        <EyeIcon class="h-5 w-5" />
-      </button>
-    </div>
-
-    <div class="alert alert-warning" role="alert">
-      <p class="font-roboto text-base text-indigo-300">{{ message }}</p>
-    </div>
-
-    <div class="flex flex-row justify-center gap-6">
-      <BoutonBlue type="submit" class="btn btn-dark text-white">Connexion</BoutonBlue>
-      <BoutonBorder type="button" class="btn btn-dark float-right text-white" @click="onDcnx()">Deconnexion</BoutonBorder>
-    </div>
-  </form>
-
-  <hr class="my-14" />
-
-  <h1 class="p-4 font-press-start-2p text-2xl text-white">S'inscrire</h1>
-
-  <form class="flex flex-col gap-3 px-4">
-    <input class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300" placeholder="Pseudo" required />
-
-    <div v-if="imageData">
-      <img class="preview img-fluid" :src="imageData" />
-    </div>
-
-    <input
-      type="file"
-      class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
-      ref="file"
-      id="file"
-      @change="previewImage"
-    />
-
-    <input
-      class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
-      placeholder="Adresse mail"
-      type="email"
-      required
-    />
-
-    <input class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300" placeholder="Mot de passe" required />
-
-    <BoutonBlue type="submit" class="btn btn-dark text-white">Créer mon compte</BoutonBlue>
-  </form>
+      <div class="my-3 flex flex-row items-center gap-2">
+        <input
+          class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
+          placeholder="Mot de passe"
+          :type="type"
+          v-model="user.password"
+          required
+        />
+        <button class="h-fit w-fit rounded-lg bg-zinc-300 px-5 py-2" @click.prevent="affiche()">
+          <EyeIcon class="h-5 w-5" />
+        </button>
+      </div>
+      <div class="alert alert-warning" role="alert">
+        <p class="font-roboto text-base text-indigo-300">{{ message }}</p>
+      </div>
+      <div class="flex flex-row justify-center gap-6">
+        <BoutonBlue type="submit" class="btn btn-dark text-white">Connexion</BoutonBlue>
+        <BoutonBorder type="button" class="btn btn-dark float-right text-white" @click="onDcnx()">Deconnexion</BoutonBorder>
+      </div>
+    </form>
+    <hr class="my-14" />
+    <h1 class="p-4 font-press-start-2p text-2xl text-white">S'inscrire</h1>
+    <form class="flex flex-col gap-3 px-4">
+      <input class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300" placeholder="Pseudo" required />
+      <div v-if="imageData">
+        <img class="preview img-fluid" :src="imageData" />
+      </div>
+      <input
+        type="file"
+        class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
+        ref="file"
+        id="file"
+        @change="previewImage"
+      />
+      <input
+        class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
+        placeholder="Adresse mail"
+        type="email"
+        required
+      />
+      <input class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300" placeholder="Mot de passe" required />
+      <BoutonBlue type="submit" class="btn btn-dark text-white">Créer mon compte</BoutonBlue>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -119,7 +110,7 @@ export default {
           // Mise à jour du message
           this.message = "User connecté : " + this.user.email;
 
-          this.$router.push("/");
+          this.$router.push("/home");
         })
         .catch((error) => {
           // Erreur de connexion

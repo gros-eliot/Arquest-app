@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-full justify-between bg-gray-extended-900 p-5 text-white">
-    <RouterLink to="/">
+    <RouterLink to="/home">
       <div class="flex items-center justify-center gap-3">
         <HomeIcon id="nav1" class="h-8 w-8 fill-white active:fill-indigo-500" />
         <p class="hidden font-press-start-2p active:text-indigo-500 md:block">Accueil</p>

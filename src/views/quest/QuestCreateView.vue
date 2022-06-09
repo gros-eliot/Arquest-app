@@ -2,7 +2,7 @@
   <!-- haut du template-->
   <div class="p-3">
     <div class="flex justify-end p-1">
-      <RouterLink to="/" class="fixed"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
+      <RouterLink to="/home" class="fixed"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
     </div>
     <h1 class="mt-8 text-center font-roboto text-4xl font-bold uppercase text-white">
       Créer une <span class="text-indigo-500">quête</span>
@@ -256,7 +256,7 @@ export default {
         desc: this.desc,
       });
       // console.log("document créé avec le id suivant : ", docRef.id);
-      this.$router.push("/");
+      this.$router.push("/home");
     },
 
     async deleteQuete(quete) {

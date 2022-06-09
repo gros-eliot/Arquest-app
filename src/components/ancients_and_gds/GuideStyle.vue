@@ -91,13 +91,13 @@
     <div>
       <h2 class="p-2 font-roboto text-2xl font-bold">Les boutons</h2>
       <div>
-        <router-link to="/">
+        <router-link to="/home">
           <BoutonBlue>Premier bouton : valider</BoutonBlue>
         </router-link>
-        <router-link to="/">
+        <router-link to="/home">
           <BoutonBorder>Deuxième bouton : valider</BoutonBorder>
         </router-link>
-        <router-link to="/">
+        <router-link to="/home">
           <BoutonClose> XIcon </BoutonClose>
         </router-link>
       </div>
