@@ -23,7 +23,7 @@
                     <img class="w-3/12 m-5 -mt-10" src="../assets/matthieu_avatar.webp" alt="Avatar Matthieu">
                       <div class="-mt-40">
                         <h1 class="m-3 text-right font-roboto text-3xl font-bold text-white">DESIGNER</h1>
-                        <h2 class="m-3 text-right font-press-start-2p text-2xl text-indigo-500">Matthieu Hoareau</h2>
+                        <h2 class="m-3 text-right font-press-start-2p text-2xl text-indigo-500">Matthieu</h2>
                         <h2 class="text-1xl m-3 text-right font-press-start-2p text-white">19 ans</h2>
                       </div>
                 </div>
@@ -42,7 +42,6 @@
                     <div class="-mt-40">
                       <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">DEVELOPPEUR</h1>
                       <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Eliot</h2>
-                      <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Gros</h2>
                       <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">19 ans</h2>
                     </div>
                 <p class="text-1xl m-6 justify-start text-left font-roboto text-white">
@@ -61,7 +60,6 @@
                     <div class="-mt-40">
                       <h1 class="m-2 text-right font-roboto text-3xl font-bold text-white">COM</h1>
                       <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Héléna</h2>
-                      <h2 class="m-2 text-right font-press-start-2p text-2xl text-indigo-500">Jaegle</h2>
                       <h2 class="text-1xl m-2 text-right font-press-start-2p text-white">20 ans</h2>
                     </div>
                 <p class="text-1xl m-6 justify-start text-left font-roboto text-white">
