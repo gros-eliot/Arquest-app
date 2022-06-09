@@ -24,19 +24,41 @@
   <!---->
   <!---->
 
-  <div class="m-5 text-white" v-for="users in userInfo" :key="users.id">
+  <div class="m-5 flex flex-col gap-1 text-white" v-for="users in userInfo" :key="users.id">
     <h2 class="font-roboto text-2xl font-bold">Badges</h2>
-    {{ userInfo[0].category_level }}
 
-    <div class="my-5 flex flex-wrap items-center justify-center gap-10">
-      <img src="src/assets/BADGES/sport/ultime.png" alt="Badge sport" class="w-12" />
-      <img src="src/assets/BADGES/maison/ultime.png" alt="Badge maison" class="w-12" />
-      <img src="src/assets/BADGES/social/ultime.png" alt="Badge social" class="w-12" />
-      <img src="src/assets/BADGES/gestion/diamond.png" alt="Badge gestion" class="w-12" />
-      <img src="src/assets/BADGES/sante/gold.png" alt="Badge santé" class="w-12" />
-      <img src="src/assets/BADGES/DIY/argent.png" alt="Badge DIY" class="w-12" />
-      <img src="src/assets/BADGES/travail/bronze.png" alt="Badge travail" class="w-12" />
-      <img src="src/assets/BADGES/culture/fer.png" alt="Badge culture" class="w-12" />
+    <!--{{ userInfo[0].category_level }}-->
+    <!--{{{ categoryLevel.sport }}-->
+
+    <!--<div @load="getBadges(sport)"><img :src="badgesURL + badgeGrade" alt="essai" class="w-12" /></div>-->
+
+    <button
+      @click.prevent="
+        getBadgeSport(badgeGrade);
+        getBadgeGestion(badgeGrade);
+        getBadgeSocial(badgeGrade);
+        getBadgeSante(badgeGrade);
+        getBadgeDIY(badgeGrade);
+        getBadgeCulture(badgeGrade);
+        getBadgeTravail(badgeGrade);
+        getBadgeMaison(badgeGrade);
+        afficherBadges = !afficherBadges;
+      "
+      class="ml-auto mr-auto w-fit bg-white py-2 px-6 text-black"
+    >
+      <div v-if="afficherBadges === true" class="font-press-start-2p">Afficher badges</div>
+      <div v-else class="font-press-start-2p">Masquer badges</div>
+    </button>
+
+    <div class="my-5 flex flex-wrap items-center justify-center gap-10" :class="{ hidden: afficherBadges }">
+      <img :src="badgesURLsport" alt="Sport" class="w-12" />
+      <img :src="badgesURLgestion" alt="Gestion" class="w-12" />
+      <img :src="badgesURLsocial" alt="Social" class="w-12" />
+      <img :src="badgesURLsante" alt="Santé" class="w-12" />
+      <img :src="badgesURLdiy" alt="DIY" class="w-12" />
+      <img :src="badgesURLculture" alt="Culture" class="w-12" />
+      <img :src="badgesURLtravail" alt="Travail" class="w-12" />
+      <img :src="badgesURLmaison" alt="Maison" class="w-12" />
       <div v-if="isAdmin === true"><img src="src/assets/BADGES/admin.png" alt="Badge admin" class="w-12" /></div>
     </div>
   </div>
@@ -59,6 +81,12 @@ import { emitter } from "../../main.js";
 export default {
   name: "AvatarView",
   components: { PencilAltIcon },
+  props: {
+    afficherBadges: {
+      type: Boolean,
+      default: true,
+    },
+  },
 
   data() {
     return {
@@ -72,9 +100,32 @@ export default {
       avatar: null, // Avatar / image du user connecté
       isAdmin: false, // Si l'utilisateur est ou non administrateur
       categoryLevel: [],
+
+      // URL DES BADGES !
+
+      badgesURLsport: null,
+      badgesURLculture: null,
+      badgesURLmaison: null,
+      badgesURLsante: null,
+      badgesURLtravail: null,
+      badgesURLsocial: null,
+      badgesURLdiy: null,
+      badgesURLgestion: null,
+
+      badgeGrade: null,
     };
   },
   mounted() {
+    // FONCTIONS POUR OBTENIR LES BADGES
+    this.getBadgeSport();
+    this.getBadgeGestion();
+    this.getBadgeSocial();
+    this.getBadgeSante();
+    this.getBadgeDIY();
+    this.getBadgeCulture();
+    this.getBadgeTravail();
+    this.getBadgeMaison();
+    //
     // Vérifier si un user connecté existe déjà
     // Au lancement de l'application
     this.getUserConnect();
@@ -146,6 +197,287 @@ export default {
             console.log("erreur downloadUrl", error);
           });
       });
+    },
+
+    //
+    //
+    // SPORT
+    //
+    //
+    getBadgeSport(badgeGrade) {
+      if (this.categoryLevel.sport >= 0) {
+        badgeGrade = "fer.png";
+      }
+      if (this.categoryLevel.sport >= 5) {
+        badgeGrade = "bronze.png";
+      }
+      if (this.categoryLevel.sport >= 10) {
+        badgeGrade = "argent.png";
+      }
+      if (this.categoryLevel.sport >= 20) {
+        badgeGrade = "gold.png";
+      }
+      if (this.categoryLevel.sport >= 50) {
+        badgeGrade = "diamond.png";
+      }
+      if (this.categoryLevel.sport >= 100) {
+        badgeGrade = "ultime.png";
+      }
+
+      const storage = getStorage();
+      const badgeRef = ref(storage, "badges/sport/" + badgeGrade);
+      getDownloadURL(badgeRef)
+        .then((url) => {
+          this.badgesURLsport = url;
+        })
+        .catch((error) => {
+          console.log("erreur download badge URL", error);
+        });
+    },
+    //
+    //
+    // GESTION
+    //
+    //
+    getBadgeGestion(badgeGrade) {
+      if (this.categoryLevel.gestion >= 0) {
+        badgeGrade = "fer.png";
+      }
+      if (this.categoryLevel.gestion >= 5) {
+        badgeGrade = "bronze.png";
+      }
+      if (this.categoryLevel.gestion >= 10) {
+        badgeGrade = "argent.png";
+      }
+      if (this.categoryLevel.gestion >= 20) {
+        badgeGrade = "gold.png";
+      }
+      if (this.categoryLevel.gestion >= 50) {
+        badgeGrade = "diamond.png";
+      }
+      if (this.categoryLevel.gestion >= 100) {
+        badgeGrade = "ultime.png";
+      }
+
+      const storage = getStorage();
+      const badgeRef = ref(storage, "badges/gestion/" + badgeGrade);
+      getDownloadURL(badgeRef)
+        .then((url) => {
+          this.badgesURLgestion = url;
+        })
+        .catch((error) => {
+          console.log("erreur download badge URL", error);
+        });
+    },
+    //
+    //
+    // SOCIAL
+    //
+    //
+    getBadgeSocial(badgeGrade) {
+      if (this.categoryLevel.social >= 0) {
+        badgeGrade = "fer.png";
+      }
+      if (this.categoryLevel.social >= 5) {
+        badgeGrade = "bronze.png";
+      }
+      if (this.categoryLevel.social >= 10) {
+        badgeGrade = "argent.png";
+      }
+      if (this.categoryLevel.social >= 20) {
+        badgeGrade = "gold.png";
+      }
+      if (this.categoryLevel.social >= 50) {
+        badgeGrade = "diamond.png";
+      }
+      if (this.categoryLevel.social >= 100) {
+        badgeGrade = "ultime.png";
+      }
+
+      const storage = getStorage();
+      const badgeRef = ref(storage, "badges/social/" + badgeGrade);
+      getDownloadURL(badgeRef)
+        .then((url) => {
+          this.badgesURLsocial = url;
+        })
+        .catch((error) => {
+          console.log("erreur download badge URL", error);
+        });
+    },
+    //
+    //
+    // SANTE
+    //
+    //
+    getBadgeSante(badgeGrade) {
+      if (this.categoryLevel.sante >= 0) {
+        badgeGrade = "fer.png";
+      }
+      if (this.categoryLevel.sante >= 5) {
+        badgeGrade = "bronze.png";
+      }
+      if (this.categoryLevel.sante >= 10) {
+        badgeGrade = "argent.png";
+      }
+      if (this.categoryLevel.sante >= 20) {
+        badgeGrade = "gold.png";
+      }
+      if (this.categoryLevel.sante >= 50) {
+        badgeGrade = "diamond.png";
+      }
+      if (this.categoryLevel.sante >= 100) {
+        badgeGrade = "ultime.png";
+      }
+
+      const storage = getStorage();
+      const badgeRef = ref(storage, "badges/sante/" + badgeGrade);
+      getDownloadURL(badgeRef)
+        .then((url) => {
+          this.badgesURLsante = url;
+        })
+        .catch((error) => {
+          console.log("erreur download badge URL", error);
+        });
+    },
+    //
+    //
+    // DIY
+    //
+    //
+    getBadgeDIY(badgeGrade) {
+      if (this.categoryLevel.diy >= 0) {
+        badgeGrade = "fer.png";
+      }
+      if (this.categoryLevel.diy >= 5) {
+        badgeGrade = "bronze.png";
+      }
+      if (this.categoryLevel.diy >= 10) {
+        badgeGrade = "argent.png";
+      }
+      if (this.categoryLevel.diy >= 20) {
+        badgeGrade = "gold.png";
+      }
+      if (this.categoryLevel.diy >= 50) {
+        badgeGrade = "diamond.png";
+      }
+      if (this.categoryLevel.diy >= 100) {
+        badgeGrade = "ultime.png";
+      }
+
+      const storage = getStorage();
+      const badgeRef = ref(storage, "badges/diy/" + badgeGrade);
+      getDownloadURL(badgeRef)
+        .then((url) => {
+          this.badgesURLdiy = url;
+        })
+        .catch((error) => {
+          console.log("erreur download badge URL", error);
+        });
+    },
+    //
+    //
+    // Culture
+    //
+    //
+    getBadgeCulture(badgeGrade) {
+      if (this.categoryLevel.culture >= 0) {
+        badgeGrade = "fer.png";
+      }
+      if (this.categoryLevel.culture >= 5) {
+        badgeGrade = "bronze.png";
+      }
+      if (this.categoryLevel.culture >= 10) {
+        badgeGrade = "argent.png";
+      }
+      if (this.categoryLevel.culture >= 20) {
+        badgeGrade = "gold.png";
+      }
+      if (this.categoryLevel.culture >= 50) {
+        badgeGrade = "diamond.png";
+      }
+      if (this.categoryLevel.culture >= 100) {
+        badgeGrade = "ultime.png";
+      }
+
+      const storage = getStorage();
+      const badgeRef = ref(storage, "badges/culture/" + badgeGrade);
+      getDownloadURL(badgeRef)
+        .then((url) => {
+          this.badgesURLculture = url;
+        })
+        .catch((error) => {
+          console.log("erreur download badge URL", error);
+        });
+    },
+    //
+    //
+    // Travail
+    //
+    //
+    getBadgeTravail(badgeGrade) {
+      if (this.categoryLevel.travail >= 0) {
+        badgeGrade = "fer.png";
+      }
+      if (this.categoryLevel.travail >= 5) {
+        badgeGrade = "bronze.png";
+      }
+      if (this.categoryLevel.travail >= 10) {
+        badgeGrade = "argent.png";
+      }
+      if (this.categoryLevel.travail >= 20) {
+        badgeGrade = "gold.png";
+      }
+      if (this.categoryLevel.travail >= 50) {
+        badgeGrade = "diamond.png";
+      }
+      if (this.categoryLevel.travail >= 100) {
+        badgeGrade = "ultime.png";
+      }
+
+      const storage = getStorage();
+      const badgeRef = ref(storage, "badges/travail/" + badgeGrade);
+      getDownloadURL(badgeRef)
+        .then((url) => {
+          this.badgesURLtravail = url;
+        })
+        .catch((error) => {
+          console.log("erreur download badge URL", error);
+        });
+    },
+    //
+    //
+    // Maison
+    //
+    //
+    getBadgeMaison(badgeGrade) {
+      if (this.categoryLevel.maison >= 0) {
+        badgeGrade = "fer.png";
+      }
+      if (this.categoryLevel.maison >= 5) {
+        badgeGrade = "bronze.png";
+      }
+      if (this.categoryLevel.maison >= 10) {
+        badgeGrade = "argent.png";
+      }
+      if (this.categoryLevel.maison >= 20) {
+        badgeGrade = "gold.png";
+      }
+      if (this.categoryLevel.maison >= 50) {
+        badgeGrade = "diamond.png";
+      }
+      if (this.categoryLevel.maison >= 100) {
+        badgeGrade = "ultime.png";
+      }
+
+      const storage = getStorage();
+      const badgeRef = ref(storage, "badges/maison/" + badgeGrade);
+      getDownloadURL(badgeRef)
+        .then((url) => {
+          this.badgesURLmaison = url;
+        })
+        .catch((error) => {
+          console.log("erreur download badge URL", error);
+        });
     },
   },
 };
