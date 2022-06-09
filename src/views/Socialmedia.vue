@@ -7,11 +7,7 @@
     <div v-else>
       <div class="flex flex-col gap-2">
         <span class="mt-3 font-roboto text-2xl font-bold text-white">Sélectionner un utilisateur</span>
-        <select
-          class="items-center rounded-md border-2 border-indigo-300 bg-black px-3 text-indigo-300"
-          v-model="userSelected"
-          @change="selectUser"
-        >
+        <select class="items-center border-2 border-indigo-300 bg-black px-3 text-indigo-300" v-model="userSelected" @change="selectUser">
           <option selected disabled value="" class="bg-black">...</option>
           <option v-for="util in listeUsers" :key="util.uid" :value="util" class="bg-black">{{ util.login }}</option>
         </select>
@@ -23,7 +19,7 @@
             <span class="mt-5 font-roboto text-lg text-white">Nouvelle discussion avec {{ userSelected.login }}</span>
             <input
               type="text"
-              class="w-full rounded-md border-2 border-indigo-300 bg-transparent px-3 text-indigo-300"
+              class="w-full border-2 border-indigo-300 bg-transparent px-3 text-indigo-300"
               v-model="libelle"
               required
               placeholder="Créer une nouvelle discussion"
@@ -40,7 +36,7 @@
 
         <div v-if="chat.length > 0">
           <table class="w-full">
-            <div class="m-3 rounded-md border-2 border-indigo-300 bg-indigo-500 p-3 text-white">
+            <div class="m-3 rounded-sm border-2 border-indigo-300 bg-indigo-500 p-3 text-white">
               <tr v-for="disc in chat" :key="disc.uid">
                 <div class="flex flex-row justify-between gap-5">
                   <h1 class="font-press-start-2p font-bold uppercase">{{ disc.libelle }}</h1>
@@ -69,12 +65,12 @@
           <!--Champ de texte pour écrire un message dans la discussion-->
           <div class="fixed bottom-11 mb-10 flex w-full flex-row gap-2">
             <textarea
-              class="w-5/6 rounded-lg border-2 border-indigo-300 bg-black bg-opacity-90 p-3 text-white"
+              class="w-5/6 border-2 border-indigo-300 bg-black bg-opacity-90 p-3 text-white"
               rows="3"
               placeholder="Message"
               v-model="message"
             ></textarea>
-            <button @click="sendMsg()" class="rounded-lg bg-black bg-opacity-90 text-indigo-300">
+            <button @click="sendMsg()" class="bg-black bg-opacity-90 text-indigo-300">
               <PaperAirplaneIcon class="w-7" />
             </button>
           </div>
@@ -86,30 +82,21 @@
               <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date" class="text-white">
                 <div class="row mb-3" v-if="msg.by == user.uid">
                   <div class="col-4">
-                    <div class="ml-3 text-left">
-                      <img class="avatar w-8" :src="userInfo[0].avatar" />
-                      {{ userInfo[0].login }} - {{ dateFr(msg.date) }}
+                    <div class="flex flex-row-reverse gap-3">
+                      <img class="w-8" :src="userInfo[0].avatar" />
+                      <p class="w-full rounded-sm border border-indigo-500 p-3 text-white">{{ msg.contenu }}</p>
                     </div>
-                  </div>
-                  <div class="col-8 mb-1 text-center">
-                    <div class="recep">
-                      <p>{{ msg.contenu }}</p>
-                    </div>
+                    <p class="text-sm italic text-zinc-400">{{ userInfo[0].login }} - {{ dateFr(msg.date) }}</p>
                   </div>
                 </div>
 
                 <div class="row mb-3" v-if="msg.by == userSelected.uid">
-                  <div class="col-8 text-center">
-                    <div class="w-70 emet">
-                      <p>{{ msg.contenu }}</p>
-                    </div>
+                  <div class="flex flex-row gap-3">
+                    <img class="w-8" :src="userSelected.avatar" />
+                    <p class="w-full rounded-sm bg-indigo-500 p-3 text-white">{{ msg.contenu }}</p>
                   </div>
-                  <div class="col-4">
-                    <div class="ml-3 text-left">
-                      <img class="avatar w-8" :src="userSelected.avatar" />
-                      {{ userSelected.login }} - {{ dateFr(msg.date) }}
-                    </div>
-                  </div>
+
+                  <p class="text-sm italic text-zinc-400">{{ userSelected.login }} - {{ dateFr(msg.date) }}</p>
                 </div>
               </div>
             </div>

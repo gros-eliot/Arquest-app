@@ -1,12 +1,7 @@
 <template>
   <div class="p-3">
     <h1 class="font-press-roboto mb-11 text-4xl font-bold text-white">Agenda</h1>
-
-    <!--
-
-  METS ICI le calendrier
-
--->
+    <img class="ml-auto mr-auto w-1/2 lg:w-1/3" src="/image/app_agenda.png" alt="Agenda" />
   </div>
 
   <h1 class="m-6 mb-3 font-roboto text-2xl font-bold text-white">QUÊTES ACCOMPLIES</h1>
