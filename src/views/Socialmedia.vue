@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <h1 class="font-press-roboto pt-5 text-4xl font-bold text-white">MESSAGES</h1>
+    <h1 class="font-press-roboto pt-5 text-4xl font-bold uppercase text-white">Messages</h1>
     <div v-if="user == null">
       <h6 class="mt-7 p-2 italic text-indigo-300" role="alert">Vous devez être connecté pour utiliser le Chat !!</h6>
     </div>
@@ -8,15 +8,16 @@
       <div class="flex flex-col gap-2">
         <span class="mt-3 font-roboto text-2xl font-bold text-white">Sélectionner un utilisateur</span>
         <select
-          class="items-center rounded-md border-2 border-indigo-300 bg-transparent px-3 text-indigo-300"
+          class="items-center rounded-md border-2 border-indigo-300 bg-black px-3 text-indigo-300"
           v-model="userSelected"
           @change="selectUser"
         >
-          <option selected disabled value="">...</option>
-          <option v-for="util in listeUsers" :key="util.uid" :value="util">{{ util.login }}</option>
+          <option selected disabled value="" class="bg-black">...</option>
+          <option v-for="util in listeUsers" :key="util.uid" :value="util" class="bg-black">{{ util.login }}</option>
         </select>
       </div>
       <div v-if="userSelected != null">
+        <!--Formulaire pour créer un nouveau fil de discussion-->
         <form class="mb-3" @submit.prevent="createDisc()">
           <div class="flex flex-col gap-3">
             <span class="mt-5 font-roboto text-lg text-white">Nouvelle discussion avec {{ userSelected.login }}</span>
@@ -30,6 +31,12 @@
             <BoutonBlue class="text-white" type="submit" title="Création">CREER LA DISCUSSION</BoutonBlue>
           </div>
         </form>
+
+        <!---->
+        <!---->
+        <!--Menu du fil de discussion-->
+        <!---->
+        <!---->
 
         <div v-if="chat.length > 0">
           <table class="w-full">
@@ -46,11 +53,20 @@
             </div>
           </table>
         </div>
-        <div v-else class="mt-4 font-roboto text-xl font-bold text-white">Aucun fil de discussion</div>
 
+        <!---->
+        <!--Si aucun fil de discussion :-->
+        <div v-else class="mt-4 font-roboto text-xl font-bold text-white">Aucun fil de discussion</div>
+        <!---->
+
+        <!--LE FIL DE DISCUSSION :-->
         <div v-if="discussion != null">
+          <!---->
+          <!--Nom de la discussion-->
           <h5 class="mt-4 font-roboto text-xl font-bold text-white">{{ discussion.libelle }}</h5>
 
+          <!---->
+          <!--Champ de texte pour écrire un message dans la discussion-->
           <div class="fixed bottom-11 mb-10 flex w-full flex-row gap-2">
             <textarea
               class="w-5/6 rounded-lg border-2 border-indigo-300 bg-black bg-opacity-90 p-3 text-white"
@@ -60,12 +76,15 @@
             ></textarea>
             <PaperAirplaneIcon class="w-7 rounded-lg bg-black bg-opacity-90 text-indigo-300" @click="sendMsg()" />
           </div>
+
+          <!---->
+          <!--Messages apparaissants-->
           <div v-for="disc in chat" :key="disc.id">
             <div v-if="disc.id == discussion.id">
               <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date">
                 <div class="text-white" v-if="msg.by == user.uid">
                   <div class="mt-2 flex gap-2">
-                    <img class="w-1/12 rounded-full sm:w-10" :src="userInfo[0].avatar" />
+                    <img class="h-fit w-1/12 sm:w-10" :src="userInfo[0].avatar" />
 
                     <p class="w-full rounded-xl border-2 border-indigo-500 bg-transparent p-3 text-lg text-indigo-300">{{ msg.contenu }}</p>
                   </div>
@@ -79,7 +98,11 @@
             </div>
           </div>
         </div>
+        <!--Fin fil discussion-->
+        <!---->
       </div>
+      <!--Fin v-if userSelected != null-->
+      <!---->
     </div>
   </div>
 </template>
@@ -216,7 +239,7 @@ export default {
 
           // Fusion des 2 chats from et to dans le chat
           this.chat = this.chatFrom.concat(this.chatTo);
-          //console.log("chat", this.chat);
+          console.log("chat", this.chat);
         });
       });
     },
@@ -321,8 +344,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>
-
-
