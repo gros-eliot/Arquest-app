@@ -15,13 +15,13 @@
     <form class="flex flex-col items-center gap-5" enctype="multipart/form-data" @submit.prevent="updateQuete">
       <input
         type="text"
-        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-indigo-500"
+        class="h-16 w-full max-w-2xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-white"
         v-model="quete.nom"
       />
 
       <textarea
         type="text"
-        class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent p-4 text-lg text-white"
+        class="max-h-[150px] min-h-[150px] w-full max-w-2xl border border-indigo-500 bg-transparent p-4 text-lg text-white"
         v-model="quete.desc"
       />
       <div class="w-full md:w-[70%] lg:w-[50%]">
@@ -31,14 +31,10 @@
       </div>
       <select
         v-model="quete.cat"
-        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
+        class="h-16 w-full max-w-2xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-white"
       >
         <option class="border-0 bg-gray-900 font-roboto font-bold" value="0" disabled selected>Sélectionner une catégorie</option>
-        <option
-          class="border-0 bg-gray-900 font-roboto font-normal text-indigo-500"
-          v-for="categorie in listeCategorie"
-          :key="categorie.id"
-        >
+        <option class="white border-0 bg-gray-900 font-roboto font-normal" v-for="categorie in listeCategorie" :key="categorie.id">
           {{ categorie.libelle }}
         </option>
       </select>
@@ -46,7 +42,7 @@
       <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Difficulté :</span></div>
 
       <select
-        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
+        class="h-16 w-full max-w-2xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-white"
         v-model="quete.difficulty"
       >
         <option class="border-0 bg-gray-900 font-roboto font-bold" value="0" disabled selected>Sélectionner une difficulté</option>
@@ -61,7 +57,19 @@
         v-model="quete.date"
         type="date"
         format="dd/mm/yyyy"
-        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black"
+        class="
+          h-16
+          w-full
+          max-w-2xl
+          border border-indigo-500
+          bg-gray-extended-300
+          fill-indigo-500
+          px-2
+          text-center text-xl
+          font-bold
+          uppercase
+          text-black
+        "
         placeholder="Date"
       />
 

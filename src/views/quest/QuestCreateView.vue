@@ -4,7 +4,9 @@
     <div class="flex justify-end p-1">
       <RouterLink to="/" class="fixed"><XIcon class="h-8 w-8 stroke-white" /></RouterLink>
     </div>
-    <h1 class="text-center font-roboto text-4xl font-bold uppercase text-white">Créer une <span class="text-indigo-500">quête</span></h1>
+    <h1 class="mt-8 text-center font-roboto text-4xl font-bold uppercase text-white">
+      Créer une <span class="text-indigo-500">quête</span>
+    </h1>
   </div>
   <!--fin hero template-->
 
@@ -15,14 +17,14 @@
     <form class="flex flex-col items-center gap-5" enctype="multipart/form-data" @submit.prevent="createQuete">
       <input
         type="text"
-        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-indigo-500"
+        class="h-16 w-full max-w-2xl border border-indigo-500 bg-transparent text-center text-xl font-bold uppercase text-white"
         v-model="nom"
         placeholder="TITRE"
         required
       />
       <textarea
         type="text"
-        class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent p-4 text-lg text-white"
+        class="max-h-[150px] min-h-[150px] w-full max-w-2xl border border-indigo-500 bg-transparent p-4 text-lg text-white"
         v-model="desc"
         placeholder="Description"
       />
@@ -33,7 +35,7 @@
       </div>
       <select
         v-model="cat"
-        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
+        class="h-16 w-full max-w-2xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-white"
         required
       >
         <option class="border-0 bg-gray-900 font-roboto font-normal" value="0" disabled selected>Sélectionner une catégorie</option>
@@ -43,7 +45,7 @@
       </select>
       <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Difficulté :</span></div>
       <select
-        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-indigo-500"
+        class="h-16 w-full max-w-2xl border border-indigo-500 bg-transparent px-2 text-lg font-bold uppercase text-white"
         v-model="difficulty"
         required
       >
@@ -57,7 +59,19 @@
         type="date"
         format="dd/mm/yyyy"
         v-model="date"
-        class="h-16 w-full max-w-2xl rounded-3xl border border-indigo-500 bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black"
+        class="
+          h-16
+          w-full
+          max-w-2xl
+          border border-indigo-500
+          bg-transparent
+          fill-indigo-500
+          px-2
+          text-center text-xl
+          font-bold
+          uppercase
+          text-white
+        "
         placeholder="Date"
         required
       />

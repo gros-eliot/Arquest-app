@@ -18,7 +18,7 @@
             <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Nom :</span></div>
             <input
               type="text"
-              class="h-16 w-full max-w-2xl rounded-3xl bg-indigo-500 text-center text-xl font-bold uppercase text-white md:mb-5"
+              class="h-16 w-full max-w-2xl bg-indigo-500 text-center text-xl font-bold uppercase text-white md:mb-5"
               v-model="quete.nom"
               disabled
             />
@@ -29,7 +29,7 @@
             <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Description :</span></div>
             <textarea
               type="text"
-              class="max-h-[150px] min-h-[150px] w-full max-w-2xl rounded-3xl bg-indigo-500 p-4 text-lg text-white md:mb-5"
+              class="max-h-[150px] min-h-[150px] w-full max-w-2xl bg-indigo-500 p-4 text-lg text-white md:mb-5"
               v-model="quete.desc"
               disabled
             />
@@ -47,18 +47,14 @@
                 >Catégorie <RouterLink to="/listecat"><QuestionMarkCircleIcon class="m-3 h-6 w-6 stroke-indigo-500" /></RouterLink> :</span
               >
             </div>
-            <input
-              v-model="quete.cat"
-              disabled
-              class="h-16 w-full rounded-3xl bg-indigo-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
-            />
+            <input v-model="quete.cat" disabled class="h-16 w-full bg-indigo-500 px-2 text-lg font-bold uppercase text-white md:mb-5" />
           </div>
 
           <!--Difficulté : -->
           <div class="flex flex-col gap-1">
             <div class="w-full md:w-[70%] lg:w-[50%]"><span class="font-bold">Difficulté :</span></div>
             <input
-              class="h-16 w-full rounded-3xl bg-indigo-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
+              class="h-16 w-full bg-indigo-500 px-2 text-lg font-bold uppercase text-white md:mb-5"
               v-model="quete.difficulty"
               disabled
             />
@@ -72,7 +68,7 @@
               disabled
               type="date"
               format="dd/mm/yyyy"
-              class="h-16 w-full rounded-3xl bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black md:mb-5"
+              class="h-16 w-full bg-gray-extended-300 fill-indigo-500 px-2 text-center text-xl font-bold uppercase text-black md:mb-5"
             />
           </div>
         </div>
