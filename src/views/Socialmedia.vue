@@ -1,70 +1,82 @@
 <template>
-  <h5 class="text-white">Chat</h5>
-
-  <div v-if="user == null">
-    <h6 class="text-white" role="alert">Vous devez être connecté pour utiliser le Chat !!</h6>
-  </div>
-  <div v-else>
-    <span class="text-white">Sélectionner un utilisateur</span>
-
-    <select class="custom-select" v-model="userSelected" @change="selectUser">
-      <option selected disabled value="">...</option>
-      <option v-for="util in listeUsers" :key="util.uid" :value="util">{{ util.login }}</option>
-    </select>
-
-    <div v-if="userSelected != null">
-      <form class="mb-3" @submit.prevent="createDisc()">
-        <span class="text-white">Nouveau fil avec {{ userSelected.login }}</span>
-
-        <input type="text" class="form-control" v-model="libelle" required />
-        <button class="text-white" type="submit" title="Création">créer</button>
-      </form>
-
-      <h5 class="text-white">Vos fils de discussion avec : {{ userSelected.login }}</h5>
-      <div v-if="chat.length > 0">
-        <table class="">
-          <tbody>
-            <tr v-for="disc in chat" :key="disc.uid">
-              <td class="text-white">
-                {{ disc.libelle }} - créer par
-                <span v-if="disc.fil[0] == user.uid">vous</span>
-                <span v-else>{{ userSelected.login }}</span>
-                le {{ dateFr(disc.creation) }}
-              </td>
-              <td>
-                <button class="text-white" type="button" @click="viewFil(disc)" title="Voir ce fil">Voire</button>
-                <button class="text-white" type="button" @click="deleteFil(disc)" title="Supprimer ce fil">Supprimer</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="p-4">
+    <h1 class="font-press-roboto pt-5 text-4xl font-bold text-white">MESSAGES</h1>
+    <div v-if="user == null">
+      <h6 class="mt-7 p-2 italic text-indigo-300" role="alert">Vous devez être connecté pour utiliser le Chat !!</h6>
+    </div>
+    <div v-else>
+      <div class="flex flex-col gap-2">
+        <span class="mt-3 font-roboto text-2xl font-bold text-white">Sélectionner un utilisateur</span>
+        <select
+          class="items-center rounded-md border-2 border-indigo-300 bg-transparent px-3 text-indigo-300"
+          v-model="userSelected"
+          @change="selectUser"
+        >
+          <option selected disabled value="">...</option>
+          <option v-for="util in listeUsers" :key="util.uid" :value="util">{{ util.login }}</option>
+        </select>
       </div>
-      <div v-else class="text-white">Aucun fil de discussion</div>
+      <div v-if="userSelected != null">
+        <form class="mb-3" @submit.prevent="createDisc()">
+          <div class="flex flex-col gap-3">
+            <span class="mt-5 font-roboto text-lg text-white">Nouvelle discussion avec {{ userSelected.login }}</span>
+            <input
+              type="text"
+              class="w-full rounded-md border-2 border-indigo-300 bg-transparent px-3 text-indigo-300"
+              v-model="libelle"
+              required
+              placeholder="Créer une nouvelle discussion"
+            />
+            <BoutonBlue class="text-white" type="submit" title="Création">CREER LA DISCUSSION</BoutonBlue>
+          </div>
+        </form>
 
-      <hr style="background-color: white" />
+        <div v-if="chat.length > 0">
+          <table class="w-full">
+            <tbody>
+              <div class="m-3 rounded-md border-2 border-indigo-300 bg-indigo-500 p-3 text-white">
+                <tr v-for="disc in chat" :key="disc.uid">
+                  <div class="flex flex-row justify-between gap-5">
+                    <h1 class="font-press-start-2p font-bold uppercase">{{ disc.libelle }}</h1>
+                    {{ dateFr(disc.creation) }}
 
-      <div v-if="discussion != null">
-        <h5 class="text-white">Discussion : {{ discussion.libelle }}</h5>
-        <hr />
+                    <EyeIcon class="text-white" type="button" @click="viewFil(disc)" title="Voir ce fil"> </EyeIcon>
+                    <TrashIcon class="text-white" type="button" @click="deleteFil(disc)" title="Supprimer ce fil"></TrashIcon>
+                  </div>
+                </tr>
+              </div>
+            </tbody>
+          </table>
+        </div>
+        <div v-else class="mt-4 font-roboto text-xl font-bold text-white">Aucun fil de discussion</div>
 
-        <textarea class="text-white" rows="3" placeholder="Message" v-model="message"></textarea>
+        <div v-if="discussion != null">
+          <h5 class="mt-4 font-roboto text-xl font-bold text-white">{{ discussion.libelle }}</h5>
 
-        <button class="text-white" @click="sendMsg()">envoyé</button>
+          <div class="fixed bottom-11 mb-10 flex w-full flex-row gap-2">
+            <textarea
+              class="w-5/6 rounded-lg border-2 border-indigo-300 bg-black bg-opacity-90 p-3 text-white"
+              rows="3"
+              placeholder="Message"
+              v-model="message"
+            ></textarea>
+            <PaperAirplaneIcon class="w-7 w-full rounded-lg bg-black bg-opacity-90 text-indigo-300" @click="sendMsg()" />
+          </div>
+          <div v-for="disc in chat" :key="disc.id">
+            <div v-if="disc.id == discussion.id">
+              <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date">
+                <div class="text-white" v-if="msg.by == user.uid">
+                  <div class="mt-2 flex gap-2">
+                    <img class="w-1/12 rounded-full sm:w-10" :src="userInfo[0].avatar" />
 
-        <div v-for="disc in chat" :key="disc.id">
-          <div v-if="disc.id == discussion.id">
-            <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date">
-              <div class="text-white" v-if="msg.by == user.uid">
-                <img class="avatar" :src="userInfo[0].avatar" />
-                {{ userInfo[0].login }} - {{ dateFr(msg.date) }}
-
-                <p class="text-white">{{ msg.contenu }}</p>
-
-                <div class="text-white" v-if="msg.by == userSelected.uid">
-                  <p class="text-white">{{ msg.contenu }}</p>
-
-                  <img class="text-white" :src="userSelected.avatar" />
-                  {{ userSelected.login }} - {{ dateFr(msg.date) }}
+                    <p class="w-full rounded-xl border-2 border-indigo-500 bg-transparent p-3 text-lg text-indigo-300">{{ msg.contenu }}</p>
+                  </div>
+                  <div class="mt-2 text-xs italic text-zinc-400">{{ userInfo[0].login }} - {{ dateFr(msg.date) }}</div>
+                  <div class="text-white" v-if="msg.by == userSelected.uid">
+                    <p class="rounded-lg bg-indigo-300 p-3 text-lg text-white">{{ msg.contenu }}</p>
+                    <img class="text-white" :src="userSelected.avatar" />
+                    {{ userSelected.login }} - {{ dateFr(msg.date) }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -101,8 +113,14 @@ import {
 // Fonction authentification
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
 
+import BoutonBlue from "../components/boutons/BoutonBlue.vue";
+import BoutonBorder from "../components/boutons/BoutonBorder.vue";
+
+import { TrashIcon, EyeIcon, PaperAirplaneIcon } from "@heroicons/vue/outline";
+
 export default {
   name: "ChatView",
+  components: { BoutonBorder, BoutonBlue, TrashIcon, EyeIcon, PaperAirplaneIcon },
   data() {
     // Les données
     return {
