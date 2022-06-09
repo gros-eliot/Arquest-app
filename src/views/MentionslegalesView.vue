@@ -1,15 +1,6 @@
 <template>
   <div class="bg-black">
-
-    <p class="text-base font-roboto ml-9 mr-9 mt-7 mb-16 text-white text-center-justify">
-      Cette page décrit les mentions légales qui vont s’imposer à tous les
-      utilisateurs visitants ce site. En y naviguant, vous vous acquittez à les
-      respecter. A prendre en compte que les mentions légales peuvent être
-      changées à tout instant, c’est pour cela que nous vous convions à examiner
-      assidûment.
-    </p>
-
-        <h2 class="text-5xl text-left ml-9 mr-5 mb-10 text-white">Mentions légales</h2>
+        <h2 class="text-5xl text-left m-9 text-white">Mentions légales</h2>
 
         <p class="text-base font-roboto ml-9 mr-9 mb-16 text-white text-center-justify">Cette page décrit les mentions légales qui vont s’imposer à tous les utilisateurs visitants ce site. En y naviguant, vous vous acquittez à les respecter. A prendre en compte que les mentions légales peuvent être changées à tout instant, c’est pour cela que nous vous convions à examiner assidûment. </p>
 

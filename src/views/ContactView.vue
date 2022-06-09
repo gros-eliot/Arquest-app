@@ -6,29 +6,29 @@
         Vous avez une <span class="text-white font-bold">question</span> ? Besoin d’un <span class="text-white font-bold">renseignement</span> ? Tout ce passe ici.
         </p>
 
-        <p class="text-2xl text-left ml-16 text-white uppercase">Nom</p>
-        <div class="ml-16 mb-11 mt-4">
+        <div class="m-16">
+            <p class="text-2xl text-left text-white uppercase">Nom</p>
             <textarea name="first_name" id="first_name" cols="30" rows="2" class="text-1xl italic text-gray-500 bg-black border-2 border-white">Insérez du texte...</textarea>
         </div>
 
-        <p class="text-2xl text-left ml-16 text-white uppercase">Prénom</p>
-        <div class="ml-16 mb-11 mt-4">
+        <div class="m-16">
+            <p class="text-2xl text-left text-white uppercase">Prénom</p>
             <textarea name="last_name" id="last_name" cols="30" rows="2" class="text-1xl italic text-gray-500 bg-black border-2 border-white">Insérez du texte...</textarea>
         </div>
 
-        <p class="text-2xl text-left ml-16 text-white uppercase">Email</p>
-        <div class="ml-16 mb-11 mt-4">
+        <div class="m-16">
+            <p class="text-2xl text-left text-white uppercase">Email</p>
             <textarea name="email" id="email" cols="30" rows="2" class="text-1xl italic text-gray-500 bg-black border-2 border-white">Email</textarea>
         </div>
 
-        <p class="text-2xl text-left ml-16 text-white uppercase">Téléphone</p>
-        <p class="text-1xl text-left ml-16 text-white italic">* facultatif</p>
-        <div class="ml-16 mb-11 mt-4">
+        <div class="m-16">
+            <p class="text-2xl text-left text-white uppercase">Téléphone</p>
+            <p class="text-1xl text-left m-2 text-white italic">* facultatif</p>
             <textarea name="téléphone" id="téléphone" cols="30" rows="2" class="text-1xl italic text-gray-500 bg-black border-2 border-white">Ex : 06 00 00 00 00</textarea>
         </div>
 
-        <p class="text-2xl text-left ml-16 text-white uppercase">Requête</p>
-        <div class="mb-11 mt-4 ml-16">
+        <div class="m-16">
+            <p class="text-2xl text-left text-white uppercase">Requête</p>
             <textarea name="requête" id="requête" cols="35" rows="10" class="text-1xl italic text-gray-500 bg-black border-2 border-white">Insérez du texte...</textarea>
         </div>
 
@@ -37,8 +37,7 @@
                 class="
                 form-check-input
                 appearance-none
-                h-6
-                w-12
+                p-3
                 m-6
                 border-2 border-white
                 squared-sm
@@ -69,8 +68,7 @@
             class="
             form-check-input
             appearance-none
-            h-6
-            w-14
+            p-3
             m-6
             border-2 border-white
             squared-sm
