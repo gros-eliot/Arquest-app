@@ -78,7 +78,20 @@ import {
   updateDoc,
   deleteDoc,
   onSnapshot,
+  query,
+  where,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+
+// Fonctions Firestore
+
+// Fonctions Storage
+import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-storage.js";
+
+// Fonction authentification
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
+
+import { emitter } from "../../main.js";
+
 import BoutonBlue from "../../components/boutons/BoutonBlue.vue";
 import BoutonClose from "../../components/boutons/BoutonClose.vue";
 import { XIcon, QuestionMarkCircleIcon } from "@heroicons/vue/outline";
@@ -95,6 +108,19 @@ export default {
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
       listeCategorie: [], // Liste des CATEGORIES DE QUÊTES synchronisée - collection cat de Firebase
       listeDifficulte: [], // Liste des DIFFICULTES synchronisée - collection cat de Firebase
+
+      //
+      //
+      //
+      user: {
+        // User connecté
+        email: null,
+        password: null,
+      },
+      userInfo: null, // Informations complémentaires user connecté (sorte de listeCatégorie, listePays)
+      name: "", // Titre de l'application ou nom du user
+      avatar: null, // Avatar / image du user connecté
+      isAdmin: false, // Si l'utilisateur est ou non administrateur
     };
   },
   mounted() {
@@ -102,8 +128,87 @@ export default {
     this.getQueteSynchro();
     this.getCategorie();
     this.getDifficulte();
+
+    //
+    //
+    //
+    //
+    //
+    // Vérifier si un user connecté existe déjà
+    // Au lancement de l'application
+    this.getUserConnect();
+
+    // Ecoute de l'évènement de connexion
+    emitter.on("connectUser", (e) => {
+      // Récupération du user
+      this.user = e.user;
+
+      // Recherche infos complémentaires du user
+      this.getUserInfo(this.user);
+    });
+
+    // Ecoute de l'évènement de deconnexion
+    emitter.on("deConnectUser", (e) => {
+      // Récupération user
+      this.user = e.user;
+
+      // Réinitialisation infos complémentaires user
+
+      this.userInfo = null;
+      this.name = "";
+      this.avatar = null;
+      this.isAdmin = false;
+    });
+    //
+    //
+    //
+    //
+    //
   },
   methods: {
+    async getUserConnect() {
+      await getAuth().onAuthStateChanged(
+        function (user) {
+          if (user) {
+            // Récupération du user connecté
+            this.user = user;
+            // Recherche de ses infos complémentaires
+            this.getUserInfo(this.user);
+          }
+        }.bind(this)
+      );
+    },
+
+    async getUserInfo(user) {
+      // Rechercher les informations complémentaires de l'utilisateur
+      // Obtenir Firestore
+      const firestore = getFirestore();
+      // Base de données (collection)  document participant
+      const dbUsers = collection(firestore, "users");
+      // Recherche du user par son uid
+      const q = query(dbUsers, where("uid", "==", user.uid));
+      await onSnapshot(q, (snapshot) => {
+        this.userInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log("userInfo", this.userInfo);
+        // userInfo étant un tableau, onn récupère
+        // ses informations dans la 1° cellule du tableau : 0
+        this.name = this.userInfo[0].login;
+        this.isAdmin = this.userInfo[0].admin;
+        // Recherche de l'image du user sur le Storage
+
+        const storage = getStorage();
+        // Référence du fichier avec son nom
+        const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
+        getDownloadURL(spaceRef)
+          .then((url) => {
+            this.avatar = url;
+          })
+          .catch((error) => {
+            console.log("erreur downloadUrl", error);
+          });
+      });
+    },
+
     async getQueteSynchro() {
       const firestore = getFirestore();
       const dbQuete = collection(firestore, "quete");
@@ -141,6 +246,7 @@ export default {
       const firestore = getFirestore();
       const dbQuete = collection(firestore, "quete");
       const docRef = await addDoc(dbQuete, {
+        uid: this.userInfo[0].uid,
         nom: this.nom,
         date: this.date,
         cat: this.cat,
