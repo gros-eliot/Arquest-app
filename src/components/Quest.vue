@@ -203,7 +203,7 @@ export default {
       name: null,
       avatar: null,
       isAdmin: false,
-      categoryLevel: [],
+      categoryLevel: null,
     };
   },
   components: {

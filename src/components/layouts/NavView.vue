@@ -68,7 +68,7 @@ export default {
   mounted() {
     // Vérifier si un user connecté existe déjà
     // Au lancement de l'application
-    /*this.getUserConnect();*/
+    this.getUserConnect();
 
     // Ecoute de l'évènement de connexion
     emitter.on("connectUser", (e) => {
