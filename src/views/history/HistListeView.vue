@@ -13,8 +13,14 @@
     <!--Si il n'y a 1 ou + élément dans historique, afficher historique-->
 
     <div v-if="listeHistory.length >= 1">
+      <div class="my-5 flex h-1/2 flex-col items-center justify-center gap-3">
+        <p class="ml-auto mr-auto w-2/4 text-center font-press-start-2p text-xl text-zinc-600">
+          Retrouvez ici vos anciennes quêtes réalisées.
+        </p>
+      </div>
+
       <div
-        class="grid grid-cols-[1fr_1fr_20px] items-center justify-start border-white p-3 font-bold text-white md:grid-cols-[1fr_1fr_50px]"
+        class="grid grid-cols-[1fr_1fr_20px] items-center justify-start border-white p-3 font-bold text-indigo-300 md:grid-cols-[1fr_1fr_50px]"
       >
         <p>Nom</p>
 
@@ -31,11 +37,6 @@
             <TrashIcon class="h-6 w-6 stroke-red-500 md:h-10 md:w-10" />
           </button>
         </div>
-      </div>
-
-      <div class="my-5 flex h-1/2 flex-col items-center justify-center gap-3">
-        <HistoryClock class="w-40 max-w-xl md:w-72" />
-        <p class="text-center font-press-start-2p text-xl text-zinc-600">Retrouvez ici vos anciennes quêtes réalisées.</p>
       </div>
     </div>
   </div>

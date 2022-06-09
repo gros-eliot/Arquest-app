@@ -44,10 +44,10 @@
         getBadgeMaison(badgeGrade);
         afficherBadges = !afficherBadges;
       "
-      class="ml-auto mr-auto w-fit bg-white py-2 px-6 text-black"
+      class="ml-auto mr-auto w-fit bg-indigo-500 py-2 px-6 text-white"
     >
-      <div v-if="afficherBadges === true" class="font-press-start-2p">Afficher badges</div>
-      <div v-else class="font-press-start-2p">Masquer badges</div>
+      <div v-if="afficherBadges === true" class="font-press-start-2p">Afficher les badges</div>
+      <div v-else class="font-press-start-2p">Masquer les badges</div>
     </button>
 
     <div class="my-5 flex flex-wrap items-center justify-center gap-10" :class="{ hidden: afficherBadges }">

@@ -155,8 +155,8 @@
     <p class="text-center font-press-start-2p text-xl text-zinc-600">Créez de nouvelles quêtes&nbsp;!</p>
   </div>
 
-  <div class="text-white">{{ categoryLevel }}</div>
   <!--
+  <div class="text-white">{{ categoryLevel }}</div>
   <div class="text-white" v-for="users in userInfo" :key="users.id">{{ users.category_level.sport }}</div>
   -->
 </template>

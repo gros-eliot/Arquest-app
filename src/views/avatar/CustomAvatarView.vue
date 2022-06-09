@@ -7,8 +7,7 @@
 
       <div class="my-3 ml-auto mr-auto">
         <div v-if="avatar != null">
-          <img :src="avatar" :alt="'Avatar de ' + name" class="w-40 md:w-48 lg:w-52" />
-          <p class="m-3 text-center font-press-start-2p">{{ this.userInfo[0].avatar }}</p>
+          <img :src="avatar" :alt="'Avatar de ' + name" class="w-40 md:w-48" />
         </div>
 
         <div v-else><img src="src/assets/default_avatar.webp" alt="Default avatar" /></div>
@@ -24,7 +23,7 @@
     <PencilAltIcon class="w-11 stroke-white md:w-6" />
   </button>
 
-  <div class="my-3 ml-auto mr-auto w-fit bg-indigo-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Avatars</div>
+  <div class="mb-3 ml-auto mr-auto w-full bg-indigo-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Avatars</div>
 
   <div
     class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] justify-items-center gap-5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
@@ -104,7 +103,7 @@
       <img src="src/assets/AVATARS/girl6.png" alt="Avatars" class="h-full w-full object-contain object-top" />
     </button>
   </div>
-  <div class="my-3 ml-auto mr-auto w-fit bg-indigo-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Fonds</div>
+  <div class="my-3 ml-auto mr-auto w-full bg-indigo-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Fonds</div>
 </template>
 
 <script>
