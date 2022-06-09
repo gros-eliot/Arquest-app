@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="font-roboto text-2xl font-bold text-white">
-      QUÊTES EN COURS (<span class="font-bold text-blue-300" v-if="testByUid === true">{{ orderByUid.length }}</span
+      QUÊTES EN COURS (<span class="font-bold text-blue-300">{{ orderByUid.length }}</span
       >)
     </h2>
     <div>
@@ -10,10 +10,10 @@
         <NoQuestAvailable class="ml-8 w-11/12 max-w-xl" />
         <p class="text-center font-press-start-2p text-xl text-zinc-600">Aucune quête en cours...</p>
       </div>
-      <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]" v-if="testByUid === true">
+      <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]">
         <!--IMPORT DES QUÊTES DE FIREBASE-->
-        <form v-for="quete in orderByUid" :key="quete.uid">
-          <div class="flex flex-col gap-1 border-2 border-indigo-500">
+        <form v-for="quete in orderByUid" :key="quete.id">
+          <div class="flex flex-col gap-1 border-2 border-indigo-500" v-if="quete.uid === user.uid">
             <!--TOP DE LA CARD-->
             <div class="m-2 flex items-center justify-between text-white">
               <!--QUETE NOM VERSION TAB/ORDINATEUR-->
@@ -144,6 +144,7 @@
             </div>
             <!--FIN CONTENU DE LA CARD-->
           </div>
+          <div v-else class="hidden h-0 w-0"></div>
         </form>
       </div>
       <!--Si il y a 1 ou + élément dans quêtes, afficher quêtes en cours-->
@@ -160,7 +161,7 @@
   </div>
 
   <div class="text-white">
-    {{ testByUid }}
+    <!--{{ testByUid }}-->
   </div>
 </template>
 
@@ -195,6 +196,7 @@ export default {
   data() {
     return {
       detailsQuetes: false,
+      testByUid: false,
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
 
@@ -204,11 +206,11 @@ export default {
         password: null,
       },
       userInfo: null, // Informations complémentaires user connecté
+      uid: null,
       name: null,
       avatar: null,
       isAdmin: false,
       categoryLevel: null,
-      testByUid: false,
     };
   },
   components: {
@@ -230,19 +232,15 @@ export default {
   },
   computed: {
     orderByUid: function () {
-      return this.listeQueteSynchro.sort(
-        function (quete) {
-          if (quete.uid == this.userInfo[0].uid) {
-            this.testByUid = true;
-          }
-          // Sinon on retourne 0
-          else {
-            this.testByUid = false;
-          }
-        }.bind(this)
-      );
+      return this.listeQueteSynchro.sort(function (quete, user) {
+        // Si UID quête = UID user on retourne 1
+        if (quete.uid === user.uid) return -1;
+        // Sinon  on retourne 0
+        return 0;
+      });
     },
   },
+
   methods: {
     async getQueteSynchro() {
       const firestore = getFirestore();
@@ -286,10 +284,6 @@ export default {
         this.categoryLevel.travail = this.categoryLevel.travail + 1;
       }
 
-      /*
-
-      EN PHASE DE RECHERCHES :*/
-
       await updateDoc(docRefUsers, {
         "category_level.sport": this.categoryLevel.sport,
         "category_level.gestion": this.categoryLevel.gestion,
@@ -322,6 +316,7 @@ export default {
       const docRefHistory = await addDoc(dbHistory, {
         nom: quete.nom,
         date: quete.date,
+        uid: quete.uid,
       });
       // console.log("quête validée avec le id suivant : ", docRefHistory.id);
 
@@ -364,6 +359,7 @@ export default {
         this.name = this.userInfo[0].login;
         this.isAdmin = this.userInfo[0].admin;
         this.categoryLevel = this.userInfo[0].category_level;
+        this.uid = this.userInfo[0].uid;
         // Recherche de l'image du user sur le Storage
         const storage = getStorage();
         // Référence du fichier avec son nom
@@ -373,7 +369,7 @@ export default {
             this.avatar = url;
           })
           .catch((error) => {
-            // console.log("erreur downloadUrl", error);
+            console.log("erreur downloadUrl", error);
           });
       });
     },
