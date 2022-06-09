@@ -148,7 +148,7 @@
       </div>
       <!--Si il y a 1 ou + élément dans quêtes, afficher quêtes en cours-->
       <div v-if="orderByUid.length >= 1" class="my-16 flex h-1/2 flex-col items-center justify-center gap-3">
-        <img src="src/assets/createmorequest.png" alt="Trophé" class="w-20 brightness-50" />
+        <img src="/image/createmorequest.png" alt="Trophé" class="w-20 brightness-50" />
         <p class="text-center font-press-start-2p text-xl text-zinc-600">Créez de nouvelles quêtes&nbsp;!</p>
       </div>
     </div>

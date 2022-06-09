@@ -23,7 +23,7 @@
           id="nav3"
           v-if="avatar != null"
         />
-        <img v-else src="src/assets/social.webp" class="h-8 w-8 rounded-full border border-white object-cover active:border-indigo-500" />
+        <img v-else src="/image/social.webp" class="h-8 w-8 rounded-full border border-white object-cover active:border-indigo-500" />
         <p class="hidden font-press-start-2p active:text-indigo-500 md:block">Profil</p>
       </div>
     </RouterLink>

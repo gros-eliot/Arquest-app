@@ -7,7 +7,7 @@
 
       <div class="mb-5 ml-auto mr-auto">
         <div v-if="avatar != null"><img :src="avatar" :alt="'Avatar de ' + name" class="w-40 md:w-48 lg:w-52" /></div>
-        <div v-else><img src="src/assets/default_avatar.webp" alt="Default avatar" /></div>
+        <div v-else><img src="/image/default_avatar.webp" alt="Default avatar" /></div>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
       <img :src="badgesURLculture" alt="Culture" class="w-12" />
       <img :src="badgesURLtravail" alt="Travail" class="w-12" />
       <img :src="badgesURLmaison" alt="Maison" class="w-12" />
-      <div v-if="isAdmin === true"><img src="src/assets/BADGES/admin.png" alt="Badge admin" class="w-12" /></div>
+      <div v-if="isAdmin === true"><img src="/image/BADGES/admin.png" alt="Badge admin" class="w-12" /></div>
     </div>
   </div>
 </template>

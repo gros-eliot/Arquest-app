@@ -78,7 +78,7 @@
       </RouterLink>
     </div>
 
-    <RouterLink to="/social"><img src="../../assets/social.webp" alt="Réseau social" class="w-8" /></RouterLink>
+    <RouterLink to="/social"><img src="/image/social.webp" alt="Réseau social" class="w-8" /></RouterLink>
   </div>
 </template>
 
