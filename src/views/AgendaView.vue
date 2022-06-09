@@ -148,29 +148,6 @@ export default {
     // Vérifier si un user connecté existe déjà
     // Au lancement de l'application
     this.getUserConnect();
-
-    // Ecoute de l'évènement de connexion
-    emitter.on("connectUser", (e) => {
-      // Récupération du user
-      this.user = e.user;
-
-      // Recherche infos complémentaires du user
-      this.getUserInfo(this.user);
-    });
-
-    // Ecoute de l'évènement de deconnexion
-    emitter.on("deConnectUser", (e) => {
-      // Récupération user
-      this.user = e.user;
-
-      // Réinitialisation infos complémentaires user
-
-      this.userInfo = null;
-      this.name = "";
-      this.avatar = null;
-      this.isAdmin = false;
-      this.categoryLevel = null;
-    });
   },
   methods: {
     // Obtenir les informations du user connecté

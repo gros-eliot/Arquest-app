@@ -1,5 +1,5 @@
 <template>
-  <header class="text-white"> 
+  <header class="text-white">
     <HeaderView class="fixed z-[9]" />
 
     <NavView class="fixed bottom-0 z-[8]" />
@@ -105,7 +105,6 @@ export default {
       const q = query(dbUsers, where("uid", "==", user.uid));
       await onSnapshot(q, (snapshot) => {
         this.userInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        console.log("userInfo", this.userInfo);
         // userInfo étant un tableau, onn récupère
         // ses informations dans la 1° cellule du tableau : 0
         this.name = this.userInfo[0].login;
