@@ -1,30 +1,42 @@
 <template>
-  <div class="p-4">
-    <h1 class="font-press-roboto pt-5 text-4xl font-bold uppercase text-white">Messages</h1>
-    <div v-if="user == null">
-      <h6 class="mt-7 p-2 italic text-indigo-300" role="alert">Vous devez être connecté pour utiliser le Chat !!</h6>
+  <div class="chatBackground flex h-40 w-full items-end p-3">
+    <h1 class="pt-5 font-press-start-2p text-4xl uppercase text-white">Messages</h1>
+    <img src="/image/social.webp" alt="Social" class="absolute top-48 right-5 hidden opacity-25 brightness-0 md:block lg:top-44" />
+  </div>
+
+  <div>
+    <div v-if="user == null" class="w-full bg-red-500 p-4 text-center text-white">
+      <h6 class="font-bold" role="alert">Vous devez être connecté pour utiliser le chat !!</h6>
     </div>
+
     <div v-else>
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-2 p-4">
         <span class="mt-3 font-roboto text-2xl font-bold text-white">Sélectionner un utilisateur</span>
-        <select class="items-center border-2 border-indigo-300 bg-black px-3 text-indigo-300" v-model="userSelected" @change="selectUser">
+        <select
+          class="w-full max-w-4xl border-2 border-indigo-300 bg-transparent px-3 py-3 text-indigo-300 md:py-2"
+          v-model="userSelected"
+          @change="selectUser"
+        >
           <option selected disabled value="" class="bg-black">...</option>
-          <option v-for="util in listeUsers" :key="util.uid" :value="util" class="bg-black">{{ util.login }}</option>
+          <option v-for="util in listeUsers" :key="util.uid" :value="util" class="bg-black">
+            {{ util.login }}
+          </option>
         </select>
       </div>
+
       <div v-if="userSelected != null">
         <!--Formulaire pour créer un nouveau fil de discussion-->
-        <form class="mb-3" @submit.prevent="createDisc()">
+        <form class="my-3 bg-zinc-800 px-4" @submit.prevent="createDisc()">
           <div class="flex flex-col gap-3">
-            <span class="mt-5 font-roboto text-lg text-white">Nouvelle discussion avec {{ userSelected.login }}</span>
+            <span class="mt-5 font-roboto text-lg font-bold text-white">Nouvelle discussion avec {{ userSelected.login }}</span>
             <input
               type="text"
-              class="w-full border-2 border-indigo-300 bg-transparent px-3 text-indigo-300"
+              class="w-full max-w-4xl border-2 border-indigo-300 bg-transparent px-3 py-3 text-indigo-300 md:py-2"
               v-model="libelle"
               required
-              placeholder="Créer une nouvelle discussion"
+              placeholder="Nommer le fil de discussion"
             />
-            <BoutonBlue class="text-white" type="submit" title="Création">CREER LA DISCUSSION</BoutonBlue>
+            <BoutonBlue class="ml-auto mr-auto w-fit px-5" type="submit" title="Création">CREER LA DISCUSSION</BoutonBlue>
           </div>
         </form>
 
@@ -34,74 +46,84 @@
         <!---->
         <!---->
 
-        <div v-if="chat.length > 0">
-          <table class="w-full">
-            <div class="m-3 rounded-sm border-2 border-indigo-300 bg-indigo-500 p-3 text-white">
-              <tr v-for="disc in chat" :key="disc.uid">
-                <div class="flex flex-row justify-between gap-5">
-                  <h1 class="font-press-start-2p font-bold uppercase">{{ disc.libelle }}</h1>
-                  {{ dateFr(disc.creation) }}
-
-                  <EyeIcon class="text-white" type="button" @click="viewFil(disc)" title="Voir ce fil"> </EyeIcon>
-                  <TrashIcon class="text-white" type="button" @click="deleteFil(disc)" title="Supprimer ce fil"></TrashIcon>
+        <section v-if="chat.length > 0">
+          <div class="grid grid-cols-1 gap-5 p-4 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))]">
+            <div
+              class="my-3 w-full rounded-sm border-2 border-indigo-300 bg-indigo-500 p-3 text-white"
+              v-for="disc in chat"
+              :key="disc.uid"
+            >
+              <div class="flex justify-between">
+                <div class="flex flex-col gap-1">
+                  <h1 class="font-press-start-2p text-2xl uppercase">{{ disc.libelle }}</h1>
+                  <p class="text-white">{{ dateFr(disc.creation) }}</p>
                 </div>
-              </tr>
-            </div>
-          </table>
-        </div>
-
-        <!---->
-        <!--Si aucun fil de discussion :-->
-        <div v-else class="mt-4 font-roboto text-xl font-bold text-white">Aucun fil de discussion</div>
-        <!---->
-
-        <!--LE FIL DE DISCUSSION :-->
-        <div v-if="discussion != null">
-          <!---->
-          <!--Nom de la discussion-->
-          <h5 class="mt-4 font-roboto text-xl font-bold text-white">{{ discussion.libelle }}</h5>
-
-          <!---->
-          <!--Champ de texte pour écrire un message dans la discussion-->
-          <div class="fixed bottom-11 mb-10 flex w-full flex-row gap-2">
-            <textarea
-              class="w-5/6 rounded-sm border-2 border-indigo-300 bg-black bg-opacity-90 p-3 text-white"
-              rows="3"
-              placeholder="Message"
-              v-model="message"
-            ></textarea>
-            <button @click="sendMsg()" class="bg-black bg-opacity-90 text-indigo-300">
-              <PaperAirplaneIcon class="w-7" />
-            </button>
-          </div>
-
-          <!---->
-          <!--Messages apparaissants-->
-          <div v-for="disc in chat" :key="disc.id">
-            <div v-if="disc.id == discussion.id">
-              <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date" class="text-white">
-                <div class="row mb-3" v-if="msg.by == user.uid">
-                  <div class="col-4">
-                    <div class="flex flex-row-reverse gap-3">
-                      <img class="w-8" :src="userInfo[0].avatar" />
-                      <p class="w-full rounded-sm border border-indigo-500 p-3 text-white">{{ msg.contenu }}</p>
-                    </div>
-                    <p class="text-sm italic text-zinc-400">{{ userInfo[0].login }} - {{ dateFr(msg.date) }}</p>
-                  </div>
-                </div>
-
-                <div class="row mb-3" v-if="msg.by == userSelected.uid">
-                  <div class="flex flex-row gap-3">
-                    <img class="w-8" :src="userSelected.avatar" />
-                    <p class="w-full rounded-sm bg-indigo-500 p-3 text-white">{{ msg.contenu }}</p>
-                  </div>
-
-                  <p class="text-sm italic text-zinc-400">{{ userSelected.login }} - {{ dateFr(msg.date) }}</p>
+                <div class="flex flex-row items-center gap-3">
+                  <button class="text-white" type="button" @click="viewFil(disc)" title="Voir ce fil">
+                    <EyeIcon class="h-8 w-8" />
+                  </button>
+                  <button class="text-white" type="button" @click="deleteFil(disc)" title="Supprimer ce fil">
+                    <TrashIcon class="h-8 w-8" />
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        <!---->
+        <!--Si aucun fil de discussion :-->
+        <section v-else class="m-4 text-center font-press-start-2p text-xl text-zinc-600">Aucun fil de discussion</section>
+        <!---->
+
+        <!--LE FIL DE DISCUSSION :-->
+        <section v-if="discussion != null">
+          <div class="m-4 rounded-xl bg-indigo-900 p-4">
+            <!---->
+            <!--Nom de la discussion-->
+            <!---->
+            <!--Champ de texte pour écrire un message dans la discussion-->
+            <div class="mb-10">
+              <h3 class="p-2 font-press-start-2p text-2xl uppercase text-white">{{ discussion.libelle }}</h3>
+              <div class="flex w-full flex-col items-center justify-center md:flex-row md:justify-start">
+                <textarea
+                  class="h-20 max-h-32 min-h-[5rem] w-full rounded-sm border-2 border-indigo-300 bg-black bg-opacity-90 p-3 text-white"
+                  placeholder="Message"
+                  v-model="message"
+                ></textarea>
+                <button @click="sendMsg()" class="m-5 h-fit w-8/12 bg-indigo-300 bg-opacity-90 p-2 md:w-fit md:p-5">
+                  <PaperAirplaneIcon class="ml-auto mr-auto w-7 stroke-black" />
+                </button>
+              </div>
+            </div>
+            <!---->
+            <!--Messages apparaissants-->
+            <div v-for="disc in chat" :key="disc.id">
+              <div v-if="disc.id == discussion.id">
+                <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date" class="text-white">
+                  <div class="row mb-3" v-if="msg.by == user.uid">
+                    <div class="flex flex-row-reverse items-center gap-3">
+                      <img class="h-12 w-12 object-contain" :src="userInfo[0].avatar" />
+                      <div class="flex w-full max-w-xl flex-col justify-end">
+                        <p class="w-full rounded-xl bg-black p-3 text-right text-white">{{ msg.contenu }}</p>
+                        <p class="text-right text-sm italic text-zinc-300">{{ userInfo[0].login }} || {{ dateFr(msg.date) }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3" v-if="msg.by == userSelected.uid">
+                    <div class="flex flex-row items-center gap-3">
+                      <img class="h-12 w-12 object-contain" :src="userSelected.avatar" />
+                      <div class="flex w-full max-w-xl flex-col justify-end">
+                        <p class="w-full rounded-xl bg-indigo-500 p-3 text-white">{{ msg.contenu }}</p>
+                        <p class="text-start text-sm italic text-zinc-300">{{ userSelected.login }} || {{ dateFr(msg.date) }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <!--Fin fil discussion-->
         <!---->
       </div>
@@ -329,6 +351,7 @@ export default {
       let refDisc = await getDoc(docRef);
       let tabMsg = refDisc.data().msg;
       tabMsg.push(msg);
+      this.message = null;
       // Mise à jour de la discussion
       updateDoc(doc(firestore, "chat", this.discussion.id), {
         msg: tabMsg,
@@ -348,3 +371,19 @@ export default {
   },
 };
 </script>
+
+<style>
+.chatBackground {
+  animation: 2s ease-out infinite alternate fond_anime;
+}
+
+@keyframes fond_anime {
+  from {
+    background-color: rgb(99 102 241);
+  }
+
+  to {
+    background-color: rgb(30 58 138);
+  }
+}
+</style>
