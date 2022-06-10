@@ -1,5 +1,11 @@
 <template>
   <div class="h-full w-full">
+    <div class="my-5 flex w-full flex-col items-center justify-center">
+      <arquest-premium class="h-36 w-36"></arquest-premium>
+      <h1 class="px-4 pt-4 font-press-start-2p text-3xl text-white md:text-4xl">Bienvenue</h1>
+    </div>
+    <hr class="my-5 border-indigo-300" />
+
     <h1 class="px-4 pt-4 font-press-start-2p text-2xl text-white">Connexion</h1>
     <form @submit.prevent="onCnx" class="flex flex-col px-4">
       <input
@@ -50,17 +56,15 @@
         required
       />
       <input class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300" placeholder="Mot de passe" required />
-      <BoutonBlue type="submit" class="btn btn-dark text-white">Créer mon compte</BoutonBlue>
+      <BoutonBlue type="submit" class="btn btn-dark ml-auto mr-auto w-fit px-10 text-white">Créer mon compte</BoutonBlue>
     </form>
   </div>
 </template>
 
 <script>
-// Import des fonction d'authentification
-
 import BoutonBlue from "../components/boutons/BoutonBlue.vue";
 import BoutonBorder from "../components/boutons/BoutonBorder.vue";
-
+import ArquestPremium from "../components/icons/ArquestPremium.vue";
 import {
   getAuth, // Fonction générale d'authentification
   signInWithEmailAndPassword, // Se connecter avec un email + mot de passe
@@ -77,6 +81,7 @@ export default {
   components: {
     BoutonBlue,
     BoutonBorder,
+    ArquestPremium,
     EyeIcon,
   },
 
