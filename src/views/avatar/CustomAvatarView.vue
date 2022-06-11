@@ -239,10 +239,14 @@ export default {
       //
       //
       const firestore = getFirestore();
-      const docRef = doc(firestore, "users", this.userInfo[0].id);
-      // Modification du participant à partir de son id
-      await updateDoc(docRef, {
-        avatar: this.userInfo[0].avatar,
+      const dbQuete = collection(firestore, "quete");
+      const docRef = await addDoc(dbQuete, {
+        uid: this.userInfo[0].uid,
+        nom: this.nom,
+        date: this.date,
+        cat: this.cat,
+        difficulty: this.difficulty,
+        desc: this.desc,
       });
       // redirection sur la liste des participants
       // console.log("Ca a marché ! User avatar mis à jour");

@@ -92,7 +92,7 @@
                   v-model="message"
                 ></textarea>
                 <button @click="sendMsg()" class="m-5 h-fit w-8/12 bg-indigo-300 bg-opacity-90 p-2 md:w-fit md:p-5">
-                  <PaperAirplaneIcon class="ml-auto mr-auto w-7 stroke-black" />
+                  <PaperAirplaneIcon class="ml-auto mr-auto w-7 rotate-90 stroke-black" />
                 </button>
               </div>
             </div>

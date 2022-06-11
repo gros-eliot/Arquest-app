@@ -128,3 +128,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+header {
+  opacity: 1;
+  display: block;
+}
+</style>

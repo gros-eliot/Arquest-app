@@ -6,6 +6,7 @@
       </div>
 
       <div class="mb-5 ml-auto mr-auto">
+        <p class="w-full py-3 text-center font-press-start-2p text-xl">{{ name }}</p>
         <div v-if="avatar != null"><img :src="avatar" :alt="'Avatar de ' + name" class="w-40 md:w-48 lg:w-52" /></div>
         <div v-else><img src="/image/default_avatar.webp" alt="Default avatar" /></div>
       </div>
