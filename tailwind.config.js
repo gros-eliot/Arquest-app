@@ -11,6 +11,7 @@ module.exports = {
           "extended-700": "#3F3F46",
           "extended-300": "#D4D4D4",
           "extended-900": "#181818",
+          "extended-950": "#101010",
         },
       },
       "fontFamily": {

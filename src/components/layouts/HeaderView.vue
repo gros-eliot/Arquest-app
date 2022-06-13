@@ -14,12 +14,12 @@
       id="menu"
       aria-labelledby="btnMenu"
       class="fixed inset-0 z-30 h-full -translate-x-full bg-black text-white motion-safe:transition-transform motion-safe:duration-1000"
-      :class="{ '-translate-x-[12rem]': menuOuvert }"
+      :class="{ '-translate-x-[10rem]': menuOuvert }"
     >
       <!--CONTAINER CROIX + LOGO DE L'APP-->
 
-      <div class="ml-48 flex flex-col">
-        <div class="flex items-center justify-between p-3">
+      <div class="ml-[10rem] flex flex-col">
+        <div class="flex items-center justify-between px-3 pt-3">
           <button
             class="relative z-40 text-xl"
             aria-haspopup="true"
@@ -36,21 +36,18 @@
 
         <!--CONTAINER LISTE DES PAGES-->
 
-        <nav>
+        <nav class="h-[100vh]">
           <div class="flex justify-center">
-            <ul
-              class="relative z-40 flex flex-col gap-10 p-10 font-roboto text-2xl font-bold lg:flex-row lg:gap-8"
-              @click="menuOuvert = !menuOuvert"
-            >
+            <ul class="m-5 flex w-full flex-col justify-items-start gap-5 text-xl" @click="menuOuvert = !menuOuvert">
               <li><router-link to="/home">Accueil</router-link></li>
               <li><router-link to="/avatar">Profil</router-link></li>
               <li><router-link to="/history">Historique</router-link></li>
               <li><router-link to="/listecat">Types de quête</router-link></li>
             </ul>
           </div>
-          <hr />
+          <hr class="mx-5" />
           <div class="flex justify-center">
-            <ul class="flex flex-col gap-6 p-10 lg:flex-row lg:gap-8" @click="menuOuvert = !menuOuvert">
+            <ul class="m-5 grid w-full grid-cols-1 justify-items-start gap-2 text-sm" @click="menuOuvert = !menuOuvert">
               <li><router-link to="/mentionslegales">Mentions légales</router-link></li>
               <li><router-link to="/apropos">À Propos</router-link></li>
               <li><router-link to="/contact">Contact</router-link></li>

@@ -10,7 +10,7 @@
         <NoQuestAvailable class="ml-8 w-11/12 max-w-xl" />
         <p class="text-center font-press-start-2p text-xl text-zinc-600">Aucune quête en cours...</p>
       </div>
-      <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]">
+      <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]" v-if="orderByUid.length > 0">
         <!--IMPORT DES QUÊTES DE FIREBASE-->
         <form v-for="quete in orderByUid" :key="quete.id">
           <div class="flex flex-col gap-1 border-2 border-indigo-500" v-if="quete.uid === user.uid">
@@ -43,8 +43,8 @@
               <!---->
               <!---->
               <!---->
-              <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
-              <div class="m-3 ml-auto flex gap-5">
+              <hr class="border-1 my-1 ml-auto mr-auto w-11/12 border-white" />
+              <div class="mx-3 my-1 ml-auto flex gap-5">
                 <!--MODIFIER LA QUETE : BOUTON CRAYON-->
                 <!--params quete.id ==> se diriger sur la quête à modifier-->
                 <RouterLink :to="{ name: 'QuestModifView', params: { id: quete.id } }">
@@ -81,7 +81,7 @@
                   </p>
                 </div>
               </div>
-              <hr class="border-1 my-4 ml-auto mr-auto w-11/12 border-white" />
+              <hr class="border-1 my-1 ml-auto mr-auto w-11/12 border-white" />
               <!--CATEGORIE DE LA QUÊTE-->
               <div class="w-full p-2">
                 <h4
@@ -109,7 +109,7 @@
             <!-- FIN DETAILS DE LA CARD-->
             <!--FIN TOP DE LA CARD-->
             <!--CONTENU DE LA CARD (nom, catégorie, date, difficulté) -->
-            <div class="flex w-full flex-col gap-4 p-2">
+            <div class="flex w-full flex-col p-2">
               <!---->
               <!--CATEGORIE : COULEURS-->
               <div class="flex flex-col justify-center">
@@ -148,7 +148,7 @@
         </form>
       </div>
       <!--Si il y a 1 ou + élément dans quêtes, afficher quêtes en cours-->
-      <div v-if="orderByUid.length >= 1" class="my-16 flex h-1/2 flex-col items-center justify-center gap-3">
+      <div v-if="orderByUid.length > 0" class="my-16 flex h-1/2 flex-col items-center justify-center gap-3">
         <img src="/image/createmorequest.png" alt="Trophé" class="w-20 brightness-50" />
         <p class="text-center font-press-start-2p text-xl text-zinc-600">Créez de nouvelles quêtes&nbsp;!</p>
       </div>

@@ -5,9 +5,13 @@
       <div class="flex h-[85vh] w-full items-center justify-center">
         <div class="flex w-full flex-col items-center justify-center">
           <arquest-premium-long class="h-1/2 w-8/12 max-w-2xl"></arquest-premium-long>
-          <a href="#connexion_form">
-            <BoutonBlue class="w-fit px-10">Rejoindre</BoutonBlue>
-          </a>
+
+          <div class="flex flex-col items-center justify-center gap-0 md:flex-row">
+            <a href="#connexion_form">
+              <BoutonBlue class="w-fit px-10">Rejoindre</BoutonBlue>
+            </a>
+            <BoutonBorder type="button" class="w-fit px-10" @click="onDcnx()">Deconnexion</BoutonBorder>
+          </div>
         </div>
       </div>
       <h1 class="px-4 pt-4 font-press-start-2p text-3xl text-white md:text-4xl" id="connexion_form">Bienvenue</h1>
@@ -39,9 +43,8 @@
       <div class="alert alert-warning" role="alert">
         <p class="font-roboto text-base text-indigo-300">{{ message }}</p>
       </div>
-      <div class="flex flex-col items-center justify-center gap-0 md:flex-row">
+      <div class="flex items-center justify-center">
         <BoutonBlue type="submit" class="w-fit px-10">Connexion</BoutonBlue>
-        <BoutonBorder type="button" class="w-fit px-10" @click="onDcnx()">Deconnexion</BoutonBorder>
       </div>
     </form>
     <hr class="my-14" />
@@ -266,10 +269,3 @@ export default {
   },
 };
 </script>
-
-<style>
-header {
-  opacity: 0;
-  display: none;
-}
-</style>

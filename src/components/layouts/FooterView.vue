@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-10 bg-zinc-800 text-white">
+  <div class="flex flex-col gap-10 bg-gray-extended-950 text-white">
     <ArquestPremium class="m-5 h-14 w-14" />
 
     <!--LISTE PAGES-->

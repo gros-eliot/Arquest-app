@@ -257,4 +257,18 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.avatarBackground {
+  animation: 2s ease-out infinite alternate fond_anime;
+}
+
+@keyframes fond_anime {
+  from {
+    background-color: rgb(99 102 241);
+  }
+
+  to {
+    background-color: rgb(30 58 138);
+  }
+}
+</style>

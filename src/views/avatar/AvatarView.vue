@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <div class="avatarBackground flex w-full flex-col justify-between text-white">
+  <div class="avatar1Background z-[100]">
+    <div class="flex w-full flex-col justify-between bg-blue-500 text-white">
       <div class="mt-2 mr-2 flex justify-end">
         <RouterLink to="/custom_avatar"><PencilAltIcon class="w-11" /></RouterLink>
       </div>
 
       <div class="mb-5 ml-auto mr-auto">
-        <p class="w-full py-3 text-center font-press-start-2p text-xl">{{ name }}</p>
-        <div v-if="avatar != null"><img :src="avatar" :alt="'Avatar de ' + name" class="w-40 md:w-48 lg:w-52" /></div>
+        <p class="my-4 w-full bg-black bg-opacity-40 px-2 py-1 text-center font-press-start-2p text-xl">{{ name }}</p>
+        <div v-if="avatar != null"><img :src="avatar" :alt="'Avatar de ' + name" class="w-40 md:w-44" /></div>
         <div v-else><img src="/image/default_avatar.webp" alt="Default avatar" /></div>
       </div>
     </div>
@@ -26,8 +26,6 @@
   <!---->
 
   <div class="m-5 flex flex-col gap-1 text-white" v-for="users in userInfo" :key="users.id">
-    <h2 class="font-roboto text-2xl font-bold">Badges</h2>
-
     <!--{{ userInfo[0].category_level }}-->
     <!--{{{ categoryLevel.sport }}-->
 
@@ -462,17 +460,17 @@ export default {
 </script>
 
 <style>
-.avatarBackground {
-  animation: 2s ease-out infinite alternate fond_anime;
+.avatar1Background {
+  animation: 2s ease-out infinite alternate fond_anime1;
 }
 
-@keyframes fond_anime {
+@keyframes fond_anime1 {
   from {
-    background-color: rgb(99 102 241);
+    background-color: rgba(0 0 0, 0.3);
   }
 
   to {
-    background-color: rgb(30 58 138);
+    background-color: rgba(0 0 0, 0.7);
   }
 }
 </style>

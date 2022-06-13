@@ -1,10 +1,10 @@
 <template>
-  <div class="chatBackground flex h-40 w-full items-end p-3">
+  <div class="chatBackground flex h-32 w-full items-end p-3">
     <h1 class="pt-5 font-press-start-2p text-4xl uppercase text-white">Messages</h1>
-    <img src="/image/social.webp" alt="Social" class="absolute top-48 right-5 hidden opacity-25 brightness-0 md:block lg:top-44" />
+    <img src="/image/social.webp" alt="Social" class="absolute top-36 right-5 hidden opacity-25 brightness-0 md:block lg:top-40" />
   </div>
 
-  <div>
+  <section>
     <div v-if="user == null" class="w-full bg-red-500 p-4 text-center text-white">
       <h6 class="font-bold" role="alert">Vous devez être connecté pour utiliser le chat !!</h6>
     </div>
@@ -24,32 +24,35 @@
         </select>
       </div>
 
-      <div v-if="userSelected != null">
+      <div v-if="userSelected != null" class="m-4">
         <!--Formulaire pour créer un nouveau fil de discussion-->
-        <form class="my-3 bg-zinc-800 px-4" @submit.prevent="createDisc()">
-          <div class="flex flex-col gap-3">
-            <span class="mt-5 font-roboto text-lg font-bold text-white">Nouvelle discussion avec {{ userSelected.login }}</span>
-            <input
-              type="text"
-              class="w-full max-w-4xl border-2 border-indigo-300 bg-transparent px-3 py-3 text-indigo-300 md:py-2"
-              v-model="libelle"
-              required
-              placeholder="Nommer le fil de discussion"
-            />
-            <BoutonBlue class="ml-auto mr-auto w-fit px-5" type="submit" title="Création">CREER LA DISCUSSION</BoutonBlue>
-          </div>
-        </form>
-
-        <!---->
-        <!---->
-        <!--Menu du fil de discussion-->
-        <!---->
-        <!---->
-
-        <section v-if="chat.length > 0">
-          <div class="grid grid-cols-1 gap-5 p-4 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))]">
+        <section class="flex w-full flex-col items-center justify-between gap-5 border-2 border-indigo-300 bg-indigo-500 p-4 text-white">
+          <form class="flex w-full flex-col items-center justify-between gap-5" @submit.prevent="createDisc()">
+            <span class="font-press-start-2p text-lg">Discussions avec {{ userSelected.login }}</span>
+            <div class="flex w-11/12 flex-row items-center justify-center gap-2 rounded-sm">
+              <div class="flex w-full flex-col gap-1">
+                <input
+                  type="text"
+                  class="rounded-xl bg-black px-3 py-3 text-white md:py-2"
+                  v-model="libelle"
+                  required
+                  placeholder="Nouvelle discussion"
+                />
+              </div>
+              <button class="ml-auto mr-auto h-fit w-fit rounded-full bg-black p-2 shadow-xl" type="submit" title="Création">
+                <PlusIcon class="h-8 w-8" />
+              </button>
+            </div>
+            <hr class="w-full border-2 border-indigo-300" />
+          </form>
+          <!---->
+          <!---->
+          <!--Menu du fil de discussion-->
+          <!---->
+          <!---->
+          <section v-if="chat.length > 0" class="h-fit w-full">
             <div
-              class="my-3 w-full rounded-sm border-2 border-indigo-300 bg-indigo-500 p-3 text-white"
+              class="grid w-full grid-cols-1 gap-5 p-4 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))]"
               v-for="disc in chat"
               :key="disc.uid"
             >
@@ -59,32 +62,30 @@
                   <p class="text-white">{{ dateFr(disc.creation) }}</p>
                 </div>
                 <div class="flex flex-row items-center gap-3">
-                  <button class="text-white" type="button" @click="viewFil(disc)" title="Voir ce fil">
-                    <EyeIcon class="h-8 w-8" />
+                  <button type="button" @click="viewFil(disc)" title="Voir ce fil">
+                    <EyeIcon class="h-8 w-8 stroke-white" />
                   </button>
-                  <button class="text-white" type="button" @click="deleteFil(disc)" title="Supprimer ce fil">
-                    <TrashIcon class="h-8 w-8" />
+                  <button type="button" @click="deleteFil(disc)" title="Supprimer ce fil">
+                    <TrashIcon class="h-8 w-8 stroke-white" />
                   </button>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <!---->
-        <!--Si aucun fil de discussion :-->
-        <section v-else class="m-4 text-center font-press-start-2p text-xl text-zinc-600">Aucun fil de discussion</section>
-        <!---->
+          <!---->
+          <!--Si aucun fil de discussion :-->
+          <section v-else class="m-4 text-center font-press-start-2p text-xl text-indigo-300">Aucun fil de discussion</section>
+          <!---->
+        </section>
 
         <!--LE FIL DE DISCUSSION :-->
         <section v-if="discussion != null">
-          <div class="m-4 rounded-xl bg-indigo-900 p-4">
-            <!---->
-            <!--Nom de la discussion-->
+          <div class="rounded-b-xl bg-indigo-900 p-4">
             <!---->
             <!--Champ de texte pour écrire un message dans la discussion-->
             <div class="mb-10">
-              <h3 class="p-2 font-press-start-2p text-2xl uppercase text-white">{{ discussion.libelle }}</h3>
+              <h3 class="p-2 font-press-start-2p text-sm uppercase text-white">{{ discussion.libelle }}</h3>
               <div class="flex w-full flex-col items-center justify-center md:flex-row md:justify-start">
                 <textarea
                   class="h-20 max-h-32 min-h-[5rem] w-full rounded-sm border-2 border-indigo-300 bg-black bg-opacity-90 p-3 text-white"
@@ -98,7 +99,7 @@
             </div>
             <!---->
             <!--Messages apparaissants-->
-            <div v-for="disc in chat" :key="disc.id">
+            <section v-for="disc in chat" :key="disc.id">
               <div v-if="disc.id == discussion.id">
                 <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date" class="text-white">
                   <div class="row mb-3" v-if="msg.by == user.uid">
@@ -121,16 +122,16 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
+          <!--Fin fil discussion-->
+          <!---->
         </section>
-        <!--Fin fil discussion-->
-        <!---->
       </div>
       <!--Fin v-if userSelected != null-->
       <!---->
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -162,11 +163,11 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.
 import BoutonBlue from "../components/boutons/BoutonBlue.vue";
 import BoutonBorder from "../components/boutons/BoutonBorder.vue";
 
-import { TrashIcon, EyeIcon, PaperAirplaneIcon } from "@heroicons/vue/outline";
+import { TrashIcon, EyeIcon, PaperAirplaneIcon, PlusIcon } from "@heroicons/vue/outline";
 
 export default {
   name: "ChatView",
-  components: { BoutonBorder, BoutonBlue, TrashIcon, EyeIcon, PaperAirplaneIcon },
+  components: { BoutonBorder, BoutonBlue, TrashIcon, EyeIcon, PaperAirplaneIcon, PlusIcon },
   data() {
     // Les données
     return {
