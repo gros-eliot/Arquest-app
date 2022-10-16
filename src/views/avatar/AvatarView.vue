@@ -1,6 +1,11 @@
 <template>
-  <div class="avatar1Background z-[100]">
-    <div class="flex w-full flex-col justify-between bg-blue-500 text-white">
+  <div
+    class="flex w-full flex-col justify-between bg-bottom bg-no-repeat text-white"
+    :style="{
+      backgroundImage: `url('${fond}')`,
+    }"
+  >
+    <div class="flex w-full flex-col justify-between text-white">
       <div class="mt-2 mr-2 flex justify-end">
         <RouterLink to="/custom_avatar"><PencilAltIcon class="w-11" /></RouterLink>
       </div>
@@ -97,6 +102,7 @@ export default {
       userInfo: null, // Informations complémentaires user connecté
       name: "", // Titre de l'application ou nom du user
       avatar: null, // Avatar / image du user connecté
+      fond: null, // Fond / image de fond du user connecté
       isAdmin: false, // Si l'utilisateur est ou non administrateur
       categoryLevel: [],
 
@@ -165,9 +171,17 @@ export default {
         const storage = getStorage();
         // Référence du fichier avec son nom
         const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
+        const spaceRef2 = ref(storage, "fonds/" + this.userInfo[0].fond);
         getDownloadURL(spaceRef)
           .then((url) => {
             this.avatar = url;
+          })
+          .catch((error) => {
+            console.log("erreur downloadUrl", error);
+          });
+        getDownloadURL(spaceRef2)
+          .then((url) => {
+            this.fond = url;
           })
           .catch((error) => {
             console.log("erreur downloadUrl", error);
@@ -459,18 +473,4 @@ export default {
 };
 </script>
 
-<style>
-.avatar1Background {
-  animation: 2s ease-out infinite alternate fond_anime1;
-}
-
-@keyframes fond_anime1 {
-  from {
-    background-color: rgba(0 0 0, 0.3);
-  }
-
-  to {
-    background-color: rgba(0 0 0, 0.7);
-  }
-}
-</style>
+<style></style>

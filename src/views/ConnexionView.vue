@@ -216,6 +216,7 @@ export default {
         admin: false,
         login: this.name,
         avatar: "boy1.png",
+        fond: "normal.png",
         category_level: {
           culture: 0,
           diy: 0,

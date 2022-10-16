@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div class="avatarBackground flex w-full flex-col justify-between text-white">
+    <div
+      class="flex w-full flex-col justify-between bg-cover bg-no-repeat object-center text-white"
+      :style="{
+        backgroundImage: `url('${fond}')`,
+      }"
+    >
       <div class="m-2 flex items-center justify-end">
         <RouterLink to="/avatar"><ArrowLeftIcon class="w-11 stroke-white" /></RouterLink>
       </div>
@@ -17,7 +22,7 @@
 
   <button
     class="fixed bottom-20 right-4 flex flex-row items-center gap-3 rounded-full bg-red-500 p-3 md:p-5"
-    @click.prevent="updateAvatar()"
+    @click.prevent="updateAvatar(), updateFond()"
   >
     <p class="hidden font-press-start-2p text-lg text-white md:block">Modifier</p>
     <PencilAltIcon class="w-11 stroke-white md:w-6" />
@@ -104,6 +109,28 @@
     </button>
   </div>
   <div class="my-3 ml-auto mr-auto w-full bg-indigo-500 px-5 py-2 text-center font-press-start-2p text-2xl text-white">Fonds</div>
+  <div
+    class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] justify-items-center gap-5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
+  >
+    <button class="h-20 w-20 border-2 md:h-32 md:w-32" @click.prevent="changeFonds('normal.png')">
+      <img src="/image/FONDS/normal.png" alt="Avatars" class="h-full w-full object-contain" />
+    </button>
+    <button class="h-20 w-20 border-2 md:h-32 md:w-32" @click.prevent="changeFonds('sunset.png')">
+      <img src="/image/FONDS/sunset.png" alt="Avatars" class="h-full w-full object-contain" />
+    </button>
+    <button class="h-20 w-20 border-2 md:h-32 md:w-32" @click.prevent="changeFonds('moutains.png')">
+      <img src="/image/FONDS/moutains.png" alt="Avatars" class="h-full w-full object-contain" />
+    </button>
+    <button class="h-20 w-20 border-2 md:h-32 md:w-32" @click.prevent="changeFonds('desert.png')">
+      <img src="/image/FONDS/desert.png" alt="Avatars" class="h-full w-full object-contain" />
+    </button>
+    <button class="h-20 w-20 border-2 md:h-32 md:w-32" @click.prevent="changeFonds('jungle.png')">
+      <img src="/image/FONDS/jungle.png" alt="Avatars" class="h-full w-full object-contain" />
+    </button>
+    <button class="h-20 w-20 border-2 md:h-32 md:w-32" @click.prevent="changeFonds('sky.png')">
+      <img src="/image/FONDS/sky.png" alt="Avatars" class="h-full w-full object-contain" />
+    </button>
+  </div>
 </template>
 
 <script>
@@ -147,6 +174,7 @@ export default {
       userInfo: null, // Informations complémentaires user connecté (sorte de listeCatégorie, listePays)
       name: "", // Titre de l'application ou nom du user
       avatar: null, // Avatar / image du user connecté
+      fond: null, // Fond / image de fond du user connecté
       isAdmin: false, // Si l'utilisateur est ou non administrateur
     };
   },
@@ -191,9 +219,17 @@ export default {
         const storage = getStorage();
         // Référence du fichier avec son nom
         const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
+        const spaceRef2 = ref(storage, "fonds/" + this.userInfo[0].fond);
         getDownloadURL(spaceRef)
           .then((url) => {
             this.avatar = url;
+          })
+          .catch((error) => {
+            console.log("erreur downloadUrl", error);
+          });
+        getDownloadURL(spaceRef2)
+          .then((url) => {
+            this.fond = url;
           })
           .catch((error) => {
             console.log("erreur downloadUrl", error);
@@ -214,6 +250,27 @@ export default {
       getDownloadURL(spaceRef)
         .then((url) => {
           this.avatar = url;
+        })
+        .catch((error) => {
+          console.log("erreur downloadUrl", error);
+        });
+      //
+      //
+    },
+
+    changeFonds(a) {
+      const newFond = a;
+      this.userInfo[0].fond = null;
+      this.userInfo[0].fond = newFond;
+
+      //
+      //
+      const storage = getStorage();
+      // Référence du fichier avec son nom
+      const spaceRef = ref(storage, "fonds/" + this.userInfo[0].fond);
+      getDownloadURL(spaceRef)
+        .then((url) => {
+          this.fond = url;
         })
         .catch((error) => {
           console.log("erreur downloadUrl", error);
@@ -246,6 +303,35 @@ export default {
       });
       // redirection sur la liste des participants
       // console.log("Ca a marché ! User avatar mis à jour");
+      //
+      this.$router.push("/avatar");
+    },
+    //
+    //
+    //
+    //
+    //
+    async updateFond() {
+      // Dans tous les cas on met à jour le participant dans Firestore
+      const storage = getStorage();
+      // Référence du fichier avec son nom
+      const spaceRef = ref(storage, "fonds/" + this.userInfo[0].avatar);
+      getDownloadURL(spaceRef)
+        .then((url) => {
+          this.fond = url;
+        })
+        .catch((error) => {
+          console.log("erreur downloadUrl", error);
+        });
+      //
+      const firestore = getFirestore();
+      const docRef = doc(firestore, "users", this.userInfo[0].id);
+      // Modification du participant à partir de son id
+      await updateDoc(docRef, {
+        fond: this.userInfo[0].fond,
+      });
+      // redirection sur la liste des participants
+      // console.log("Ca a marché ! User fond mis à jour");
       //
       this.$router.push("/avatar");
     },

@@ -139,6 +139,7 @@ export default {
       userInfo: null, // Informations complémentaires user connecté
       name: "", // Titre de l'application ou nom du user
       avatar: null, // Avatar / image du user connecté
+      fond: null, // Fond (image) / image de fond du user connecté
       isAdmin: false, // Si l'utilisateur est ou non administrateur
       categoryLevel: "",
     };
@@ -184,9 +185,17 @@ export default {
         const storage = getStorage();
         // Référence du fichier avec son nom
         const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
+        const spaceRef2 = ref(storage, "fonds/" + this.userInfo[0].fond);
         getDownloadURL(spaceRef)
           .then((url) => {
             this.avatar = url;
+          })
+          .catch((error) => {
+            console.log("erreur downloadUrl", error);
+          });
+        getDownloadURL(spaceRef2)
+          .then((url) => {
+            this.fond = url;
           })
           .catch((error) => {
             console.log("erreur downloadUrl", error);
