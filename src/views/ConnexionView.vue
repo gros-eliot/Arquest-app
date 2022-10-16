@@ -12,6 +12,7 @@
             </a>
             <BoutonBorder type="button" class="w-fit px-10" @click="onDcnx()">Deconnexion</BoutonBorder>
           </div>
+          <h1 class="text-2xl font-bold text-white underline">NEW !! Modification de fonds décoratifs disponible !!</h1>
         </div>
       </div>
       <h1 class="px-4 pt-4 font-press-start-2p text-3xl text-white md:text-4xl" id="connexion_form">Bienvenue</h1>
