@@ -7,16 +7,19 @@
           <arquest-premium-long class="h-1/2 w-8/12 max-w-2xl"></arquest-premium-long>
 
           <div class="flex flex-col items-center justify-center gap-0 md:flex-row">
-            <a href="#connexion_form">
+            <RouterLink to="/home" v-if="!user">
               <BoutonBlue class="w-fit px-10">Rejoindre</BoutonBlue>
+            </RouterLink>
+            <a href="#connexion_form">
+              <BoutonBlue class="w-fit px-10">Se connecter</BoutonBlue>
             </a>
-            <BoutonBorder type="button" class="w-fit px-10" @click="onDcnx()">Deconnexion</BoutonBorder>
+            <BoutonBorder type="button" class="w-fit px-10" @click="onDcnx()">Déconnexion</BoutonBorder>
           </div>
           <h1 class="text-2xl font-bold text-white underline">NEW !! Modification de fonds décoratifs disponible !!</h1>
         </div>
       </div>
-      <h1 class="px-4 pt-4 font-press-start-2p text-3xl text-white md:text-4xl" id="connexion_form">Bienvenue</h1>
     </div>
+    <h1 class="px-4 pt-4 font-press-start-2p text-3xl text-white md:text-4xl" id="connexion_form">Bienvenue</h1>
     <hr class="my-5 border-indigo-300" />
 
     <!--Connexixon-->
@@ -148,8 +151,9 @@ export default {
       view: false, // Afficher / cacher le mot de passe
       type: "password", // Type de champs pour le password : password / text pour l'afficher
       //
-      //
-      //
+
+      // CREATION COMPTE
+      // CREATION COMPTE
       // CREATION COMPTE
       //
       userSignup: {
@@ -158,16 +162,16 @@ export default {
         password: "",
       },
 
-      userInfo: null, // Informations complémentaires user connecté (sorte de listeCatégorie, listePays)
+      uid: "",
       name: null, // Titre de l'application ou nom du user
       isAdmin: false, // Si l'utilisateur est ou non administrateur
-      view2: false,
+      view2: false, //Afficher cacher le MDP
       type2: "password", // Type de champs pour le password : password / text pour l'afficher
       //
       //
       //
-      message: null, // Message de connexion
-      messageSignup: null, // Message création compte
+      message: "", // Message de connexion
+      messageSignup: "", // Message création compte
     };
   },
   mounted() {
@@ -198,37 +202,43 @@ export default {
         });
     },
 
-    async createAccount(user) {
+    createAccount() {
       // Se connecter avec user et mot de passe
-      createUserWithEmailAndPassword(getAuth(), this.userSignup.email, this.userSignup.password)
-        .then(() => {
-          this.messageSignup = "User créé : " + this.userSignup.email;
+      createUserWithEmailAndPassword(getAuth(), this.user.email, this.user.password)
+        .then((response) => {
+          this.uid = response.user.uid;
+
+          const firestore = getFirestore();
+          const dbUsers = collection(firestore, "user");
+          const docRef = addDoc(dbUsers, {
+            admin: false,
+            login: this.name,
+            avatar: "boy1.png",
+            fond: "normal.png",
+            category_level: {
+              culture: 0,
+              diy: 0,
+              sport: 0,
+              social: 0,
+              sante: 0,
+              gestion: 0,
+              maison: 0,
+              travail: 0,
+            },
+
+            uid: this.uid,
+          });
+
+          signInWithEmailAndPassword(getAuth(), this.user.email, this.user.password).then((response) => {
+            this.user = response.user;
+          });
+          this.messageSignup = "Votre compte a été créé avec cette adresse : " + this.user.email;
+          this.$router.push("/");
         })
         .catch((error) => {
           // Erreur de connexion
-          console.log("Erreur connexion", error);
-          this.messageSignup = "Erreur pour la création du compte";
+          alert("Erreur création du compte : " + error);
         });
-
-      const firestore = getFirestore();
-      // Base de données (collection)  document users
-      const dbUsers = collection(firestore, "users");
-      const docRef = await addDoc(dbUsers, {
-        admin: false,
-        login: this.name,
-        avatar: "boy1.png",
-        fond: "normal.png",
-        category_level: {
-          culture: 0,
-          diy: 0,
-          sport: 0,
-          social: 0,
-          sante: 0,
-          gestion: 0,
-          maison: 0,
-          travail: 0,
-        },
-      });
     },
 
     // Se deconnecter

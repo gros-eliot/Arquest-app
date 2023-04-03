@@ -8,7 +8,7 @@ import './index.css'
 import mitt from 'mitt';
 
 
-
+    
 // Import fonction d'initialisation du SDK Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
 

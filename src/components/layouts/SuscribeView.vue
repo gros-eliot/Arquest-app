@@ -4,8 +4,8 @@
       <div class="rounded-sm border-2 border-indigo-500">
         <input
           class="w-full rounded bg-transparent px-5 py-1 text-indigo-500"
-          id="cus_name"
-          name="cus_name"
+          id="cus_surname"
+          name="cus_surname"
           type="text"
           required=""
           placeholder="Nom"
@@ -28,8 +28,8 @@
       <div class="rounded-sm border-2 border-indigo-500">
         <input
           class="w-full rounded bg-transparent px-5 py-1 text-indigo-500"
-          id="cus_name"
-          name="cus_name"
+          id="cus_mail"
+          name="cus_mail"
           type="text"
           required=""
           placeholder="Adresse Mail"
@@ -40,8 +40,8 @@
       <div class="rounded-sm border-2 border-indigo-500">
         <input
           class="w-full rounded bg-transparent px-5 py-1 text-indigo-500"
-          id="cus_name"
-          name="cus_name"
+          id="cus_password"
+          name="cus_password"
           type="password"
           required=""
           placeholder="Mot de passe"
@@ -52,8 +52,8 @@
       <div class="rounded-sm border-2 border-indigo-500">
         <input
           class="w-full rounded bg-transparent px-5 py-1 text-indigo-500"
-          id="cus_name"
-          name="cus_name"
+          id="cus_validation"
+          name="cus_validation"
           type="password"
           required=""
           placeholder="Validation du Mot de Passe"
@@ -78,5 +78,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

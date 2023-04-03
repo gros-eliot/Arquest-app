@@ -1,13 +1,18 @@
 <template>
   <header class="text-white">
-    <HeaderView class="fixed z-[9]" />
+    <HeaderView class="fixed z-[9]" v-if="$route.name != 'ConnexionView'" />
 
-    <NavView class="fixed bottom-0 z-[8]" />
+    <NavView class="fixed bottom-0 z-[8]" v-if="$route.name != 'ConnexionView'" />
   </header>
   <main class="pt-20">
     <router-view></router-view>
   </main>
-  <footer class="bottom-0 mt-5 pb-[4.5rem]">
+  <footer
+    class="bottom-0 mt-5"
+    :class="{
+      'pb-[4.5rem]': $route.name != 'ConnexionView',
+    }"
+  >
     <footer-view class="bottom-0 w-full"></footer-view>
   </footer>
 </template>
