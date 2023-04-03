@@ -6,7 +6,7 @@
 
   <section>
     <div v-if="user == null" class="w-full bg-red-500 p-4 text-center text-white">
-      <h6 class="font-bold" role="alert">Vous devez être connecté pour utiliser le chat !!</h6>
+      <h6 class="font-bold" role="alert">Vous devez être connecté pour utiliser le chat !</h6>
     </div>
 
     <div v-else>
@@ -113,7 +113,9 @@
                   </div>
                   <div class="row mb-3" v-if="msg.by == userSelected.uid">
                     <div class="flex flex-row items-center gap-3">
-                      <img class="h-12 w-12 object-contain" :src="userSelected.avatar" />
+                      <RouterLink :to="'/avatar/' + userSelected.uid"
+                        ><img class="h-12 w-12 object-contain" :src="userSelected.avatar"
+                      /></RouterLink>
                       <div class="flex w-full max-w-xl flex-col justify-end">
                         <p class="w-full rounded-xl bg-indigo-500 p-3 text-white">{{ msg.contenu }}</p>
                         <p class="text-start text-sm italic text-zinc-300">{{ userSelected.login }} || {{ dateFr(msg.date) }}</p>
@@ -303,11 +305,11 @@ export default {
       let d = tab[0];
       // récupération du jour, mois, année
       let dt = d.split("/");
-      let jour = dt[0];
-      let mois = dt[1];
-      let annee = dt[2];
+      let jour = String(dt[0]);
+      let mois = String(dt[1]);
+      let annee = String(dt[2]);
       // date en format bdd
-      today = annee + "-" + mois + "-" + jour + " " + tab[1].trim();
+      today = annee + "-" + mois + "-" + jour + " " + String(tab[1]).trim();
       return today;
     },
 
@@ -325,7 +327,7 @@ export default {
       // récuperer la partie H:mm:ss
       let ht = d[1].split(":");
       // date en format français
-      let dateMsg = jour + "/" + mois + "/" + annee + " à " + ht[0] + ":" + ht[1];
+      let dateMsg = date + " à " + ht[0] + ":" + ht[1];
       return dateMsg;
     },
 

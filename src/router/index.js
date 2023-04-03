@@ -42,7 +42,7 @@ import GuideStyle from '../components/ancients_and_gds/GuideStyle.vue'
 import ListecatView from '../views/ListecatView.vue'
 import View404 from '../views/View404.vue'
 
-import Socialmedia from '../views/Socialmedia.vue'
+import SocialmediaView from '../views/SocialmediaView.vue'
 import ConnexionView from '../views/ConnexionView.vue'
 
 
@@ -75,7 +75,7 @@ import ConnexionView from '../views/ConnexionView.vue'
 
     { path: '/gds', name: 'GuideStyle', component: GuideStyle, beforeEnter:guard  },
 
-    { path: '/social', name: 'Socialmedia', component: Socialmedia, beforeEnter:guard  },
+    { path: '/social', name: 'SocialmediaView', component: SocialmediaView, beforeEnter:guard  },
 
   ]
 
