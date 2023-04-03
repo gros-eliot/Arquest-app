@@ -51,7 +51,7 @@
               <li><router-link to="/mentionslegales">Mentions légales</router-link></li>
               <li><router-link to="/apropos">À Propos</router-link></li>
               <li><router-link to="/contact">Contact</router-link></li>
-              <li class="font-bold text-red-500"><router-link to="/">Déconnexion</router-link></li>
+              <li class="font-bold text-red-500"><button @click="onDcnx()">Déconnexion</button></li>
             </ul>
           </div>
         </nav>
@@ -84,11 +84,22 @@ import { MenuAlt1Icon, XIcon } from "@heroicons/vue/outline";
 import ArquestPremium from "../icons/ArquestPremium.vue";
 import ArquestPremiumLong from "../icons/ArquestPremiumLong.vue";
 
+import {
+  getAuth, // Fonction générale d'authentification
+  signOut, // Se deconnecter
+} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
+
 export default {
   name: "HeaderView",
   data() {
     return {
       menuOuvert: false,
+
+      user: {
+        // Utilisateur : email + mot de passe
+        email: null,
+        password: null,
+      },
     };
   },
   components: {
@@ -96,6 +107,24 @@ export default {
     ArquestPremium,
     ArquestPremiumLong,
     XIcon,
+  },
+  methods: {
+    onDcnx() {
+      //se deco
+      signOut(getAuth())
+        .then((response) => {
+          this.user = getAuth().currentUser;
+          this.user = {
+            email: null,
+            password: null,
+          };
+          alert("Vous avez bien été déconnecté.e!");
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          console.log("erreur  déconnection : ", error);
+        });
+    },
   },
 };
 </script>

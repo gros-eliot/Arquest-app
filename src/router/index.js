@@ -45,9 +45,8 @@ import View404 from '../views/View404.vue'
 import Socialmedia from '../views/Socialmedia.vue'
 import ConnexionView from '../views/ConnexionView.vue'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
+
+ const routes = [
 
 
       { path: '/', name: 'ConnexionView', component: ConnexionView },
@@ -63,7 +62,7 @@ const router = createRouter({
     { path: '/history', name: 'HistListeView', component: HistListeView, beforeEnter:guard },
 
     { path: '/agenda', name: 'AgendaView', component: AgendaView, beforeEnter:guard  },
-    { path: '/avatar', name: 'AvatarView', component: AvatarView, beforeEnter:guard  },
+    { path: '/avatar/:id', name: 'AvatarView', component: AvatarView, beforeEnter:guard  },
     { path: '/custom_avatar', name: 'CustomAvatarView', component: CustomAvatarView, beforeEnter:guard  },
 
     { path: '/listecat', name: 'ListecatView', component: ListecatView, beforeEnter:guard  },
@@ -79,7 +78,15 @@ const router = createRouter({
     { path: '/social', name: 'Socialmedia', component: Socialmedia, beforeEnter:guard  },
 
   ]
+
+  const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    return savedPosition || {top:0}
+  }
 })
+
 
 // On créé un guard : Observateur (fonction) permettant de savoir si un utilisateur
 // a le droit d'utiliser une route

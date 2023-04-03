@@ -14,7 +14,7 @@
       </div>
     </RouterLink>
 
-    <RouterLink to="/avatar">
+    <RouterLink :to="'/avatar/' + uid /*{ name: 'AvatarView', params: { id: uid } } */">
       <div class="flex items-center justify-center gap-3">
         <img
           :src="avatar"
@@ -61,6 +61,7 @@ export default {
       },
       userInfo: null, // Informations complémentaires user connecté
       name: "", // Titre de l'application ou nom du user
+      uid: "",
       avatar: null, // Avatar / image du user connecté
       isAdmin: false, // Si l'utilisateur est ou non administrateur
     };
@@ -96,9 +97,10 @@ export default {
       const q = query(dbUsers, where("uid", "==", user.uid));
       await onSnapshot(q, (snapshot) => {
         this.userInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        // console.log("userInfo", this.userInfo);
+        console.log("userInfo", this.userInfo[0].uid);
         // userInfo étant un tableau, onn récupère
         // ses informations dans la 1° cellule du tableau : 0
+        this.uid = this.userInfo[0].uid;
         this.name = this.userInfo[0].login;
         this.isAdmin = this.userInfo[0].admin;
         // Recherche de l'image du user sur le Storage

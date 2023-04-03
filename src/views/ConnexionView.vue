@@ -11,7 +11,7 @@
               <BoutonBlue class="w-fit px-10">Rejoindre</BoutonBlue>
             </RouterLink>
             <a href="#connexion_form">
-              <BoutonBlue class="w-fit px-10">Se connecter</BoutonBlue>
+              <BoutonBlue class="w-fit px-10">Rejoindre</BoutonBlue>
             </a>
             <BoutonBorder type="button" class="w-fit px-10" @click="onDcnx()">Déconnexion</BoutonBorder>
           </div>
@@ -111,18 +111,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
 
 // Fonctions Firestore
-import {
-  getFirestore,
-  collection,
-  doc,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  onSnapshot,
-  query,
-  where,
-} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 
 //Import de l'emetteur depuis main.js
 import { emitter } from "../main.js";
@@ -130,7 +119,7 @@ import { emitter } from "../main.js";
 import { EyeIcon } from "@heroicons/vue/solid";
 
 export default {
-  name: "MonCompte",
+  name: "ConnexionView",
   components: {
     BoutonBlue,
     BoutonBorder,
@@ -145,8 +134,8 @@ export default {
       //
       user: {
         // Utilisateur : email + mot de passe
-        email: "",
-        password: "",
+        email: null,
+        password: null,
       },
       view: false, // Afficher / cacher le mot de passe
       type: "password", // Type de champs pour le password : password / text pour l'afficher
@@ -158,58 +147,57 @@ export default {
       //
       userSignup: {
         // Utilisateur : email + mot de passe
-        email: "",
-        password: "",
+        email: null,
+        password: null,
       },
 
       uid: "",
-      name: null, // Titre de l'application ou nom du user
+      name: null, // Nom du user
       isAdmin: false, // Si l'utilisateur est ou non administrateur
       view2: false, //Afficher cacher le MDP
-      type2: "password", // Type de champs pour le password : password / text pour l'afficher
+      type2: "password", // Type de champs pour le password : "? password : text" pour l'afficher
       //
-      //
+
+      // MESSAGES
+      // MESSAGES
+      // MESSAGES
       //
       message: "", // Message de connexion
       messageSignup: "", // Message création compte
     };
   },
   mounted() {
-    // Montage de la vue
-    this.message = "";
-    this.messageSignup = "";
-    //
+    let user = getAuth().currentUser;
+    if (user) {
+      this.user = user;
+      this.message = "Vous êtes connecté sous : " + this.user.email;
+    } else {
+      this.message = "Connectez-vous.";
+    }
   },
   methods: {
     onCnx() {
-      // Se connecter avec user et mot de passe
+      //se connecter avec un mots de pass
       signInWithEmailAndPassword(getAuth(), this.user.email, this.user.password)
         .then((response) => {
-          // Connexion OK - mise à jour du user
           this.user = response.user;
-          // Emission evenement de connexion
-          emitter.emit("connectUser", { user: this.user });
-          // console.log("user", this.user);
-          // Mise à jour du message
-          this.message = "User connecté : " + this.user.email;
-
+          this.message = "Vous êtes connecté sous : " + this.user.email;
           this.$router.push("/home");
         })
         .catch((error) => {
-          // Erreur de connexion
-          console.log("Erreur connexion", error);
-          this.message = "Erreur d'authentification";
+          //erreur co
+          this.message = "Erreur : " + error;
         });
     },
 
     createAccount() {
       // Se connecter avec user et mot de passe
-      createUserWithEmailAndPassword(getAuth(), this.user.email, this.user.password)
+      createUserWithEmailAndPassword(getAuth(), this.userSignup.email, this.userSignup.password)
         .then((response) => {
           this.uid = response.user.uid;
 
           const firestore = getFirestore();
-          const dbUsers = collection(firestore, "user");
+          const dbUsers = collection(firestore, "users");
           const docRef = addDoc(dbUsers, {
             admin: false,
             login: this.name,
@@ -229,35 +217,32 @@ export default {
             uid: this.uid,
           });
 
-          signInWithEmailAndPassword(getAuth(), this.user.email, this.user.password).then((response) => {
+          signInWithEmailAndPassword(getAuth(), this.userSignup.email, this.userSignup.password).then((response) => {
             this.user = response.user;
           });
           this.messageSignup = "Votre compte a été créé avec cette adresse : " + this.user.email;
-          this.$router.push("/");
+          this.$router.push("/home");
         })
         .catch((error) => {
           // Erreur de connexion
-          alert("Erreur création du compte : " + error);
+          this.messageSignup = "Erreur création du compte : " + error;
         });
     },
 
-    // Se deconnecter
     onDcnx() {
-      // Se déconnecter
+      //se deco
       signOut(getAuth())
         .then((response) => {
-          // Mise à jour du message
-          this.message = "User déconnecté";
-          // Ré initialisation des champs
+          this.user = getAuth().currentUser;
           this.user = {
             email: null,
             password: null,
           };
-          // Emission évènement de déconnexion
-          emitter.emit("deConnectUser", { user: this.user });
+          alert("Vous avez bien été déconnecté.e!");
+          this.$router.push("/");
         })
         .catch((error) => {
-          console.log("erreur deconnexion ", error);
+          console.log("erreur  déconnection : ", error);
         });
     },
 
