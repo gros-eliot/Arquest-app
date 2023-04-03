@@ -40,7 +40,7 @@
           <div class="flex justify-center">
             <ul class="m-5 flex w-full flex-col justify-items-start gap-5 text-xl" @click="menuOuvert = !menuOuvert">
               <li><router-link to="/home">Accueil</router-link></li>
-              <li><router-link to="/avatar">Profil</router-link></li>
+              <li><router-link :to="'/avatar/' + uid">Profil</router-link></li>
               <li><router-link to="/history">Historique</router-link></li>
               <li><router-link to="/listecat">Types de quête</router-link></li>
             </ul>
@@ -84,6 +84,14 @@ import { MenuAlt1Icon, XIcon } from "@heroicons/vue/outline";
 import ArquestPremium from "../icons/ArquestPremium.vue";
 import ArquestPremiumLong from "../icons/ArquestPremiumLong.vue";
 
+// Fonctions Firestore
+import { getFirestore, collection, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+
+// Fonctions Storage
+import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-storage.js";
+
+import { emitter } from "../../main.js";
+
 import {
   getAuth, // Fonction générale d'authentification
   signOut, // Se deconnecter
@@ -100,8 +108,19 @@ export default {
         email: null,
         password: null,
       },
+      uid: "",
+      userInfo: null, // Informations complémentaires user connecté
+      name: "", // Titre de l'application ou nom du user
+      avatar: null, // Avatar / image du user connecté
+      isAdmin: false, // Si l'utilisateur est ou non administrateur
     };
   },
+  mounted() {
+    // Vérifier si un user connecté existe déjà
+    // Au lancement de l'application
+    this.getUserConnect();
+  },
+
   components: {
     MenuAlt1Icon,
     ArquestPremium,
@@ -109,6 +128,50 @@ export default {
     XIcon,
   },
   methods: {
+    // Obtenir les informations du user connecté
+    async getUserConnect() {
+      await getAuth().onAuthStateChanged(
+        function (user) {
+          if (user) {
+            // Récupération du user connecté
+            this.user = user;
+            // Recherche de ses infos complémentaires
+            this.getUserInfo(this.user);
+          }
+        }.bind(this)
+      );
+    },
+
+    async getUserInfo(user) {
+      // Rechercher les informations complémentaires de l'utilisateur
+      // Obtenir Firestore
+      const firestore = getFirestore();
+      // Base de données (collection)  document participant
+      const dbUsers = collection(firestore, "users");
+      // Recherche du user par son uid
+      const q = query(dbUsers, where("uid", "==", user.uid));
+      await onSnapshot(q, (snapshot) => {
+        this.userInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log("userInfo", this.userInfo[0].uid);
+        // userInfo étant un tableau, onn récupère
+        // ses informations dans la 1° cellule du tableau : 0
+        this.uid = this.userInfo[0].uid;
+        this.name = this.userInfo[0].login;
+        this.isAdmin = this.userInfo[0].admin;
+        // Recherche de l'image du user sur le Storage
+        const storage = getStorage();
+        // Référence du fichier avec son nom
+        const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
+        getDownloadURL(spaceRef)
+          .then((url) => {
+            this.avatar = url;
+          })
+          .catch((error) => {
+            console.log("erreur downloadUrl", error);
+          });
+      });
+    },
+
     onDcnx() {
       //se deco
       signOut(getAuth())

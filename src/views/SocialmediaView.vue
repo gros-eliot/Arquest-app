@@ -15,7 +15,7 @@
         <select
           class="w-full max-w-4xl border-2 border-indigo-300 bg-transparent px-3 py-3 text-indigo-300 md:py-2"
           v-model="userSelected"
-          @change="selectUser"
+          @change="selectUser, ($route.params.id = selectUser.uid)"
         >
           <option selected disabled value="" class="bg-black">...</option>
           <option v-for="util in listeUsers" :key="util.uid" :value="util" class="bg-black">
@@ -28,7 +28,11 @@
         <!--Formulaire pour créer un nouveau fil de discussion-->
         <section class="flex w-full flex-col items-center justify-between gap-5 border-2 border-indigo-300 bg-indigo-500 p-4 text-white">
           <form class="flex w-full flex-col items-center justify-between gap-5" @submit.prevent="createDisc()">
-            <span class="font-press-start-2p text-lg">Discussions avec {{ userSelected.login }}</span>
+            <span class="font-press-start-2p text-lg"
+              >Discussions avec
+
+              <RouterLink :to="'/avatar/' + userSelected.uid">{{ userSelected.login }}</RouterLink>
+            </span>
             <div class="flex w-11/12 flex-row items-center justify-center gap-2 rounded-sm">
               <div class="flex w-full flex-col gap-1">
                 <input
@@ -62,7 +66,10 @@
                   <p class="text-white">{{ dateFr(disc.creation) }}</p>
                 </div>
                 <div class="flex flex-row items-center gap-3">
-                  <button type="button" @click="viewFil(disc)" title="Voir ce fil">
+                  <button type="button" @click="(clickedEye = true), viewFil(disc)" v-if="!clickedEye" title="Voir ce fil">
+                    <EyeIcon class="h-8 w-8 stroke-white" />
+                  </button>
+                  <button type="button" @click="clickedEye = false" v-if="clickedEye" title="Voir ce fil">
                     <EyeIcon class="h-8 w-8 stroke-white" />
                   </button>
                   <button type="button" @click="deleteFil(disc)" title="Supprimer ce fil">
@@ -80,7 +87,7 @@
         </section>
 
         <!--LE FIL DE DISCUSSION :-->
-        <section v-if="discussion != null">
+        <section v-if="discussion != null && clickedEye === true">
           <div class="rounded-b-xl bg-indigo-900 p-4">
             <!---->
             <!--Champ de texte pour écrire un message dans la discussion-->
@@ -104,21 +111,27 @@
                 <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date" class="text-white">
                   <div class="row mb-3" v-if="msg.by == user.uid">
                     <div class="flex flex-row-reverse items-center gap-3">
-                      <img class="h-12 w-12 object-contain" :src="userInfo[0].avatar" />
+                      <div class="flex h-fit w-fit flex-col items-center justify-center gap-1">
+                        <p class="text-right text-sm text-zinc-300">{{ userInfo[0].login }}</p>
+                        <img class="h-12 w-12 object-contain" :src="userInfo[0].avatar" />
+                      </div>
                       <div class="flex w-full max-w-xl flex-col justify-end">
                         <p class="w-full rounded-xl bg-black p-3 text-right text-white">{{ msg.contenu }}</p>
-                        <p class="text-right text-sm italic text-zinc-300">{{ userInfo[0].login }} || {{ dateFr(msg.date) }}</p>
+                        <p class="text-right text-sm text-zinc-300">{{ dateFr(msg.date) }}</p>
                       </div>
                     </div>
                   </div>
                   <div class="row mb-3" v-if="msg.by == userSelected.uid">
                     <div class="flex flex-row items-center gap-3">
-                      <RouterLink :to="'/avatar/' + userSelected.uid"
-                        ><img class="h-12 w-12 object-contain" :src="userSelected.avatar"
-                      /></RouterLink>
+                      <RouterLink :to="'/avatar/' + userSelected.uid">
+                        <div class="flex h-fit w-fit flex-col items-center justify-center gap-1">
+                          <p class="text-right text-sm text-zinc-300">{{ userSelected.login }}</p>
+                          <img class="h-12 w-12 object-contain" :src="userSelected.avatar" />
+                        </div>
+                      </RouterLink>
                       <div class="flex w-full max-w-xl flex-col justify-end">
                         <p class="w-full rounded-xl bg-indigo-500 p-3 text-white">{{ msg.contenu }}</p>
-                        <p class="text-start text-sm italic text-zinc-300">{{ userSelected.login }} || {{ dateFr(msg.date) }}</p>
+                        <p class="text-start text-sm text-zinc-300">{{ dateFr(msg.date) }}</p>
                       </div>
                     </div>
                   </div>
@@ -186,6 +199,8 @@ export default {
       discussion: null, // chat/discussion sélectionnée
 
       message: null, // Message courant du chat/discussion
+
+      clickedEye: false, // bouton flip/flop pour cacher/afficher la conversation
     };
   },
   mounted() {
@@ -278,7 +293,7 @@ export default {
       // Au moins un message pour initialisation de la discussion
       let msg = {
         by: this.user.uid, // Créateur du message
-        contenu: "Créé le " + this.dateSql(), // Message + Date du jour
+        contenu: "Ceci est le premier message de la conversation.", // Message + Date du jour
         date: this.dateSql(), // Date de création
       };
 
@@ -309,7 +324,7 @@ export default {
       let mois = String(dt[1]);
       let annee = String(dt[2]);
       // date en format bdd
-      today = annee + "-" + mois + "-" + jour + " " + String(tab[1]).trim();
+      today = jour + "-" + mois + "-" + annee + " " + String(tab[1]).trim();
       return today;
     },
 
@@ -321,24 +336,31 @@ export default {
       let d = date.split(" ");
       // Récupérer la partie jour, mois, année
       let dt = d[0].split("-");
-      let jour = dt[2];
+      let jour = dt[0];
       let mois = dt[1];
-      let annee = dt[0];
+      let annee = dt[2];
       // récuperer la partie H:mm:ss
       let ht = d[1].split(":");
       // date en format français
-      let dateMsg = date + " à " + ht[0] + ":" + ht[1];
+      let dateMsg = jour + "-" + mois + "-" + annee + " à " + ht[0] + ":" + ht[1];
       return dateMsg;
     },
 
+    // fonction pour afficher la conversation
     viewFil(disc) {
       this.discussion = disc;
     },
 
+    hideFil() {
+      this.discussion = null;
+    },
+
+    // fonction pour supprimer la conversation
     deleteFil(disc) {
       deleteDoc(doc(getFirestore(), "chat", disc.id));
     },
 
+    // fonction pour envoyer un message
     async sendMsg() {
       let msg = {
         by: this.user.uid, // Créateur du message
@@ -361,6 +383,7 @@ export default {
       });
     },
 
+    // fonction pour trier les msg selon date d'envoie
     sortMsgByDate(tabMsg) {
       return tabMsg.sort(function (a, b) {
         // Si la date du message a est avant celle du message b on retourne 1

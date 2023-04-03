@@ -7,7 +7,7 @@
       }"
     >
       <div class="m-2 flex items-center justify-end">
-        <RouterLink to="/avatar"><ArrowLeftIcon class="w-11 stroke-white" /></RouterLink>
+        <button @click="$router.go(-1)"><ArrowLeftIcon class="w-11 stroke-white" /></button>
       </div>
 
       <div class="my-3 ml-auto mr-auto">
@@ -304,7 +304,7 @@ export default {
       // redirection sur la liste des participants
       // console.log("Ca a marché ! User avatar mis à jour");
       //
-      this.$router.push("/avatar");
+      this.$router.push("/avatar/" + uid);
     },
     //
     //
@@ -333,7 +333,7 @@ export default {
       // redirection sur la liste des participants
       // console.log("Ca a marché ! User fond mis à jour");
       //
-      this.$router.push("/avatar");
+      this.$router.push("/avatar/" + uid);
     },
   },
 };

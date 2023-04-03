@@ -14,7 +14,14 @@
       </div>
     </RouterLink>
 
-    <RouterLink :to="'/avatar/' + uid /*{ name: 'AvatarView', params: { id: uid } } */">
+    <RouterLink
+      :to="'/avatar/' + uid /*{ name: 'AvatarView', params: { id: uid } } */"
+      @click="
+        if ($route.name === 'AvatarView') {
+          Refresh();
+        }
+      "
+    >
       <div class="flex items-center justify-center gap-3">
         <img
           :src="avatar"
@@ -29,7 +36,13 @@
     </RouterLink>
   </div>
 </template>
-
+<script setup>
+function Refresh() {
+  setTimeout(() => {
+    document.location.reload();
+  }, 1);
+}
+</script>
 <script>
 import { CalendarIcon, HomeIcon, GiftIcon } from "@heroicons/vue/solid";
 
@@ -119,5 +132,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

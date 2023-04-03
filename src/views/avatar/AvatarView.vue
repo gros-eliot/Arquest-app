@@ -6,7 +6,7 @@
     }"
   >
     <div class="flex w-full flex-col justify-between text-white">
-      <div class="mt-2 mr-2 flex justify-end">
+      <div class="mt-2 mr-2 flex justify-end" v-if="uidConnected === uidSelected">
         <RouterLink to="/custom_avatar"><PencilAltIcon class="w-11" /></RouterLink>
       </div>
 
@@ -30,8 +30,8 @@
   <!---->
   <!---->
 
-  <div class="m-5 flex flex-col gap-1 text-white" v-for="users in userInfo" :key="users.id">
-    <!--{{ userInfo[0].category_level }}-->
+  <div class="m-5 flex flex-col gap-1 text-white" v-for="users in userSelected" :key="users.id">
+    <!--{{ userSelected[0].category_level }}-->
     <!--{{{ categoryLevel.sport }}-->
 
     <!--<div @load="getBadges(sport)"><img :src="badgesURL + badgeGrade" alt="essai" class="w-12" /></div>-->
@@ -99,7 +99,9 @@ export default {
         email: null,
         password: null,
       },
-      userInfo: null, // Informations complémentaires user connecté
+      uidConnected: "",
+      userSelected: null, // Informations complémentaires user connecté
+      uidSelected: "",
       name: "", // Titre de l'application ou nom du user
       avatar: null, // Avatar / image du user connecté
       fond: null, // Fond / image de fond du user connecté
@@ -134,6 +136,8 @@ export default {
     // Vérifier si un user connecté existe déjà
     // Au lancement de l'application
     this.getUserConnect();
+
+    this.getUserSelected(this.$route.params.id);
   },
 
   methods: {
@@ -144,34 +148,34 @@ export default {
           if (user) {
             // Récupération du user connecté
             this.user = user;
-            // Recherche de ses infos complémentaires
-            this.getUserInfo(this.user);
+            this.uidConnected = this.user.uid;
           }
         }.bind(this)
       );
     },
 
-    async getUserInfo(user) {
+    async getUserSelected(uid) {
       // Rechercher les informations complémentaires de l'utilisateur
       // Obtenir Firestore
       const firestore = getFirestore();
       // Base de données (collection)  document participant
       const dbUsers = collection(firestore, "users");
       // Recherche du user par son uid
-      const q = query(dbUsers, where("uid", "==", user.uid));
+      const q = query(dbUsers, where("uid", "==", uid));
       await onSnapshot(q, (snapshot) => {
-        this.userInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        // console.log("userInfo", this.userInfo);
-        // userInfo étant un tableau, onn récupère
+        this.userSelected = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        // console.log("userSelected", this.userSelected);
+        // userSelected étant un tableau, onn récupère
         // ses informations dans la 1° cellule du tableau : 0
-        this.name = this.userInfo[0].login;
-        this.isAdmin = this.userInfo[0].admin;
-        this.categoryLevel = this.userInfo[0].category_level;
+        this.name = this.userSelected[0].login;
+        this.isAdmin = this.userSelected[0].admin;
+        this.categoryLevel = this.userSelected[0].category_level;
+        this.uidSelected = this.userSelected[0].uid;
         // Recherche de l'image du user sur le Storage
         const storage = getStorage();
         // Référence du fichier avec son nom
-        const spaceRef = ref(storage, "users/" + this.userInfo[0].avatar);
-        const spaceRef2 = ref(storage, "fonds/" + this.userInfo[0].fond);
+        const spaceRef = ref(storage, "users/" + this.userSelected[0].avatar);
+        const spaceRef2 = ref(storage, "fonds/" + this.userSelected[0].fond);
         getDownloadURL(spaceRef)
           .then((url) => {
             this.avatar = url;
