@@ -15,7 +15,7 @@
         <select
           class="w-full max-w-4xl border-2 border-indigo-300 bg-transparent px-3 py-3 text-indigo-300 md:py-2"
           v-model="userSelected"
-          @change="selectUser, ($route.params.id = selectUser.uid)"
+          @change="selectUser"
         >
           <option selected disabled value="" class="bg-black">...</option>
           <option v-for="util in listeUsers" :key="util.uid" :value="util" class="bg-black">
@@ -148,6 +148,14 @@
     </div>
   </section>
 </template>
+
+<script setup>
+function Refresh() {
+  setTimeout(() => {
+    document.location.reload();
+  }, 1);
+}
+</script>
 
 <script>
 // Bibliothèque Firestore : import des fonctions
@@ -342,7 +350,7 @@ export default {
       // récuperer la partie H:mm:ss
       let ht = d[1].split(":");
       // date en format français
-      let dateMsg = jour + "-" + mois + "-" + annee + " à " + ht[0] + ":" + ht[1];
+      let dateMsg = jour + "/" + mois + "/" + annee + " à " + ht[0] + ":" + ht[1];
       return dateMsg;
     },
 

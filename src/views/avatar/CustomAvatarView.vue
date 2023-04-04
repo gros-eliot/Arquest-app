@@ -173,6 +173,7 @@ export default {
       },
       userInfo: null, // Informations complémentaires user connecté (sorte de listeCatégorie, listePays)
       name: "", // Titre de l'application ou nom du user
+      uid: "",
       avatar: null, // Avatar / image du user connecté
       fond: null, // Fond / image de fond du user connecté
       isAdmin: false, // Si l'utilisateur est ou non administrateur
@@ -214,6 +215,7 @@ export default {
         // ses informations dans la 1° cellule du tableau : 0
         this.name = this.userInfo[0].login;
         this.isAdmin = this.userInfo[0].admin;
+        this.uid = this.userInfo[0].uid;
         // Recherche de l'image du user sur le Storage
 
         const storage = getStorage();
@@ -333,7 +335,7 @@ export default {
       // redirection sur la liste des participants
       // console.log("Ca a marché ! User fond mis à jour");
       //
-      this.$router.push("/avatar/" + uid);
+      this.$router.push("/avatar/" + this.uid);
     },
   },
 };
