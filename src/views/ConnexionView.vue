@@ -65,8 +65,9 @@
         class="rounded-md border-2 border-indigo-500 bg-transparent p-2 text-indigo-300"
         type="text"
         placeholder="Pseudo"
-        v-model="name"
+        v-model="login"
         required
+        @input="checkLoginInput"
       />
 
       <input
@@ -93,7 +94,14 @@
       <div class="alert alert-warning" role="alert">
         <p class="font-roboto text-base text-indigo-300">{{ messageSignup }}</p>
       </div>
-      <BoutonBlue type="submit" class="btn btn-dark ml-auto mr-auto w-fit px-10 text-white">Créer mon compte</BoutonBlue>
+
+      <BoutonBlue
+        type="submit"
+        class="btn btn-dark ml-auto mr-auto w-fit px-10 text-white"
+        v-if="userSignup.password && userSignup.email && userUnique && login"
+        >Créer mon compte</BoutonBlue
+      >
+      <BoutonBorder type="button" class="btn btn-dark ml-auto mr-auto w-fit px-10 text-white" v-else>Créer mon compte</BoutonBorder>
     </form>
   </div>
 </template>
@@ -111,7 +119,15 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
 
 // Fonctions Firestore
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot, // Demander une liste de documents d'une collection, en les synchronisant
+  query, // Permet d'effectuer des requêtes sur Firestore
+  orderBy, // Permet de demander le tri d'une requête query
+  where, // Permet de demander un filtrage pour une query
+} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 
 //Import de l'emetteur depuis main.js
 import { emitter } from "../main.js";
@@ -130,6 +146,9 @@ export default {
 
   data() {
     return {
+      //
+      //CONNEXION COMPTE
+      //CONNEXION COMPTE
       //CONNEXION COMPTE
       //
       user: {
@@ -150,12 +169,21 @@ export default {
         email: null,
         password: null,
       },
-
       uid: "",
-      name: null, // Nom du user
+      login: null, // Nom du user
       isAdmin: false, // Si l'utilisateur est ou non administrateur
       view2: false, //Afficher cacher le MDP
       type2: "password", // Type de champs pour le password : "? password : text" pour l'afficher
+
+      //
+      // TEST LOGIN
+      // TEST LOGIN
+      // TEST LOGIN
+      //
+      usersInfo: [], // Liste des utilisateurs (Firestore)
+      usersLength: 0, // nombre d'utilisateurs
+      usersLogin: [], // tableau des pseudos de tous les utilisateurs
+      userUnique: true,
       //
 
       // MESSAGES
@@ -166,7 +194,11 @@ export default {
       messageSignup: "", // Message création compte
     };
   },
+
   mounted() {
+    // Appel de la liste des users (Firestore)
+    this.getUsersInfos();
+
     let user = getAuth().currentUser;
     if (user) {
       this.user = user;
@@ -175,7 +207,30 @@ export default {
       this.message = "Connectez-vous.";
     }
   },
+
   methods: {
+    // Les fonctions
+    // obtenir les utilisateurs de users
+    async getUsersInfos() {
+      // Informations des users de Firestore
+      const firestore = getFirestore();
+      // Collection users de Firestore
+      const dbUsers = collection(firestore, "users");
+      // Users triés sur leur login
+      const q = query(dbUsers, orderBy("login", "asc"));
+      // Liste synchronisée
+      await onSnapshot(q, (snapshot) => {
+        this.usersInfo = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        this.usersLength = this.usersInfo.length;
+
+        for (let i = 0; i < this.usersLength; i++) {
+          this.usersLogin.push(this.usersInfo[i].login);
+        }
+
+        console.log("USERS LOGIN ", this.usersLogin);
+      });
+    },
+
     onCnx() {
       //se connecter avec un mots de pass
       signInWithEmailAndPassword(getAuth(), this.user.email, this.user.password)
@@ -190,44 +245,62 @@ export default {
         });
     },
 
+    // FONCTION POUR TESTER SI le pseudo utilisé est
+    checkLoginInput() {
+      if (this.usersLogin.includes(this.login)) {
+        this.messageSignup = "Ce pseudo est déjà utilisé.";
+        this.userUnique = false;
+      } else {
+        this.messageSignup = "";
+        this.userUnique = true;
+      }
+    },
+
     createAccount() {
-      // Se connecter avec user et mot de passe
-      createUserWithEmailAndPassword(getAuth(), this.userSignup.email, this.userSignup.password)
-        .then((response) => {
-          this.uid = response.user.uid;
+      if (this.usersLogin.includes(this.login)) {
+        this.messageSignup = "Ce pseudo est déjà utilisé.";
+        this.userUnique = false;
+      } else {
+        this.userUnique = true;
 
-          const firestore = getFirestore();
-          const dbUsers = collection(firestore, "users");
-          const docRef = addDoc(dbUsers, {
-            admin: false,
-            login: this.name,
-            avatar: "boy1.png",
-            fond: "normal.png",
-            category_level: {
-              culture: 0,
-              diy: 0,
-              sport: 0,
-              social: 0,
-              sante: 0,
-              gestion: 0,
-              maison: 0,
-              travail: 0,
-              videogames: 0,
-            },
+        // Se connecter avec user et mot de passe
+        createUserWithEmailAndPassword(getAuth(), this.userSignup.email, this.userSignup.password)
+          .then((response) => {
+            this.uid = response.user.uid;
 
-            uid: this.uid,
+            const firestore = getFirestore();
+            const dbUsers = collection(firestore, "users");
+            const docRef = addDoc(dbUsers, {
+              admin: false,
+              login: this.login,
+              avatar: "boy1.png",
+              fond: "normal.png",
+              category_level: {
+                culture: 0,
+                diy: 0,
+                sport: 0,
+                social: 0,
+                sante: 0,
+                gestion: 0,
+                maison: 0,
+                travail: 0,
+                videogames: 0,
+              },
+
+              uid: this.uid,
+            });
+
+            signInWithEmailAndPassword(getAuth(), this.userSignup.email, this.userSignup.password).then((response) => {
+              this.user = response.user;
+            });
+            this.messageSignup = "Votre compte a été créé avec cette adresse : " + this.user.email;
+            this.$router.push("/home");
+          })
+          .catch((error) => {
+            // Erreur de connexion
+            this.messageSignup = "Erreur création du compte : " + error;
           });
-
-          signInWithEmailAndPassword(getAuth(), this.userSignup.email, this.userSignup.password).then((response) => {
-            this.user = response.user;
-          });
-          this.messageSignup = "Votre compte a été créé avec cette adresse : " + this.user.email;
-          this.$router.push("/home");
-        })
-        .catch((error) => {
-          // Erreur de connexion
-          this.messageSignup = "Erreur création du compte : " + error;
-        });
+      }
     },
 
     onDcnx() {
@@ -267,3 +340,5 @@ export default {
   },
 };
 </script>
+
+<script setup></script>
