@@ -1,8 +1,8 @@
 <template>
   <header class="text-white">
-    <HeaderView class="fixed z-[9]" v-if="$route.name != 'ConnexionView'" />
+    <HeaderView class="fixed z-[9]" v-if="$route.name != 'ConnexionView' && $route.name != 'NewsArquest'" />
 
-    <NavView class="fixed bottom-0 z-[8]" v-if="$route.name != 'ConnexionView'" />
+    <NavView class="fixed bottom-0 z-[8]" v-if="$route.name != 'ConnexionView' && $route.name != 'NewsArquest'" />
   </header>
   <main class="pt-20">
     <router-view></router-view>

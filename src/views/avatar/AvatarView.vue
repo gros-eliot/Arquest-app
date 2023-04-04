@@ -46,6 +46,7 @@
         getBadgeCulture(badgeGrade);
         getBadgeTravail(badgeGrade);
         getBadgeMaison(badgeGrade);
+        getBadgeVideogames(badgeGrade);
         afficherBadges = !afficherBadges;
       "
       class="ml-auto mr-auto w-fit bg-indigo-500 py-2 px-6 text-white"
@@ -63,6 +64,7 @@
       <img :src="badgesURLculture" alt="Culture" class="w-12" />
       <img :src="badgesURLtravail" alt="Travail" class="w-12" />
       <img :src="badgesURLmaison" alt="Maison" class="w-12" />
+      <img :src="badgesURLvideogames" alt="Video games" class="w-12" />
       <div v-if="isAdmin === true"><img src="/image/BADGES/admin.png" alt="Badge admin" class="w-12" /></div>
     </div>
   </div>
@@ -118,6 +120,7 @@ export default {
       badgesURLsocial: null,
       badgesURLdiy: null,
       badgesURLgestion: null,
+      badgesURLvideogames: null,
 
       badgeGrade: null,
     };
@@ -132,6 +135,7 @@ export default {
     this.getBadgeCulture();
     this.getBadgeTravail();
     this.getBadgeMaison();
+    this.getBadgeVideogames();
     //
     // Vérifier si un user connecté existe déjà
     // Au lancement de l'application
@@ -468,6 +472,41 @@ export default {
       getDownloadURL(badgeRef)
         .then((url) => {
           this.badgesURLmaison = url;
+        })
+        .catch((error) => {
+          console.log("erreur download badge URL", error);
+        });
+    },
+    //
+    //
+    // Video games
+    //
+    //
+    getBadgeVideogames(badgeGrade) {
+      if (this.categoryLevel.videogames >= 0) {
+        badgeGrade = "fer.png";
+      }
+      if (this.categoryLevel.videogames >= 5) {
+        badgeGrade = "bronze.png";
+      }
+      if (this.categoryLevel.videogames >= 10) {
+        badgeGrade = "argent.png";
+      }
+      if (this.categoryLevel.videogames >= 20) {
+        badgeGrade = "gold.png";
+      }
+      if (this.categoryLevel.videogames >= 50) {
+        badgeGrade = "diamond.png";
+      }
+      if (this.categoryLevel.videogames >= 100) {
+        badgeGrade = "ultime.png";
+      }
+
+      const storage = getStorage();
+      const badgeRef = ref(storage, "badges/videogames/" + badgeGrade);
+      getDownloadURL(badgeRef)
+        .then((url) => {
+          this.badgesURLvideogames = url;
         })
         .catch((error) => {
           console.log("erreur download badge URL", error);

@@ -15,7 +15,7 @@
             </a>
             <BoutonBorder type="button" class="w-fit px-10" @click="onDcnx()">Déconnexion</BoutonBorder>
           </div>
-          <h1 class="text-2xl font-bold text-white underline">NEW !! Modification de fonds décoratifs disponible !!</h1>
+          <RouterLink class="text-xl font-light text-white underline" to="/news">Voir les nouveautés</RouterLink>
         </div>
       </div>
     </div>
@@ -212,6 +212,7 @@ export default {
               gestion: 0,
               maison: 0,
               travail: 0,
+              videogames: 0,
             },
 
             uid: this.uid,

@@ -131,7 +131,7 @@ export default {
         this.quete = this.refQuete.data();
       } else {
         // Sinon simple message d'erreur
-        this.console.log("Quête inexistant");
+        this.console.log("Quête inexistante");
       }
     },
 

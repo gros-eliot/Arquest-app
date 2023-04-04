@@ -22,7 +22,6 @@ import {
 
 import HomeView from '../views/HomeView.vue'
 
-
 import QuestCreateView from '../views/quest/QuestCreateView.vue'
 import QuestModifView from '../views/quest/QuestModifView.vue'
 import QuestDeleteView from '../views/quest/QuestDeleteView.vue'
@@ -45,6 +44,7 @@ import View404 from '../views/View404.vue'
 import SocialmediaView from '../views/SocialmediaView.vue'
 import ConnexionView from '../views/ConnexionView.vue'
 
+import NewsArquest from '../views/NewsArquest.vue'
 
  const routes = [
 
@@ -76,6 +76,8 @@ import ConnexionView from '../views/ConnexionView.vue'
     { path: '/gds', name: 'GuideStyle', component: GuideStyle, beforeEnter:guard  },
 
     { path: '/social', name: 'SocialmediaView', component: SocialmediaView, beforeEnter:guard  },
+    
+    { path: '/news', name: 'NewsArquest', component: NewsArquest },
 
   ]
 
