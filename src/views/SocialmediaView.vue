@@ -58,7 +58,7 @@
             <div
               class="grid w-full grid-cols-1 gap-5 p-4 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))]"
               v-for="disc in chat"
-              :key="disc.uid"
+              :key="disc.id"
             >
               <div class="flex justify-between">
                 <div class="flex flex-col gap-1">
