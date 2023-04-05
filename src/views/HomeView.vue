@@ -19,8 +19,6 @@ export default {
       </div>
     </RouterLink>
 
-    <!-- AGENDA SEMAINE <div></div>-->
-
     <div>
       <Quest />
       <!--<BravopartageView class="fixed inset-y-2 inset-x-4 z-50" />-->

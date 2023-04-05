@@ -99,7 +99,10 @@
                   placeholder="Message"
                   v-model="message"
                 ></textarea>
-                <button @click="sendMsg()" class="m-5 h-fit w-8/12 bg-indigo-300 bg-opacity-90 p-2 md:w-fit md:p-5">
+                <button v-if="!message" disabled class="m-5 h-fit w-8/12 bg-gray-500 bg-opacity-90 p-2 md:w-fit md:p-5">
+                  <PaperAirplaneIcon class="ml-auto mr-auto w-7 rotate-90 stroke-black" />
+                </button>
+                <button v-else @click="sendMsg()" class="m-5 h-fit w-8/12 bg-indigo-300 bg-opacity-90 p-2 md:w-fit md:p-5">
                   <PaperAirplaneIcon class="ml-auto mr-auto w-7 rotate-90 stroke-black" />
                 </button>
               </div>

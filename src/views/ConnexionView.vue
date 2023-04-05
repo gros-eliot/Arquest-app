@@ -7,10 +7,10 @@
           <arquest-premium-long class="h-1/2 w-8/12 max-w-2xl"></arquest-premium-long>
 
           <div class="flex flex-col items-center justify-center gap-0 md:flex-row">
-            <RouterLink to="/home" v-if="!user">
+            <RouterLink to="/home" v-if="user.email">
               <BoutonBlue class="w-fit px-10">Rejoindre</BoutonBlue>
             </RouterLink>
-            <a href="#connexion_form">
+            <a href="#connexion_form" v-else>
               <BoutonBlue class="w-fit px-10">Rejoindre</BoutonBlue>
             </a>
             <BoutonBorder type="button" class="w-fit px-10" @click="onDcnx()">Déconnexion</BoutonBorder>
@@ -183,7 +183,7 @@ export default {
       usersInfo: [], // Liste des utilisateurs (Firestore)
       usersLength: 0, // nombre d'utilisateurs
       usersLogin: [], // tableau des pseudos de tous les utilisateurs
-      userUnique: true,
+      userUnique: true, // test si le nom de l'utilisateur est unique
       //
 
       // MESSAGES
@@ -191,7 +191,7 @@ export default {
       // MESSAGES
       //
       message: "", // Message de connexion
-      messageSignup: "", // Message création compte
+      messageSignup: "Inscrivez-vous ici !", // Message création compte
     };
   },
 
@@ -202,8 +202,10 @@ export default {
     let user = getAuth().currentUser;
     if (user) {
       this.user = user;
+      this.userConnected = true;
       this.message = "Vous êtes connecté sous : " + this.user.email;
     } else {
+      this.userConnected = false;
       this.message = "Connectez-vous.";
     }
   },
@@ -313,6 +315,8 @@ export default {
             password: null,
           };
           alert("Vous avez bien été déconnecté.e!");
+          this.message = "";
+          this.messageSignup = "";
           this.$router.push("/");
         })
         .catch((error) => {
