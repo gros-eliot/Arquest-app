@@ -229,7 +229,7 @@ export default {
           this.usersLogin.push(this.usersInfo[i].login);
         }
 
-        console.log("USERS LOGIN ", this.usersLogin);
+        // console.log("USERS LOGIN ", this.usersLogin);
       });
     },
 

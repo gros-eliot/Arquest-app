@@ -152,14 +152,6 @@
   </section>
 </template>
 
-<script setup>
-function Refresh() {
-  setTimeout(() => {
-    document.location.reload();
-  }, 1);
-}
-</script>
-
 <script>
 // Bibliothèque Firestore : import des fonctions
 import {
@@ -192,7 +184,7 @@ import BoutonBorder from "../components/boutons/BoutonBorder.vue";
 import { TrashIcon, EyeIcon, PaperAirplaneIcon, PlusIcon } from "@heroicons/vue/outline";
 
 export default {
-  name: "ChatView",
+  name: "SocialmediaView",
   components: { BoutonBorder, BoutonBlue, TrashIcon, EyeIcon, PaperAirplaneIcon, PlusIcon },
   data() {
     // Les données
@@ -262,7 +254,7 @@ export default {
 
         // Récupérer les infos complémentaires du user connecté
         this.userInfo = this.listeUsers.filter((user) => user.uid == this.user.uid);
-        // console.log("userInfo", this.userInfo);
+
         // Suppression du user connecté de la liste
         this.listeUsers = this.listeUsers.filter((user) => user.uid != this.user.uid);
         //console.log("ListeUsers", this.listeUsers);

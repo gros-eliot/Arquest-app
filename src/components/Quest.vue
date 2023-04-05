@@ -1,18 +1,18 @@
 <template>
   <div>
     <h2 class="font-roboto text-2xl font-bold text-white">
-      QUÊTES EN COURS (<span class="font-bold text-blue-300">{{ orderByUid.length }}</span
+      QUÊTES EN COURS (<span class="font-bold text-blue-300">{{ listeQueteByUid.length }}</span
       >)
     </h2>
     <div>
       <!--Si il n'y a aucun élément dans quêtes, afficher cette image-->
-      <div v-if="orderByUid.length == 0" class="my-5 flex h-1/2 flex-col items-center justify-center gap-3">
+      <div v-if="listeQueteByUid.length == 0" class="my-5 flex h-1/2 flex-col items-center justify-center gap-3">
         <NoQuestAvailable class="ml-8 w-11/12 max-w-xl" />
         <p class="text-center font-press-start-2p text-xl text-zinc-600">Aucune quête en cours...</p>
       </div>
-      <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]" v-if="orderByUid.length > 0">
+      <div class="m-5 flex flex-col gap-8 text-white lg:grid lg:grid-cols-[repeat(2,minmax(300px,1fr))]" v-if="listeQueteByUid.length > 0">
         <!--IMPORT DES QUÊTES DE FIREBASE-->
-        <form v-for="quete in orderByUid" :key="quete.id">
+        <form v-for="quete in listeQueteByUid" :key="quete.id">
           <div class="flex flex-col gap-1 border-2 border-indigo-500" v-if="quete.uid === user.uid">
             <!--TOP DE LA CARD-->
             <div class="m-2 flex items-center justify-between text-white">
@@ -95,7 +95,7 @@
                     ' text-lime-400 ': quete.cat === 'Santé',
                     ' text-yellow-400 ': quete.cat === 'Culture',
                     ' text-yellow-200 ': quete.cat === 'Maison',
-                    ' text-red-500 ': quete.cat === 'Jeux-vidéos',
+                    ' text-cyan-500': quete.cat === 'Jeux-vidéos',
                   }"
                 >
                   {{ quete.cat }}
@@ -125,7 +125,7 @@
                       ' bg-lime-400 ': quete.cat === 'Santé',
                       ' bg-yellow-400 ': quete.cat === 'Culture',
                       ' bg-yellow-200 ': quete.cat === 'Maison',
-                      ' bg-red-500 ': quete.cat === 'Jeux-vidéos',
+                      ' bg-cyan-500 ': quete.cat === 'Jeux-vidéos',
                     }"
                   ></div>
                 </div>
@@ -148,7 +148,10 @@
         </form>
       </div>
       <!--Si il y a 1 ou + élément dans quêtes, afficher quêtes en cours-->
-      <div v-if="orderByUid.length > 0" class="my-16 flex h-1/2 flex-col items-center justify-center gap-3">
+      <div
+        v-if="listeQueteByUid.length > 0 && listeQueteByUid.length < 9"
+        class="my-16 flex h-1/2 flex-col items-center justify-center gap-3"
+      >
         <img src="/image/createmorequest.png" alt="Trophé" class="w-20 brightness-50" />
         <p class="text-center font-press-start-2p text-xl text-zinc-600">Créez de nouvelles quêtes&nbsp;!</p>
       </div>
@@ -199,6 +202,7 @@ export default {
       testByUid: false,
 
       listeQueteSynchro: [], // Liste des quêtes synchronisée - collection quêtes de Firebase
+      listeQueteByUid: [], // liste des quêtes synchro triées par UID
 
       user: {
         // User connecté
@@ -231,16 +235,6 @@ export default {
     // Montage de la vue
     this.getQueteSynchro();
   },
-  computed: {
-    orderByUid: function () {
-      return this.listeQueteSynchro.sort(function (quete, user) {
-        // Si UID quête = UID user on retourne 1
-        if (quete.uid === user.uid) return -1;
-        // Sinon  on retourne 0
-        return 0;
-      });
-    },
-  },
 
   methods: {
     async getQueteSynchro() {
@@ -251,6 +245,9 @@ export default {
           id: doc.id,
           ...doc.data(),
         }));
+
+        this.listeQueteByUid = this.listeQueteSynchro.filter((quete) => quete.uid == this.user.uid);
+        console.log(this.listeQueteByUid);
       });
     },
 
@@ -284,6 +281,9 @@ export default {
       if (quete.cat === "Travail") {
         this.categoryLevel.travail = this.categoryLevel.travail + 1;
       }
+      if (quete.cat === "Jeux-vidéos") {
+        this.categoryLevel.videogames = this.categoryLevel.videogames + 1;
+      }
 
       await updateDoc(docRefUsers, {
         "category_level.sport": this.categoryLevel.sport,
@@ -294,6 +294,7 @@ export default {
         "category_level.diy": this.categoryLevel.diy,
         "category_level.sante": this.categoryLevel.sante,
         "category_level.travail": this.categoryLevel.travail,
+        "category_level.videogames": this.categoryLevel.videogames,
       });
 
       /*
