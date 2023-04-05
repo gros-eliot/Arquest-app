@@ -98,6 +98,16 @@
         </div>
       </div>
     </div>
+    <div class="mx-6 my-3 flex flex-col">
+      <div class="flex flex-row gap-1">
+        <span class="my-2 ml-3 bg-cyan-500 px-2" />
+        <div class="flex flex-col px-3 pb-3">
+          <h1 class="py-2 font-press-start-2p text-2xl text-cyan-500">JEUX-VIDÉOS</h1>
+          <p class="text-white">Quêtes réalisés :</p>
+          <p class="font-press-start-2p text-cyan-500">{{ categoryLevel.videogames }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

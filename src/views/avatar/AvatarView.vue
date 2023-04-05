@@ -10,7 +10,7 @@
         <RouterLink to="/custom_avatar"><PencilAltIcon class="w-11" /></RouterLink>
       </div>
 
-      <div class="mb-5 ml-auto mr-auto">
+      <div class="mb-5 ml-auto mr-auto flex flex-col items-center justify-center">
         <p class="my-4 w-full bg-black bg-opacity-40 px-2 py-1 text-center font-press-start-2p text-xl">{{ name }}</p>
         <div v-if="avatar != null"><img :src="avatar" :alt="'Avatar de ' + name" class="w-40 md:w-44" /></div>
         <div v-else><img src="/image/default_avatar.webp" alt="Default avatar" /></div>

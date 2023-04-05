@@ -115,7 +115,7 @@
                   <div class="row mb-3" v-if="msg.by == user.uid">
                     <div class="flex flex-row-reverse items-center gap-3">
                       <div class="flex h-fit w-fit flex-col items-center justify-center gap-1">
-                        <p class="text-right text-sm text-zinc-300">{{ userInfo[0].login }}</p>
+                        <p class="text-center text-sm text-zinc-300">{{ userInfo[0].login }}</p>
                         <img class="h-12 w-12 object-contain" :src="userInfo[0].avatar" />
                       </div>
                       <div class="flex w-full max-w-xl flex-col justify-end">
@@ -128,7 +128,7 @@
                     <div class="flex flex-row items-center gap-3">
                       <RouterLink :to="'/avatar/' + userSelected.uid">
                         <div class="flex h-fit w-fit flex-col items-center justify-center gap-1">
-                          <p class="text-right text-sm text-zinc-300">{{ userSelected.login }}</p>
+                          <p class="text-center text-sm text-zinc-300">{{ userSelected.login }}</p>
                           <img class="h-12 w-12 object-contain" :src="userSelected.avatar" />
                         </div>
                       </RouterLink>
@@ -192,7 +192,7 @@ export default {
       user: null, // User connecté
       listeUsers: [], // Liste des utilisateurs (Firestore)
       userInfo: null, // Informations complémentaires du user connecté
-      userSelected: null, // L'utilisateur de la liste sélectionné
+      userSelected: "", // L'utilisateur de la liste sélectionné
       libelle: null, // Libelle de la nouvelle discussion à créer
 
       chatFrom: null, // Les chats de l'utilisataur connecté vers celui sélectionné
